@@ -1,0 +1,4 @@
+repository "SevenChallengers@T2SU@cloud"
+  path "/"
+    smartbranch "/main"  
+     
