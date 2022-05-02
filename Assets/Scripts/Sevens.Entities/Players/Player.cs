@@ -103,7 +103,7 @@ namespace Sevens.Entities.Players
             _jumpCount = _jumpCountMax;
             _comboCount = 0;
             _isAttack = false;
-            isInvincible = false;  
+            isInvincible = false;
         }
 
         protected override void FixedUpdate()
@@ -203,14 +203,14 @@ namespace Sevens.Entities.Players
                 if (!directionMode)
                     Attack();
             }
-            
+
             if (xMove > 0 && State != PlayerState.Attack1 && State != PlayerState.Attack2 && State != PlayerState.Attack3 && !isHitted && !isDie)
             {
                 transform.localScale = new Vector2(0.1275f, 0.1275f);
                 xDir = 1f;
             }
-            else if (xMove < 0 && State != PlayerState.Attack1 && State != PlayerState.Attack2 && State != PlayerState.Attack3 && !isHitted && !isDie) 
-            { 
+            else if (xMove < 0 && State != PlayerState.Attack1 && State != PlayerState.Attack2 && State != PlayerState.Attack3 && !isHitted && !isDie)
+            {
                 transform.localScale = new Vector2(-0.1275f, 0.1275f);
                 xDir = -1f;
             }
@@ -320,7 +320,7 @@ namespace Sevens.Entities.Players
                 {
                     playerRigidbody.velocity = new Vector2(playerRigidbody.velocity.x, _jumpSpeed);
                     State = PlayerState.Jump;
-                }           
+                }
                 else if(_jumpCount > 0)
                 {
                     _jumpCount--;
@@ -340,7 +340,7 @@ namespace Sevens.Entities.Players
                 playerRigidbody.velocity.Set(0, 0);
                 if (_comboCount == 0)
                 {
-                    _audioSource.pitch = 1; 
+                    _audioSource.pitch = 1;
                     _audioSource.clip = _audioClips[2];
                     _audioSource.Play();
                     State = PlayerState.Attack1;
@@ -353,7 +353,7 @@ namespace Sevens.Entities.Players
                         comb = Instantiate(combo_1, new Vector3(transform.position.x - 3f, transform.position.y + 3.4f, transform.position.z), Quaternion.identity);
                     }
                     _comboCount++;
-                    _comboTimer = 0; 
+                    _comboTimer = 0;
                 }
                 else if (_comboCount == 1 && _comboTimer < _comboDelay)
                 {
@@ -431,9 +431,9 @@ namespace Sevens.Entities.Players
                 isDash = false;
             }
         }
-        
 
-        void SetCurrentAnimation(PlayerState _state)    
+
+        void SetCurrentAnimation(PlayerState _state)
         {
             switch (_state)
             {
