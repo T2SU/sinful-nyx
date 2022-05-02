@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using Sevens.Effects;
 
 namespace Sevens.Entities.Players
 {
