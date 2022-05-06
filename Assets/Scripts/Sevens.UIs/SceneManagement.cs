@@ -144,7 +144,7 @@ public class SceneManagement : MonoBehaviour
     {
         playerInfo = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         playerInfo.SetInitialHp(playerData.playerHP);
-        playerInfo.sin = playerData.playerSin;
+        playerInfo.Sin = playerData.playerSin;
         if (SceneManager.GetActiveScene().name != playerData.savedScene)
             return;
         if (!string.IsNullOrEmpty(playerData.spawnPointName))
@@ -172,7 +172,7 @@ public class SceneManagement : MonoBehaviour
 
         playerInfo = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         playerInfo.SetInitialHp(playerData.playerHP);
-        playerInfo.sin = playerData.playerSin;
+        playerInfo.Sin = playerData.playerSin;
         if (!string.IsNullOrEmpty(playerData.spawnPointName))
         {
             var pointObj = GameObject.Find(playerData.spawnPointName);

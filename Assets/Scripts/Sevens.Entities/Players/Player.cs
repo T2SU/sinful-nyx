@@ -14,6 +14,7 @@ namespace Sevens.Entities.Players
         private Collider2D _collider;
         private PlayerGuard _guardComponent;
         private PlayerDied _dieComponent;
+        private bool _directionMode;
 
         public Dictionary<int, Dictionary<string, string>> _questInfo
              = new Dictionary<int, Dictionary<string, string>>();
@@ -39,6 +40,8 @@ namespace Sevens.Entities.Players
         public override float EntitySizeY => _collider.bounds.size.y / 2;
 
         public Vector2 Velocity { get; set; }
+
+        public bool IsDirectionMode => _directionMode;
 
         [field: SerializeField]
         public PlayerState State { get; private set; }
@@ -113,6 +116,11 @@ namespace Sevens.Entities.Players
             
             if (audioClip == null) return;
             _audioSource.PlayOneShot(audioClip);
+        }
+
+        public void SetDirectionMode(bool mode)
+        {
+            _directionMode = mode;
         }
 
         protected override void Awake()
