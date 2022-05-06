@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class OptionUI : MonoBehaviour
 {
+    
+
+    /*
     public GameObject optionBaseUI;
 
     private RectTransform optionBaseRectTransform;
@@ -46,4 +49,5 @@ public class OptionUI : MonoBehaviour
             yield return null;
         }
     }
+    */
 }
