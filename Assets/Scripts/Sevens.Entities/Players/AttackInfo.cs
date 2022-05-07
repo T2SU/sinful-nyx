@@ -4,24 +4,29 @@ using System;
 namespace Sevens.Entities.Players
 {
     [Serializable]
-    public class AttackInfo
+    public class AttackInfo : MonoBehaviour
     {
-        public float Speed; // spine timescale
+        // 플레이어 공격에 관한 베이스 능력치
+        [Header("Player Attack Status Base")]
         public Collider2D Range;
         public string Damage;
         public float StateChangeDelay;
         public float Cooltime;
         public Vector2 KnockbackDistance;
 
+        // 플레이어 공격 관련 보정치
+        [Header("Player Attack Status Multiplier")]
+        public float RangeMultiplier;
+        public float DamageMultiplier;
+        public float CooltimeMultiplier;
+        public float KnockbackMultiplier;
+
 
         private float _damage;
 
-        public float EvalDamage()
+        public void EvaluateDamage()
         {
-            //~~ 공식을 넣을 수 있으면 공식을 파싱하는걸 넣을거.
             _damage = int.Parse(Damage);
-
-            return _damage;
         }
     }
 }
