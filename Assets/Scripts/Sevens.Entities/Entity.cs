@@ -39,6 +39,11 @@ namespace Sevens.Entities
             return transform.localScale.x < 0;
         }
 
+        public float GetFacingDirection()
+        {
+            return Mathf.Sign(transform.localScale.x);
+        }
+
         public string GetClosestSpawnPoint()
         {
             var objs = GameObject.FindGameObjectsWithTag("SpawnPoint");
