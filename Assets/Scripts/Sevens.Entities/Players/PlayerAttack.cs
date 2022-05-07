@@ -3,9 +3,9 @@ using System;
 
 namespace Sevens.Entities.Players
 {
-    public class PlayerAttack : Player
+    public class PlayerAttack : MonoBehaviour
     {
-        [SerializeField, Header("콤보 딜레이 시간")]
+        [SerializeField, Header("Combo Delay Time")]
         private float _comboDelay;
         private int _comboCount;
         private float _comboTimer;
@@ -16,7 +16,7 @@ namespace Sevens.Entities.Players
         private AttackInfo _attackInfo;
 
         // 콤보 오브젝트
-        [SerializeField, Header("콤보 오브젝트 배열")]
+        [SerializeField, Header("Combo Objects Array")]
         GameObject[] _comboObjects;
 
         // 통상 공격
@@ -57,7 +57,7 @@ namespace Sevens.Entities.Players
 
             if(combo != null)
             {
-                Blow.SetAllBlowSourceAs(combo, this);
+                Blow.SetAllBlowSourceAs(combo, _player);
             }
         }
 
@@ -67,17 +67,13 @@ namespace Sevens.Entities.Players
 
         }
 
-        protected override void Awake()
+        protected void Awake()
         {
-            base.Awake();
-
             _player = GetComponent<Player>();
         }
 
-        protected override void Update()
+        protected void Update()
         {
-            base.Update();
-
             if(Input.GetAxisRaw("Horizontal") > 0)
             {
                 xDirection = 1f;
