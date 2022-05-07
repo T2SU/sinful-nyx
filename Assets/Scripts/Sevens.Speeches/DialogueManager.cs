@@ -4,7 +4,6 @@ using Sevens.Utils;
 using System;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace Sevens.Speeches
@@ -12,6 +11,7 @@ namespace Sevens.Speeches
     public class DialogueManager : MonoBehaviour
     {
         private static DialogueManager _instance;
+        private static GameObject _dialoguePrefab;
 
         public static DialogueManager Instance
         {
@@ -26,7 +26,6 @@ namespace Sevens.Speeches
             }
         }
 
-        private Transform _canvas;
         private Transform _dialogueObject;
         private Coroutine _dialogueCoroutine;
         private DialogueBase _dialogueBase;
@@ -41,8 +40,6 @@ namespace Sevens.Speeches
         {
             if (_dialogueObject != null)
                 throw new InvalidOperationException("A dialogue has been already begun.");
-            if (_canvas == null)
-                throw new NullReferenceException($"Canvas is not located in this scene.");
             return StartCoroutine(DialogueManagementCoroutine(dialogueCoroutine));
         }
 
@@ -90,7 +87,7 @@ namespace Sevens.Speeches
             var player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
             if (player != null)
                 player.SetDirectionMode(true);
-            _dialogueObject = Instantiate(UIUtility.Instance.data.dialogue, _canvas).transform;
+            _dialogueObject = Instantiate(_dialoguePrefab).transform;
             _dialogueBase = _dialogueObject.GetComponent<DialogueBase>();
             yield return _dialogueCoroutine = StartCoroutine(dialogueCoroutine);
             DeleteDialogue();
@@ -110,25 +107,8 @@ namespace Sevens.Speeches
         private void Awake()
         {
             DontDestroyOnLoad(this);
-            LocateComponent();
-            SceneManager.sceneLoaded += OnSceneLoaded;
             _coroutines = new CoroutineMan(this);
-        }
-
-        // 씬 로드 시, 필요한 컴포넌트를 씬에서 재로드
-
-        private void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
-        {
-            LocateComponent();
-        }
-
-        private void LocateComponent()
-        {
-            _canvas = GameObject.Find("Canvas")?.transform;
-            if (_canvas == null)
-                Debug.LogWarning("Not found 'Canvas' in this Scene!");
-            if (_canvas != null)
-                _hudMessage = _canvas.transform.Find("HudMessage").GetComponentInChildren<Text>();
+            _dialoguePrefab = Resources.Load<GameObject>("UI/Dialogue");
         }
     }
 }

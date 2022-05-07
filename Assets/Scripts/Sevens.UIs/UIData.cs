@@ -5,5 +5,4 @@ public class UIData : ScriptableObject
 {
     public GameObject popUpObject;
     public GameObject settingsGroupPrefab;
-    public GameObject dialogue;
 }
