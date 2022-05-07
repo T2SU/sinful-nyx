@@ -35,7 +35,7 @@ namespace Sevens.Entities
         public LayerMask DamageLayer { get; private set; }
 
         [SerializeField]
-        private float destoryTime;
+        private float _destoryTime;
 
         private float _nextAoEDamageTime;
         private float _maxAoEDamageTime;
@@ -62,9 +62,10 @@ namespace Sevens.Entities
             _contactFilter = new ContactFilter2D() { useLayerMask = true, layerMask = DamageLayer };
         }
 
-        private void OnEnable() {
-            if (destoryTime >= 0)
-                Destroy(transform.gameObject, destoryTime);
+        private void OnEnable()
+        {
+            if (_destoryTime >= 0)
+                Destroy(transform.gameObject, _destoryTime);
             _nextAoEDamageTime = Time.time + AOEOption.StartAffectingDelay;
             _maxAoEDamageTime = _nextAoEDamageTime + AOEOption.MaxAffectingDuration;
         }
