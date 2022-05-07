@@ -10,7 +10,7 @@ namespace Sevens.Entities.Players
         public float StaminaDamageRatio;
 
         //패링 쿨타임
-        public float parryCooltime;
+        public float guardCooltime;
 
         //패링 지속시간
         public float parryableTime;

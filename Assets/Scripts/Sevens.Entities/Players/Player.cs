@@ -100,7 +100,7 @@ namespace Sevens.Entities.Players
 #if UNITY_EDITOR
         [field: ShowCase]
 #endif
-        public PlayerState State { get; protected set; }
+        public PlayerState State { get; set; }
 
         public override float EntitySizeX => playerCollider.bounds.size.x / 2;
         public override float EntitySizeY => playerCollider.bounds.size.y / 2;
@@ -174,14 +174,14 @@ namespace Sevens.Entities.Players
                 _comboCount = 0;
                 if (playerRigidbody.velocity.x == 0)
                 {
-                    if (State != PlayerState.Jump && State != PlayerState.Jump2 && _isGround  && State != PlayerState.Dash && State != PlayerState.Hit && !isDie)
+                    if (State != PlayerState.Jump && State != PlayerState.Jump2 && _isGround && State != PlayerState.Dash && State != PlayerState.Hit && !isDie && State != PlayerState.Guard)
                     {
                         State = PlayerState.Idle;
                     }
                 }
                 else
                 {
-                    if (State != PlayerState.Jump && State != PlayerState.Jump2 && _isGround  && State != PlayerState.Dash && State != PlayerState.Hit && !isDie)
+                    if (State != PlayerState.Jump && State != PlayerState.Jump2 && _isGround && State != PlayerState.Dash && State != PlayerState.Hit && !isDie && State != PlayerState.Guard)
                     {
                         if (!_audioSource.isPlaying)
                         {
@@ -308,6 +308,10 @@ namespace Sevens.Entities.Players
             else if (isHitted)
             {
                 playerRigidbody.AddForce(new Vector2(1 * -xDir, 1), ForceMode2D.Impulse);
+            }
+            else if(State == PlayerState.Guard)
+            {
+                playerRigidbody.velocity = new Vector2(0, playerRigidbody.velocity.y);
             }
             else
             {
@@ -447,61 +451,41 @@ namespace Sevens.Entities.Players
             }
         }
 
-
         void SetCurrentAnimation(PlayerState _state)
         {
             switch (_state)
             {
                 case PlayerState.Idle:
-                    AsyncAnimation(animClip[(int)PlayerState.Idle], true, 1f, 0);
-                    break;
                 case PlayerState.Run:
-                    AsyncAnimation(animClip[(int)PlayerState.Run], true, 1f, 0);
+                    AsyncAnimation(_state, true, 1f, 0);
                     break;
                 case PlayerState.Attack1:
-                    AsyncAnimation(animClip[(int)PlayerState.Attack1], false, 1f, 0);
-                    break;
                 case PlayerState.Attack2:
-                    AsyncAnimation(animClip[(int)PlayerState.Attack2], false, 1f, 0);
-                    break;
                 case PlayerState.Attack3:
-                    AsyncAnimation(animClip[(int)PlayerState.Attack3], false, 1f, 0);
-                    break;
                 case PlayerState.AirAttack:
-                    AsyncAnimation(animClip[(int)PlayerState.AirAttack], false, 1f, 0);
-                    break;
                 case PlayerState.UltimateSkill:
-                    AsyncAnimation(animClip[(int)PlayerState.UltimateSkill], false, 1f, 0);
-                    break;
                 case PlayerState.Jump:
-                    AsyncAnimation(animClip[(int)PlayerState.Jump], false, 1f, 0);
-                    break;
                 case PlayerState.Jump2:
-                    AsyncAnimation(animClip[(int)PlayerState.Jump2], false, 1f, 0);
-                    break;
                 case PlayerState.Fall:
-                    AsyncAnimation(animClip[(int)PlayerState.Fall], false, 1f, 0);
-                    break;
                 case PlayerState.Hit:
-                    AsyncAnimation(animClip[(int)PlayerState.Hit], false, 1f, 0);
-                    break;
                 case PlayerState.Dash:
-                    AsyncAnimation(animClip[(int)PlayerState.Dash], false, 1f, 0);
-                    break;
                 case PlayerState.Die:
-                    AsyncAnimation(animClip[(int)PlayerState.Die], false, 1f, 0);
+                case PlayerState.Guard:
+                    AsyncAnimation(_state, false, 1f, 0);
                     break;
             }
         }
-        void AsyncAnimation(AnimationReferenceAsset animClip, bool loop, float timeScale, int track)
+        void AsyncAnimation(PlayerState state, bool loop, float timeScale, int track)
         {
-            if (animClip.name.Equals(CurrentAnimation)) return;
+            AnimationReferenceAsset anim = animClip.FindByName(state.ToString());
 
-            skeletonAnimation.state.SetAnimation(track, animClip, loop).TimeScale = timeScale;
+            if (anim.name.Equals(CurrentAnimation)) return;
+
+            skeletonAnimation.state.SetAnimation(track, anim, loop).TimeScale = timeScale;
             skeletonAnimation.loop = loop;
             skeletonAnimation.timeScale = timeScale;
 
-            CurrentAnimation = animClip.name;
+            CurrentAnimation = anim.name;
         }
 
         public void SetDirectionMode(bool enabled)
