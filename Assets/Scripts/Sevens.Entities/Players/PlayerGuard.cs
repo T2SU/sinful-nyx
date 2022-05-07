@@ -4,6 +4,12 @@ using System.Collections.Generic;
 
 namespace Sevens.Entities.Players
 {
+    public enum PlayerGuardResultType
+    {
+        Guard = 1 << 0,
+        Parry = 1 << 1
+    }
+
     public class PlayerGuard : MonoBehaviour 
     {
         [SerializeField]
@@ -26,19 +32,18 @@ namespace Sevens.Entities.Players
             {
                 result.Damage = 0f;
                 result.StaminaDamage = 0f;
-                result.Guarded = true;
+                result.Guarded |= PlayerGuardResultType.Parry | PlayerGuardResultType.Guard;
             }
             else if (_isGuard)
             {
                 result.Damage = damage * _guardInfoComponent.ReduceDamageRatio;
                 result.StaminaDamage = damage * _guardInfoComponent.StaminaDamageRatio;
-                result.Guarded = true;
+                result.Guarded = PlayerGuardResultType.Guard;
             }
             else
             {
                 result.Damage = damage;
                 result.StaminaDamage = 0f;
-                result.Guarded = false;
             }
             return result;
         }
@@ -76,6 +81,6 @@ namespace Sevens.Entities.Players
     {
         public float Damage;
         public float StaminaDamage;
-        public bool Guarded;
+        public PlayerGuardResultType Guarded;
     }
 }
