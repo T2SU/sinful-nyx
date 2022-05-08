@@ -310,12 +310,11 @@ GameObject:
   - component: {fileID: 3010400537335858200}
   - component: {fileID: 3010400537335858212}
   - component: {fileID: 3010400537335858203}
-  - component: {fileID: 3010400537335858213}
   - component: {fileID: 484186970990448435}
   - component: {fileID: 8255252914886694218}
   - component: {fileID: 3421666970914393345}
-  - component: {fileID: -2268270377395006066}
-  - component: {fileID: 2235866354915685536}
+  - component: {fileID: 81185308}
+  - component: {fileID: 81185309}
   m_Layer: 13
   m_Name: Player
   m_TagString: Player
@@ -450,7 +449,7 @@ CapsuleCollider2D:
   m_GameObject: {fileID: 3010400537335858202}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 6bebcfa67460dd94dbf953170fa4a963, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -478,89 +477,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &3010400537335858213
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3010400537335858202}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1274880012052764fb3ced6bcd264c29, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _hp: 100
-  <MaxHp>k__BackingField: 100
-  OnHpRatioChanged:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 9171612479680809359}
-        m_TargetAssemblyTypeName: Sevens.Entities.HPVignette, Assembly-CSharp
-        m_MethodName: ChangedHPRatio
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 3904193852181254101}
-        m_TargetAssemblyTypeName: Sevens.UIs.HudGaugeElement, Assembly-CSharp
-        m_MethodName: SetGrowUp
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  OnHpRatioInitialSet:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3904193852181254101}
-        m_TargetAssemblyTypeName: Sevens.UIs.HudGaugeElement, Assembly-CSharp
-        m_MethodName: SetGrowUpNoAnimation
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  _audioClips:
-  - Name: NyxFootstep1
-    Object: {fileID: 8300000, guid: fdb874e8ba84f3a4e8be73e3d8aa2e2d, type: 3}
-  - Name: NyxDash
-    Object: {fileID: 8300000, guid: 27518f9179606534abab68de4d6c01da, type: 3}
-  - Name: NyxAttack1
-    Object: {fileID: 8300000, guid: 83c9f364b7157cd4eaa124d8c2b6718b, type: 3}
-  - Name: NyxAtack2
-    Object: {fileID: 8300000, guid: 554f46a1d9bbf7a4a8791f490ae4ef9b, type: 3}
-  - Name: NyxAttack3
-    Object: {fileID: 8300000, guid: f2164ce66ff72a94faebda39ad324c15, type: 3}
-  - Name: NyxAirSound
-    Object: {fileID: 8300000, guid: 83c9f364b7157cd4eaa124d8c2b6718b, type: 3}
-  - Name: NyxDamaged
-    Object: {fileID: 8300000, guid: 55ae09352f3e6fe4a9d1d84780b6cba3, type: 3}
-  - Name: NyxBlocking
-    Object: {fileID: 8300000, guid: 7bce40c4c93f16a41acf8e7db06bd8a2, type: 3}
-  - Name: NyxLanding
-    Object: {fileID: 8300000, guid: 44ac850e13afd96459af9067539b6959, type: 3}
-  - Name: NyxUltSkill
-    Object: {fileID: 8300000, guid: 0f34936fa159dc14d91b4b37ad2ce6ac, type: 3}
-  animClips: []
-  Stamina: 0
-  StaminaMax: 0
-  Sin: 0
-  Soul: 0
-  <State>k__BackingField: 0
 --- !u!82 &484186970990448435
 AudioSource:
   m_ObjectHideFlags: 0
@@ -683,7 +599,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DyingBGM: {fileID: 8300000, guid: 0c86c6148062eab4ca10885580f78f12, type: 3}
---- !u!114 &-2268270377395006066
+--- !u!114 &81185308
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -692,47 +608,119 @@ MonoBehaviour:
   m_GameObject: {fileID: 3010400537335858202}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8db2dfd7fdd7b42ef9b2d7b148d0d5be, type: 3}
+  m_Script: {fileID: 11500000, guid: e075db40bc620014c865d7880e750140, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Range: {fileID: 0}
-  Damage: 
-  StateChangeDelay: 0
-  Cooltime: 0
-  KnockbackDistance: {x: 0, y: 0}
-  RangeMultiplier: 1
-  DamageMultiplier: 1
-  CooltimeMultiplier: 1
-  KnockbackMultiplier: 1
---- !u!114 &2235866354915685536
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3010400537335858202}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ed94b6275fcf0c44b1df1ab37230695, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _hp: 0
-  <MaxHp>k__BackingField: 0
+  _hp: 100
+  <MaxHp>k__BackingField: 100
   OnHpRatioChanged:
     m_PersistentCalls:
       m_Calls: []
   OnHpRatioInitialSet:
     m_PersistentCalls:
       m_Calls: []
-  _audioClips: []
-  animClips: []
-  Stamina: 0
-  StaminaMax: 0
+  _moveSpeed: 10
+  _moveSpeedInAir: 8
+  _jumpSpeed: 15
+  _audioClips:
+  - Name: 
+    Object: {fileID: 8300000, guid: fdb874e8ba84f3a4e8be73e3d8aa2e2d, type: 3}
+  - Name: 
+    Object: {fileID: 8300000, guid: 27518f9179606534abab68de4d6c01da, type: 3}
+  - Name: 
+    Object: {fileID: 8300000, guid: 83c9f364b7157cd4eaa124d8c2b6718b, type: 3}
+  - Name: 
+    Object: {fileID: 8300000, guid: 554f46a1d9bbf7a4a8791f490ae4ef9b, type: 3}
+  - Name: 
+    Object: {fileID: 8300000, guid: f2164ce66ff72a94faebda39ad324c15, type: 3}
+  - Name: 
+    Object: {fileID: 8300000, guid: 83c9f364b7157cd4eaa124d8c2b6718b, type: 3}
+  - Name: 
+    Object: {fileID: 8300000, guid: 55ae09352f3e6fe4a9d1d84780b6cba3, type: 3}
+  - Name: 
+    Object: {fileID: 8300000, guid: 7bce40c4c93f16a41acf8e7db06bd8a2, type: 3}
+  - Name: 
+    Object: {fileID: 8300000, guid: 44ac850e13afd96459af9067539b6959, type: 3}
+  - Name: 
+    Object: {fileID: 8300000, guid: 0f34936fa159dc14d91b4b37ad2ce6ac, type: 3}
+  animClip:
+  - Name: Idle
+    Object: {fileID: 11400000, guid: 85a00767b0fd4f4498c091a99c081952, type: 2}
+  - Name: Run
+    Object: {fileID: 11400000, guid: e4beab3a1d27717458b205f7bd036264, type: 2}
+  - Name: Attack1
+    Object: {fileID: 11400000, guid: 598613805c5831646a7bde41ffc7a8d3, type: 2}
+  - Name: Attack2
+    Object: {fileID: 11400000, guid: 59274eff99fa30d4d993268b28625dce, type: 2}
+  - Name: Attack3
+    Object: {fileID: 11400000, guid: c728c4cbc3806d44285bf4410fcf8c97, type: 2}
+  - Name: AirAttack
+    Object: {fileID: 11400000, guid: 049bfcda02460ca4998e6172bdbfda6e, type: 2}
+  - Name: UltimateSkill
+    Object: {fileID: 11400000, guid: 284643379dd13ae4dba8e0c8ab78d3de, type: 2}
+  - Name: Jump
+    Object: {fileID: 11400000, guid: 959b64a4573eeed4895239432309ead0, type: 2}
+  - Name: Jump2
+    Object: {fileID: 11400000, guid: f4e448240da5def47adc8fd7ef24f36b, type: 2}
+  - Name: Fall
+    Object: {fileID: 11400000, guid: 42bc06ea673ca4549b1f6c988e678c09, type: 2}
+  - Name: Fall
+    Object: {fileID: 11400000, guid: c3c31c5a626a8c241900d40644f675d4, type: 2}
+  - Name: Dash
+    Object: {fileID: 11400000, guid: ce3e767a49165e844a07f5e8b5e44f42, type: 2}
+  - Name: Die
+    Object: {fileID: 11400000, guid: 271ee3654c2884641a8d9255ceb813e8, type: 2}
+  - Name: Guard
+    Object: {fileID: 11400000, guid: 0958b51d73413de41b213936f2a3becc, type: 2}
+  playerRigidbody: {fileID: 3010400537335858203}
+  playerCollider: {fileID: 3010400537335858212}
+  playerGuard: {fileID: 81185309}
+  skeletonAnimation: {fileID: 3010400537335858200}
+  CurrentAnimation: 
+  curtainSprite: {fileID: 0}
+  _rayCastDistance: 0.5
+  _jumpCount: 1
+  _jumpCountMax: 1
+  _stamina: 100
+  _soul: 0
+  combo_1: {fileID: 7030220802796105048, guid: e6af4fe0b9f64ab448368b98dd38beba, type: 3}
+  combo_2: {fileID: 1779377021907473120, guid: 631190f7de6732c44a6f3d72000aa13b, type: 3}
+  combo_3: {fileID: 8921497929074300407, guid: 90f267e820192c84f92b0e496ada21a0, type: 3}
+  _comboCount: 0
+  _comboDelay: 0.5
+  _comboTimer: 0
+  AttackDelay: 0.3
+  invincibleTime: 1
+  invincibleTimer: 0
+  isInvincible: 0
+  isHitted: 0
+  HittedTime: 0.5
+  HittedTimer: 0
+  DashDuration: 0.3
+  DashDelay: 0.7
+  DashLength: 30
   Sin: 0
-  Soul: 0
+  DebugMode: 0
   <State>k__BackingField: 0
-  _comboDelay: 0
-  _comboObjects: []
+--- !u!114 &81185309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3010400537335858202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47325129f0ed5274d9e56abe63394552, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guardInfoComponent:
+    StaminaDamageRatio: 0
+    guardCooltime: 0
+    parryableTime: 0
+    ReduceDamageRatio: 0
+    IncreaseUltGaugeOnParrying: 0
+  _playerComponent: {fileID: 81185308}
 --- !u!1 &4206663636096644620
 GameObject:
   m_ObjectHideFlags: 0
