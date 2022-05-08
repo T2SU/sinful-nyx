@@ -8,6 +8,6 @@ namespace Sevens.Entities.Players
 {
     public enum PlayerState
     {
-        Idle, Run, Attack1, Attack2, Attack3, AirAttack, UltimateSkill, Jump, Jump2, Fall, Hit, Dash ,Die, Guard
+        Idle, Run, Attack, UltimateSkill, Jump, Fall, Hit, Dash ,Die, Guard
     }
 }

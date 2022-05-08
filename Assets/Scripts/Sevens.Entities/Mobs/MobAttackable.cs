@@ -59,14 +59,9 @@ namespace Sevens.Entities.Mobs
             ThinkAttack();
         }
 
-        private bool IsAttackingState(PlayerState state) =>
-            state == PlayerState.Attack1
-            || state == PlayerState.Attack2
-            || state == PlayerState.Attack3;
-
         private void ThinkEvasion()
         {
-            if (!IsAttackingState(_lastPlayerState) && IsAttackingState(Player.State))
+            if (_lastPlayerState != PlayerState.Attack && Player.State == PlayerState.Attack)
                 AttemptAttack(_evasions);
             _lastPlayerState = Player.State;
         }
