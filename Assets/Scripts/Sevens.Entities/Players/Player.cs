@@ -103,6 +103,8 @@ namespace Sevens.Entities.Players
         [SerializeField] private float _dashHorizontalSpeed;
         [SerializeField] private float _dashDuration;
 
+        private int _dashedInAirCount;
+
 
         [Header("Misc")]
         [SerializeField] private bool _debugMode;
@@ -141,6 +143,7 @@ namespace Sevens.Entities.Players
             _currentComboCount = 0;
             _bufferedComboCount = 0;
             _attackedInAirCount = 0;
+            _dashedInAirCount = 0;
             _invincibleTimer = new TimeElapsingRecord();
             _hitTimer = new TimeElapsingRecord();
             _comboAttackTimer = new TimeElapsingRecord();
@@ -240,6 +243,7 @@ namespace Sevens.Entities.Players
                 {
                     _jumpCount = 0;
                     _attackedInAirCount = 0;
+                    _dashedInAirCount = 0;
                 }
             }
             else
@@ -478,6 +482,18 @@ namespace Sevens.Entities.Players
 
                 if (Input.GetButtonDown("Dash"))
                 {
+                    // 점프 중일 경우
+                    if (!_isGround)
+                    {
+                        // 최대 공중 대쉬 횟수 1회 도달시
+                        if (_dashedInAirCount >= 1)
+                            // 입력을 받지 않음.
+                            return;
+
+                        // 공중 공격 횟수 증가
+                        ++_dashedInAirCount;
+                    }
+
                     PlayAudio("Dash", 4f);
                     State = PlayerState.Dash;
                     _beingDashTimer.UpdateAsNow();
