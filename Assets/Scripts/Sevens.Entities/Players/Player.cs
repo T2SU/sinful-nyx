@@ -323,8 +323,8 @@ namespace Sevens.Entities.Players
             if (!_isInvincible && State != PlayerState.Dash && State != PlayerState.Die)
             {
                 var result = _playerGuard.TryGuard(source, damage);
-                Hp = Hp - result.Damage;
-                Stamina = Stamina - result.StaminaDamage;
+                Hp -= result.Damage;
+                Stamina -= result.StaminaDamage;
                 if (Hp < 0)
                     Hp = 0;
 
