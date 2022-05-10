@@ -268,7 +268,6 @@ namespace Sevens.Entities.Players
 
             if (Input.GetButtonDown("Jump"))
             {
-                Debug.Log($"Jump!! - before {_jumpCount}");
                 if (_jumpCount < JumpCountMax)
                 {
                     ++_jumpCount;
@@ -276,7 +275,6 @@ namespace Sevens.Entities.Players
                     State = PlayerState.Jump;
                     TryPlayAnimation(_animClip.FindByName($"Jump{_jumpCount}"), false, 1f, 0);
                 }
-                Debug.Log($"Jump!! - after {_jumpCount}");
             }
 
             UpdateDash();
@@ -375,6 +373,9 @@ namespace Sevens.Entities.Players
                 if (_attackedInAirCount >= 1)
                     // 입력을 받지 않음.
                     return;
+
+                // 공중 공격 횟수 증가
+                ++_attackedInAirCount;
             }
 
             // 선입력 반영
