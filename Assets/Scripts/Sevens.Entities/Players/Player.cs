@@ -284,7 +284,8 @@ namespace Sevens.Entities.Players
 
             if (_playerRigidbody.velocity.y < 0f && !_isGround && !PlayerStates.HasUniqueAnimationState(State))
             {
-                State = PlayerState.Fall;
+                if (!_jumpTrigger)
+                    State = PlayerState.Fall;
             }
 
             if (State == PlayerState.Die)
