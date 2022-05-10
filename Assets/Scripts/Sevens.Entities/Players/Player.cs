@@ -232,7 +232,7 @@ namespace Sevens.Entities.Players
             {
                 //Debug.Log("isGround");
                 _isGround = true;
-                if (State != PlayerState.Jump && State != PlayerState.Fall)
+                if (!PlayerStates.IsAirState(State))
                 {
                     _jumpCount = 0;
                     _attackedInAirCount = 0;
@@ -244,7 +244,7 @@ namespace Sevens.Entities.Players
                 _isGround = false;
             }
 
-            if (State != PlayerState.Hit && State != PlayerState.Die)
+            if (PlayerStates.IsAttackableState(State))
             {
                 if (Input.GetButtonDown("Fire1") && !_directionMode)
                     EnqueueAttack();
@@ -266,20 +266,23 @@ namespace Sevens.Entities.Players
                     State = PlayerState.Idle;
             }
 
-            if (Input.GetButtonDown("Jump"))
+            if (PlayerStates.IsJumpableState(State))
             {
-                if (_jumpCount < JumpCountMax)
+                if (Input.GetButtonDown("Jump"))
                 {
-                    ++_jumpCount;
-                    _jumpTrigger = true;
-                    State = PlayerState.Jump;
-                    TryPlayAnimation(_animClip.FindByName($"Jump{_jumpCount}"), false, 1f, 0);
+                    if (_jumpCount < JumpCountMax)
+                    {
+                        ++_jumpCount;
+                        _jumpTrigger = true;
+                        State = PlayerState.Jump;
+                        TryPlayAnimation(_animClip.FindByName($"Jump{_jumpCount}"), false, 1f, 0);
+                    }
                 }
             }
 
             UpdateDash();
 
-            if (_playerRigidbody.velocity.y < 0f && !_isGround && State != PlayerState.Attack && State != PlayerState.Dash && State != PlayerState.Hit && State != PlayerState.Die)
+            if (_playerRigidbody.velocity.y < 0f && !_isGround && !PlayerStates.HasUniqueAnimationState(State))
             {
                 State = PlayerState.Fall;
             }
@@ -294,21 +297,19 @@ namespace Sevens.Entities.Players
 
         private bool CanChangeDefaultState(PlayerState state)
         {
-            switch (state)
-            {
-                case PlayerState.Jump:
-                case PlayerState.Hit:
-                case PlayerState.Guard:
-                case PlayerState.Attack:
-                case PlayerState.Dash:
-                    return false;
-                default:
-                    break;
-            }
+            // Hit, Guard, Attack, Hit, Die 등,
+            // 지상에 있더라도 Idle 또는 Run 애니메이션으로 전환해서는 안되는 상태
+            if (PlayerStates.HasUniqueAnimationState(state))
+                return false;
+
+            // 상승 점프 중
+            if (state == PlayerState.Jump)
+                return false;
+
+            // 공중에 있으면?
             if (!_isGround)
                 return false;
-            if (State == PlayerState.Die)
-                return false;
+
             return true;
         }
 
