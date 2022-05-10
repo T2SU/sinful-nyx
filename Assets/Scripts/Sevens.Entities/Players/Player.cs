@@ -187,7 +187,7 @@ namespace Sevens.Entities.Players
             if (_jumpTrigger)
             {
                 _jumpTrigger = false;
-                velocity.y = _jumpSpeeds[_jumpCount];
+                velocity.y = _jumpSpeeds[_jumpCount - 1];
             }
             _playerRigidbody.velocity = velocity;
         }
@@ -232,8 +232,11 @@ namespace Sevens.Entities.Players
             {
                 //Debug.Log("isGround");
                 _isGround = true;
-                _jumpCount = 0;
-                _attackedInAirCount = 0;
+                if (State != PlayerState.Jump && State != PlayerState.Fall)
+                {
+                    _jumpCount = 0;
+                    _attackedInAirCount = 0;
+                }
             }
             else
             {
@@ -265,13 +268,15 @@ namespace Sevens.Entities.Players
 
             if (Input.GetButtonDown("Jump"))
             {
-                if (_jumpCount < JumpCountMax - 1)
+                Debug.Log($"Jump!! - before {_jumpCount}");
+                if (_jumpCount < JumpCountMax)
                 {
                     ++_jumpCount;
                     _jumpTrigger = true;
                     State = PlayerState.Jump;
                     TryPlayAnimation(_animClip.FindByName($"Jump{_jumpCount}"), false, 1f, 0);
                 }
+                Debug.Log($"Jump!! - after {_jumpCount}");
             }
 
             UpdateDash();
@@ -375,7 +380,7 @@ namespace Sevens.Entities.Players
             // 선입력 반영
             _bufferedComboCount++;
 
-            // 최초 공격일 경우, 현재 콤보 카운트를 0으로 초기화 및 멈춤.
+            // 최초 공격일 경우, 현재 콤보 카운트를 0으로 초기화 및 현재 이동 속도를 멈춤.
             if (State != PlayerState.Attack)
             {
                 State = PlayerState.Attack;
