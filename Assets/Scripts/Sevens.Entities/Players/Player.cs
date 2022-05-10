@@ -58,6 +58,7 @@ namespace Sevens.Entities.Players
         private int _jumpCount;
         private bool _isGround = true;
         private bool _jumpTrigger = false;
+        private float _lastGravityScale;
 
         private int JumpCountMax => _jumpSpeeds.Length;
 
@@ -146,6 +147,7 @@ namespace Sevens.Entities.Players
             _comboFinishDelayTimer = new TimeElapsingRecord();
             _beingDashTimer = new TimeElapsingRecord();
             Invincible = false;
+            _lastGravityScale = _playerRigidbody.gravityScale;
         }
 
         protected override void FixedUpdate()
@@ -184,6 +186,14 @@ namespace Sevens.Entities.Players
                 velocity.y = _jumpSpeeds[_jumpCount - 1];
             }
             _playerRigidbody.velocity = velocity;
+
+            // 공중 부양일 때는 중력을 0으로.
+            if (PlayerStates.IsLevitationState(State))
+            {
+                _playerRigidbody.gravityScale = 0f;
+            }
+            else
+                _playerRigidbody.gravityScale = _lastGravityScale;
         }
 
         protected override void OnEnable()

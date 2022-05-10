@@ -68,5 +68,17 @@ namespace Sevens.Entities.Players
                     return false;
             }
         }
+
+        public static bool IsLevitationState(PlayerState state)
+        {
+            switch (state)
+            {
+                case PlayerState.Attack:
+                case PlayerState.Dash:
+                    return true;
+                default:
+                    return false;
+            }
+        }
     }
 }
