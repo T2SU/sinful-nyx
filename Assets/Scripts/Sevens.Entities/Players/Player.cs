@@ -154,12 +154,6 @@ namespace Sevens.Entities.Players
             UpdateVelocity();
         }
 
-        private void AirMove(float xMove)
-        {
-            if (State == PlayerState.Die) return;
-            if (State == PlayerState.Hit) return;
-        }
-
         private void UpdateVelocity()
         {
             if (State == PlayerState.Die) return;
@@ -288,10 +282,6 @@ namespace Sevens.Entities.Players
                     State = PlayerState.Fall;
             }
 
-            if (State == PlayerState.Die)
-            {
-                State = PlayerState.Die;
-            }
             SetCurrentAnimation(State);
         }
 
