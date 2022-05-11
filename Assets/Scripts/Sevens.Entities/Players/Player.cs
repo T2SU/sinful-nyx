@@ -501,13 +501,13 @@ namespace Sevens.Entities.Players
             }
         }
 
-        void SetCurrentAnimation(PlayerState _state)
+        private void SetCurrentAnimation(PlayerState _state)
         {
             switch (_state)
             {
                 case PlayerState.Idle:
                 case PlayerState.Run:
-                    AsyncAnimation(_state, true, 1f, 0);
+                    TryPlayAnimation(_state, true, 1f, 0);
                     break;
                 case PlayerState.UltimateSkill:
                 case PlayerState.Fall:
@@ -515,13 +515,19 @@ namespace Sevens.Entities.Players
                 case PlayerState.Dash:
                 case PlayerState.Die:
                 case PlayerState.Guard:
-                    AsyncAnimation(_state, false, 1f, 0);
+                    TryPlayAnimation(_state, false, 1f, 0);
                     break;
             }
         }
-        private void AsyncAnimation(PlayerState state, bool loop, float timeScale, int track)
+
+        private void TryPlayAnimation(PlayerState state, bool loop, float timeScale, int track)
         {
-            TryPlayAnimation(_animClip.FindByName(state.ToString()), loop, timeScale, track);
+            TryPlayAnimation(state.ToString(), loop, timeScale, track);
+        }
+
+        private void TryPlayAnimation(string animName, bool loop, float timeScale, int track)
+        {
+            TryPlayAnimation(_animClip.FindByName(animName), loop, timeScale, track);
         }
 
         private float TryPlayAnimation(AnimationReferenceAsset anim, bool loop, float timeScale, int track)
