@@ -228,6 +228,25 @@ namespace Sevens.Entities.Players
 
         }
 
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.gameObject.layer == PhysicsUtils.GroundLayer)
+            {
+                _isGround = true;
+                _jumpCount = 0;
+                _attackedInAirCount = 0;
+                _dashedInAirCount = 0;
+            }
+        }
+
+        private void OnTriggerExit2D(Collider2D collision)
+        {
+            if (collision.gameObject.layer == PhysicsUtils.GroundLayer)
+            {
+                _isGround = false;
+            }
+        }
+
         protected override void Start()
         {
             var mainCam = Camera.main;
@@ -257,23 +276,6 @@ namespace Sevens.Entities.Players
                 {
                     State = PlayerState.Idle;
                 }
-            }
-
-            if (Physics2D.Raycast(transform.position, -transform.up, _rayCastDistance, PhysicsUtils.GroundLayerMask))
-            {
-                //Debug.Log("isGround");
-                _isGround = true;
-                if (!PlayerStates.IsAirState(State))
-                {
-                    _jumpCount = 0;
-                    _attackedInAirCount = 0;
-                    _dashedInAirCount = 0;
-                }
-            }
-            else
-            {
-                //Debug.Log("isNotGround");
-                _isGround = false;
             }
 
             if (PlayerStates.IsAttackableState(State))
