@@ -36,7 +36,6 @@ namespace Sevens.Entities.Players
                     result.Damage = 0f;
                     result.StaminaDamage = 0f;
                     result.Guarded |= PlayerGuardResultType.Parry | PlayerGuardResultType.Guard;
-                    //source.Parryed();
                     _guardCooltimer = 0f;
                 }
                 else if (_isGuard)
@@ -53,7 +52,7 @@ namespace Sevens.Entities.Players
         {
             _guardCooltimer += Time.deltaTime;
 
-            if (_playerComponent.State != PlayerState.Idle && _playerComponent.State != PlayerState.Run) return;
+            if (_playerComponent.State != PlayerState.Idle && _playerComponent.State != PlayerState.Run && _playerComponent.State != PlayerState.Guard) return;
 
             if (_isParry)
             {

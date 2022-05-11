@@ -260,7 +260,7 @@ namespace Sevens.Entities.Players
                     ExecuteAttack();
             }
 
-            if (State != PlayerState.Attack && State != PlayerState.Hit && State != PlayerState.Die)
+            if (State != PlayerState.Attack && State != PlayerState.Hit && State != PlayerState.Guard && State != PlayerState.Die)
             {
                 if (!Mathf.Approximately(0f, _xMove))
                     transform.SetFacingLeft(_xMove < 0);
