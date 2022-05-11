@@ -1713,11 +1713,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!212 &899644918 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 5446513088864193002, guid: 160f0309db9d25d4680a3cf8705caf67, type: 3}
-  m_PrefabInstance: {fileID: 6194688731098876969}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &900466626
 GameObject:
   m_ObjectHideFlags: 0
@@ -3498,10 +3493,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 81185308, guid: fc58943569a35c24baa3ed8bf1ad1ce5, type: 3}
-      propertyPath: curtainSprite
-      value: 
-      objectReference: {fileID: 899644918}
     - target: {fileID: 3010400537335858202, guid: fc58943569a35c24baa3ed8bf1ad1ce5, type: 3}
       propertyPath: m_Name
       value: Player
@@ -3772,17 +3763,33 @@ PrefabInstance:
       propertyPath: m_BoundingShape2D
       value: 
       objectReference: {fileID: 4127929886744685968}
+    - target: {fileID: 7835892576618123534, guid: 160f0309db9d25d4680a3cf8705caf67, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -12.008115
+      objectReference: {fileID: 0}
+    - target: {fileID: 7835892576618123534, guid: 160f0309db9d25d4680a3cf8705caf67, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.4757457
+      objectReference: {fileID: 0}
+    - target: {fileID: 7835892576618123534, guid: 160f0309db9d25d4680a3cf8705caf67, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 8.595687
+      objectReference: {fileID: 0}
     - target: {fileID: 7835892576618123535, guid: 160f0309db9d25d4680a3cf8705caf67, type: 3}
       propertyPath: m_Follow
       value: 
       objectReference: {fileID: 1213730849}
     - target: {fileID: 7835892577612198735, guid: 160f0309db9d25d4680a3cf8705caf67, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -10.370903
+      value: -10.36711
       objectReference: {fileID: 0}
     - target: {fileID: 7835892577612198735, guid: 160f0309db9d25d4680a3cf8705caf67, type: 3}
       propertyPath: m_LocalPosition.y
       value: 2.3032138
+      objectReference: {fileID: 0}
+    - target: {fileID: 7835892577612198735, guid: 160f0309db9d25d4680a3cf8705caf67, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 8.595687
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 160f0309db9d25d4680a3cf8705caf67, type: 3}
