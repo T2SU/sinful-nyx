@@ -8,7 +8,7 @@ namespace Sevens.Entities.Players
 {
     public enum PlayerState
     {
-        Idle, Run, Attack, UltimateSkill, Jump, Fall, Hit, Dash ,Die, Guard
+        Idle, Run, Attack, UltimateSkill, Air, Hit, Dash ,Die, Guard
     }
 
     public static class PlayerStates
@@ -19,8 +19,7 @@ namespace Sevens.Entities.Players
             {
                 case PlayerState.Idle:
                 case PlayerState.Run:
-                case PlayerState.Jump:
-                case PlayerState.Fall:
+                case PlayerState.Air:
                     return true;
                 default:
                     return false;
@@ -34,8 +33,7 @@ namespace Sevens.Entities.Players
                 case PlayerState.Attack:
                 case PlayerState.Idle:
                 case PlayerState.Run:
-                case PlayerState.Jump:
-                case PlayerState.Fall:
+                case PlayerState.Air:
                     return true;
                 default:
                     return false;
@@ -46,8 +44,7 @@ namespace Sevens.Entities.Players
         {
             switch (state)
             {
-                case PlayerState.Jump:
-                case PlayerState.Fall:
+                case PlayerState.Air:
                     return true;
                 default:
                     return false;

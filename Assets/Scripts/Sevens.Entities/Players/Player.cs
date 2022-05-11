@@ -56,7 +56,8 @@ namespace Sevens.Entities.Players
         [SerializeField] private float _rayCastDistance;
 
         private int _jumpCount;
-        private bool _isGround = true;
+        private bool _lastFrameIsGround;
+        private bool _isGround;
         private bool _jumpTrigger = false;
         private float _lastGravityScale;
 
@@ -129,7 +130,6 @@ namespace Sevens.Entities.Players
                         TryPlayAnimation(value, true, 1f, 0);
                         break;
                     case PlayerState.UltimateSkill:
-                    case PlayerState.Fall:
                     case PlayerState.Hit:
                     case PlayerState.Dash:
                     case PlayerState.Die:
@@ -177,6 +177,28 @@ namespace Sevens.Entities.Players
             _lastGravityScale = _playerRigidbody.gravityScale;
         }
 
+        protected override void Start()
+        {
+            var mainCam = Camera.main;
+            var curtainPrefab = Resources.Load<GameObject>("Sprite/CurtainBase");
+            _curtainSprite = Instantiate(curtainPrefab, mainCam.transform).GetComponent<SpriteRenderer>();
+
+            // 투명 검정색
+            _curtainSprite.color = new Color(0f, 0f, 0f, 0f);
+
+            var colliders = GetComponents<Collider2D>();
+            foreach (var coll in colliders)
+            {
+                if (coll.isTrigger)
+                {
+                    var results = new Collider2D[1];
+                    _isGround = Physics2D.OverlapCollider(coll, PhysicsUtils.GroundContactFilter, results) != 0;
+                    _lastFrameIsGround = _isGround;
+                    break;
+                }
+            }
+        }
+
         protected override void FixedUpdate()
         {
             if (_directionMode) return;
@@ -212,6 +234,7 @@ namespace Sevens.Entities.Players
                 _jumpTrigger = false;
                 velocity.y = _jumpSpeeds[_jumpCount - 1];
             }
+
             _playerRigidbody.velocity = velocity;
 
             // 공중 부양일 때는 중력을 0으로.
@@ -237,6 +260,7 @@ namespace Sevens.Entities.Players
                 _attackedInAirCount = 0;
                 _dashedInAirCount = 0;
             }
+            Debug.Log($"OnTriggerEnter2D layer={collision.gameObject.layer} (Ground? {collision.gameObject.layer == PhysicsUtils.GroundLayer})");
         }
 
         private void OnTriggerExit2D(Collider2D collision)
@@ -245,16 +269,7 @@ namespace Sevens.Entities.Players
             {
                 _isGround = false;
             }
-        }
-
-        protected override void Start()
-        {
-            var mainCam = Camera.main;
-            var curtainPrefab = Resources.Load<GameObject>("Sprite/CurtainBase");
-            _curtainSprite = Instantiate(curtainPrefab, mainCam.transform).GetComponent<SpriteRenderer>();
-
-            // 투명 검정색
-            _curtainSprite.color = new Color(0f, 0f, 0f, 0f); 
+            Debug.Log($"OnTriggerExit2D layer={collision.gameObject.layer} (Ground? {collision.gameObject.layer == PhysicsUtils.GroundLayer})");
         }
 
         protected override void Update()
@@ -292,13 +307,51 @@ namespace Sevens.Entities.Players
                     transform.SetFacingLeft(_xMove < 0);
             }
 
-            if (CanChangeDefaultState(State))
+            //if (CanChangeDefaultState(State))
+            //{
+            //    if (!Mathf.Approximately(0f, _playerRigidbody.velocity.x))
+            //        State = PlayerState.Run;
+            //    else
+            //        State = PlayerState.Idle;
+            //}
+
+            if (_isGround && (State == PlayerState.Idle || State == PlayerState.Run))
             {
-                if (!Mathf.Approximately(0f, _playerRigidbody.velocity.x))
-                    State = PlayerState.Run;
+                if (!Mathf.Approximately(_xMove, 0f))
+                {
+                    if (State != PlayerState.Run)
+                        State = PlayerState.Run;
+                }
                 else
-                    State = PlayerState.Idle;
+                {
+                    if (State != PlayerState.Idle)
+                        State = PlayerState.Idle;
+                }
             }
+            if (State == PlayerState.Air)
+            {
+                if (!_isGround && _playerRigidbody.velocity.y < 0f)
+                {
+                    if (!_jumpTrigger)
+                        TryPlayAnimation("Fall", false, 1f, 0);
+                }
+                if (_isGround)
+                {
+                    if (!_lastFrameIsGround)
+                    {
+                        State = PlayerState.Idle;
+                    }
+                }
+            }
+            else if (State == PlayerState.Idle || State == PlayerState.Run)
+            {
+                if (_playerRigidbody.velocity.y < -0.1f)
+                {
+                    State = PlayerState.Air;
+                    _lastFrameIsGround = false;
+                }
+            }
+            _lastFrameIsGround = _isGround;
 
             if (PlayerStates.IsJumpableState(State))
             {
@@ -308,38 +361,13 @@ namespace Sevens.Entities.Players
                     {
                         ++_jumpCount;
                         _jumpTrigger = true;
-                        State = PlayerState.Jump;
-                        TryPlayAnimation(_animClip.FindByName($"Jump{_jumpCount}"), false, 1f, 0);
+                        State = PlayerState.Air;
+                        TryPlayAnimation($"Jump{_jumpCount}", false, 1f, 0);
                     }
                 }
             }
 
             UpdateDash();
-
-            if (_playerRigidbody.velocity.y < 0f && !_isGround && !PlayerStates.HasUniqueAnimationState(State))
-            {
-                if (!_jumpTrigger)
-                    State = PlayerState.Fall;
-            }
-        }
-
-
-        private bool CanChangeDefaultState(PlayerState state)
-        {
-            // Hit, Guard, Attack, Hit, Die 등,
-            // 지상에 있더라도 Idle 또는 Run 애니메이션으로 전환해서는 안되는 상태
-            if (PlayerStates.HasUniqueAnimationState(state))
-                return false;
-
-            // 상승 점프 중
-            if (state == PlayerState.Jump)
-                return false;
-
-            // 공중에 있으면?
-            if (!_isGround)
-                return false;
-
-            return true;
         }
 
         private void OnDrawGizmos()
@@ -444,7 +472,6 @@ namespace Sevens.Entities.Players
                     // --> 기다림
                     return;
 
-                
                 if (_currentComboCount < _bufferedComboCount)
                 {
                     var hasEnqueuedAttack = _currentComboCount + 1 < _bufferedComboCount;

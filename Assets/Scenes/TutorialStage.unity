@@ -3404,6 +3404,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &2052387862 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3010400537335858202, guid: fc58943569a35c24baa3ed8bf1ad1ce5, type: 3}
+  m_PrefabInstance: {fileID: 3010400536401056774}
+  m_PrefabAsset: {fileID: 0}
+--- !u!58 &2052387863
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2052387862}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.43, y: 1.27}
+  serializedVersion: 2
+  m_Radius: 1.3496822
 --- !u!1 &2131442728
 GameObject:
   m_ObjectHideFlags: 0
@@ -3493,6 +3514,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2980254785287971104, guid: fc58943569a35c24baa3ed8bf1ad1ce5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3010400537335858202, guid: fc58943569a35c24baa3ed8bf1ad1ce5, type: 3}
       propertyPath: m_Name
       value: Player
@@ -3507,7 +3532,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3010400537335858215, guid: fc58943569a35c24baa3ed8bf1ad1ce5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 59.27
       objectReference: {fileID: 0}
     - target: {fileID: 3010400537335858215, guid: fc58943569a35c24baa3ed8bf1ad1ce5, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3545,7 +3570,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6575085229401636884, guid: fc58943569a35c24baa3ed8bf1ad1ce5, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: fc58943569a35c24baa3ed8bf1ad1ce5, type: 3}
 --- !u!66 &4127929886744685968
 CompositeCollider2D:
@@ -3765,7 +3791,7 @@ PrefabInstance:
       objectReference: {fileID: 4127929886744685968}
     - target: {fileID: 7835892576618123534, guid: 160f0309db9d25d4680a3cf8705caf67, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -12.008115
+      value: 47.261887
       objectReference: {fileID: 0}
     - target: {fileID: 7835892576618123534, guid: 160f0309db9d25d4680a3cf8705caf67, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3781,11 +3807,11 @@ PrefabInstance:
       objectReference: {fileID: 1213730849}
     - target: {fileID: 7835892577612198735, guid: 160f0309db9d25d4680a3cf8705caf67, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -10.370903
+      value: 47.26189
       objectReference: {fileID: 0}
     - target: {fileID: 7835892577612198735, guid: 160f0309db9d25d4680a3cf8705caf67, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.3032138
+      value: 2.303229
       objectReference: {fileID: 0}
     - target: {fileID: 7835892577612198735, guid: 160f0309db9d25d4680a3cf8705caf67, type: 3}
       propertyPath: m_LocalPosition.z
