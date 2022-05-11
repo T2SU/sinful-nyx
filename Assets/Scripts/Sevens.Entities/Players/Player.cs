@@ -115,7 +115,31 @@ namespace Sevens.Entities.Players
 #if UNITY_EDITOR
         [field: ShowCase]
 #endif
-        public PlayerState State { get; set; }
+
+        private PlayerState _state;
+        public PlayerState State 
+        {
+            get => _state;
+            set
+            {
+                switch (_state = value)
+                {
+                    case PlayerState.Idle:
+                    case PlayerState.Run:
+                        TryPlayAnimation(value, true, 1f, 0);
+                        break;
+                    case PlayerState.UltimateSkill:
+                    case PlayerState.Fall:
+                    case PlayerState.Hit:
+                    case PlayerState.Dash:
+                    case PlayerState.Die:
+                    case PlayerState.Guard:
+                        TryPlayAnimation(value, false, 1f, 0);
+                        break;
+                }
+                Debug.Log($"State = {_state}");
+            }
+        }
 
         public override float EntitySizeX => _playerCollider.bounds.size.x / 2;
         public override float EntitySizeY => _playerCollider.bounds.size.y / 2;
@@ -295,8 +319,6 @@ namespace Sevens.Entities.Players
                 if (!_jumpTrigger)
                     State = PlayerState.Fall;
             }
-
-            SetCurrentAnimation(State);
         }
 
 
@@ -501,25 +523,6 @@ namespace Sevens.Entities.Players
             }
         }
 
-        private void SetCurrentAnimation(PlayerState _state)
-        {
-            switch (_state)
-            {
-                case PlayerState.Idle:
-                case PlayerState.Run:
-                    TryPlayAnimation(_state, true, 1f, 0);
-                    break;
-                case PlayerState.UltimateSkill:
-                case PlayerState.Fall:
-                case PlayerState.Hit:
-                case PlayerState.Dash:
-                case PlayerState.Die:
-                case PlayerState.Guard:
-                    TryPlayAnimation(_state, false, 1f, 0);
-                    break;
-            }
-        }
-
         private void TryPlayAnimation(PlayerState state, bool loop, float timeScale, int track)
         {
             TryPlayAnimation(state.ToString(), loop, timeScale, track);
@@ -545,7 +548,7 @@ namespace Sevens.Entities.Players
         }
 
         private void PlayAudio(PlayerState state, float pitch = 1.0f)
-            => PlayAudio(state.ToString());
+            => PlayAudio(state.ToString(), pitch);
 
         private void PlayAudio(string audioName, float pitch = 1.0f)
         {

@@ -65,21 +65,25 @@ namespace Sevens.Entities.Players
 
             if (_guardCooltimer > _guardInfoComponent.guardCooltime)
             {
-                if (Input.GetButtonDown("Guard"))
+                switch (_playerComponent.State)
                 {
-                    _isParry = true;
-                    _guardCooltimer = 0f;
-                }
-
-                if (Input.GetButton("Guard"))
-                {
-                    _isGuard = true;
-                    _playerComponent.State = PlayerState.Guard;
-                }
-                else
-                {
-                    _isGuard = false;
-                    if(!_isParry) _playerComponent.State = PlayerState.Idle;
+                    case PlayerState.Idle:
+                    case PlayerState.Run:
+                        if (Input.GetButtonDown("Guard"))
+                        {
+                            _isParry = true;
+                            _guardCooltimer = 0f;
+                            _isGuard = true;
+                            _playerComponent.State = PlayerState.Guard;
+                        }
+                        break;
+                    case PlayerState.Guard:
+                        if (!Input.GetButton("Guard"))
+                        {
+                            _isGuard = false;
+                            if (!_isParry) _playerComponent.State = PlayerState.Idle;
+                        }
+                        break;
                 }
             }
         }
