@@ -353,7 +353,7 @@ namespace Sevens.Entities.Players
             }
             if (State == PlayerState.Air)
             {
-                if (!_isGround && _playerRigidbody.velocity.y < 0f)
+                if (!_isGround && _playerRigidbody.velocity.y < -0.2f)
                 {
                     if (!_jumpTrigger)
                         TryPlayAnimation("Fall", false, 1f, 0);
@@ -368,10 +368,10 @@ namespace Sevens.Entities.Players
             }
             else if (State == PlayerState.Idle || State == PlayerState.Run)
             {
-                if (_playerRigidbody.velocity.y < -0.1f)
+                if (!_isGround && _playerRigidbody.velocity.y < -0.2f)
                 {
                     State = PlayerState.Air;
-                    _lastFrameIsGround = false;
+                    _jumpCount++;
                 }
             }
             _lastFrameIsGround = _isGround;
