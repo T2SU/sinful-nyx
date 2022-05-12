@@ -8,6 +8,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.Events;
 
 namespace Sevens.Entities.Players
 {
@@ -39,9 +40,25 @@ namespace Sevens.Entities.Players
 
         public float Soul { get => _soul; set => _soul = value; }
 
-        public float Stamina { get => _stamina; set => _stamina = value; }
+        public float Stamina
+        {
+            get => _stamina;
+            set
+            {
+                _stamina = value;
+                OnStaminaRatioChanged?.Invoke(StaminaRatio);
+            }
+        }
 
         public float Sin { get => _sin; set => _sin = value; }
+
+        [field: SerializeField]
+        public float MaxStamina { get; protected set; }
+
+        public float StaminaRatio => (float)_stamina / MaxStamina;
+
+        public UnityEvent<float> OnStaminaRatioChanged;
+        public UnityEvent<float> OnStaminaRatioInitialSet;
 
 
         [Header("Move")]
@@ -118,7 +135,7 @@ namespace Sevens.Entities.Players
 #endif
 
         private PlayerState _state;
-        public PlayerState State 
+        public PlayerState State
         {
             get => _state;
             set
@@ -150,6 +167,12 @@ namespace Sevens.Entities.Players
         private TimeElapsingRecord _comboAttackTimer;
         private TimeElapsingRecord _comboFinishDelayTimer;
         private TimeElapsingRecord _beingDashTimer;
+
+        public virtual void SetInitialStamina(float stamina)
+        {
+            Stamina = stamina;
+            OnStaminaRatioInitialSet?.Invoke(StaminaRatio);
+        }
 
         public void SetDirectionMode(bool enabled)
         {
@@ -419,7 +442,7 @@ namespace Sevens.Entities.Players
             // 공격 쿨타임 중에 공격 불가
             if (_cooltime.IsBeing(AttackCooltimeKey, currentAttack.AttackCooltime))
                 return;
-            
+
             // 최대 콤보 카운트 도달 시 입력을 더 이상 받지 않음.
             if (_bufferedComboCount + 1 > maxComboCount)
                 return;
