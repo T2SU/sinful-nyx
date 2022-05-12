@@ -23,6 +23,9 @@ namespace Sevens.Entities.Players
 
         private bool _isGuard;
 
+        [SerializeField]
+        private float _guardStamina;
+
 
         // 받을 데미지랑 깎일 스태미너 양?
         public PlayerGuardResult TryGuard(Entity source, float damage) 
@@ -75,6 +78,7 @@ namespace Sevens.Entities.Players
                             _guardCooltimer = 0f;
                             _isGuard = true;
                             _playerComponent.State = PlayerState.Guard;
+                            _playerComponent.Stamina -= _guardStamina;
                         }
                         break;
                     case PlayerState.Guard:

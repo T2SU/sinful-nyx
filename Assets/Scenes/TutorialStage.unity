@@ -4112,6 +4112,26 @@ PrefabInstance:
       propertyPath: OnStaminaRatioInitialSet.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 81185309, guid: fc58943569a35c24baa3ed8bf1ad1ce5, type: 3}
+      propertyPath: _guardStamina
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 81185309, guid: fc58943569a35c24baa3ed8bf1ad1ce5, type: 3}
+      propertyPath: _guardInfoComponent.guardCooltime
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 81185309, guid: fc58943569a35c24baa3ed8bf1ad1ce5, type: 3}
+      propertyPath: _guardInfoComponent.parryableTime
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 81185309, guid: fc58943569a35c24baa3ed8bf1ad1ce5, type: 3}
+      propertyPath: _guardInfoComponent.ReduceDamageRatio
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 81185309, guid: fc58943569a35c24baa3ed8bf1ad1ce5, type: 3}
+      propertyPath: _guardInfoComponent.StaminaDamageRatio
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 1596974535639211155, guid: fc58943569a35c24baa3ed8bf1ad1ce5, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -4426,7 +4446,7 @@ PrefabInstance:
       objectReference: {fileID: 1213730849}
     - target: {fileID: 7835892577612198735, guid: 160f0309db9d25d4680a3cf8705caf67, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 47.26189
+      value: 47.261887
       objectReference: {fileID: 0}
     - target: {fileID: 7835892577612198735, guid: 160f0309db9d25d4680a3cf8705caf67, type: 3}
       propertyPath: m_LocalPosition.y
