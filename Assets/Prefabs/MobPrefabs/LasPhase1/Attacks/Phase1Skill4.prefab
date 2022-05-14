@@ -117,11 +117,11 @@ MonoBehaviour:
     Damage: 0
     StartAffectingDelay: 0
     DelayTime: 2
+    MaxAffectingDuration: 0
   <OnceOption>k__BackingField:
     Enabled: 1
     Damage: 35
   <DamageLayer>k__BackingField:
     serializedVersion: 2
     m_Bits: 8192
-  <Damage>k__BackingField: 35
-  destoryTime: -1
+  _destoryTime: -1

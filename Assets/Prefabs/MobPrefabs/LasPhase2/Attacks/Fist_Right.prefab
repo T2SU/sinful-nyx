@@ -110,7 +110,7 @@ MonoBehaviour:
   <DamageLayer>k__BackingField:
     serializedVersion: 2
     m_Bits: 8192
-  destoryTime: -1
+  _destoryTime: -1
 --- !u!61 &3032238118935864385
 BoxCollider2D:
   m_ObjectHideFlags: 0

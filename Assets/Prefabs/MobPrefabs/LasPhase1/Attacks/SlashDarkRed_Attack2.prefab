@@ -139,14 +139,14 @@ MonoBehaviour:
     Damage: 0
     StartAffectingDelay: 0
     DelayTime: 2
+    MaxAffectingDuration: 0
   <OnceOption>k__BackingField:
     Enabled: 1
     Damage: 25
   <DamageLayer>k__BackingField:
     serializedVersion: 2
     m_Bits: 8192
-  <Damage>k__BackingField: 25
-  destoryTime: 0.25
+  _destoryTime: 0.25
 --- !u!1 &1715314185113510639
 GameObject:
   m_ObjectHideFlags: 0

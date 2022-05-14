@@ -140,6 +140,8 @@ namespace Sevens.Entities.Players
             get => _state;
             set
             {
+                if (_state == PlayerState.Attack && value != PlayerState.Attack)
+                    ResetCombo();
                 switch (_state = value)
                 {
                     case PlayerState.Idle:
@@ -517,10 +519,15 @@ namespace Sevens.Entities.Players
             else
             {
                 State = PlayerState.Idle;
-                _currentComboCount = 0;
-                _bufferedComboCount = 0;
-                _cooltime.Set(AttackCooltimeKey);
+                ResetCombo();
             }
+        }
+
+        private void ResetCombo()
+        {
+            _currentComboCount = 0;
+            _bufferedComboCount = 0;
+            _cooltime.Set(AttackCooltimeKey);
         }
 
         private GameObject InstantiateComboAttackPrefab(GameObject comboPrefab)

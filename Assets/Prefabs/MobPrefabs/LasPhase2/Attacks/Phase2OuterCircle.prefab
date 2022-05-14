@@ -5052,7 +5052,7 @@ MonoBehaviour:
   <DamageLayer>k__BackingField:
     serializedVersion: 2
     m_Bits: 8192
-  destoryTime: 10
+  _destoryTime: 10
 --- !u!1 &4180092863266424225
 GameObject:
   m_ObjectHideFlags: 0
