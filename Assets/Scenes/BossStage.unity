@@ -971,7 +971,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 6200000, guid: 6bebcfa67460dd94dbf953170fa4a963, type: 2}
+  m_Material: {fileID: 6200000, guid: d113a157eb60f574697a8198ff245d56, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -2292,6 +2292,10 @@ PrefabInstance:
     - target: {fileID: 3010400537335858202, guid: fc58943569a35c24baa3ed8bf1ad1ce5, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 3010400537335858203, guid: fc58943569a35c24baa3ed8bf1ad1ce5, type: 3}
+      propertyPath: m_LinearDrag
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3010400537335858214, guid: fc58943569a35c24baa3ed8bf1ad1ce5, type: 3}
       propertyPath: m_Mesh
