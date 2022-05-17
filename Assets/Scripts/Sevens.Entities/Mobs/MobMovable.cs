@@ -45,7 +45,7 @@ namespace Sevens.Entities.Mobs
             var playerPos = _playerTransform.position;
             var mobPos = _mob.transform.position;
             var sign = Mathf.Sign(playerPos.x - mobPos.x);
-            var mobIsOnLeft = _mob.InOnLeftBy(_playerTransform);
+            var mobIsOnLeft = _mob.IsOnLeftBy(_playerTransform);
             if (mobIsOnLeft == _mob.transform.IsFacingLeft())
                 _mob.transform.SetFacingLeft(!mobIsOnLeft);
             if (Mathf.Abs(mobPos.x - playerPos.x) >= 2f)

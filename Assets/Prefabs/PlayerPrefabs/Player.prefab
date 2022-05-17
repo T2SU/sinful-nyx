@@ -956,7 +956,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 5
   m_AngularDrag: 0.05
   m_GravityScale: 3
   m_Material: {fileID: 0}
@@ -1098,8 +1098,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e075db40bc620014c865d7880e750140, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hp: 100
-  <MaxHp>k__BackingField: 100
+  _hp: 10000
+  <MaxHp>k__BackingField: 10000
   OnHpRatioChanged:
     m_PersistentCalls:
       m_Calls:
@@ -1221,9 +1221,11 @@ MonoBehaviour:
   _moveSpeed: 10
   _moveSpeedInAir: 8
   _jumpSpeeds:
-  - 15
-  - 15
+  - 28
+  - 28
   _rayCastDistance: 0.5
+  _risingGravityScale: 3
+  _fallingGravityScale: 8
   _groundCombos:
   - AttackPrefab: {fileID: 7030220802796105048, guid: e6af4fe0b9f64ab448368b98dd38beba, type: 3}
     AudioName: Attack1
@@ -1250,8 +1252,9 @@ MonoBehaviour:
     ComboDelay: 0.2
     AttackCooltime: 0.3
     ComboFinishDelay: 0.2
-  _invincibleTime: 1
-  _hitTime: 0.5
+  _invincibleTime: 0.75
+  _hitTime: 0.4
+  _hitKnockback: {x: 8, y: 6}
   _dashCooltime: 0.3
   _dashHorizontalSpeed: 30
   _dashDuration: 0.3

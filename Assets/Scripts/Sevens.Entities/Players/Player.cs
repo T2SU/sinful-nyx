@@ -71,12 +71,13 @@ namespace Sevens.Entities.Players
         [Header("Jump")]
         [SerializeField] private float[] _jumpSpeeds;
         [SerializeField] private float _rayCastDistance;
+        [SerializeField] private float _risingGravityScale;
+        [SerializeField] private float _fallingGravityScale;
 
         private int _jumpCount;
         private bool _lastFrameIsGround;
         private bool _isGround;
         private bool _jumpTrigger = false;
-        private float _lastGravityScale;
 
         private int JumpCountMax => _jumpSpeeds.Length;
 
@@ -114,6 +115,9 @@ namespace Sevens.Entities.Players
 
         [Header("Hit")]
         [SerializeField] private float _hitTime;
+        [SerializeField] private Vector2 _hitKnockback;
+
+        private float? _hitDirection;
 
 
         [Header("Dash")]
@@ -199,7 +203,6 @@ namespace Sevens.Entities.Players
             _comboFinishDelayTimer = new TimeElapsingRecord();
             _beingDashTimer = new TimeElapsingRecord();
             Invincible = false;
-            _lastGravityScale = _playerRigidbody.gravityScale;
         }
 
         protected override void Start()
@@ -226,23 +229,64 @@ namespace Sevens.Entities.Players
 
         protected override void FixedUpdate()
         {
-            if (_directionMode) return;
-            UpdateVelocity();
+            switch (State)
+            {
+                case PlayerState.Hit:
+                    UpdateVelocityOnHit();
+                    break;
+                default:
+                    UpdateVelocity();
+                    break;
+            }
+            UpdateGravityScale();
+        }
+
+        private void UpdateGravityScale()
+        {
+            // 공중 부양일 때는 중력을 0으로.
+            if (PlayerStates.IsLevitationState(State))
+            {
+                _playerRigidbody.gravityScale = 0f;
+            }
+            else if (_playerRigidbody.velocity.y < 0f)
+            {
+                _playerRigidbody.gravityScale = _fallingGravityScale;
+            }
+            else
+            {
+                _playerRigidbody.gravityScale = _risingGravityScale;
+            }
+        }
+
+        private void UpdateVelocityOnHit()
+        {
+            if (_hitDirection.HasValue)
+            {
+                var velocity = _playerRigidbody.velocity;
+                velocity.x = 0f;
+                if (velocity.y > 0f)
+                    velocity.y = 0f;
+                _playerRigidbody.velocity = velocity;
+                var knockback = _hitKnockback;
+                knockback.x *= _hitDirection.Value;
+                Debug.Log($"Current velocity = {_playerRigidbody.velocity} | Knockback = {knockback}");
+                _playerRigidbody.AddForce(knockback, ForceMode2D.Impulse);
+                _hitDirection = null;
+            }
+            else
+            {
+                Debug.Log($"Current velocity ? {_playerRigidbody.velocity}");
+            }
         }
 
         private void UpdateVelocity()
         {
-            if (State == PlayerState.Die) return;
-
             var velocity = _playerRigidbody.velocity;
 
             switch (State)
             {
                 case PlayerState.Attack:
                     velocity = Vector2.zero;
-                    break;
-                case PlayerState.Hit:
-                    _playerRigidbody.AddForce(new Vector2(GetFacingDirection(), 1), ForceMode2D.Impulse);
                     break;
                 case PlayerState.Guard:
                     velocity = new Vector2(0, _playerRigidbody.velocity.y);
@@ -254,21 +298,20 @@ namespace Sevens.Entities.Players
                     velocity.x = _xMove * (_isGround ? _moveSpeed : _moveSpeedInAir);
                     break;
             }
-            if (_jumpTrigger)
+
+            if (State == PlayerState.Die || _directionMode)
+            {
+                velocity.x = 0f;
+                if (velocity.y > 0f)
+                    velocity.y = 0f;
+            }
+            else if (_jumpTrigger)
             {
                 _jumpTrigger = false;
                 velocity.y = _jumpSpeeds[_jumpCount - 1];
             }
 
             _playerRigidbody.velocity = velocity;
-
-            // 공중 부양일 때는 중력을 0으로.
-            if (PlayerStates.IsLevitationState(State))
-            {
-                _playerRigidbody.gravityScale = 0f;
-            }
-            else
-                _playerRigidbody.gravityScale = _lastGravityScale;
         }
 
         protected override void OnEnable()
@@ -401,6 +444,11 @@ namespace Sevens.Entities.Players
             Debug.DrawRay(transform.position, -transform.up * _rayCastDistance, Color.red);
         }
 
+        public bool CheckDirection(Entity source)
+        {
+            return IsOnLeftBy(source.transform) == IsFacingLeft();
+        }
+
         public override void OnDamagedBy(Entity source, float damage)
         {
             if (!_isInvincible && State != PlayerState.Dash && State != PlayerState.Die)
@@ -414,7 +462,10 @@ namespace Sevens.Entities.Players
                 if (!result.Guarded.HasFlag(PlayerGuardResultType.Guard))
                 {
                     Invincible = true;
+                    _hitDirection = IsOnLeftBy(source.transform) ? -1f : 1f;
                     State = PlayerState.Hit;
+                    _hitTimer.UpdateAsNow();
+                    _invincibleTimer.UpdateAsNow();
                     PlayAudio(State);
                 }
 

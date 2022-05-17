@@ -32,7 +32,7 @@ namespace Sevens.Entities.Players
         {
             var result = new PlayerGuardResult(damage);
             
-            if (CheckGuardDirection(source))
+            if (_playerComponent.CheckDirection(source))
             {
                 if (_isParry)
                 {
@@ -90,11 +90,6 @@ namespace Sevens.Entities.Players
                         break;
                 }
             }
-        }
-
-        private bool CheckGuardDirection(Entity source)
-        {
-            return _playerComponent.InOnLeftBy(source.transform) == _playerComponent.IsFacingLeft();
         }
     }
 

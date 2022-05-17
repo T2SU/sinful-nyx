@@ -29,7 +29,7 @@ namespace Sevens.Entities
         {
         }
 
-        public bool InOnLeftBy(Transform other)
+        public bool IsOnLeftBy(Transform other)
         {
             return transform.position.x < other.position.x;
         }

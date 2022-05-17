@@ -164,7 +164,7 @@ namespace Sevens.Entities.Mobs
             if (pos != null)
                 PlayEffect("HitBlood", pos.Value);
             if (_moveAbility != MobMoveAbility.None)
-                BounceBack(0.3f, InOnLeftBy(source.transform));
+                BounceBack(0.3f, IsOnLeftBy(source.transform));
             if (Hp == 0)
             {
                 _killedBy = source;

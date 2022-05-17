@@ -64,7 +64,7 @@ namespace Sevens.Entities.Mobs
             for (int i = 0; i < AttackCount; ++i)
             {
                 yield return WarningAction(attackManager);
-                var fist = player.InOnLeftBy(transform) ? leftFist : rightFist;
+                var fist = player.IsOnLeftBy(transform) ? leftFist : rightFist;
                 var fistBlow = fist.GetComponent<Blow>();
                 var y = fist.transform.position.y;
                 var playerPos = player.transform.position;
