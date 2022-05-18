@@ -54,8 +54,8 @@ namespace Sevens.Editor
                     using (var h = new EditorGUILayout.HorizontalScope())
                     {
                         nyxSin = EditorGUILayout.IntField("ÁË¾Ç", nyxSin);
-                        //if (GUILayout.Button("Àû¿ë"))
-                        //    nyx.IncSin(nyxSin);
+                        if (GUILayout.Button("Àû¿ë"))
+                            nyx.Sin = nyxSin;
                     }
                 }
             }

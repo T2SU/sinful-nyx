@@ -49,16 +49,32 @@ namespace Sevens.Entities.Players
                 OnStaminaRatioChanged?.Invoke(StaminaRatio);
             }
         }
-
-        public float Sin { get => _sin; set => _sin = value; }
+        
+        public float Sin 
+        { 
+            get => _sin; 
+            set
+            {
+                _sin = value;
+                OnSinRatioChanged?.Invoke(SinRatio);
+            }
+        }
 
         [field: SerializeField]
         public float MaxStamina { get; protected set; }
 
         public float StaminaRatio => (float)_stamina / MaxStamina;
 
+        [field: SerializeField]
+        public float MaxSin { get; protected set; }
+
+        public float SinRatio => (float)_sin / MaxSin;
+
         public UnityEvent<float> OnStaminaRatioChanged;
         public UnityEvent<float> OnStaminaRatioInitialSet;
+
+        public UnityEvent<float> OnSinRatioChanged;
+        public UnityEvent<float> OnSinRatioInitialSet;
 
 
         [Header("Move")]
