@@ -2293,10 +2293,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 3010400537335858203, guid: fc58943569a35c24baa3ed8bf1ad1ce5, type: 3}
-      propertyPath: m_LinearDrag
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3010400537335858214, guid: fc58943569a35c24baa3ed8bf1ad1ce5, type: 3}
       propertyPath: m_Mesh
       value: 
