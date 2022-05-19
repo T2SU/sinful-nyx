@@ -4014,10 +4014,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 888861079}
     m_Modifications:
-    - target: {fileID: 202474270199429913, guid: b40d40c872652e64a8865d062622dc02, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3452681386982299296, guid: b40d40c872652e64a8865d062622dc02, type: 3}
       propertyPath: m_Name
       value: EventTrigger
