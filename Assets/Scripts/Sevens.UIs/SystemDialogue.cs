@@ -15,7 +15,13 @@ namespace Sevens.UIs
         [SerializeField]
         private float _fadeDuration;
 
+        [SerializeField]
+        private float _displayDuration;
+
         private CoroutineMan _coroutine;
+
+        private string _bufferedText;
+        private float _expiryTime;
 
         private void Awake()
         {
@@ -24,21 +30,30 @@ namespace Sevens.UIs
             _canvasGroup.alpha = 0f;
         }
 
-        public void Display(string text)
+        private void Update()
         {
-            /*
-             - 기존에 텍스트가 있으면 즉시 없애기
-               - 기존 대기 시간을 즉시 만료 (페이드 아웃 애니메이션 존재)
-               - 그냥 바로 페이드 아웃 없이 삭제 (페이드 아웃 애니메이션 없음)
-             - 새로운 텍스트를 추가
-             - 페이드 인
-            */
+            if (_expiryTime > 0 && _expiryTime <= Time.time)
+            {
+                _coroutine.Register("Fade", 
+                    _canvasGroup.DOFade(0, _fadeDuration));
+                _expiryTime = 0f;
+            }
+            if (_bufferedText != null && !_coroutine.IsActive("Fade"))
+            {
+                _dialogue.text = _bufferedText;
+                _coroutine.Register("Fade", 
+                    _canvasGroup.DOFade(1, _fadeDuration), 
+                    alwaysComplete: true);
+                _expiryTime = Time.time + _displayDuration + _fadeDuration;
+                _bufferedText = null;
+            }
         }
 
-        public void InitiateDialogue(string dialogueText)
+        public void Display(string text)
         {
-            _dialogue.text = dialogueText;
-            _canvasGroup.DOFade(1, _fadeDuration);
+            _bufferedText = text;
+            if (_expiryTime > 0f)
+                _expiryTime = Time.time;
         }
     }
 }

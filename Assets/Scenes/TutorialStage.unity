@@ -241,7 +241,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 395941349}
         m_TargetAssemblyTypeName: Sevens.UIs.SystemDialogue, Assembly-CSharp
-        m_MethodName: InitiateDialogue
+        m_MethodName: Display
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -251,7 +251,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  _dialogue: "\uAD50\uC218\uB97C \uAD50\uC218\uD615\uC5D0 \uCC98\uD55C\uB2E4"
+  _dialogue: "\uAD50\uC218\uB97C \uAD50\uC218\uD615\uC5D0 \uCC98\uD55C\uB2E4 \uC81C\uBC1C
+    \uACFC\uC81C \uADF8\uB9CC \uB0B4 \uAD50\uC218 \uB9DD\uD560 \uB188\uC544 \uC2DC\uD5D8
+    \uAE30\uAC04\uC5D0 \uC6EC \uACFC\uC81C\uB0D0\uACE0 \uD559\uC810\uC740 \uB610
+    \uC65C \uADF8 \uAF2C\uB77C\uC9C0\uB85C \uC8FC\uB294\uB370 \uB2C8 \uD3C9\uC810\uB3C4
+    F\uB85C \uC904\uAC70\uB2E4 \uB2C8 \uC774\uBA54\uC77C\uC5D0 '\uAD50\uC218 \uC6D4\uAE09
+    \uC0AD\uAC10 \uC548\uB0B4' \uC870\uB9CC\uAC04 \uB0A0\uC544\uAC08 \uAC70\uB2E4"
 --- !u!61 &10407446
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1262,8 +1267,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 20
+    m_Font: {fileID: 12800000, guid: c8c24d41d45bcea4da8ebb22ffe26420, type: 3}
+    m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
@@ -1317,6 +1322,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _dialogue: {fileID: 364924960}
   _fadeDuration: 0.5
+  _displayDuration: 1
 --- !u!225 &395941350
 CanvasGroup:
   m_ObjectHideFlags: 0
