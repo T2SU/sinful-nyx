@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.Events;
+using Sevens.Entities.Mobs;
 
 namespace Sevens.Entities.Players
 {
@@ -34,9 +35,12 @@ namespace Sevens.Entities.Players
 
 
         [Header("BasicStat")]
-        [SerializeField] private float _stamina;
-        [SerializeField] private float _soul;
-        [SerializeField] private float _sin;
+        [SerializeField, Range(0, 100)] private float _stamina;
+        [SerializeField, Range(0, 1000)] private float _soul;
+        [SerializeField, Range(0, 1000)] private float _sin;
+        
+        [SerializeField] private float _staminaRecoveryInterval;
+        [SerializeField] private float _staminaRecovery;
 
         public float Soul { get => _soul; set => _soul = value; }
 
@@ -101,17 +105,40 @@ namespace Sevens.Entities.Players
         [Header("Attack")]
         [SerializeField] private AttackInfo[] _groundCombos;
         [SerializeField] private AttackInfo[] _airCombos;
+        [SerializeField] private AttackInfo[] _counterCombos;
+
 
         private int _currentComboCount;  // 현재 진행 중인 콤보 카운트
         private int _bufferedComboCount; // 총 선입력된 콤보 카운트
         private int _attackedInAirCount; // 공중 공격한 횟수
         private bool _isExecutedComboOnce;
+        private bool _isCounterAttack;
 
         private AttackInfo CurrentAttackInfo
-            => _isGround ? _groundCombos[_currentComboCount] : _airCombos[_currentComboCount];
+        {
+            get
+            {
+                if (_isCounterAttack)
+                    return _counterCombos[_currentComboCount];
+                else if (_isGround)
+                    return _groundCombos[_currentComboCount];
+                else
+                    return _airCombos[_currentComboCount];
+            }
+        }
 
         private int MaxComboCount
-            => _isGround ? _groundCombos.Length : _airCombos.Length;
+        {
+            get
+            {
+                if (_isCounterAttack)
+                    return _counterCombos.Length;
+                else if (_isGround)
+                    return _groundCombos.Length;
+                else
+                    return _airCombos.Length;
+            }
+        }
 
 
         [Header("Invincible")]
@@ -189,6 +216,7 @@ namespace Sevens.Entities.Players
         private TimeElapsingRecord _comboAttackTimer;
         private TimeElapsingRecord _comboFinishDelayTimer;
         private TimeElapsingRecord _beingDashTimer;
+        private TimeElapsingRecord _staminaRecoveryTimer;
 
         public virtual void SetInitialStamina(float stamina)
         {
@@ -218,6 +246,7 @@ namespace Sevens.Entities.Players
             _comboAttackTimer = new TimeElapsingRecord();
             _comboFinishDelayTimer = new TimeElapsingRecord();
             _beingDashTimer = new TimeElapsingRecord();
+            _staminaRecoveryTimer = new TimeElapsingRecord();
             Invincible = false;
         }
 
@@ -241,6 +270,8 @@ namespace Sevens.Entities.Players
                     break;
                 }
             }
+
+            _staminaRecoveryTimer.UpdateAsNow();
         }
 
         protected override void FixedUpdate()
@@ -344,7 +375,7 @@ namespace Sevens.Entities.Players
                 _attackedInAirCount = 0;
                 _dashedInAirCount = 0;
             }
-            Debug.Log($"OnTriggerEnter2D layer={collision.gameObject.layer} (Ground? {collision.gameObject.layer == PhysicsUtils.GroundLayer})");
+            //Debug.Log($"OnTriggerEnter2D layer={collision.gameObject.layer} (Ground? {collision.gameObject.layer == PhysicsUtils.GroundLayer})");
         }
 
         private void OnTriggerExit2D(Collider2D collision)
@@ -353,7 +384,7 @@ namespace Sevens.Entities.Players
             {
                 _isGround = false;
             }
-            Debug.Log($"OnTriggerExit2D layer={collision.gameObject.layer} (Ground? {collision.gameObject.layer == PhysicsUtils.GroundLayer})");
+            //Debug.Log($"OnTriggerExit2D layer={collision.gameObject.layer} (Ground? {collision.gameObject.layer == PhysicsUtils.GroundLayer})");
         }
 
         protected override void Update()
@@ -452,6 +483,10 @@ namespace Sevens.Entities.Players
             }
 
             UpdateDash();
+            if (PlayerStates.IsStaminaRecoveryableState(State))
+            {
+                RecoveryStamina();
+            }
         }
 
         private void OnDrawGizmos()
@@ -462,7 +497,7 @@ namespace Sevens.Entities.Players
 
         public bool CheckDirection(Entity source)
         {
-            return IsOnLeftBy(source.transform) == IsFacingLeft();
+            return IsOnLeftBy(source.transform) != IsFacingLeft();
         }
 
         public override void OnDamagedBy(Entity source, float damage)
@@ -472,9 +507,14 @@ namespace Sevens.Entities.Players
                 var result = _playerGuard.TryGuard(source, damage);
                 Hp -= result.Damage;
                 Stamina -= result.StaminaDamage;
+                Debug.Log("받은 데미지" + result.Damage);
+                Debug.Log("받은 스테미나데미지" + result.StaminaDamage);
                 if (Hp < 0)
                     Hp = 0;
-
+                if (result.Guarded.HasFlag(PlayerGuardResultType.Parry))
+                {
+                    CounterAttack(source);
+                }
                 if (!result.Guarded.HasFlag(PlayerGuardResultType.Guard))
                 {
                     Invincible = true;
@@ -498,6 +538,16 @@ namespace Sevens.Entities.Players
             gameObject.GetComponent<MeshRenderer>().sortingOrder = 100;
             StartCoroutine(CoroutineUtility.SlowTime(0.5f, 4));
             GetComponent<PlayerDied>().OnDied();
+        }
+
+        private void RecoveryStamina()
+        {
+            if (_staminaRecoveryTimer.Next(_staminaRecoveryInterval))
+            {
+                if (Stamina >= MaxStamina)
+                    return;
+                Stamina += _staminaRecovery;
+            }
         }
 
         private void EnqueueAttack()
@@ -590,8 +640,11 @@ namespace Sevens.Entities.Players
             }
         }
 
+
+
         private void ResetCombo()
         {
+            _isCounterAttack = false;
             _currentComboCount = 0;
             _bufferedComboCount = 0;
             _cooltime.Set(AttackCooltimeKey);
@@ -604,6 +657,18 @@ namespace Sevens.Entities.Players
             return Instantiate(comboPrefab, transform.position + pos, comboPrefab.transform.rotation);
         }
 
+        private void CounterAttack(Entity source)
+        {
+            
+            State = PlayerState.Attack;
+            _isCounterAttack = true;
+            _bufferedComboCount = 1;
+            _cooltime.Reset(AttackCooltimeKey);
+            
+            var attackable = source.GetComponent<MobAttackable>();
+            if (attackable != null)
+                attackable.CancelAttack();
+        }
 
         private void UpdateDash()
         {

@@ -39,13 +39,17 @@ namespace Sevens.Entities.Players
                     result.Damage = 0f;
                     result.StaminaDamage = 0f;
                     result.Guarded |= PlayerGuardResultType.Parry | PlayerGuardResultType.Guard;
-                    _guardCooltimer = 0f;
+                    _guardCooltimer = 0f; 
+                    Debug.Log("패링성공");
+                    _isGuard = false;
+                    _isParry = false;
                 }
                 else if (_isGuard)
                 {
                     result.Damage = damage * _guardInfoComponent.ReduceDamageRatio;
                     result.StaminaDamage = damage * _guardInfoComponent.StaminaDamageRatio;
                     result.Guarded = PlayerGuardResultType.Guard;
+                    Debug.Log("가드성공");
                 }
             }
             return result;
@@ -72,7 +76,7 @@ namespace Sevens.Entities.Players
                 {
                     case PlayerState.Idle:
                     case PlayerState.Run:
-                        if (Input.GetButtonDown("Guard"))
+                        if (Input.GetButtonDown("Guard") && _playerComponent.Stamina > 0)
                         {
                             _isParry = true;
                             _guardCooltimer = 0f;

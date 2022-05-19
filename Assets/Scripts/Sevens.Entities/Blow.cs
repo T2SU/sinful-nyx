@@ -41,16 +41,20 @@ namespace Sevens.Entities
         private float _maxAoEDamageTime;
         private Collider2D _collider;
         private ContactFilter2D _contactFilter;
+        private bool _onceAttacked;
 
         public void ApplyOnceDamage(Component other)
         {
             if (!OnceOption.Enabled)
+                return;
+            if (_onceAttacked)
                 return;
             if (!other.gameObject.IsLayerMatched(DamageLayer))
                 return;
             var targetEntity = other.GetComponent<LivingEntity>();
             if (targetEntity != null)
             {
+                _onceAttacked = true;
                 targetEntity.OnDamagedBy(Source, OnceOption.Damage);
                 Debug.Log($"[Blow] Send once hit to {other.name} damage {OnceOption.Damage}");
             }
@@ -60,6 +64,7 @@ namespace Sevens.Entities
         {
             _collider = GetComponent<Collider2D>();
             _contactFilter = new ContactFilter2D() { useLayerMask = true, layerMask = DamageLayer };
+            _onceAttacked = false;
         }
 
         private void OnEnable()

@@ -1896,8 +1896,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e075db40bc620014c865d7880e750140, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hp: 10000
-  <MaxHp>k__BackingField: 10000
+  _hp: 100
+  <MaxHp>k__BackingField: 100
   OnHpRatioChanged:
     m_PersistentCalls:
       m_Calls:
@@ -1985,6 +1985,8 @@ MonoBehaviour:
   _stamina: 100
   _soul: 0
   _sin: 0
+  _staminaRecoveryInterval: 0.5
+  _staminaRecovery: 4
   <MaxStamina>k__BackingField: 100
   <MaxSin>k__BackingField: 100
   OnStaminaRatioChanged:
@@ -2081,6 +2083,13 @@ MonoBehaviour:
     ComboDelay: 0.2
     AttackCooltime: 0.3
     ComboFinishDelay: 0.2
+  _counterCombos:
+  - AttackPrefab: {fileID: 8921497929074300407, guid: 90f267e820192c84f92b0e496ada21a0, type: 3}
+    AudioName: Attack3
+    AnimationName: Attack3
+    ComboDelay: 0.05
+    AttackCooltime: 0.3
+    ComboFinishDelay: 0.05
   _invincibleTime: 0.75
   _hitTime: 0.4
   _hitKnockback: {x: 8, y: 6}
@@ -2102,13 +2111,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guardInfoComponent:
-    StaminaDamageRatio: 50
+    StaminaDamageRatio: 0.5
     guardCooltime: 0.3
-    parryableTime: 0.3
-    ReduceDamageRatio: 50
+    parryableTime: 0.7
+    ReduceDamageRatio: 0.5
     IncreaseUltGaugeOnParrying: 0
   _playerComponent: {fileID: 81185308}
-  _guardStamina: 1
+  _guardStamina: 10
 --- !u!58 &2052387863
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2393,7 +2402,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -14.600098, y: 17.47998}
+  m_AnchoredPosition: {x: -14.600098, y: 17.47992}
   m_SizeDelta: {x: 239, y: 240}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &7640087889143617426

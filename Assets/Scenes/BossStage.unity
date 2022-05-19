@@ -1579,8 +1579,6 @@ MonoBehaviour:
   - {fileID: 32014768}
   - {fileID: 807957843}
   - {fileID: 1649559712}
-  - {fileID: 785510721}
-  - {fileID: 1861320602}
   _evasions:
   - {fileID: 1099533850}
   - {fileID: 374444466}
@@ -2650,11 +2648,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7835892577612198735, guid: 160f0309db9d25d4680a3cf8705caf67, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.299302
+      value: -6.2993016
       objectReference: {fileID: 0}
     - target: {fileID: 7835892577612198735, guid: 160f0309db9d25d4680a3cf8705caf67, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.016168118
+      value: -0.016167164
       objectReference: {fileID: 0}
     - target: {fileID: 7835892577612198735, guid: 160f0309db9d25d4680a3cf8705caf67, type: 3}
       propertyPath: m_LocalPosition.z

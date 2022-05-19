@@ -84,7 +84,7 @@ MonoBehaviour:
   <DamageLayer>k__BackingField:
     serializedVersion: 2
     m_Bits: 2048
-  _destoryTime: 0
+  _destoryTime: 0.2
 --- !u!50 &-8458024853910960961
 Rigidbody2D:
   serializedVersion: 4

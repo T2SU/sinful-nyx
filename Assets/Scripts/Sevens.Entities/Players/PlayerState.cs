@@ -51,6 +51,21 @@ namespace Sevens.Entities.Players
             }
         }
 
+        public static bool IsStaminaRecoveryableState(PlayerState state)
+        {
+            switch (state)
+            {
+                case PlayerState.Guard:
+                case PlayerState.Attack:
+                case PlayerState.Die:
+                case PlayerState.UltimateSkill:
+                case PlayerState.Dash:
+                    return false;
+                default:
+                    return true;
+            }
+        }
+
         public static bool HasUniqueAnimationState(PlayerState state)
         {
             switch (state)
