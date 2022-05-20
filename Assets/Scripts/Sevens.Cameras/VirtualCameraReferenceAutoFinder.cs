@@ -36,7 +36,7 @@ namespace Sevens.Cameras
             ExecuteReferComponents();
         }
 
-        private void ExecuteReferComponents()
+        public void ExecuteReferComponents()
         {
             if (_confiner != null)
             {

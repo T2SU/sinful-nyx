@@ -48,22 +48,5 @@ namespace Sevens.Entities
         }
 
         protected abstract void OnDeath();
-
-#if UNITY_EDITOR
-        private float _hpCached;
-
-        protected virtual void OnValidate()
-        {
-            try
-            {
-                if (_hpCached != _hp)
-                    Hp = _hp;
-                _hpCached = _hp;
-            }
-            catch
-            {
-            }
-        }
-#endif
     }
 }

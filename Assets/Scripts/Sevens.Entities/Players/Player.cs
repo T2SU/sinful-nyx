@@ -224,6 +224,12 @@ namespace Sevens.Entities.Players
             OnStaminaRatioInitialSet?.Invoke(StaminaRatio);
         }
 
+        public virtual void SetInitialSin(float sin)
+        {
+            Sin = sin;
+            OnSinRatioInitialSet?.Invoke(SinRatio);
+        }
+
         public void SetDirectionMode(bool enabled)
         {
             _directionMode = enabled;

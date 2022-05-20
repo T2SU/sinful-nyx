@@ -11,6 +11,8 @@ using Sevens.Speeches;
 using Sevens.Utils;
 using System;
 using static System.Environment;
+using UnityEngine.UI;
+using Sevens.Cameras;
 
 public class SceneManagement : MonoBehaviour
 {
@@ -32,6 +34,7 @@ public class SceneManagement : MonoBehaviour
     public class PlayerData {
         public string spawnPointName;
         public float playerHP = 100f;
+        public float playerHPRatio;
         public float playerSin = 0f;
         public string savedScene;
         public string[] datas = new string[(int)PlayerDataKeyType.Number];
@@ -54,6 +57,9 @@ public class SceneManagement : MonoBehaviour
     private PlayerData playerData = new PlayerData();
     private Encoding encoding;
 
+    [SerializeField]
+    private Image _hpBar;
+
     private void Awake() {
         if(instance == null) {
             instance = this;
@@ -73,6 +79,8 @@ public class SceneManagement : MonoBehaviour
         encoding = Encoding.UTF8;
 
         //SceneManager.sceneLoaded += SceneManager_sceneLoaded;
+
+        LoadFromJsonFile();
     }
 
     public void ResetPlayerData()
@@ -106,6 +114,13 @@ public class SceneManagement : MonoBehaviour
                 return;
             ApplyPlayerData();
         }
+
+        var spawnPoint = GameObject.Find("SpawnPoint").GetComponent<Transform>();
+
+        playerInfo.transform.position = spawnPoint.position;
+
+        var cameraBound = GameObject.Find("CM vcam1").GetComponent<VirtualCameraReferenceAutoFinder>();
+        cameraBound.ExecuteReferComponents();
     }
 
     public void SetPlayerData(PlayerDataKeyType key, string value)
@@ -136,6 +151,7 @@ public class SceneManagement : MonoBehaviour
     {
         playerInfo = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         playerData.playerHP = playerInfo.Hp;
+        playerData.playerSin = playerInfo.Sin;
         playerData.spawnPointName = playerInfo.GetClosestSpawnPoint();
         playerData.savedScene = SceneManager.GetActiveScene().name;
     }
@@ -172,7 +188,7 @@ public class SceneManagement : MonoBehaviour
 
         playerInfo = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         playerInfo.SetInitialHp(playerData.playerHP);
-        playerInfo.Sin = playerData.playerSin;
+        playerInfo.SetInitialSin(playerData.playerSin);
         if (!string.IsNullOrEmpty(playerData.spawnPointName))
         {
             var pointObj = GameObject.Find(playerData.spawnPointName);
