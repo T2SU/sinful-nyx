@@ -620,14 +620,46 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameCamera
       objectReference: {fileID: 0}
+    - target: {fileID: 7835892576495134417, guid: 160f0309db9d25d4680a3cf8705caf67, type: 3}
+      propertyPath: m_CameraDistance
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7835892576618123533, guid: 160f0309db9d25d4680a3cf8705caf67, type: 3}
       propertyPath: m_BoundingShape2D
       value: 
       objectReference: {fileID: 735227692}
+    - target: {fileID: 7835892576618123534, guid: 160f0309db9d25d4680a3cf8705caf67, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -10.07244
+      objectReference: {fileID: 0}
     - target: {fileID: 7835892576618123535, guid: 160f0309db9d25d4680a3cf8705caf67, type: 3}
       propertyPath: m_Follow
       value: 
       objectReference: {fileID: 1597652997}
+    - target: {fileID: 7835892576618123535, guid: 160f0309db9d25d4680a3cf8705caf67, type: 3}
+      propertyPath: m_Priority
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7835892576618123535, guid: 160f0309db9d25d4680a3cf8705caf67, type: 3}
+      propertyPath: m_Lens.OrthographicSize
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7835892577612198735, guid: 160f0309db9d25d4680a3cf8705caf67, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -14.538364
+      objectReference: {fileID: 0}
+    - target: {fileID: 7835892577612198735, guid: 160f0309db9d25d4680a3cf8705caf67, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.18044877
+      objectReference: {fileID: 0}
+    - target: {fileID: 7835892577612198735, guid: 160f0309db9d25d4680a3cf8705caf67, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -10.07244
+      objectReference: {fileID: 0}
+    - target: {fileID: 7835892577612198832, guid: 160f0309db9d25d4680a3cf8705caf67, type: 3}
+      propertyPath: orthographic size
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 160f0309db9d25d4680a3cf8705caf67, type: 3}
 --- !u!1 &1030629917
@@ -972,6 +1004,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1942965245298379645, guid: fc58943569a35c24baa3ed8bf1ad1ce5, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 135
+      objectReference: {fileID: 0}
     - target: {fileID: 3010400537335858202, guid: fc58943569a35c24baa3ed8bf1ad1ce5, type: 3}
       propertyPath: m_Name
       value: Player
