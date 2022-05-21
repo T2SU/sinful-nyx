@@ -6,7 +6,7 @@ namespace Assets.Scripts.Sevens.Scenes
     {
         private void OnEnable()
         {
-            SceneManagement.Instance.SaveToJsonFile();
+            _SceneManagement.Instance.SaveToJsonFile();
         }
     }
 }

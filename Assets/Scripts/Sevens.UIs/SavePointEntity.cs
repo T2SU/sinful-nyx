@@ -5,6 +5,7 @@ using Sevens.Entities;
 using Sevens.Speeches;
 using Sevens.Entities.Players;
 using Sevens.Utils;
+using Sevens.Interfaces;
 
 public class SavePointEntity : InteractableEntity
 {
@@ -20,6 +21,18 @@ public class SavePointEntity : InteractableEntity
 
     [SerializeField] Player player;
 
+    protected override void Start()
+    {
+        var playerObj = GameObject.Find("Player");
+
+        if (playerObj == null)
+        {
+            return;
+        }
+
+        player = playerObj.GetComponent<Player>();
+    }
+
     protected override void Update() {
         base.Update();
         if(Physics2D.OverlapCircle(transform.position, 4, playerLayer) && isClicked) {
@@ -27,21 +40,14 @@ public class SavePointEntity : InteractableEntity
         }
     }
     protected override void Interact() {
-        if(SceneManagement.Instance.GetPlayerData(PlayerDataKeyType.FirstContactCompleted) != "1") {
+        if (_SceneManagement.Instance.GetPlayerData(PlayerDataKeyType.FirstContactCompleted) != "1") {
             StartCoroutine(FirstContactDialogue());
         }
         else {
-            UIUtility.Instance.OnPopUpInitiated(
-            "저장 하시겠습니까?",
-            "예",
-            "아니오",
-            () => { 
-                SceneManagement.Instance.SaveToJsonFile(); 
-                UIUtility.Instance.OnPopUpClosed();
+            UIManager.Instance.Popup("저장 하시겠습니까?", "예", "아니오", () => {
+                _SceneManagement.Instance.SaveToJsonFile();
                 DialogueManager.Instance.DisplayHudMessage("데이터가 저장되었습니다.");
-            },
-            UIUtility.Instance.OnPopUpClosed
-            );
+            });
         }
     }
 
@@ -51,7 +57,7 @@ public class SavePointEntity : InteractableEntity
         player.SetDirectionMode(true);
         yield return DelayedParticle();
         yield return DialogueManager.Instance.StartDialogue(FirstContactDialogue2());
-        SceneManagement.Instance.SetPlayerData(PlayerDataKeyType.FirstContactCompleted, "1");
+        _SceneManagement.Instance.SetPlayerData(PlayerDataKeyType.FirstContactCompleted, "1");
     }
 
     private IEnumerator FirstContactDialogue1() {

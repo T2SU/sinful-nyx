@@ -13,7 +13,7 @@ namespace Sevens.Interfaces
 
         public void OnClickNewGame()
         {
-            // New Game
+            _SceneManagement.Instance.LoadSceneByName(FirstSceneName);
         }
 
         public void OnClickExit()

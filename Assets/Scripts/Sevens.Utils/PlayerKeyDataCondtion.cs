@@ -22,11 +22,11 @@ namespace Sevens.Utils
         {
             if (Equal == EqualType.NotEqual)
             {
-                return SceneManagement.Instance.GetPlayerData(Type) != Value;
+                return _SceneManagement.Instance.GetPlayerData(Type) != Value;
             }
             else
             {
-                return SceneManagement.Instance.GetPlayerData(Type) == Value;
+                return _SceneManagement.Instance.GetPlayerData(Type) == Value;
             }
         }
     }

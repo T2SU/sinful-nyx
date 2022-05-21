@@ -24,7 +24,7 @@ namespace Sevens.Scenes
         public void Start()
         {
             if (GameObject.Find("SceneManagement") == null
-                || SceneManagement.Instance.sceneIsLoadedBySaved)
+                || _SceneManagement.Instance.sceneIsLoadedBySaved)
             {
                 WakeUp?.ChangeState(MobState.Idle);
                 Destroy(gameObject);

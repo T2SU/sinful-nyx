@@ -23,7 +23,7 @@ namespace Sevens.UIs
             {
                 if(Input.GetKeyDown(KeyCode.V))
                 {
-                    SceneManagement.Instance.SaveToJsonFile();
+                    _SceneManagement.Instance.SaveToJsonFile();
                 }
             }
         }

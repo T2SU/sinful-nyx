@@ -73,13 +73,13 @@ public class GeneralMenuController : MonoBehaviour, IMenuController
     }
 
     private void OnClickContinue() {
-        StartCoroutine(Fader.FadeAndLoadScene(SceneFader.FadeDirection.In, SceneManagement.Instance.GetScene()));
-        SceneManagement.Instance.shouldLoadFromJson = true;
+        StartCoroutine(Fader.FadeAndLoadScene(SceneFader.FadeDirection.In, _SceneManagement.Instance.GetScene()));
+        _SceneManagement.Instance.shouldLoadFromJson = true;
     }
 
     private void OnClickNewGame() {
         StartCoroutine(Fader.FadeAndLoadScene(SceneFader.FadeDirection.In, sceneName));
-        SceneManagement.Instance.ResetPlayerData();
+        _SceneManagement.Instance.ResetPlayerData();
     }
 
     private void OnClickResume() {

@@ -154,6 +154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shouldLoadFromJson: 0
   sceneIsLoadedBySaved: 0
+  _hpBar: {fileID: 0}
 --- !u!4 &4462985
 Transform:
   m_ObjectHideFlags: 0
@@ -1781,7 +1782,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d2fae9ef52c9654d81bbf163dcd4dc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FirstSceneName: 
+  FirstSceneName: StartCutscene
 --- !u!1 &1804276591
 GameObject:
   m_ObjectHideFlags: 0

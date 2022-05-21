@@ -55,7 +55,7 @@ namespace Sevens.Entities.Mobs
 
             spr.DOColor(CurtainColor, 3.0f);
             yield return new WaitForSeconds(3.5f);
-            SceneManagement.Instance.LoadSceneByName(NextSceneName);
+            _SceneManagement.Instance.LoadSceneByName(NextSceneName);
         }
 
         private void Awake()

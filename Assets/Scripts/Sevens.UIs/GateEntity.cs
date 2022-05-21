@@ -20,6 +20,6 @@ public class GateEntity : InteractableEntity
     }
 
     protected override void Interact() {
-        SceneManagement.Instance.LoadSceneByName(sceneName);
+        _SceneManagement.Instance.LoadSceneByName(sceneName);
     }
 }
