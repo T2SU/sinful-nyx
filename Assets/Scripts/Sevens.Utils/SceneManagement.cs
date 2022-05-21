@@ -65,7 +65,9 @@ namespace Sevens.Utils
 
         private void SceneLoaded(Scene scene, LoadSceneMode mode)
         {
-            LoadPlayer(Singleton<PlayerData>.Data);
+            var data = Singleton<PlayerData>.Data;
+            if (data != null)
+                LoadPlayer(data);
         }
 
         private void LoadPlayer(PlayerData playerData)
