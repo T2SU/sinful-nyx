@@ -3,25 +3,34 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
+using Sevens.Utils;
 
 namespace Sevens.Entities.Players
 {
-    [Serializable]
-    public class PlayerData : ISerializable
+    public class PlayerData
     {
-        public float MaxHp;
-        public float StaminaMax;
-        public float Sin;
-        public Dictionary<int, Dictionary<string, string>> QuestInfo;
+        public string SceneName;
+        public string SpawnPointName;
+        public float HP = 100f;
+        public float MaxHP = 100f;
+        public float Sin = 0f;
+        public float MaxSin = 100f;
+        public float Stamina = 0f;
+        public float MaxStamina = 100f;
+        public float Soul = 0f;
+        public Achievements Achievements = new Achievements();
+    }
 
-        public PlayerData() {}
-        protected PlayerData(SerializationInfo info, StreamingContext context)
+    public class Achievements
+    {
+        public string[] Datas = new string[(int)PlayerDataKeyType.Number];
+
+        public void SetData(PlayerDataKeyType type, string value)
         {
+            Datas[(int)type] = value;
         }
 
-        public virtual void GetObjectData(SerializationInfo info, StreamingContext context)
-        {
-
-        }
+        public string GetData(PlayerDataKeyType type)
+            => Datas[(int)type];
     }
 }

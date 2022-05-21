@@ -218,6 +218,8 @@ namespace Sevens.Entities.Players
         private TimeElapsingRecord _beingDashTimer;
         private TimeElapsingRecord _staminaRecoveryTimer;
 
+        public Achievements Achievements { get; } = new Achievements();
+
         public virtual void SetInitialStamina(float stamina)
         {
             Stamina = stamina;
@@ -504,6 +506,27 @@ namespace Sevens.Entities.Players
         public bool CheckDirection(Entity source)
         {
             return IsOnLeftBy(source.transform) != IsFacingLeft();
+        }
+
+        public void Load(PlayerData data)
+        {
+            MaxHp = data.MaxHP;
+            MaxSin = data.MaxSin;
+            MaxStamina = data.MaxStamina;
+            SetInitialHp(data.HP);
+            SetInitialSin(data.Sin);
+            SetInitialStamina(data.Stamina);
+            Soul = data.Soul;
+
+            if (!string.IsNullOrEmpty(data.SpawnPointName))
+            {
+                var pointObj = GameObject.Find(data.SpawnPointName);
+                if (pointObj == null)
+                    return;
+
+                var pos = pointObj.transform.position;
+                transform.position = pos;
+            }
         }
 
         public override void OnDamagedBy(Entity source, float damage)
