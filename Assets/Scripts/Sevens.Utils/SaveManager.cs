@@ -87,7 +87,17 @@ namespace Sevens.Utils
             var binary = File.ReadAllBytes(_path);
             //binary = _decryptor.TransformFinalBlock(binary, 0, binary.Length);
             string jsonLoaded = Encoding.UTF8.GetString(binary);
-            return JsonUtility.FromJson<PlayerData>(jsonLoaded);
+            var data = JsonUtility.FromJson<PlayerData>(jsonLoaded);
+
+            // 레거시 세이브데이터 안전장치
+            if (data.Achievements.Datas.Length < (int)PlayerDataKeyType.Number)
+            {
+                var temp = new string[(int)PlayerDataKeyType.Number];
+                Array.Copy(data.Achievements.Datas, temp, data.Achievements.Datas.Length);
+                data.Achievements.Datas = temp;
+            }
+
+            return data;
         }
 
         public static void SaveToFile(PlayerData playerData)
