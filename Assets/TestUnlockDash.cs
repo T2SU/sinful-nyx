@@ -5,7 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestSave : MonoBehaviour
+public class TestUnlockDash : MonoBehaviour
 {
     public Player Player;
 
