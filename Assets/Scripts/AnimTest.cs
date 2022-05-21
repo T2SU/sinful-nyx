@@ -29,6 +29,10 @@ namespace Assets.Scripts
                     _audioSource.PlayOneShot(AudioClip);
                 _animController.Play(StateName);
             }
+            if (GUI.Button(new Rect(30, 250, 200, 100), "리셋"))
+            {
+                _animController.Play("elite idle");
+            }
         }
     }
 }
