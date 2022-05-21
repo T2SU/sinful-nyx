@@ -76,10 +76,8 @@ namespace Sevens.Utils
                 Soul = player.Soul,
                 Achievements = player.Achievements.Copy()
             };
-            if (scene == null)
-                ret.SceneName = SceneManager.GetActiveScene().name;
-            if (spawnPointName == null)
-                ret.SpawnPointName = player.GetClosestSpawnPoint();
+            ret.SceneName = scene ?? SceneManager.GetActiveScene().name;
+            ret.SpawnPointName = spawnPointName ?? player.GetClosestSpawnPoint();
             return ret;
         }
 
