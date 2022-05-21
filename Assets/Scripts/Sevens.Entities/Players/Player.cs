@@ -703,6 +703,10 @@ namespace Sevens.Entities.Players
 
         private void UpdateDash()
         {
+            // 대쉬 해금 아니면 사용 불가
+            if (Achievements.GetData(PlayerDataKeyType.UnlockedDash) != "1")
+                return;
+
             // 대쉬 중
             if (State == PlayerState.Dash)
             {

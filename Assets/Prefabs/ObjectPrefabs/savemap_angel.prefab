@@ -130,3 +130,5 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 8192
+  player: {fileID: 0}
+  _angelAvatar: {fileID: 21300000, guid: 406813c785ba56e46a002fc295dbb57e, type: 3}

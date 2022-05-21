@@ -3,7 +3,7 @@
     public enum PlayerDataKeyType
     {
         FirstContactCompleted,
-        Temp1,
+        UnlockedDash,
         Temp2,
 
         Number
