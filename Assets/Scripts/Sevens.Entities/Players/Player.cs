@@ -10,6 +10,7 @@ using UnityEngine;
 using DG.Tweening;
 using UnityEngine.Events;
 using Sevens.Entities.Mobs;
+using System.Linq;
 
 namespace Sevens.Entities.Players
 {
@@ -517,6 +518,7 @@ namespace Sevens.Entities.Players
             SetInitialSin(data.Sin);
             SetInitialStamina(data.Stamina);
             Soul = data.Soul;
+            Achievements.Datas = data.Achievements.Datas.ToArray();
 
             if (!string.IsNullOrEmpty(data.SpawnPointName))
             {

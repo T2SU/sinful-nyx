@@ -11,7 +11,8 @@ public class IntroDialogue : MonoBehaviour
     public Player Player;
 
     private void Start() {
-        if(_SceneManagement.Instance.GetPlayerData(PlayerDataKeyType.FirstContactCompleted) != "1") {
+        if(Player.Achievements.GetData(PlayerDataKeyType.FirstContactCompleted) != "1")
+        {
             ToActivate?.SetActive(false);
             StartCoroutine(Dialogues());
         }

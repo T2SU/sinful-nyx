@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Sevens.Entities;
+using Sevens.Utils;
 
 public class GateEntity : InteractableEntity
 {
@@ -20,6 +21,6 @@ public class GateEntity : InteractableEntity
     }
 
     protected override void Interact() {
-        _SceneManagement.Instance.LoadSceneByName(sceneName);
+        SceneManagement.Instance.LoadScene(sceneName);
     }
 }

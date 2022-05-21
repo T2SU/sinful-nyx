@@ -3,6 +3,7 @@ using Sevens.Cameras;
 using Sevens.Effects;
 using Sevens.Entities.Mobs;
 using Sevens.Entities.Players;
+using Sevens.Utils;
 using System.Collections;
 using UnityEngine;
 
@@ -24,7 +25,7 @@ namespace Sevens.Scenes
         public void Start()
         {
             if (GameObject.Find("SceneManagement") == null
-                || _SceneManagement.Instance.sceneIsLoadedBySaved)
+                || SceneManagement.Instance.SceneIsLoadedBySaved)
             {
                 WakeUp?.ChangeState(MobState.Idle);
                 Destroy(gameObject);

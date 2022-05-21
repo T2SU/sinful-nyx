@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using Sevens.Utils;
+using System.Linq;
 
 namespace Sevens.Entities.Players
 {
@@ -21,6 +22,7 @@ namespace Sevens.Entities.Players
         public Achievements Achievements = new Achievements();
     }
 
+    [Serializable]
     public class Achievements
     {
         public string[] Datas = new string[(int)PlayerDataKeyType.Number];
@@ -32,5 +34,12 @@ namespace Sevens.Entities.Players
 
         public string GetData(PlayerDataKeyType type)
             => Datas[(int)type];
+
+        public Achievements Copy()
+        {
+            var ret = new Achievements();
+            ret.Datas = Datas.ToArray();
+            return ret;
+        }
     }
 }

@@ -20,6 +20,9 @@ namespace Sevens.Utils
             }
         }
 
+        // 현재 씬이 이어하기로 로드 되었는지?
+        public bool SceneIsLoadedBySaved;
+
         public void NewGame(string sceneName)
         {
             Singleton<PlayerData>.Data = null;
@@ -30,6 +33,7 @@ namespace Sevens.Utils
         {
             var data = SaveManager.LoadFromFile();
             Singleton<PlayerData>.Data = data;
+            SceneIsLoadedBySaved = true;
             SceneManager.LoadScene(data.SceneName);
         }
 
@@ -49,6 +53,7 @@ namespace Sevens.Utils
             else
                 Singleton<PlayerData>.Data = null;
 
+            SceneIsLoadedBySaved = false;
             SceneManager.LoadScene(sceneName);
         }
 

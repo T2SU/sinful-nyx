@@ -3,6 +3,7 @@ using Sevens.Speeches;
 using Sevens.Utils;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Sevens.Interfaces
 {
@@ -38,26 +39,17 @@ namespace Sevens.Interfaces
 
         private void LoadLastCheckpoint()
         {
-            Debug.Log("마지막 체크포인트 이동 - 예 선택됨");
-            DialogueManager.Instance.StartDialogue(TestDialogue());
-        }
-
-        private IEnumerator TestDialogue()
-        {
-            yield return new Dialogue("테스트", null, "안녕하세요.0");
-            yield return new Dialogue("테스트", null, "안녕하세요.1");
-            yield return new Dialogue("테스트", null, "안녕하세요.2");
-            yield return new Dialogue("테스트", null, "안녕하세요.3");
+            SceneManagement.Instance.LoadGame();
         }
 
         private void ReturnToTitle()
         {
-            Debug.Log("타이틀 화면으로 - 예 선택됨");
+            SceneManager.LoadScene("Main Menu_New");
         }
 
         private void ExitGame()
         {
-            Debug.Log("게임 종료 - 예 선택됨");
+            Application.Quit();
         }
     }
 }

@@ -76,8 +76,7 @@ namespace Sevens.Entities.Players
                 }
                 else if (Input.GetButtonDown("Fire1"))
                 {
-                    _SceneManagement.Instance.shouldLoadFromJson = true;
-                    SceneManager.LoadScene(_SceneManagement.Instance.GetScene());
+                    SceneManagement.Instance.LoadGame();
                 }
             }
         }

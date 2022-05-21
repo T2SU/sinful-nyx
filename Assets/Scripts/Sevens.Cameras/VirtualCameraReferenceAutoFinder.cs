@@ -76,7 +76,7 @@ namespace Sevens.Cameras
                 .FirstOrDefault();
             if (found == null)
             {
-                Debug.LogError($"Cannot find object of player tag in this scene.");
+                //Debug.Log($"Cannot find object of player tag in this scene.");
                 return;
             }
             _vcam.Follow = found.transform;

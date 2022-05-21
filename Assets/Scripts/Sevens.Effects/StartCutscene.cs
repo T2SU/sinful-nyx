@@ -23,7 +23,7 @@ using UnityEngine.UI;
 
 namespace Sevens.Effects
 {
-    public class StartCutscene : MonoBehaviour
+    public class StartCutscene : SkippableCutscene
     {
         public SpriteRenderer Curtain;
         public SkeletonAnimation Animation;
@@ -33,7 +33,6 @@ namespace Sevens.Effects
         public VirtualCameraController VCamController;
         public CinemachinePostProcessing CPP;
         public GameObject GlowNewEffect; // 90 Hit - Energy_41
-        public string NextScene;
         public AudioClip GlowSound;
         public AudioSource Ambient;
         public Text Subtitle1;
@@ -44,8 +43,10 @@ namespace Sevens.Effects
         private AudioSource _audioSource;
         private CoroutineMan _coroutine;
 
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
+
             _state = Animation.AnimationState;
             _audioSource = GetComponent<AudioSource>();
             _coroutine = new CoroutineMan(this);
@@ -59,7 +60,7 @@ namespace Sevens.Effects
 
         private void Start()
         {
-            StartCoroutine(Timeline());
+            StartCutscene("Timeline");
         }
 
         private IEnumerator Timeline()
@@ -119,10 +120,6 @@ namespace Sevens.Effects
             // 다시 까맣게
             _coroutine.Register("Curtain", Curtain.DOColor(new Color(0, 0, 0, 1f), 4.5f));
             yield return new WaitForSeconds(4.5f);
-
-            // Load Scene
-            if (!string.IsNullOrEmpty(NextScene))
-                SceneManager.LoadScene(NextScene);
         }
 
         private void StopParticle(ParticleSystem ps)

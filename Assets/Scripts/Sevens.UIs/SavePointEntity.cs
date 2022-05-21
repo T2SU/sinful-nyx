@@ -40,12 +40,12 @@ public class SavePointEntity : InteractableEntity
         }
     }
     protected override void Interact() {
-        if (_SceneManagement.Instance.GetPlayerData(PlayerDataKeyType.FirstContactCompleted) != "1") {
+        if (player.Achievements.GetData(PlayerDataKeyType.FirstContactCompleted) != "1") {
             StartCoroutine(FirstContactDialogue());
         }
         else {
             UIManager.Instance.Popup("저장 하시겠습니까?", "예", "아니오", () => {
-                _SceneManagement.Instance.SaveToJsonFile();
+                SaveManager.SaveGame();
                 DialogueManager.Instance.DisplayHudMessage("데이터가 저장되었습니다.");
             });
         }
@@ -57,7 +57,7 @@ public class SavePointEntity : InteractableEntity
         player.SetDirectionMode(true);
         yield return DelayedParticle();
         yield return DialogueManager.Instance.StartDialogue(FirstContactDialogue2());
-        _SceneManagement.Instance.SetPlayerData(PlayerDataKeyType.FirstContactCompleted, "1");
+        player.Achievements.SetData(PlayerDataKeyType.FirstContactCompleted, "1");
     }
 
     private IEnumerator FirstContactDialogue1() {

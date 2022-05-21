@@ -1,12 +1,13 @@
-﻿using UnityEngine;
+﻿using Sevens.Utils;
+using UnityEngine;
 
-namespace Assets.Scripts.Sevens.Scenes
+namespace Sevens.Scenes
 {
     public class SaveGameOnLoad : MonoBehaviour
     {
         private void OnEnable()
         {
-            _SceneManagement.Instance.SaveToJsonFile();
+            SaveManager.SaveGame();
         }
     }
 }

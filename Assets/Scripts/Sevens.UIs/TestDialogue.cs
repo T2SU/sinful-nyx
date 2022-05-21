@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Sevens.Utils;
+using UnityEngine;
 using UnityEngine.Events;
 
 namespace Sevens.UIs
@@ -23,7 +24,7 @@ namespace Sevens.UIs
             {
                 if(Input.GetKeyDown(KeyCode.V))
                 {
-                    _SceneManagement.Instance.SaveToJsonFile();
+                    SaveManager.SaveGame();
                 }
             }
         }

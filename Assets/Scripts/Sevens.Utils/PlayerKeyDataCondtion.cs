@@ -1,10 +1,11 @@
-﻿using System;
+﻿using Sevens.Entities.Players;
+using System;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Sevens.Utils
 {
-
     [Serializable]
     public class PlayerKeyDataCondtionEntry
     {
@@ -18,15 +19,15 @@ namespace Sevens.Utils
         public EqualType Equal;
         public string Value;
 
-        public bool IsSatisfied()
+        public bool IsSatisfied(Player player)
         {
             if (Equal == EqualType.NotEqual)
             {
-                return _SceneManagement.Instance.GetPlayerData(Type) != Value;
+                return player.Achievements.GetData(Type) != Value;
             }
             else
             {
-                return _SceneManagement.Instance.GetPlayerData(Type) == Value;
+                return player.Achievements.GetData(Type) == Value;
             }
         }
     }
@@ -42,22 +43,47 @@ namespace Sevens.Utils
         public PlayerKeyDataCondtionEntry[] Conditions;
         public ConnectType Type;
 
-        private void Start()
+        public GameObject Target;
+
+        private void Awake()
         {
+            SceneManager.sceneLoaded += Init;
+        }
+
+        private void OnDestroy()
+        {
+            SceneManager.sceneLoaded -= Init;
+        }
+
+        private void Init(Scene scene, LoadSceneMode mode)
+        {
+            var target = Target;
+            if (target == null)
+                target = gameObject;
+
+            var playerObj = GameObject.FindGameObjectWithTag("Player");
+            if (playerObj == null)
+            {
+                Debug.LogError("Cannot find 'Player' in this scene.");
+                target.SetActive(false);
+                return;
+            }
+            var player = playerObj.GetComponent<Player>();
+
             bool conditionSatisfied;
 
             if (Type == ConnectType.Or)
             {
-                conditionSatisfied = Conditions.Any(c => c.IsSatisfied());
+                conditionSatisfied = Conditions.Any(c => c.IsSatisfied(player));
             }
             else
             {
-                conditionSatisfied = Conditions.All(c => c.IsSatisfied());
+                conditionSatisfied = Conditions.All(c => c.IsSatisfied(player));
             }
             if (conditionSatisfied)
-                gameObject.SetActive(true);
+                target.SetActive(true);
             else
-                gameObject.SetActive(false);
+                target.SetActive(false);
         }
     }
 }

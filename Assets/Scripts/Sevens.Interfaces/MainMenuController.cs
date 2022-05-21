@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Sevens.Utils;
+using UnityEngine;
 
 namespace Sevens.Interfaces
 {
@@ -8,12 +9,12 @@ namespace Sevens.Interfaces
 
         public void OnClickContinue()
         {
-            // Continue Game
+            SceneManagement.Instance.LoadGame();
         }
 
         public void OnClickNewGame()
         {
-            _SceneManagement.Instance.LoadSceneByName(FirstSceneName);
+            SceneManagement.Instance.LoadScene(FirstSceneName);
         }
 
         public void OnClickExit()
