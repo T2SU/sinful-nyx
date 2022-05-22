@@ -11,6 +11,7 @@ TagManager:
   - loweffect
   - SpawnPoint
   - nopool
+  - UI
   layers:
   - Default
   - TransparentFX

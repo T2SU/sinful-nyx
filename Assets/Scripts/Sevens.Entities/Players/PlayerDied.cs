@@ -7,6 +7,7 @@ using Sevens.UIs;
 using Sevens.Utils;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Sevens.Interfaces;
 
 namespace Sevens.Entities.Players
 {
@@ -31,7 +32,7 @@ namespace Sevens.Entities.Players
         public void OnDied()
         {
             StopAllMobs();
-            foreach (var hud in _ui.GetComponentsInChildren<HudGaugeElement>())
+            foreach (var hud in _ui.GetComponentsInChildren<AnimatedGauge>())
                 hud.OnPlayerDied(true);
             _vcam.Shake(new CameraShakeOption() { Amplitude = 0.0f, Frequency = 0.0f, Time = 0.1f });
             _coroutines.Register("BGMFadeOut", DOTween.Sequence()
@@ -40,9 +41,15 @@ namespace Sevens.Entities.Players
                 .AppendCallback(() => { _bgm.clip = DyingBGM; _bgm.Play(); })
                 .Append(_bgm.DOFade(1f, 0.25f))
                 .AppendInterval(1.5f)
-                .AppendCallback(() => { 
-                    _isWaitingRestartGame = true;
-                    DialogueManager.Instance.DisplayHudMessage("마지막 저장위치: Z | 메인메뉴: Space", true);
+                .AppendCallback(() => {
+                _isWaitingRestartGame = true;
+                //DialogueManager.Instance.DisplayHudMessage("마지막 체크포인트로: Z | 타이틀 화면으로: X", true);
+                UIManager.Instance.Popup("YOU DIED",
+                    "마지막 체크포인트로",
+                    "타이틀 화면으로",
+                    () => { SceneManagement.Instance.LoadGame(); },
+                    () => { SceneManager.LoadScene("Main Menu_New");
+                    });
                 }), unscaled: true
             );
         }
@@ -66,19 +73,19 @@ namespace Sevens.Entities.Players
             }
         }
 
-        private void Update()
+       /*private void Update()
         {
             if (_isWaitingRestartGame)
             {
                 if (Input.GetButtonDown("Jump"))
                 {
-                    SceneManager.LoadScene("Main Menu");
+                    SceneManager.LoadScene("Main Menu_New");
                 }
                 else if (Input.GetButtonDown("Fire1"))
                 {
                     SceneManagement.Instance.LoadGame();
                 }
             }
-        }
+        }*/
     }
 }

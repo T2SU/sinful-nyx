@@ -43,5 +43,10 @@ namespace Sevens.UIs
             _barSubImage.fillAmount = ratio;
             _lastRatio = ratio;
         }
+        public void OnPlayerDied(bool died)
+        {
+            if (died)
+                gameObject.SetActive(false);
+        }
     }
 }
