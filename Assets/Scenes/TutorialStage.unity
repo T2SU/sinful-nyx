@@ -2758,6 +2758,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1186661057667976124, guid: ab2315994a4cbea43a1bb554a4bd59a6, type: 3}
+      propertyPath: SystemDialogue
+      value: 
+      objectReference: {fileID: 941323805}
     - target: {fileID: 1186661057667976127, guid: ab2315994a4cbea43a1bb554a4bd59a6, type: 3}
       propertyPath: m_Name
       value: HorizontalMoveGuideEventBox
@@ -3453,6 +3457,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e075db40bc620014c865d7880e750140, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &941323805 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3399257380633926683, guid: fc58943569a35c24baa3ed8bf1ad1ce5, type: 3}
+  m_PrefabInstance: {fileID: 1911385562}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6db74e0ab01ace45b1f33fed069151c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &950020579
 GameObject:
   m_ObjectHideFlags: 0
@@ -3586,6 +3601,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8313563621960923842, guid: b3a7c408ccc571a4c97b42d7b2a68b4d, type: 3}
+      propertyPath: SystemDialogue
+      value: 
+      objectReference: {fileID: 941323805}
     - target: {fileID: 8313563621960923845, guid: b3a7c408ccc571a4c97b42d7b2a68b4d, type: 3}
       propertyPath: m_Name
       value: JumpGuideEventBox
@@ -3868,6 +3887,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5250735404725355513, guid: 146df7647ec2b6842b93a6a7a93e507e, type: 3}
+      propertyPath: SystemDialogue
+      value: 
+      objectReference: {fileID: 941323805}
     - target: {fileID: 5250735404725355515, guid: 146df7647ec2b6842b93a6a7a93e507e, type: 3}
       propertyPath: m_RootOrder
       value: 16
