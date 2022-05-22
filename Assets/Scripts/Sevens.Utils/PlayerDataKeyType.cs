@@ -4,7 +4,7 @@
     {
         FirstContactCompleted,
         UnlockedDash,
-        Temp2,
+        TutorialStageEntered,
 
         Number
     }
