@@ -22,7 +22,7 @@ namespace Sevens.Events
         [SerializeField] private string _buttonKey;
         [SerializeField] private string _buttonDescription;
 
-        private int _playerMask;
+        private int _playerLayer;
         private InteractionGuide _interactionGuide;
         private bool _alreadyTriggered;
 
@@ -33,7 +33,7 @@ namespace Sevens.Events
 
         private void Awake()
         {
-            _playerMask = LayerMask.NameToLayer("Player");
+            _playerLayer = LayerMask.NameToLayer("Player");
             _alreadyTriggered = false;
             _interactionGuide = GetComponentInChildren<InteractionGuide>();
             _interactionGuide.gameObject.SetActive(false);
@@ -41,7 +41,7 @@ namespace Sevens.Events
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.gameObject.layer != _playerMask)
+            if (collision.gameObject.layer != _playerLayer)
                 return;
             if (!_preserveTrigger && _alreadyTriggered)
                 return;
@@ -52,6 +52,7 @@ namespace Sevens.Events
                 {
                     case InteractionType.AutorunOnEntered:
                         OnInteraction?.Invoke(player);
+                        _alreadyTriggered = true;
                         break;
                     case InteractionType.PressInteractionKey:
                         _interactionGuide.gameObject.SetActive(true);
@@ -62,14 +63,12 @@ namespace Sevens.Events
                 if (!_triggerEntered)
                     OnTriggerEntered?.Invoke(player);
                 _triggerEntered = true;
-
-                _alreadyTriggered = true;
             }
         }
 
         private void OnTriggerExit2D(Collider2D collision)
         {
-            if (collision.gameObject.layer != _playerMask)
+            if (collision.gameObject.layer != _playerLayer)
                 return;
             var player = collision.GetComponent<Player>();
             if (player != null)
@@ -97,6 +96,7 @@ namespace Sevens.Events
             if (!Input.GetButtonDown(_buttonName))
                 return;
             OnInteraction?.Invoke(_stayingPlayer);
+            _alreadyTriggered = true;
         }
     }
 }
