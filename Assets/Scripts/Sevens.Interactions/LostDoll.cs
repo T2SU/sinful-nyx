@@ -22,7 +22,7 @@ namespace Sevens.Interactions
         {
             if (Player.Achievements.GetData(PlayerDataKeyType.UnlockedDash) != "1")
             {
-                SystemDialogue.Display("버려진 인형과 상호작용 하려면 <color=yellow>V</color> 키를 누르십시오.", -1);
+                SystemDialogue.Display("상호작용 하려면 <color=yellow>V</color> 키를 누르십시오.", -1);
             }
         }
 

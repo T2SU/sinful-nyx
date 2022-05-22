@@ -65,8 +65,8 @@ namespace Sevens.UIs
             var seq = DOTween.Sequence();
             if (displayed)
             {
-                _canvasGroup.alpha = 1f;
-                seq.Append(FadeOut(_currentOption.FadeDuration));
+                //_canvasGroup.alpha = 1f;
+                seq.Append(FadeOut(_canvasGroup.alpha * _currentOption.FadeDuration));
             }
 
             if (option != null && !string.IsNullOrEmpty(option.Text))
