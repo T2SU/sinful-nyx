@@ -175,7 +175,7 @@ namespace Sevens.Entities.Players
         [Header("Misc")]
         [SerializeField] private bool _debugMode;
 
-        public bool _directionMode = false;
+        private bool _directionMode = false;
 
         [field: SerializeField]
 #if UNITY_EDITOR
@@ -231,6 +231,11 @@ namespace Sevens.Entities.Players
         {
             Sin = sin;
             OnSinRatioInitialSet?.Invoke(SinRatio);
+        }
+
+        public bool IsDirectionMode()
+        {
+            return _directionMode;
         }
 
         public void SetDirectionMode(bool enabled)
