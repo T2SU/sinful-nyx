@@ -20489,6 +20489,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 298839879}
     m_Modifications:
     - target: {fileID: 1422242601767118531, guid: e3e06fb6663a3d1489883bc203859e3a, type: 3}
+      propertyPath: _player
+      value: 
+      objectReference: {fileID: 1597652998}
+    - target: {fileID: 1422242601767118531, guid: e3e06fb6663a3d1489883bc203859e3a, type: 3}
       propertyPath: sceneName
       value: TutorialStage
       objectReference: {fileID: 0}

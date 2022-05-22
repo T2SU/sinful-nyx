@@ -9,6 +9,8 @@ namespace Sevens.Utils
         private static int _groundLayer;
         private static ContactFilter2D? _filter;
 
+        private static int _instaDeathLayer;
+
         public static int GroundLayerMask
         {
             get
@@ -26,6 +28,16 @@ namespace Sevens.Utils
                 if (_groundLayer == 0)
                     _groundLayer = LayerMask.NameToLayer("Ground");
                 return _groundLayer;
+            }
+        }
+
+        public static int InstaDeath
+        {
+            get
+            {
+                if (_instaDeathLayer == 0)
+                    _instaDeathLayer = LayerMask.NameToLayer("InstaDeath");
+                return _instaDeathLayer;
             }
         }
 

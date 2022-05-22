@@ -87,7 +87,7 @@ public class SavePointEntity : InteractableEntity
 
     private IEnumerator DelayedParticle() {
         particleBlink.SetActive(true);
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1.0f);
         particleGlow.SetActive(true);
         yield return new WaitForSeconds(0.5f);
     }

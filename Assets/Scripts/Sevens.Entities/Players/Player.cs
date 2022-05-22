@@ -384,6 +384,11 @@ namespace Sevens.Entities.Players
                 _attackedInAirCount = 0;
                 _dashedInAirCount = 0;
             }
+
+            if (collision.gameObject.layer == PhysicsUtils.InstaDeath)
+            {
+                OnDeath();
+            }
             //Debug.Log($"OnTriggerEnter2D layer={collision.gameObject.layer} (Ground? {collision.gameObject.layer == PhysicsUtils.GroundLayer})");
         }
 
