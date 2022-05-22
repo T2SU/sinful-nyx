@@ -13,6 +13,8 @@ namespace Sevens.Events
     public class EventTrigger : MonoBehaviour
     {
         public UnityEvent<Player> OnInteraction;
+        public UnityEvent<Player> OnTriggerEntered;
+        public UnityEvent<Player> OnTriggerExited;
 
         [SerializeField] private InteractionType _interactionType;
         [SerializeField] private bool _preserveTrigger;
@@ -26,6 +28,8 @@ namespace Sevens.Events
 
         private bool IsStaying => _interactionGuide.gameObject.activeSelf;
         private Player _stayingPlayer;
+
+        private bool _triggerEntered;
 
         private void Awake()
         {
@@ -55,6 +59,10 @@ namespace Sevens.Events
                         _stayingPlayer = player;
                         break;
                 }
+                if (!_triggerEntered)
+                    OnTriggerEntered?.Invoke(player);
+                _triggerEntered = true;
+
                 _alreadyTriggered = true;
             }
         }
@@ -73,16 +81,20 @@ namespace Sevens.Events
                         _stayingPlayer = null;
                         break;
                 }
+
+                if (_triggerEntered)
+                    OnTriggerExited?.Invoke(player);
+                _triggerEntered = false;
             }
         }
 
         private void Update()
         {
-            if (!Input.GetButtonDown(_buttonName))
-                return;
             if (_interactionType != InteractionType.PressInteractionKey)
                 return;
             if (!IsStaying)
+                return;
+            if (!Input.GetButtonDown(_buttonName))
                 return;
             OnInteraction?.Invoke(_stayingPlayer);
         }
