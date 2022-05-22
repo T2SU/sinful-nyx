@@ -34,14 +34,6 @@ namespace Sevens.Entities
             toolTip.gameObject.SetActive(true);
         }
 
-        private void OnTriggerStay2D(Collider2D other) {
-            if(other != null && other.CompareTag("Player")) {
-                if(isClicked) {
-                    Interact();
-                }
-            }
-        }
-
         private void OnTriggerExit2D(Collider2D other) {
             if(toolTip != null && toolTip.gameObject.activeSelf) {
                 toolTip.gameObject.SetActive(false);

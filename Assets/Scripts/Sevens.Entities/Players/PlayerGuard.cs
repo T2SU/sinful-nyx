@@ -59,7 +59,8 @@ namespace Sevens.Entities.Players
         {
             _guardCooltimer += Time.deltaTime;
 
-            if (_playerComponent.State != PlayerState.Idle && _playerComponent.State != PlayerState.Run && _playerComponent.State != PlayerState.Guard) return;
+            if (_playerComponent.State != PlayerState.Idle && _playerComponent.State != PlayerState.Run && _playerComponent.State != PlayerState.Guard ) return;
+            if (_playerComponent._directionMode) return;
 
             if (_isParry)
             {

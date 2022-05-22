@@ -9,7 +9,7 @@ using Sevens.Interfaces;
 
 public class SavePointEntity : InteractableEntity
 {
-    private bool isFirstContacted;
+    private bool _dialogueAlreadyExists;
 
     [SerializeField]
     private GameObject particleBlink;
@@ -36,15 +36,23 @@ public class SavePointEntity : InteractableEntity
 
     protected override void Update() {
         base.Update();
-        if(Physics2D.OverlapCircle(transform.position, 4, playerLayer) && isClicked) {
+        if (Physics2D.OverlapCircle(transform.position, 4, playerLayer) && isClicked) {
+            if (_dialogueAlreadyExists)
+            {
+                return;
+            }
+
             Interact();
         }
     }
     protected override void Interact() {
-        if (player.Achievements.GetData(PlayerDataKeyType.FirstContactCompleted) != "1") {
+        if (player.Achievements.GetData(PlayerDataKeyType.FirstContactCompleted) != "1")
+        {
+            _dialogueAlreadyExists = true;
             StartCoroutine(FirstContactDialogue());
         }
-        else {
+        else 
+        {
             UIManager.Instance.Popup("저장 하시겠습니까?", "예", "아니오", () => {
                 SaveManager.SaveGame();
                 DialogueManager.Instance.DisplayHudMessage("데이터가 저장되었습니다.");
@@ -73,12 +81,14 @@ public class SavePointEntity : InteractableEntity
         yield return new Dialogue("천사", _angelAvatar, "도전자여, 생기없는 몸에 혼이 깃든 도전자여. 소중한 이를 살리고자 한다면 죄악의 벽을 넘어라.");
         yield return new Dialogue("천사", _angelAvatar, "분노, 폭식, 질투, 탐욕, 색욕, 나태, 오만. 그 벽 너머에 해답이 있을 것이니.");
         yield return new Dialogue("천사", _angelAvatar, "그대의 #yellow'도전'#white에 행운이 함께하길.");
+
+        _dialogueAlreadyExists = false;
     }
 
     private IEnumerator DelayedParticle() {
         particleBlink.SetActive(true);
-        yield return new WaitForSeconds(3.0f);
-        particleGlow.SetActive(true);
         yield return new WaitForSeconds(1.0f);
+        particleGlow.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
     }
 }

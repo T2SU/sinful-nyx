@@ -175,7 +175,7 @@ namespace Sevens.Entities.Players
         [Header("Misc")]
         [SerializeField] private bool _debugMode;
 
-        private bool _directionMode = false;
+        public bool _directionMode = false;
 
         [field: SerializeField]
 #if UNITY_EDITOR
@@ -384,6 +384,11 @@ namespace Sevens.Entities.Players
                 _attackedInAirCount = 0;
                 _dashedInAirCount = 0;
             }
+
+            if (collision.gameObject.layer == PhysicsUtils.InstaDeath)
+            {
+                OnDeath();
+            }
             //Debug.Log($"OnTriggerEnter2D layer={collision.gameObject.layer} (Ground? {collision.gameObject.layer == PhysicsUtils.GroundLayer})");
         }
 
@@ -444,7 +449,9 @@ namespace Sevens.Entities.Players
                 if (!Mathf.Approximately(_xMove, 0f))
                 {
                     if (State != PlayerState.Run)
+                    {
                         State = PlayerState.Run;
+                    }
                 }
                 else
                 {
@@ -477,7 +484,7 @@ namespace Sevens.Entities.Players
             }
             _lastFrameIsGround = _isGround;
 
-            if (PlayerStates.IsJumpableState(State))
+            if (PlayerStates.IsJumpableState(State) && !_directionMode)
             {
                 if (Input.GetButtonDown("Jump"))
                 {
