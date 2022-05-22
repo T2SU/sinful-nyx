@@ -1,6 +1,7 @@
 ﻿using Sevens.Entities.Players;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 namespace Sevens.Events
 {
@@ -18,9 +19,15 @@ namespace Sevens.Events
 
         [SerializeField] private InteractionType _interactionType;
         [SerializeField] private bool _preserveTrigger;
-        [SerializeField] private string _buttonName;
-        [SerializeField] private string _buttonKey;
-        [SerializeField] private string _buttonDescription;
+
+        [FormerlySerializedAs("_buttonName")]
+        public string ButtonName;
+
+        [FormerlySerializedAs("_buttonKey")]
+        public string ButtonKey;
+
+        [FormerlySerializedAs("_buttonDescription")]
+        public string ButtonDescription;
 
         private int _playerLayer;
         private InteractionGuide _interactionGuide;
@@ -56,7 +63,7 @@ namespace Sevens.Events
                         break;
                     case InteractionType.PressInteractionKey:
                         _interactionGuide.gameObject.SetActive(true);
-                        _interactionGuide.SetText(_buttonKey, _buttonDescription);
+                        _interactionGuide.SetText(ButtonKey, ButtonDescription);
                         _stayingPlayer = player;
                         break;
                 }
@@ -93,7 +100,7 @@ namespace Sevens.Events
                 return;
             if (!IsStaying)
                 return;
-            if (!Input.GetButtonDown(_buttonName))
+            if (!Input.GetButtonDown(ButtonName))
                 return;
             OnInteraction?.Invoke(_stayingPlayer);
             _alreadyTriggered = true;

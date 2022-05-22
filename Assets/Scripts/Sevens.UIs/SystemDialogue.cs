@@ -56,14 +56,12 @@ namespace Sevens.UIs
 
         public void Display(SystemDialogueDisplayOption option)
         {
-            Debug.Log($"Called Display");
-
             var displayed = _coroutine.IsActive("Display");
 
             _coroutine.KillAll();
 
             var seq = DOTween.Sequence();
-            if (displayed)
+            if (displayed && Mathf.Approximately(1f, _canvasGroup.alpha))
             {
                 //_canvasGroup.alpha = 1f;
                 seq.Append(FadeOut(_canvasGroup.alpha * _currentOption.FadeDuration));

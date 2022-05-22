@@ -6,8 +6,10 @@ using Sevens.Speeches;
 using Sevens.Entities.Players;
 using Sevens.Utils;
 using Sevens.Interfaces;
+using Sevens.UIs;
+using Sevens.Events;
 
-public class SavePointEntity : InteractableEntity
+public class SavePointEntity : MonoBehaviour
 {
     private bool _dialogueAlreadyExists;
 
@@ -21,8 +23,9 @@ public class SavePointEntity : InteractableEntity
 
     [SerializeField] Player player;
     [SerializeField] Sprite _angelAvatar;
+    [SerializeField] SystemDialogue _systemDialogue;
 
-    protected override void Start()
+    private void Start()
     {
         var playerObj = GameObject.Find("Player");
 
@@ -32,20 +35,14 @@ public class SavePointEntity : InteractableEntity
         }
 
         player = playerObj.GetComponent<Player>();
-    }
 
-    protected override void Update() {
-        base.Update();
-        if (Physics2D.OverlapCircle(transform.position, 4, playerLayer) && isClicked) {
-            if (_dialogueAlreadyExists)
-            {
-                return;
-            }
-
-            Interact();
+        if (player.Achievements.GetData(PlayerDataKeyType.FirstContactCompleted) == "1")
+        {
+            ChangeButtonTooltip();
         }
     }
-    protected override void Interact() {
+
+    public void Interact() {
         if (player.Achievements.GetData(PlayerDataKeyType.FirstContactCompleted) != "1")
         {
             _dialogueAlreadyExists = true;
@@ -60,6 +57,22 @@ public class SavePointEntity : InteractableEntity
         }
     }
 
+    public void DisplaySystemDialogue()
+    {
+        if (player.Achievements.GetData(PlayerDataKeyType.FirstContactCompleted) != "1")
+        {
+            _systemDialogue.Display("상호작용 하려면 <color=yellow>V</color> 키를 누르십시오.", -1);
+        }
+    }
+
+    public void HideSystemDialogue()
+    {
+        if (player.Achievements.GetData(PlayerDataKeyType.FirstContactCompleted) != "1")
+        {
+            _systemDialogue.Display(null, 0);
+        }
+    }
+
     private IEnumerator FirstContactDialogue()
     {
         yield return DialogueManager.Instance.StartDialogue(FirstContactDialogue1());
@@ -67,6 +80,7 @@ public class SavePointEntity : InteractableEntity
         yield return DelayedParticle();
         yield return DialogueManager.Instance.StartDialogue(FirstContactDialogue2());
         player.Achievements.SetData(PlayerDataKeyType.FirstContactCompleted, "1");
+        ChangeButtonTooltip();
     }
 
     private IEnumerator FirstContactDialogue1() {
@@ -90,5 +104,11 @@ public class SavePointEntity : InteractableEntity
         yield return new WaitForSeconds(1.0f);
         particleGlow.SetActive(true);
         yield return new WaitForSeconds(0.5f);
+    }
+
+    private void ChangeButtonTooltip()
+    {
+        var et = transform.GetComponentInChildren<EventTrigger>();
+        et.ButtonDescription = "저장";
     }
 }
