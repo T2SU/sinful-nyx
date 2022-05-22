@@ -214,11 +214,13 @@ MeshRenderer:
   m_Materials:
   - {fileID: 2100000, guid: 05469b3620625ce42841abb39de55ac0, type: 2}
   - {fileID: 2100000, guid: c36470f14aea9154b87113dbb9a7348d, type: 2}
-  - {fileID: 2100000, guid: 05469b3620625ce42841abb39de55ac0, type: 2}
   - {fileID: 2100000, guid: c36470f14aea9154b87113dbb9a7348d, type: 2}
   - {fileID: 2100000, guid: 05469b3620625ce42841abb39de55ac0, type: 2}
   - {fileID: 2100000, guid: c36470f14aea9154b87113dbb9a7348d, type: 2}
   - {fileID: 2100000, guid: 05469b3620625ce42841abb39de55ac0, type: 2}
+  - {fileID: 2100000, guid: c36470f14aea9154b87113dbb9a7348d, type: 2}
+  - {fileID: 2100000, guid: 05469b3620625ce42841abb39de55ac0, type: 2}
+  - {fileID: 2100000, guid: c36470f14aea9154b87113dbb9a7348d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -517,7 +519,6 @@ MonoBehaviour:
   - {fileID: 477775398}
   - {fileID: 1119759685}
   - {fileID: 2095450343}
-  - {fileID: 1326181139}
   - {fileID: 1620735204}
   _evasions: []
 --- !u!61 &25280508
@@ -3336,6 +3337,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 81185308, guid: fc58943569a35c24baa3ed8bf1ad1ce5, type: 3}
+      propertyPath: _hp
+      value: 10000
+      objectReference: {fileID: 0}
+    - target: {fileID: 81185308, guid: fc58943569a35c24baa3ed8bf1ad1ce5, type: 3}
+      propertyPath: <MaxHp>k__BackingField
+      value: 10000
+      objectReference: {fileID: 0}
     - target: {fileID: 3010400537335858201, guid: fc58943569a35c24baa3ed8bf1ad1ce5, type: 3}
       propertyPath: m_SortingLayer
       value: -1
@@ -3515,6 +3524,10 @@ PrefabInstance:
     - target: {fileID: 3010400537335858215, guid: fc58943569a35c24baa3ed8bf1ad1ce5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5417075014461613171, guid: fc58943569a35c24baa3ed8bf1ad1ce5, type: 3}
+      propertyPath: m_RootOrder
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 7909139560218540118, guid: fc58943569a35c24baa3ed8bf1ad1ce5, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -4136,7 +4149,7 @@ RectTransform:
   - {fileID: 664855455}
   - {fileID: 304372470}
   m_Father: {fileID: 1525679414}
-  m_RootOrder: 12
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
