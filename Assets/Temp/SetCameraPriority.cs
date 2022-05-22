@@ -16,24 +16,19 @@ public class SetCameraPriority : MonoBehaviour
     private Player _player;
 
     [SerializeField]
-    private PlayableDirector _playable;
+    private PlayableDirector _playableDirector;
 
-    private int _priority;
-
-    private void Awake()
+    private void Start()
     {
-        _virtualCamera = GetComponent<CinemachineVirtualCamera>();
-
         if (_player.Achievements.GetData(PlayerDataKeyType.TutorialStageEntered) != "1")
         {
-            _playable.Play();
+            _virtualCamera.Priority = 11;
+            _playableDirector.Play();
             _player.Achievements.SetData(PlayerDataKeyType.TutorialStageEntered, "1");
         }
         else
         {
-            _priority = 9;
+            _virtualCamera.Priority = 9;
         }
-
-        _virtualCamera.Priority = _priority;
     }
 }
