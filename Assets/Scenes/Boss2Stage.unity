@@ -308,7 +308,7 @@ MonoBehaviour:
   OnHpRatioChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1843781252}
         m_TargetAssemblyTypeName: Sevens.UIs.AnimatedGauge, Assembly-CSharp
         m_MethodName: UpdateBar
         m_Mode: 0
@@ -323,7 +323,7 @@ MonoBehaviour:
   OnHpRatioInitialSet:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1843781252}
         m_TargetAssemblyTypeName: Sevens.UIs.AnimatedGauge, Assembly-CSharp
         m_MethodName: SetBar
         m_Mode: 0
@@ -3220,7 +3220,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7835892577612198735, guid: 160f0309db9d25d4680a3cf8705caf67, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -22.181604
+      value: -22.179768
       objectReference: {fileID: 0}
     - target: {fileID: 7835892577612198735, guid: 160f0309db9d25d4680a3cf8705caf67, type: 3}
       propertyPath: m_LocalPosition.y
