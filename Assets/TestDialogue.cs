@@ -10,6 +10,7 @@ public class TestDialogue : MonoBehaviour
     }
 
     private IEnumerator Test() {
-        yield return new Dialogue("심영", null, "의사양반! 나 좀 살려주시오...");
+        //yield return new DialogueRunner("심영", null, "의사양반! 나 좀 살려주시오...");
+        yield return null;
     }
 }

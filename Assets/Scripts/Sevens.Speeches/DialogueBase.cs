@@ -49,23 +49,23 @@ namespace Sevens.Speeches
             }
         }
 
-        public void SendSpeech(string speaker, Sprite speakerAvatar, string text)
+        public void SendSpeech(Dialogue dialogue)
         {
             if (_closed)
             {
                 Completed = true;
                 return;
             }
-            if (!Dialogue.Running)
+            if (!DialogueRunner.Running)
                 throw new InvalidOperationException("Please use FieldManager.Instance.StartDialogue() method.");
             Completed = false;
-            _speakerText.text = speaker;
-            _speakerAvatar.sprite = speakerAvatar;
-            if (speakerAvatar == null)
+            _speakerText.text = dialogue._speakerName;
+            _speakerAvatar.sprite = dialogue._speakerAvatar;
+            if (dialogue._speakerAvatar == null)
                 _speakerAvatar.color = new Color(0, 0, 0, 0);
             else
                 _speakerAvatar.color = Color.white;
-            _speechSystem.DisplaySpeech(text, Font, FontSize, LetterSpacing);
+            _speechSystem.DisplaySpeech(dialogue._dialogueText, Font, FontSize, LetterSpacing);
         }
     }
 }

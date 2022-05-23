@@ -38,6 +38,7 @@ public class GateEntity : InteractableEntity
 
     private IEnumerator LockedDialogue()
     {
-        yield return new Dialogue("닉스", null, "봉인이 되어있어 들어갈 수 없어.");
+        //yield return new DialogueRunner("닉스", null, "봉인이 되어있어 들어갈 수 없어.");
+        yield return null;
     }
 }

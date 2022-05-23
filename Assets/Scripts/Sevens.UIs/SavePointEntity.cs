@@ -25,6 +25,13 @@ public class SavePointEntity : MonoBehaviour
     [SerializeField] Sprite _angelAvatar;
     [SerializeField] SystemDialogue _systemDialogue;
 
+    [SerializeField]
+    private TextAsset script1;
+    [SerializeField]
+    private TextAsset script2;
+    private ScriptData scriptData1;
+    private ScriptData scriptData2;
+
     private void Start()
     {
         var playerObj = GameObject.Find("Player");
@@ -40,6 +47,9 @@ public class SavePointEntity : MonoBehaviour
         {
             ChangeButtonTooltip();
         }
+        scriptData1 = new ScriptData(script1);
+        scriptData2 = new ScriptData(script2);
+
     }
 
     public void Interact() {
@@ -75,29 +85,29 @@ public class SavePointEntity : MonoBehaviour
 
     private IEnumerator FirstContactDialogue()
     {
-        yield return DialogueManager.Instance.StartDialogue(FirstContactDialogue1());
+        yield return DialogueManager.Instance.StartDialogue(scriptData1.StartConversation());
         player.SetDirectionMode(true);
         yield return DelayedParticle();
-        yield return DialogueManager.Instance.StartDialogue(FirstContactDialogue2());
+        yield return DialogueManager.Instance.StartDialogue(scriptData2.StartConversation());
         player.Achievements.SetData(PlayerDataKeyType.FirstContactCompleted, "1");
         ChangeButtonTooltip();
     }
 
-    private IEnumerator FirstContactDialogue1() {
-        yield return new Dialogue("닉스", null, "눈 먼 천사 석상... 이게 왜 이런 곳에...?");
-        yield return new Dialogue("닉스", null, "분명 주인님이 #red'잃어버렸다'#white고 하셨는데...");
-        yield return new Dialogue("석상의 하단부", null, "#bold'소원을 들어드립니다. 도전하시겠습니까?'");
-        yield return new Dialogue("닉스", null, "그래, 중요한 건 그게 아니야. 나는 주인님을 살려야 해.");
-        yield return new Dialogue("닉스", null, "당신이 정말 전설 속 소원을 이루어주는 천사라면, 뭐든 도전 할게요.");
-    }
+    //private IEnumerator FirstContactDialogue1() {
+    //    yield return new DialogueRunner("닉스", null, "눈 먼 천사 석상... 이게 왜 이런 곳에...?");
+    //    yield return new DialogueRunner("닉스", null, "분명 주인님이 #red'잃어버렸다'#white고 하셨는데...");
+    //    yield return new DialogueRunner("석상의 하단부", null, "#bold'소원을 들어드립니다. 도전하시겠습니까?'");
+    //    yield return new DialogueRunner("닉스", null, "그래, 중요한 건 그게 아니야. 나는 주인님을 살려야 해.");
+    //    yield return new DialogueRunner("닉스", null, "당신이 정말 전설 속 소원을 이루어주는 천사라면, 뭐든 도전 할게요.");
+    //}
 
-    private IEnumerator FirstContactDialogue2() {
-        yield return new Dialogue("천사", _angelAvatar, "도전자여, 생기없는 몸에 혼이 깃든 도전자여. 소중한 이를 살리고자 한다면 죄악의 벽을 넘어라.");
-        yield return new Dialogue("천사", _angelAvatar, "분노, 폭식, 질투, 탐욕, 색욕, 나태, 오만. 그 벽 너머에 해답이 있을 것이니.");
-        yield return new Dialogue("천사", _angelAvatar, "그대의 #yellow'도전'#white에 행운이 함께하길.");
+    //private IEnumerator FirstContactDialogue2() {
+    //    yield return new DialogueRunner("천사", _angelAvatar, "도전자여, 생기없는 몸에 혼이 깃든 도전자여. 소중한 이를 살리고자 한다면 죄악의 벽을 넘어라.");
+    //    yield return new DialogueRunner("천사", _angelAvatar, "분노, 폭식, 질투, 탐욕, 색욕, 나태, 오만. 그 벽 너머에 해답이 있을 것이니.");
+    //    yield return new DialogueRunner("천사", _angelAvatar, "그대의 #yellow'도전'#white에 행운이 함께하길.");
 
-        _dialogueAlreadyExists = false;
-    }
+    //    _dialogueAlreadyExists = false;
+    //}
 
     private IEnumerator DelayedParticle() {
         particleBlink.SetActive(true);

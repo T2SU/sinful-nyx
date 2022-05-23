@@ -1,32 +1,39 @@
-﻿// The Seven deadly Sins
-//
-// Author  Seong Jun Mun (Tensiya(T2SU))
-//         (liblugia@gmail.com)
-//
-
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.UI;
+using Sevens.Entities.Players;
 
 namespace Sevens.Speeches
 {
-    public class Dialogue : CustomYieldInstruction
+    public class Dialogue
     {
-        public static bool Running { get; private set; }
+        private string[] datalist;
+        public string _dialogueText;
+        public string _speakerName;
+        public Sprite _speakerAvatar;
 
-        public Dialogue(string speaker, Sprite speakerAvatar, string text)
+        public Dialogue(string dialogueData)
         {
-            Running = true;
-            DialogueManager.Instance.DialogueBase.SendSpeech(speaker, speakerAvatar, text);
-        }
+            datalist = dialogueData.Split(',');
+            
+            _speakerName = GetData(DialogueInfoType.Speaker);
 
-        public override bool keepWaiting
-        {
-            get
+            if (GetData(DialogueInfoType.Avatar) != "null")
             {
-                if (!DialogueManager.Instance.DialogueBase.Completed)
-                    return true;
-                Running = false;
-                return false;
+                _speakerAvatar = Resources.Load<Sprite>(GetData(DialogueInfoType.Avatar));
             }
+            else
+            {
+                _speakerAvatar = null;
+            }
+
+            _dialogueText = GetData(DialogueInfoType.Text);
         }
+
+        private string GetData(DialogueInfoType type) => datalist[(int)type];
     }
 }
