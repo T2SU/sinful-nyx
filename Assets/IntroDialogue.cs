@@ -9,6 +9,8 @@ public class IntroDialogue : MonoBehaviour
 {
     public GameObject ToActivate;
     public Player Player;
+    [SerializeField]
+    private ScriptObject _introScript;
 
     private void Start() {
         if(Player.Achievements.GetData(PlayerDataKeyType.FirstContactCompleted) != "1")
@@ -20,15 +22,11 @@ public class IntroDialogue : MonoBehaviour
 
     private IEnumerator Dialogues()
     {
-        //yield return DialogueManager.Instance.StartDialogue(Intro());
+        yield return DialogueManager.Instance.StartDialogue(_introScript.PlayScript());
+        ToActivate?.SetActive(true);
         Player.SetDirectionMode(true);
         yield return new WaitForSeconds(4.0f);
         Player.SetDirectionMode(false);
     }
 
-    //private IEnumerator Intro() {
-    //    yield return new DialogueRunner("닉스", null, "…주인님?");
-    //    yield return new DialogueRunner("닉스", null, "여긴… 어디?");
-    //    ToActivate?.SetActive(true);
-    //}
 }

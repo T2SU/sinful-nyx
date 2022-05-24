@@ -3880,14 +3880,6 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1133219635780475033, guid: 42ff9b5330b41084a984db663edef3a7, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 1133219635780475033, guid: 42ff9b5330b41084a984db663edef3a7, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 1133219635780475033, guid: 42ff9b5330b41084a984db663edef3a7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.949
       objectReference: {fileID: 0}
@@ -4125,6 +4117,10 @@ PrefabInstance:
       propertyPath: _player
       value: 
       objectReference: {fileID: 939944929}
+    - target: {fileID: 1422242601767118531, guid: e3e06fb6663a3d1489883bc203859e3a, type: 3}
+      propertyPath: _lockedDialogue.scriptFile
+      value: 
+      objectReference: {fileID: 4900000, guid: 5bc98f1e8ff6bb9498639c1dd399057d, type: 3}
     - target: {fileID: 1422242601767118557, guid: e3e06fb6663a3d1489883bc203859e3a, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -6540,7 +6536,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7909139560218540118, guid: fc58943569a35c24baa3ed8bf1ad1ce5, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -14.600037
+      value: -14.600098
       objectReference: {fileID: 0}
     - target: {fileID: 7909139560218540118, guid: fc58943569a35c24baa3ed8bf1ad1ce5, type: 3}
       propertyPath: m_AnchoredPosition.y
