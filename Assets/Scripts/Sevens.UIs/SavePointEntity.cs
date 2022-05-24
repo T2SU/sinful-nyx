@@ -54,7 +54,7 @@ public class SavePointEntity : MonoBehaviour
         {
             UIManager.Instance.Popup("저장 하시겠습니까?", "예", "아니오", () => {
                 SaveManager.SaveGame();
-                //DialogueManager.Instance.DisplayHudMessage("데이터가 저장되었습니다.");
+                DialogueManager.Instance.DisplayHudMessage("데이터가 저장되었습니다.");
             });
         }
     }
