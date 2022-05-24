@@ -3308,7 +3308,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
   SystemDialogue: {fileID: 0}
-  script:
+  _script:
     scriptFile: {fileID: 0}
 --- !u!1 &904606093 stripped
 GameObject:
@@ -3939,6 +3939,10 @@ PrefabInstance:
       propertyPath: SystemDialogue
       value: 
       objectReference: {fileID: 941323805}
+    - target: {fileID: 1133219635780475038, guid: 42ff9b5330b41084a984db663edef3a7, type: 3}
+      propertyPath: _script.scriptFile
+      value: 
+      objectReference: {fileID: 4900000, guid: 07613b37e784666478d40c390f351602, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 42ff9b5330b41084a984db663edef3a7, type: 3}
 --- !u!1 &1278956865
@@ -4659,7 +4663,7 @@ PrefabInstance:
       objectReference: {fileID: 4127929886744685968}
     - target: {fileID: 7835892576618123534, guid: 160f0309db9d25d4680a3cf8705caf67, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -65.779305
+      value: -134.9993
       objectReference: {fileID: 0}
     - target: {fileID: 7835892576618123534, guid: 160f0309db9d25d4680a3cf8705caf67, type: 3}
       propertyPath: m_LocalPosition.y
@@ -6464,7 +6468,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3010400537335858215, guid: fc58943569a35c24baa3ed8bf1ad1ce5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -65.78
+      value: -135
       objectReference: {fileID: 0}
     - target: {fileID: 3010400537335858215, guid: fc58943569a35c24baa3ed8bf1ad1ce5, type: 3}
       propertyPath: m_LocalPosition.y
