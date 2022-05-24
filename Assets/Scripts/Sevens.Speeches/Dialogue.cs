@@ -19,24 +19,20 @@ namespace Sevens.Speeches
 
         public Dialogue(string dialogueData) 
         {
-            _datalist = dialogueData.Split('%');
+            _datalist = dialogueData.Split('\t');
             
             SpeakerName = GetData(DialogueInfoType.Speaker);
 
             if (GetData(DialogueInfoType.Avatar) != "null")
             {
-                SpeakerAvatarSprite = Resources.Load<Sprite>(GetData(DialogueInfoType.Avatar));
+                SpeakerAvatarSprite = Resources.Load<Sprite>("Avatar/" + GetData(DialogueInfoType.Avatar));
             }
             else
             {
                 SpeakerAvatarSprite = null;
             }
 
-            DialogueText = GetData(DialogueInfoType.Text);
-
-            Debug.Log(GetData(DialogueInfoType.Speaker));
-            Debug.Log(GetData(DialogueInfoType.Avatar));
-            Debug.Log(GetData(DialogueInfoType.Text));
+            DialogueText = GetData(DialogueInfoType.Text).Replace("\\n", "\n");
         }
 
         public DialogueRunner StartDialogue()

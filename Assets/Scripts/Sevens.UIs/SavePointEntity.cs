@@ -26,7 +26,7 @@ public class SavePointEntity : MonoBehaviour
     [SerializeField] SystemDialogue _systemDialogue;
 
     [SerializeField]
-    private ScriptObject[] _scripts;
+    private ScriptObject _scripts;
 
     private void Start()
     {
@@ -77,12 +77,10 @@ public class SavePointEntity : MonoBehaviour
 
     private IEnumerator FirstContactDialogue()
     {
-        yield return DialogueManager.Instance.StartDialogue(_scripts[0].PlayScript());
-        //player.SetDirectionMode(true);
-        yield return DelayedParticle();
-        yield return DialogueManager.Instance.StartDialogue(_scripts[1].PlayScript());
-        player.Achievements.SetData(PlayerDataKeyType.FirstContactCompleted, "1");
+        yield return DialogueManager.Instance.StartDialogue(_scripts.PlayScript());
         ChangeButtonTooltip();
+        yield return DelayedParticle();
+        player.Achievements.SetData(PlayerDataKeyType.FirstContactCompleted, "1");
     }
     private IEnumerator DelayedParticle() {
         particleBlink.SetActive(true);

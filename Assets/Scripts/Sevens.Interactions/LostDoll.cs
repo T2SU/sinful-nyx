@@ -18,7 +18,8 @@ namespace Sevens.Interactions
 
         public void Interaction()
         {
-            StartCoroutine(Dialogue());
+            if(!_script.AleadyExcuted)
+                StartCoroutine(Dialogue());
         }
 
         public void DisplaySystemDialogue()

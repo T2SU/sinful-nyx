@@ -7,6 +7,7 @@ using Sevens.Utils;
 using UnityEngine.Timeline;
 using UnityEngine.Playables;
 using Sevens.UIs;
+using Sevens.Speeches;
 
 public class SetCameraPriority : MonoBehaviour
 {
@@ -22,6 +23,8 @@ public class SetCameraPriority : MonoBehaviour
     [SerializeField]
     private SystemDialogue _systemDialogue;
 
+    [SerializeField]
+    private ScriptObject _scripts;
 
     enum DisplayStep { None, Waiting, Triggered }
 
@@ -47,15 +50,15 @@ public class SetCameraPriority : MonoBehaviour
         }
     }
 
-    private void Update()
+    public void StartIntroConversation()
     {
-        if (_displayedMoveTutorial == DisplayStep.Waiting)
-        {
-            if (_playableDirector.state != PlayState.Playing)
-            {
-                _displayedMoveTutorial = DisplayStep.Triggered;
-                _systemDialogue.Display("방향키<color=yellow>(←→)</color>를 눌러 <color=skyblue>좌우 이동</color> 할 수 있습니다.", 2);
-            }
-        }
+        StartCoroutine(DelayDialogue());
+    }
+
+    private IEnumerator DelayDialogue()
+    {
+        yield return DialogueManager.Instance.StartDialogue(_scripts.PlayScript());
+        _displayedMoveTutorial = DisplayStep.Triggered;
+        _systemDialogue.Display("방향키<color=yellow>(←→)</color>를 눌러 <color=skyblue>좌우 이동</color> 할 수 있습니다.", 2);
     }
 }

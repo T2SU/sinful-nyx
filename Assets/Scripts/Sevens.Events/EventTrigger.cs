@@ -100,10 +100,11 @@ namespace Sevens.Events
                 return;
             if (!IsStaying)
                 return;
-            if (!Input.GetButtonDown(ButtonName))
-                return;
-            OnInteraction?.Invoke(_stayingPlayer);
-            _alreadyTriggered = true;
+            if (Input.GetButtonDown(ButtonName))
+            {
+                OnInteraction?.Invoke(_stayingPlayer);
+                _alreadyTriggered = true;
+            }
         }
     }
 }

@@ -17,6 +17,13 @@ namespace Sevens.Speeches
         private string[] _dialogueInfos;
         private List<Dialogue> _dialogues;
 
+        public bool AleadyExcuted { get; private set; }
+
+        ScriptObject()
+        {
+            AleadyExcuted = false;
+        }
+
         private void SplitScriptFile()
         {
             _dialogues = new List<Dialogue>();
@@ -43,6 +50,7 @@ namespace Sevens.Speeches
                 for (int i = 0; i < _dialogueInfos.Length - 1; ++i)
                     yield return _dialogues[i].StartDialogue();
             }
+            AleadyExcuted = true;
         }
     }
 }
