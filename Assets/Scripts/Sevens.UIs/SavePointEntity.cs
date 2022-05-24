@@ -81,6 +81,7 @@ public class SavePointEntity : MonoBehaviour
         yield return DialogueManager.Instance.StartDialogue(FirstContactDialogue2());
         player.Achievements.SetData(PlayerDataKeyType.FirstContactCompleted, "1");
         ChangeButtonTooltip();
+        _systemDialogue.Display(null, -1);
     }
 
     private IEnumerator FirstContactDialogue1() {
