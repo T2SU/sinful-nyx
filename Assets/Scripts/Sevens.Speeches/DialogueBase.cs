@@ -59,13 +59,13 @@ namespace Sevens.Speeches
             if (!DialogueRunner.Running)
                 throw new InvalidOperationException("Please use FieldManager.Instance.StartDialogue() method.");
             Completed = false;
-            _speakerText.text = dialogue._speakerName;
-            _speakerAvatar.sprite = dialogue._speakerAvatar;
-            if (dialogue._speakerAvatar == null)
+            _speakerText.text = dialogue.SpeakerName;
+            _speakerAvatar.sprite = dialogue.SpeakerAvatarSprite;
+            if (dialogue.SpeakerAvatarSprite == null)
                 _speakerAvatar.color = new Color(0, 0, 0, 0);
             else
                 _speakerAvatar.color = Color.white;
-            _speechSystem.DisplaySpeech(dialogue._dialogueText, Font, FontSize, LetterSpacing);
+            _speechSystem.DisplaySpeech(dialogue.DialogueText, Font, FontSize, LetterSpacing);
         }
     }
 }

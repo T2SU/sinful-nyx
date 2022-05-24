@@ -11,29 +11,39 @@ namespace Sevens.Speeches
 {
     public class Dialogue
     {
-        private string[] datalist;
-        public string _dialogueText;
-        public string _speakerName;
-        public Sprite _speakerAvatar;
+        public string DialogueText { get; private set; }
+        public string SpeakerName { get; private set; }
+        public Sprite SpeakerAvatarSprite { get; private set; }
 
-        public Dialogue(string dialogueData)
+        private string[] _datalist;
+
+        public Dialogue(string dialogueData) 
         {
-            datalist = dialogueData.Split(',');
+            _datalist = dialogueData.Split('%');
             
-            _speakerName = GetData(DialogueInfoType.Speaker);
+            SpeakerName = GetData(DialogueInfoType.Speaker);
 
             if (GetData(DialogueInfoType.Avatar) != "null")
             {
-                _speakerAvatar = Resources.Load<Sprite>(GetData(DialogueInfoType.Avatar));
+                SpeakerAvatarSprite = Resources.Load<Sprite>(GetData(DialogueInfoType.Avatar));
             }
             else
             {
-                _speakerAvatar = null;
+                SpeakerAvatarSprite = null;
             }
 
-            _dialogueText = GetData(DialogueInfoType.Text);
+            DialogueText = GetData(DialogueInfoType.Text);
+
+            Debug.Log(GetData(DialogueInfoType.Speaker));
+            Debug.Log(GetData(DialogueInfoType.Avatar));
+            Debug.Log(GetData(DialogueInfoType.Text));
         }
 
-        private string GetData(DialogueInfoType type) => datalist[(int)type];
+        public DialogueRunner StartDialogue()
+        {
+            return new DialogueRunner(this);
+        }
+
+        private string GetData(DialogueInfoType type) => _datalist[(int)type];
     }
 }

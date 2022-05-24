@@ -14,11 +14,11 @@ namespace Sevens.Interactions
         public SystemDialogue SystemDialogue;
 
         [SerializeField]
-        private ScriptData script;
+        private ScriptObject _script;
 
         public void Interaction()
         {
-            DialogueManager.Instance.StartDialogue(Dialogue());
+            StartCoroutine(Dialogue());
         }
 
         public void DisplaySystemDialogue()
@@ -39,11 +39,7 @@ namespace Sevens.Interactions
 
         private IEnumerator Dialogue()
         {
-            yield return DialogueManager.Instance.StartDialogue(script.StartConversation());
-            //yield return new DialogueRunner("버려진 인형", null, "안녕? 네가 마지막이구나.");
-            //yield return new DialogueRunner("버려진 인형", null, "...");
-            //yield return new DialogueRunner("버려진 인형", null, "이걸 가져가. 내 영혼이야. 너를 도와줄거야.");
-
+            yield return DialogueManager.Instance.StartDialogue(_script.PlayScript());
             Player.Achievements.SetData(PlayerDataKeyType.UnlockedDash, "1");
             SystemDialogue.Display("<color=yellow>C</color> 키를 눌러 <color=skyblue>대쉬</color> 기술을 사용할 수 있습니다.", 4);
         }
