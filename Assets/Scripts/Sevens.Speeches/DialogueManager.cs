@@ -110,5 +110,6 @@ namespace Sevens.Speeches
             _coroutines = new CoroutineMan(this);
             _dialoguePrefab = Resources.Load<GameObject>("UI/Dialogue");
         }
+
     }
 }

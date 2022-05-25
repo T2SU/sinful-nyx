@@ -98,6 +98,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
   SystemDialogue: {fileID: 0}
+  _script:
+    scriptFile: {fileID: 0}
 --- !u!1001 &1133219635112633376
 PrefabInstance:
   m_ObjectHideFlags: 0

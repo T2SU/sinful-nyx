@@ -16,6 +16,8 @@ public class GateEntity : InteractableEntity
     private LayerMask playerLayer;
     [SerializeField]
     private Player _player;
+    [SerializeField]
+    private ScriptObject _lockedDialogue;
 
     protected override void Update() {
         base.Update();
@@ -23,7 +25,7 @@ public class GateEntity : InteractableEntity
         {
             if (_player.Achievements.GetData(PlayerDataKeyType.FirstContactCompleted) != "1")
             {
-                DialogueManager.Instance.StartDialogue(LockedDialogue());
+                DialogueManager.Instance.StartDialogue(_lockedDialogue.PlayScript());
             }
             else
             {
@@ -34,10 +36,5 @@ public class GateEntity : InteractableEntity
 
     protected override void Interact() {
         SceneManagement.Instance.LoadScene(sceneName);
-    }
-
-    private IEnumerator LockedDialogue()
-    {
-        yield return new Dialogue("닉스", null, "봉인이 되어있어 들어갈 수 없어.");
     }
 }
