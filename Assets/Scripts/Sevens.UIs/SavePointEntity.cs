@@ -80,8 +80,8 @@ public class SavePointEntity : MonoBehaviour
 
     private IEnumerator FirstContactDialogue()
     {
-        player.Achievements.SetData(PlayerDataKeyType.FirstContactCompleted, "1");
         yield return DialogueManager.Instance.StartDialogue(_scripts.PlayScript());
+        player.Achievements.SetData(PlayerDataKeyType.FirstContactCompleted, "1");
         yield return DelayedParticle();
         ChangeButtonTooltip();
         _systemDialogue.Display(null, -1);
