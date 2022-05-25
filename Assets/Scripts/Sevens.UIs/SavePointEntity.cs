@@ -28,6 +28,8 @@ public class SavePointEntity : MonoBehaviour
     [SerializeField]
     private ScriptObject _scripts;
 
+    public SystemDialogue SystemDialogue;
+
     private void Start()
     {
         var playerObj = GameObject.Find("Player");
@@ -54,7 +56,8 @@ public class SavePointEntity : MonoBehaviour
         {
             UIManager.Instance.Popup("저장 하시겠습니까?", "예", "아니오", () => {
                 SaveManager.SaveGame();
-                DialogueManager.Instance.DisplayHudMessage("데이터가 저장되었습니다.");
+                //DialogueManager.Instance.DisplayHudMessage("데이터가 저장되었습니다.");
+                SystemDialogue.Display("데이터가 저장되었습니다.", 2);
             });
         }
     }
@@ -77,9 +80,9 @@ public class SavePointEntity : MonoBehaviour
 
     private IEnumerator FirstContactDialogue()
     {
+        player.Achievements.SetData(PlayerDataKeyType.FirstContactCompleted, "1");
         yield return DialogueManager.Instance.StartDialogue(_scripts.PlayScript());
         yield return DelayedParticle();
-        player.Achievements.SetData(PlayerDataKeyType.FirstContactCompleted, "1");
         ChangeButtonTooltip();
         _systemDialogue.Display(null, -1);
     }

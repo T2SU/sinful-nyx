@@ -75,6 +75,7 @@ namespace Sevens.Utils
             if (Type == ConnectType.Or)
             {
                 conditionSatisfied = Conditions.Any(c => c.IsSatisfied(player));
+                Debug.Log(conditionSatisfied);
             }
             else
             {

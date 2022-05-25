@@ -5,6 +5,7 @@
         FirstContactCompleted,
         UnlockedDash,
         TutorialStageEntered,
+        BlinkCompleted,
 
         Number
     }

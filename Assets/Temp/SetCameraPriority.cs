@@ -52,7 +52,10 @@ public class SetCameraPriority : MonoBehaviour
 
     public void StartIntroConversation()
     {
+        _player.Achievements.SetData(PlayerDataKeyType.BlinkCompleted, "1");
+
         StartCoroutine(DelayDialogue());
+        SaveManager.SaveGame();
     }
 
     private IEnumerator DelayDialogue()
@@ -61,4 +64,5 @@ public class SetCameraPriority : MonoBehaviour
         _displayedMoveTutorial = DisplayStep.Triggered;
         _systemDialogue.Display("방향키<color=yellow>(←→)</color>를 눌러 <color=skyblue>좌우 이동</color> 할 수 있습니다.", 2);
     }
+
 }
