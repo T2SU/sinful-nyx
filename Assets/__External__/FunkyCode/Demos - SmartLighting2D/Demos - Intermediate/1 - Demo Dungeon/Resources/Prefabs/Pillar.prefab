@@ -46,10 +46,11 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -130,10 +131,11 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -193,28 +195,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shadowType: 1
   shadowLayer: 0
-  shadowEffectLayer: 0
   shadowDistance: 0
+  shadowDistanceMin: 0.5
+  shadowDistanceMax: 1
   shadowTranslucency: 0
   maskType: 1
+  maskLit: 0
+  maskPivot: 0
   maskLayer: 0
-  maskEffect: 0
-  mainShape:
-    shadowType: 1
-    maskType: 1
-    shadowDistance: 0
-    shadowTranslucency: 0
-    transform: {fileID: 4467452067215045007}
-  shapes:
-  - shadowType: 1
-    maskType: 1
-    shadowDistance: 0
-    shadowTranslucency: 0
-    transform: {fileID: 4467452067215045007}
+  maskLitCustom: 1
   bumpMapMode:
     type: 0
     textureType: 0
     texture: {fileID: 0}
     sprite: {fileID: 0}
-  applyToChildren: 0
-  usingEvents: 0
+    invertX: 0
+    invertY: 0
+    depth: 1
+    spriteRenderer: {fileID: 0}
+  mainShape:
+    shadowType: 1
+    maskType: 1
+    maskPivot: 0
+    transform: {fileID: 4467452067215045007}
