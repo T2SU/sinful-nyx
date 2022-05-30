@@ -31,7 +31,7 @@ namespace Sevens.Entities.Mobs
         protected NamedObject<AudioClip>[] _audioClips;
 
         [SerializeField]
-        protected NamedObject<AnimationReferenceAsset>[] _animations;
+        protected NamedObject<AnimationSet>[] _animations;
 
         [SerializeField]
         protected NamedObject<ActionEffectOption>[] _effects;
@@ -47,6 +47,7 @@ namespace Sevens.Entities.Mobs
         private Vector2 _velocity;
         private float _invincibleEnd;
         private Entity _killedBy;
+        private Animator _animator;
 
         [field: SerializeField]
         public MobState State { get; protected set; }
@@ -97,24 +98,36 @@ namespace Sevens.Entities.Mobs
             if (opt == null)
                 return 0f;
             var animName = opt.AnimationName;
-            AnimationReferenceAsset anim = _animations.FindByName(animName);
-            if (!IsCurrentAnimation(anim, opt.Track))
+            AnimationSet anim = _animations.FindByName(animName);
+            if (anim.SpineAnimation != null)
             {
-                TrackEntry trackEntry;
-                if (immediatelyTransition)
+                var spineAnim = anim.SpineAnimation;
+                if (!IsCurrentAnimation(spineAnim, opt.Track))
                 {
-                    trackEntry = _animationState.SetAnimation(opt.Track, anim, opt.Loop);
-                    trackEntry.TimeScale = opt.TimeScale;
-                    return trackEntry.Animation.Duration;
+                    TrackEntry trackEntry;
+                    if (immediatelyTransition)
+                    {
+                        trackEntry = _animationState.SetAnimation(opt.Track, spineAnim, opt.Loop);
+                        trackEntry.TimeScale = opt.TimeScale;
+                        return trackEntry.Animation.Duration;
+                    }
+                    else
+                    {
+                        var curTrack = _animationState.GetCurrent(opt.Track);
+                        if (curTrack != null)
+                            curTrack.Loop = false;
+                        trackEntry = _animationState.AddAnimation(opt.Track, spineAnim, opt.Loop, 0f);
+                        trackEntry.TimeScale = opt.TimeScale;
+                        return trackEntry.AnimationTime;
+                    }
                 }
-                else
+            }
+            else if (!string.IsNullOrEmpty(anim.AnimatorAnimation))
+            {
+                var animatorAnim = anim.AnimatorAnimation;
+                if (!IsCurrentAnimation(animatorAnim))
                 {
-                    var curTrack = _animationState.GetCurrent(opt.Track);
-                    if (curTrack != null)
-                        curTrack.Loop = false;
-                    trackEntry = _animationState.AddAnimation(opt.Track, anim, opt.Loop, 0f);
-                    trackEntry.TimeScale = opt.TimeScale;
-                    return trackEntry.AnimationTime;
+                    _animator.Play(animatorAnim);
                 }
             }
             return 0f;
@@ -261,6 +274,7 @@ namespace Sevens.Entities.Mobs
             _animationState = _skeletonAnimation.AnimationState;
             _rigidbody = GetComponent<Rigidbody2D>();
             _collider = GetComponent<Collider2D>();
+            _animator = GetComponent<Animator>();
             AudioSource = GetComponent<AudioSource>();
             Camera = GetComponent<VirtualCameraLinker>().Camera;
             _coroutines = new CoroutineMan(this);
@@ -335,12 +349,20 @@ namespace Sevens.Entities.Mobs
             _coroutines.Register("BounceBack", transform.DOMove(dest, 0.2f).SetLoops(1, LoopType.Yoyo));
         }
 
-        private bool IsCurrentAnimation(Spine.Animation anim, int trackIndex = 0)
+        private bool IsCurrentAnimation(Spine.Animation spineAnimation, int trackIndex = 0)
         {
             var current = _animationState.GetCurrent(trackIndex);
             if (current == null)
                 return false;
-            return current.Animation.Name == anim.Name;
+            return current.Animation.Name == spineAnimation.Name;
+        }
+
+        private bool IsCurrentAnimation(string animatorAnimation)
+        {
+            var infos = _animator.GetCurrentAnimatorClipInfo(0);
+            if (infos.Length == 0)
+                return false;
+            return infos[0].clip.name == animatorAnimation;
         }
 
         private void CheckExpireInvincible()

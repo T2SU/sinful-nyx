@@ -1476,27 +1476,49 @@ MonoBehaviour:
     Object: {fileID: 8300000, guid: 377a3a91aa6498d4cb70f0164a9b1c0a, type: 3}
   _animations:
   - Name: Idle
-    Object: {fileID: 11400000, guid: e76c108114eaf5141a72157684d0a560, type: 2}
+    Object:
+      AnimatorAnimation: 
+      SpineAnimation: {fileID: 11400000, guid: e76c108114eaf5141a72157684d0a560, type: 2}
   - Name: Move
-    Object: {fileID: 11400000, guid: e76c108114eaf5141a72157684d0a560, type: 2}
+    Object:
+      AnimatorAnimation: 
+      SpineAnimation: {fileID: 11400000, guid: e76c108114eaf5141a72157684d0a560, type: 2}
   - Name: Attack1
-    Object: {fileID: 11400000, guid: 0f31bfc67da2b164b804e1b963a292e8, type: 2}
+    Object:
+      AnimatorAnimation: 
+      SpineAnimation: {fileID: 11400000, guid: 0f31bfc67da2b164b804e1b963a292e8, type: 2}
   - Name: Attack2
-    Object: {fileID: 11400000, guid: 1792a514413581a4c80334860ca52ddf, type: 2}
+    Object:
+      AnimatorAnimation: 
+      SpineAnimation: {fileID: 11400000, guid: 1792a514413581a4c80334860ca52ddf, type: 2}
   - Name: Attack3
-    Object: {fileID: 11400000, guid: b352514c022ef7a42ae8c449f03e186d, type: 2}
+    Object:
+      AnimatorAnimation: 
+      SpineAnimation: {fileID: 11400000, guid: b352514c022ef7a42ae8c449f03e186d, type: 2}
   - Name: Skill1
-    Object: {fileID: 11400000, guid: a559bacf633f1524d9b26d15f371ad19, type: 2}
+    Object:
+      AnimatorAnimation: 
+      SpineAnimation: {fileID: 11400000, guid: a559bacf633f1524d9b26d15f371ad19, type: 2}
   - Name: Skill2
-    Object: {fileID: 11400000, guid: 38519aa06bb7b974cafe1343e6c76725, type: 2}
+    Object:
+      AnimatorAnimation: 
+      SpineAnimation: {fileID: 11400000, guid: 38519aa06bb7b974cafe1343e6c76725, type: 2}
   - Name: Skill3
-    Object: {fileID: 11400000, guid: 03c2d122dab089e408ca3e12b1b39079, type: 2}
+    Object:
+      AnimatorAnimation: 
+      SpineAnimation: {fileID: 11400000, guid: 03c2d122dab089e408ca3e12b1b39079, type: 2}
   - Name: Skill4
-    Object: {fileID: 11400000, guid: e2e3812ce13fdbe47aacd110c02ebd87, type: 2}
+    Object:
+      AnimatorAnimation: 
+      SpineAnimation: {fileID: 11400000, guid: e2e3812ce13fdbe47aacd110c02ebd87, type: 2}
   - Name: Ult
-    Object: {fileID: 11400000, guid: c1c5cd92dc16d2b46b7e52c5a637e58a, type: 2}
+    Object:
+      AnimatorAnimation: 
+      SpineAnimation: {fileID: 11400000, guid: c1c5cd92dc16d2b46b7e52c5a637e58a, type: 2}
   - Name: Die
-    Object: {fileID: 11400000, guid: 06b059434a79e634c8e7f02dda998207, type: 2}
+    Object:
+      AnimatorAnimation: 
+      SpineAnimation: {fileID: 11400000, guid: 06b059434a79e634c8e7f02dda998207, type: 2}
   _effects:
   - Name: HitBlood
     Object:
@@ -1900,7 +1922,7 @@ RectTransform:
   - {fileID: 240789112}
   - {fileID: 645403909}
   m_Father: {fileID: 1980984338}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
@@ -3042,11 +3064,11 @@ PrefabInstance:
       objectReference: {fileID: 1003403179}
     - target: {fileID: 7835892577612198735, guid: 160f0309db9d25d4680a3cf8705caf67, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.299302
+      value: -6.299305
       objectReference: {fileID: 0}
     - target: {fileID: 7835892577612198735, guid: 160f0309db9d25d4680a3cf8705caf67, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.016168118
+      value: -0.016170025
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 160f0309db9d25d4680a3cf8705caf67, type: 3}
