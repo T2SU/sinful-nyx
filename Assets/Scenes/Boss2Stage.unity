@@ -361,27 +361,49 @@ MonoBehaviour:
     Object: {fileID: 8300000, guid: c23f3c72164630c4182db1aac6b9fd56, type: 3}
   _animations:
   - Name: IdleNoHand
-    Object: {fileID: 11400000, guid: f702e2d1b8b58c247a4c501c62422672, type: 2}
+    Object:
+      AnimatorAnimation: 
+      SpineAnimation: {fileID: 11400000, guid: f702e2d1b8b58c247a4c501c62422672, type: 2}
   - Name: Idle
-    Object: {fileID: 11400000, guid: 52bb8055e0282a74fb506d94f19f7f4c, type: 2}
+    Object:
+      AnimatorAnimation: 
+      SpineAnimation: {fileID: 11400000, guid: 52bb8055e0282a74fb506d94f19f7f4c, type: 2}
   - Name: Skill1
-    Object: {fileID: 11400000, guid: 256c3be12b13b1b4d8f41956aec51ca9, type: 2}
+    Object:
+      AnimatorAnimation: 
+      SpineAnimation: {fileID: 11400000, guid: 256c3be12b13b1b4d8f41956aec51ca9, type: 2}
   - Name: Skill2_Twice
-    Object: {fileID: 11400000, guid: 7f31e5fee0f564e44b1490468aa85164, type: 2}
+    Object:
+      AnimatorAnimation: 
+      SpineAnimation: {fileID: 11400000, guid: 7f31e5fee0f564e44b1490468aa85164, type: 2}
   - Name: Skill2_Thrice
-    Object: {fileID: 11400000, guid: 5d55bdc00f1e8914dac4d6a964be9dd4, type: 2}
+    Object:
+      AnimatorAnimation: 
+      SpineAnimation: {fileID: 11400000, guid: 5d55bdc00f1e8914dac4d6a964be9dd4, type: 2}
   - Name: Skill3
-    Object: {fileID: 11400000, guid: d1e142faae50a27418357ff5227f9d52, type: 2}
+    Object:
+      AnimatorAnimation: 
+      SpineAnimation: {fileID: 11400000, guid: d1e142faae50a27418357ff5227f9d52, type: 2}
   - Name: Attack1
-    Object: {fileID: 11400000, guid: 587da4c8370c5a74b90518fea23b6299, type: 2}
+    Object:
+      AnimatorAnimation: 
+      SpineAnimation: {fileID: 11400000, guid: 587da4c8370c5a74b90518fea23b6299, type: 2}
   - Name: Attack2
-    Object: {fileID: 11400000, guid: 7556706389b0881469d684c02bca637e, type: 2}
+    Object:
+      AnimatorAnimation: 
+      SpineAnimation: {fileID: 11400000, guid: 7556706389b0881469d684c02bca637e, type: 2}
   - Name: Ult
-    Object: {fileID: 11400000, guid: a914aa85add8ec541b2ac4850d7d175d, type: 2}
+    Object:
+      AnimatorAnimation: 
+      SpineAnimation: {fileID: 11400000, guid: a914aa85add8ec541b2ac4850d7d175d, type: 2}
   - Name: LastDitch
-    Object: {fileID: 11400000, guid: a10676984e1b2d44eb0ca4f7e985fc5e, type: 2}
+    Object:
+      AnimatorAnimation: 
+      SpineAnimation: {fileID: 11400000, guid: a10676984e1b2d44eb0ca4f7e985fc5e, type: 2}
   - Name: Die
-    Object: {fileID: 11400000, guid: ea6da0482fdee42489e361fdbdf8596f, type: 2}
+    Object:
+      AnimatorAnimation: 
+      SpineAnimation: {fileID: 11400000, guid: ea6da0482fdee42489e361fdbdf8596f, type: 2}
   _effects:
   - Name: Warning_Normal
     Object:
@@ -3219,7 +3241,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7835892577612198735, guid: 160f0309db9d25d4680a3cf8705caf67, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -22.179768
+      value: -18.981606
       objectReference: {fileID: 0}
     - target: {fileID: 7835892577612198735, guid: 160f0309db9d25d4680a3cf8705caf67, type: 3}
       propertyPath: m_LocalPosition.y
