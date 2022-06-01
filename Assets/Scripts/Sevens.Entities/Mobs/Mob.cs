@@ -128,6 +128,8 @@ namespace Sevens.Entities.Mobs
                 if (!IsCurrentAnimation(animatorAnim))
                 {
                     _animator.Play(animatorAnim);
+                    var infos = _animator.GetCurrentAnimatorClipInfo(0);
+                    return infos[0].clip.length;
                 }
             }
             return 0f;
@@ -271,7 +273,10 @@ namespace Sevens.Entities.Mobs
         protected override void Awake()
         {
             _skeletonAnimation = GetComponent<SkeletonAnimation>();
+
+            if(_skeletonAnimation != null)
             _animationState = _skeletonAnimation.AnimationState;
+
             _rigidbody = GetComponent<Rigidbody2D>();
             _collider = GetComponent<Collider2D>();
             _animator = GetComponent<Animator>();
