@@ -146,6 +146,7 @@ namespace Sevens.Entities.Mobs
 
         public void SetVelocity(Vector2 velocity, bool linearly = true)
         {
+            if (_coroutines == null) _coroutines = new CoroutineMan(this);
             if (linearly)
                 _coroutines.Register("ChangeVelocity",
                     DOTween.To(() => _velocity, v => _velocity = velocity, velocity, 1f));
@@ -300,6 +301,7 @@ namespace Sevens.Entities.Mobs
 
         protected override void OnDisable()
         {
+            if (_coroutines == null) _coroutines = new CoroutineMan(this);
             _coroutines.KillAll();
         }
 
