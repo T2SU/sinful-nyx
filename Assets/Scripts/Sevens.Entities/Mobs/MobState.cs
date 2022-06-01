@@ -2,6 +2,6 @@
 {
     public enum MobState
     {
-        Wait, Idle, Move, Attack, Die
+        Wait, Idle, Move, Attack, Die, Hit
     }
 }

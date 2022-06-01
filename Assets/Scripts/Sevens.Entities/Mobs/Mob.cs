@@ -184,6 +184,12 @@ namespace Sevens.Entities.Mobs
                 _killedBy = source;
                 OnDeath();
             }
+            else
+            {
+                ChangeState(MobState.Hit);
+                PlayAnimation(new AnimationPlayOption("Hit"));
+            }
+
         }
 
         public Vector3? GetRandomInPositionV3(float xOffset = float.NaN)
@@ -272,7 +278,8 @@ namespace Sevens.Entities.Mobs
         protected override void Awake()
         {
             _skeletonAnimation = GetComponent<SkeletonAnimation>();
-            _animationState = _skeletonAnimation.AnimationState;
+            if (_skeletonAnimation != null)
+                _animationState = _skeletonAnimation.AnimationState;
             _rigidbody = GetComponent<Rigidbody2D>();
             _collider = GetComponent<Collider2D>();
             _animator = GetComponent<Animator>();

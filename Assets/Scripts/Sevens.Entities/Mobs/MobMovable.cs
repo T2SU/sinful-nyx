@@ -33,6 +33,13 @@ namespace Sevens.Entities.Mobs
             // 몬스터가 고정 타입일 경우 이동 안시킴.
             if (_moveType == MobMoveType.Stationary)
                 return;
+           
+            if (_mob.State == MobState.Hit)
+            {
+                if (_mob.IsDelayedByChangedState(0.3f))
+                    return;
+                _mob.ChangeState(MobState.Idle, playLoopAnimationByState: true);
+            }
 
             // 이동 또는 대기 상태가 아닐 경우, 몬스터의 속력을 0으로 만듦.
             if (_mob.State != MobState.Move && _mob.State != MobState.Idle)
@@ -48,6 +55,7 @@ namespace Sevens.Entities.Mobs
             var mobIsOnLeft = _mob.IsOnLeftBy(_playerTransform);
             if (mobIsOnLeft == _mob.transform.IsFacingLeft())
                 _mob.transform.SetFacingLeft(!mobIsOnLeft);
+
             if (Mathf.Abs(mobPos.x - playerPos.x) >= 2f)
             {
                 if (!_mob.IsVelocityChangingLinearly() && _mob.State == MobState.Idle)
