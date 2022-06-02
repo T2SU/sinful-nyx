@@ -58,20 +58,40 @@ namespace Sevens.Entities.Mobs
 
             if (Mathf.Abs(mobPos.x - playerPos.x) >= 2f)
             {
-                if (!_mob.IsVelocityChangingLinearly() && _mob.State == MobState.Idle)
+                if (!_mob.IsVelocityChangingLinearly())
                 {
-                    if (_mob.IsDelayedByChangedState(1.0f))
-                        return;
-                    _mob.ChangeState(MobState.Move, playLoopAnimationByState: true);
-                    _mob.SetVelocity(new Vector2(sign * _mob.MoveSpeed, 0), linearly: true);
+                    if (_mob.State == MobState.Idle)
+                    {
+                        if (_mob.IsDelayedByChangedState(1.0f))
+                            return;
+                        _mob.ChangeState(MobState.Move, playLoopAnimationByState: true);
+                        _mob.SetVelocity(new Vector2(sign * _mob.MoveSpeed, 0), linearly: true);
+                    }
                 }
             }
             else
             {
-                if (!_mob.IsVelocityChangingLinearly() && _mob.State == MobState.Move)
+                if (!_mob.IsVelocityChangingLinearly())
                 {
-                    _mob.ChangeState(MobState.Idle, playLoopAnimationByState: true);
-                    _mob.SetVelocity(Vector2.zero, linearly: true);
+                    if (_mob.State == MobState.Move)
+                    {
+                        _mob.ChangeState(MobState.Idle, playLoopAnimationByState: true);
+                        _mob.SetVelocity(Vector2.zero, linearly: true);
+                    }
+                }
+            }
+
+            // 보는 방향과 반대로 이동하려고 할 때, 이동 방향만 전환
+            if (!_mob.IsVelocityChangingLinearly())
+            {
+                if (_mob.State == MobState.Move)
+                {
+                    var vel = _mob.GetVelocity();
+                    if (Mathf.Sign(vel.x) != sign)
+                    {
+                        vel.x = -vel.x;
+                        _mob.SetVelocity(vel, linearly: false);
+                    }
                 }
             }
         }

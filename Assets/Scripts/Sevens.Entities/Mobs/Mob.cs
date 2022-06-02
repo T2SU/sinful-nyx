@@ -144,6 +144,8 @@ namespace Sevens.Entities.Mobs
             }
         }
 
+        public Vector2 GetVelocity() => _velocity;
+
         public void SetVelocity(Vector2 velocity, bool linearly = true)
         {
             if (_coroutines == null) _coroutines = new CoroutineMan(this);
