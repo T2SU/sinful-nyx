@@ -223,8 +223,8 @@ MonoBehaviour:
   - {fileID: 8159676861325557508}
   - {fileID: 1139744374203811927}
   m_Bounds:
-    m_Center: {x: -0.42953995, y: 1.8388655, z: 0}
-    m_Extent: {x: 0.42301503, y: 0.33684993, z: 0}
+    m_Center: {x: -0.4295409, y: 1.8388655, z: 0}
+    m_Extent: {x: 0.42301598, y: 0.33684993, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!1 &5237913686375686769
@@ -481,7 +481,7 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 1023697259096212479}
   m_Bounds:
-    m_Center: {x: -0.6258774, y: 1.5735826, z: 0}
+    m_Center: {x: -0.62587833, y: 1.5735826, z: 0}
     m_Extent: {x: 0.11925998, y: 0.13319999, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
@@ -530,7 +530,7 @@ GameObject:
   - component: {fileID: 1818437505}
   - component: {fileID: 6882680540446037114}
   - component: {fileID: 4739697617501389509}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: bat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -591,13 +591,13 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!70 &1818437504
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -782,7 +782,7 @@ MonoBehaviour:
   - {fileID: 8788871094905599780}
   - {fileID: 470036203929267366}
   m_Bounds:
-    m_Center: {x: -0.5787423, y: 1.8430612, z: 0}
-    m_Extent: {x: 0.41217452, y: 0.34036994, z: 0}
+    m_Center: {x: -0.57874185, y: 1.8430611, z: 0}
+    m_Extent: {x: 0.412175, y: 0.34037006, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
