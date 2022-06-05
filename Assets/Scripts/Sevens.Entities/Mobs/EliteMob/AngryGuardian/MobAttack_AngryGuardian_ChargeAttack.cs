@@ -21,6 +21,8 @@ namespace Sevens.Entities.Mobs
         [SerializeField]
         private float _chargeDuration;
 
+        [SerializeField]
+        private LayerMask _groundLayer;
 
         public override void Execute(Player player, MobAttackable attackManager)
         {
@@ -44,18 +46,21 @@ namespace Sevens.Entities.Mobs
 
             yield return new WaitForSeconds(animTime - WarningDuration);
             yield return WarningAction(attackManager);
-            var hit = Physics2D.Raycast(transform.position, Vector2.right * mob.GetFacingDirection(), _chargeDistance, LayerMask.NameToLayer("Ground"));
+            var obj = Instantiate(_chargeAttack, mob.transform.position, mob.transform.rotation);
+            obj.transform.parent = mob.transform;
+            var hit = Physics2D.Raycast(mob.transform.position, Vector2.right * mob.GetFacingDirection(), _chargeDistance, _groundLayer);
+
             if (hit)
             {
-                coroutines.Register("ChargeAttackMove", transform.DOMove(transform.position + new Vector3(hit.distance * mob.GetFacingDirection(), 0, 0), _chargeDuration));
+                Debug.Log("notMaxDistanceChargeAttack");
+                coroutines.Register("ChargeAttackMove", mob.transform.DOMove(transform.position + new Vector3(hit.distance * mob.GetFacingDirection(), 0, 0), _chargeDuration));
             }
             else
             {
-                coroutines.Register("ChargeAttackMove", transform.DOMove(transform.position + new Vector3(_chargeDuration * mob.GetFacingDirection(), 0, 0), _chargeDuration));
+                Debug.Log("MaxDistanceChargeAttack");
+                coroutines.Register("ChargeAttackMove", mob.transform.DOMove(transform.position + new Vector3(_chargeDistance * mob.GetFacingDirection(), 0, 0), _chargeDuration));
             }
             //mob.PlayAudio("ChargeAttack");
-            var obj = Instantiate(_chargeAttack, mob.transform.position, mob.transform.rotation);
-            obj.transform.parent = mob.transform;
             SetAllBlowSourceAs(obj, mob);
             _objs.Add(obj);
             yield return new WaitForSeconds(_chargeDuration);

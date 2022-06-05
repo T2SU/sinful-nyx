@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2496964719657847170}
   - component: {fileID: 98468675292807007}
   - component: {fileID: 1650684213155880013}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ChargeAttack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,4 +83,4 @@ MonoBehaviour:
   <DamageLayer>k__BackingField:
     serializedVersion: 2
     m_Bits: 8192
-  _destoryTime: 0.3
+  _destoryTime: 0.7

@@ -155,7 +155,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 348377571}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.53, y: -0.87, z: 0}
+  m_LocalPosition: {x: 7, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 478394051}
@@ -181,8 +181,11 @@ MonoBehaviour:
   Conditions: []
   _attackTimeScale: 1
   _chargeAttack: {fileID: 5166661082613108534, guid: 3c2448decd9f0af4c91807ec6320076b, type: 3}
-  _chargeDistance: 4
-  _chargeDuration: 0.3
+  _chargeDistance: 20
+  _chargeDuration: 0.7
+  _groundLayer:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!50 &348377574
 Rigidbody2D:
   serializedVersion: 4
@@ -217,7 +220,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.036778927, y: -0.055170536}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -228,7 +231,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 14.829389, y: 4.7148104}
+  m_Size: {x: 15, y: 6.177249}
   m_EdgeRadius: 0
 --- !u!1001 &387745215
 PrefabInstance:
@@ -304,11 +307,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1898867620057794920, guid: 1a733581e8cb8434eaaa7ade0e7d709d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.2413616
+      value: 11.48
       objectReference: {fileID: 0}
     - target: {fileID: 1898867620057794920, guid: 1a733581e8cb8434eaaa7ade0e7d709d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.8749447
+      value: -0.44
       objectReference: {fileID: 0}
     - target: {fileID: 1898867620057794920, guid: 1a733581e8cb8434eaaa7ade0e7d709d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -365,6 +368,22 @@ PrefabInstance:
     - target: {fileID: 8999212306362297757, guid: 1a733581e8cb8434eaaa7ade0e7d709d, type: 3}
       propertyPath: m_Offset.y
       value: -1.3428434
+      objectReference: {fileID: 0}
+    - target: {fileID: 8999212306362297758, guid: 1a733581e8cb8434eaaa7ade0e7d709d, type: 3}
+      propertyPath: _audioClips.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8999212306362297758, guid: 1a733581e8cb8434eaaa7ade0e7d709d, type: 3}
+      propertyPath: _audioClips.Array.data[0].Name
+      value: ChargeAttack
+      objectReference: {fileID: 0}
+    - target: {fileID: 8999212306362297758, guid: 1a733581e8cb8434eaaa7ade0e7d709d, type: 3}
+      propertyPath: _audioClips.Array.data[0].Object
+      value: 
+      objectReference: {fileID: 8300000, guid: c06ad4b3c33025643b8b2dd7dc0aa368, type: 3}
+    - target: {fileID: 8999212306362297758, guid: 1a733581e8cb8434eaaa7ade0e7d709d, type: 3}
+      propertyPath: _animations.Array.data[3].Object.AnimatorAnimation
+      value: stamp ready motion
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a733581e8cb8434eaaa7ade0e7d709d, type: 3}
@@ -588,7 +607,7 @@ CompositeCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_GeometryType: 0
+  m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
   m_ColliderPaths:
