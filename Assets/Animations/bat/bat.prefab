@@ -67,7 +67,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.32, y: 0}
+  m_Offset: {x: 0.28040957, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -78,7 +78,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 4, y: 6}
+  m_Size: {x: 3.1443348, y: 6}
   m_EdgeRadius: 0
 --- !u!114 &2517231601611274556
 MonoBehaviour:
@@ -99,7 +99,7 @@ MonoBehaviour:
   WarningEffectPosition: {fileID: 0}
   Conditions: []
   Attack: {fileID: 8303728960488018013, guid: 492322758e9b25046849f10a23ae0cc5, type: 3}
-  AttackTimeScale: 0.55
+  AttackTimeScale: 0.32
 --- !u!1 &607759727346573859
 GameObject:
   m_ObjectHideFlags: 0
@@ -357,6 +357,36 @@ Transform:
   - {fileID: 8159676861325557508}
   m_Father: {fileID: 3925869236636923031}
   m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5399416997451080911
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2220736194567764868}
+  m_Layer: 11
+  m_Name: newPivot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2220736194567764868
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5399416997451080911}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.66, y: 2.53, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3925869236636923031}
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5616798538448886236
 GameObject:
@@ -630,7 +660,7 @@ GameObject:
   - component: {fileID: 1818437505}
   - component: {fileID: 6882680540446037114}
   - component: {fileID: 4739697617501389509}
-  - component: {fileID: 5681993364848108939}
+  - component: {fileID: 7775090774487511095}
   m_Layer: 11
   m_Name: bat
   m_TagString: Untagged
@@ -657,6 +687,7 @@ Transform:
   - {fileID: 1023697259096212479}
   - {fileID: 8056946011872846230}
   - {fileID: 6142559545013969534}
+  - {fileID: 2220736194567764868}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -687,7 +718,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7840183510898444331}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -763,15 +794,11 @@ MonoBehaviour:
     Object:
       AnimatorAnimation: die
       SpineAnimation: {fileID: 0}
-  - Name: AfterAttack
-    Object:
-      AnimatorAnimation: move
-      SpineAnimation: {fileID: 0}
   _effects: []
   _invincible: 0
   <State>k__BackingField: 1
   <Name>k__BackingField: bat
-  <MoveSpeed>k__BackingField: 5
+  <MoveSpeed>k__BackingField: 3
 --- !u!114 &6882680540446037114
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -800,7 +827,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _moveType: 1
---- !u!114 &5681993364848108939
+  _newPivot: {fileID: 5399416997451080911}
+  _isSetNewPivot: 1
+--- !u!114 &7775090774487511095
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

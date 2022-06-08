@@ -1,4 +1,5 @@
-﻿using Sevens.Utils;
+﻿using Sevens.Entities.Players;
+using Sevens.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,10 @@ namespace Sevens.Entities.Mobs
 
         [SerializeField]
         private MobMoveType _moveType;
-
+        [SerializeField]
+        private GameObject _newPivot;
+        [SerializeField]
+        private bool _isSetNewPivot;
         private Transform _playerTransform;
 
         private void Awake()
@@ -27,6 +31,7 @@ namespace Sevens.Entities.Mobs
         {
             _playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
         }
+
 
         private void Update()
         {
@@ -48,14 +53,30 @@ namespace Sevens.Entities.Mobs
                 return;
             }
 
-            // 타입에 따른 몬스터 이동. Velocity를 조절할 수 있게 해줌.
-            var playerPos = _playerTransform.position;
-            var mobPos = _mob.transform.position;
-            var sign = Mathf.Sign(playerPos.x - mobPos.x);
+            var mobtransform = (_newPivot) == null ? _mob.transform : _newPivot.transform;
+            var mobPos = mobtransform.position;
             var mobIsOnLeft = _mob.IsOnLeftBy(_playerTransform);
-            if (mobIsOnLeft == _mob.transform.IsFacingLeft())
-                _mob.transform.SetFacingLeft(!mobIsOnLeft);
+            var playerPos = _playerTransform.position;
+            var sign = Mathf.Sign(playerPos.x - mobPos.x);
 
+            if (!_isSetNewPivot)
+            {
+                if (mobIsOnLeft == _mob.transform.IsFacingLeft())
+                    _mob.transform.SetFacingLeft(!mobIsOnLeft);
+            }
+            else
+            {
+                mobIsOnLeft = mobPos.x < playerPos.x;
+
+                if (mobIsOnLeft == mobtransform.IsFacingLeft())
+                    _mob.transform.SetFacingLeft(mobIsOnLeft, _newPivot.transform);
+                else
+                    _mob.transform.SetFacingLeft(mobIsOnLeft, _newPivot.transform);
+
+            }
+
+
+            // 타입에 따른 몬스터 이동. Velocity를 조절할 수 있게 해줌.
             if (Mathf.Abs(mobPos.x - playerPos.x) >= 2f)
             {
                 if (!_mob.IsVelocityChangingLinearly())

@@ -93,10 +93,17 @@ namespace Sevens.Utils
             return s.x < 0;
         }
 
-        public static void SetFacingLeft(this Transform tf, bool left)
+        public static void SetFacingLeft(this Transform tf, bool left, Transform _newPivot = null)
         {
             var s = tf.localScale;
             s.x = (left ? -1 : 1) * Mathf.Abs(s.x);
+
+            if (_newPivot != null && tf.localScale != s)
+            {
+                var gap = tf.position - _newPivot.position;
+                tf.position = new Vector2(_newPivot.position.x - Mathf.Abs(gap.x) * (left ? -1 : 1), tf.position.y);
+            }
+
             tf.localScale = s;
         }
 

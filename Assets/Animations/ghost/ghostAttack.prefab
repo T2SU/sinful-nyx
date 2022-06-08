@@ -67,8 +67,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.73829705, y: 0.117898166}
-  m_Size: {x: 1.8107588, y: 1.3453068}
+  m_Offset: {x: 0.5769196, y: 0.11789818}
+  m_Size: {x: 1.488004, y: 1.3453068}
   m_Direction: 1
 --- !u!114 &7475262267045179605
 MonoBehaviour:
@@ -95,4 +95,4 @@ MonoBehaviour:
   <DamageLayer>k__BackingField:
     serializedVersion: 2
     m_Bits: 8192
-  _destoryTime: 3
+  _destoryTime: 2
