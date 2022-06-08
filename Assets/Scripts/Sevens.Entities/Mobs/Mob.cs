@@ -261,7 +261,10 @@ namespace Sevens.Entities.Mobs
             }
             ActionEffectOption effect = _effects.FindByName(key);
             if (effect == null)
+            {
+                Debug.LogWarning($"Not found an effect '{key}' at '{name}'.");
                 return;
+            }
             if (effect.Particle != null)
             {
                 var obj = Instantiate(effect.Particle);
