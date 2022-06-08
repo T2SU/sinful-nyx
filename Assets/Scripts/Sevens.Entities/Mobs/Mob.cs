@@ -128,6 +128,7 @@ namespace Sevens.Entities.Mobs
                 if (!IsCurrentAnimation(animatorAnim))
                 {
                     _animator.Play(animatorAnim);
+                    return animatorAnim.Length;
                 }
             }
             return 0f;
