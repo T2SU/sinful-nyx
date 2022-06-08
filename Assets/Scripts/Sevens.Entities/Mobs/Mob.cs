@@ -81,6 +81,11 @@ namespace Sevens.Entities.Mobs
         {
             Debug.Log($"[Mob] [{name}] Changed State {State} -> {state}");
             State = state;
+
+            // 이동 또는 대기 상태가 아닐 경우, 몬스터의 속력을 0으로 만듦.
+            if (state != MobState.Move && state != MobState.Idle)
+                SetVelocity(Vector2.zero, linearly: false);
+
             Cooltime.Set("ChangedState");
             if (playLoopAnimationByState)
                 PlayAnimation(new AnimationPlayOption(state.ToString(), true));
