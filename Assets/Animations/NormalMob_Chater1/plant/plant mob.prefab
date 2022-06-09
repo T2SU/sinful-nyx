@@ -140,8 +140,8 @@ MonoBehaviour:
   - {fileID: 6731340247042205143}
   - {fileID: 4536388789486427340}
   m_Bounds:
-    m_Center: {x: -0.00000059604645, y: -0.0037750006, z: 0}
-    m_Extent: {x: 1.3700004, y: 1.9212251, z: 0}
+    m_Center: {x: 0.00000011920929, y: -0.0037750006, z: 0}
+    m_Extent: {x: 1.3700001, y: 1.9212251, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
   m_AutoRebind: 0
@@ -310,8 +310,8 @@ MonoBehaviour:
   - {fileID: 3067940126915134923}
   - {fileID: 7850709599006782635}
   m_Bounds:
-    m_Center: {x: 1.7354031, y: 0.24176593, z: 0}
-    m_Extent: {x: 0.3493095, y: 0.21230964, z: 0}
+    m_Center: {x: 1.7354026, y: 0.24176593, z: 0}
+    m_Extent: {x: 0.34930962, y: 0.21230964, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
   m_AutoRebind: 0
@@ -531,7 +531,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7391940238251215031
 Transform:
   m_ObjectHideFlags: 0
@@ -539,13 +539,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3421794347929120960}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.57, y: 2.99, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: 0.93664443, w: 0.35028175}
+  m_LocalPosition: {x: 0.29059106, y: 0.9768368, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7014680156537331345}
-  m_RootOrder: 11
+  m_Father: {fileID: 89952984679376700}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!2083052967 &5722137616113820613
 VisualEffect:
@@ -592,7 +592,7 @@ VFXRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3421794347929120960}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -726,7 +726,7 @@ MonoBehaviour:
   - {fileID: 8683082853883487394}
   - {fileID: 4792606904422129721}
   m_Bounds:
-    m_Center: {x: 1.2616005, y: 0.19690251, z: 0}
+    m_Center: {x: 1.2616003, y: 0.19690251, z: 0}
     m_Extent: {x: 0.5706445, y: 0.62606, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
@@ -864,7 +864,7 @@ MonoBehaviour:
   - {fileID: 6049059045085818857}
   - {fileID: 89952984679376700}
   m_Bounds:
-    m_Center: {x: 1.4412199, y: -0.5524273, z: 0}
+    m_Center: {x: 1.4412197, y: -0.5524273, z: 0}
     m_Extent: {x: 0.52308, y: 0.64, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
@@ -1055,6 +1055,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6049059045085818857}
+  - {fileID: 7391940238251215031}
   m_Father: {fileID: 7014680156537331345}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1264,7 +1265,6 @@ Transform:
   - {fileID: 4792606904422129721}
   - {fileID: 2475899197735585529}
   - {fileID: 7850709599006782635}
-  - {fileID: 7391940238251215031}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -1355,7 +1355,7 @@ MonoBehaviour:
   OnHpRatioInitialSet:
     m_PersistentCalls:
       m_Calls: []
-  _moveAbility: -1
+  _moveAbility: 0
   _audioClips:
   - Name: Attack
     Object: {fileID: 8300000, guid: ca15685cf8e9f8042a0a05629e15b1d4, type: 3}
@@ -1416,7 +1416,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81d3b17674e3a2d4798de42542b6dedd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveType: 1
+  _moveType: 2
   _newPivot: {fileID: 0}
   _isSetNewPivot: 0
 --- !u!114 &281930707065733659
@@ -1444,8 +1444,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dd0d5e8efacc9443ad319570e82007e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sprites: []
-  effect: {fileID: 0}
+  _effect: {fileID: 5722137616113820613}
+  fadeTimeMultiplier: 0.2
+  fadeTimer: 1
 --- !u!82 &8472112099193797908
 AudioSource:
   m_ObjectHideFlags: 0
