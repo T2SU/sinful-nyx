@@ -882,6 +882,8 @@ MonoBehaviour:
   _audioClips:
   - Name: Attack
     Object: {fileID: 8300000, guid: faee5f85e4d089c4c99fb770774eacdb, type: 3}
+  - Name: Die
+    Object: {fileID: 8300000, guid: c83d1ac51236a3a4cacec1b8351d417f, type: 3}
   _animations:
   - Name: Idle
     Object:
@@ -1412,7 +1414,7 @@ MonoBehaviour:
   - {fileID: 3175378950917686904}
   m_Bounds:
     m_Center: {x: 10.95185, y: -0.20843232, z: 0}
-    m_Extent: {x: 1.0114202, y: 1.2386748, z: 0}
+    m_Extent: {x: 1.0114202, y: 1.2386749, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
   m_AutoRebind: 0
@@ -1587,7 +1589,7 @@ MonoBehaviour:
   - {fileID: 1648509287293588052}
   - {fileID: 1651541126906641734}
   m_Bounds:
-    m_Center: {x: 11.978894, y: -0.3248521, z: 0}
+    m_Center: {x: 11.978894, y: -0.32485223, z: 0}
     m_Extent: {x: 0.8299999, y: 1.015055, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1

@@ -1359,6 +1359,8 @@ MonoBehaviour:
   _audioClips:
   - Name: Attack
     Object: {fileID: 8300000, guid: ca15685cf8e9f8042a0a05629e15b1d4, type: 3}
+  - Name: Die
+    Object: {fileID: 8300000, guid: c83d1ac51236a3a4cacec1b8351d417f, type: 3}
   _animations:
   - Name: Idle
     Object:
