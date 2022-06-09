@@ -67,7 +67,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.28040957, y: 0}
+  m_Offset: {x: 0.41178513, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -78,7 +78,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.1443348, y: 6}
+  m_Size: {x: 3.407086, y: 6}
   m_EdgeRadius: 0
 --- !u!114 &2517231601611274556
 MonoBehaviour:
@@ -675,7 +675,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7840183510898444331}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.1, y: 1.1, z: 1.1}
   m_Children:
@@ -741,7 +741,7 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.609583, y: 2.8501763}
@@ -798,7 +798,7 @@ MonoBehaviour:
   _invincible: 0
   <State>k__BackingField: 1
   <Name>k__BackingField: bat
-  <MoveSpeed>k__BackingField: 3
+  <MoveSpeed>k__BackingField: 5
 --- !u!114 &6882680540446037114
 MonoBehaviour:
   m_ObjectHideFlags: 0
