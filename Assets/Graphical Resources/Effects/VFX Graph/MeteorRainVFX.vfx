@@ -271,7 +271,7 @@ MonoBehaviour:
   m_Children:
   - {fileID: 8926484042661614730}
   - {fileID: 8926484042661614741}
-  - {fileID: 8926484042661615037}
+  - {fileID: 8926484042661615069}
   m_UIPosition: {x: 972.21545, y: -262.63873}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
@@ -1286,9 +1286,9 @@ MonoBehaviour:
   - m_Id: 0
     linkedSlots:
     - outputSlot: {fileID: 8926484042661614765}
-      inputSlot: {fileID: 8926484042661615053}
+      inputSlot: {fileID: 8926484042661615085}
     - outputSlot: {fileID: 8926484042661614765}
-      inputSlot: {fileID: 8926484042661615054}
+      inputSlot: {fileID: 8926484042661615086}
     position: {x: 784, y: 216.8}
     expandedSlots: []
     expanded: 0
@@ -1326,8 +1326,8 @@ MonoBehaviour:
         PublicKeyToken=b77a5c561934e089
   m_Direction: 1
   m_LinkedSlots:
-  - {fileID: 8926484042661615053}
-  - {fileID: 8926484042661615054}
+  - {fileID: 8926484042661615085}
+  - {fileID: 8926484042661615086}
 --- !u!114 &8926484042661614766
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1894,7 +1894,7 @@ MonoBehaviour:
   - m_Id: 0
     linkedSlots:
     - outputSlot: {fileID: 8926484042661614784}
-      inputSlot: {fileID: 8926484042661615041}
+      inputSlot: {fileID: 8926484042661615073}
     position: {x: 807.2, y: 178.40001}
     expandedSlots: []
     expanded: 0
@@ -1935,7 +1935,7 @@ MonoBehaviour:
         Culture=neutral, PublicKeyToken=null
   m_Direction: 1
   m_LinkedSlots:
-  - {fileID: 8926484042661615041}
+  - {fileID: 8926484042661615073}
 --- !u!114 &8926484042661614785
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6361,7 +6361,7 @@ MonoBehaviour:
         PublicKeyToken=b77a5c561934e089
   m_Direction: 0
   m_LinkedSlots: []
---- !u!114 &8926484042661615037
+--- !u!114 &8926484042661615069
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6380,7 +6380,7 @@ MonoBehaviour:
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots:
-  - {fileID: 8926484042661615038}
+  - {fileID: 8926484042661615070}
   m_OutputSlots: []
   m_Disabled: 0
   compositionPosition: 0
@@ -6388,7 +6388,7 @@ MonoBehaviour:
   positionMode: 0
   spawnMode: 0
   heightMode: 0
---- !u!114 &8926484042661615038
+--- !u!114 &8926484042661615070
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6403,14 +6403,14 @@ MonoBehaviour:
   m_UIIgnoredErrors: []
   m_Parent: {fileID: 0}
   m_Children:
-  - {fileID: 8926484042661615039}
-  - {fileID: 8926484042661615056}
+  - {fileID: 8926484042661615071}
+  - {fileID: 8926484042661615088}
   m_UIPosition: {x: 0, y: 0}
   m_UICollapsed: 1
   m_UISuperCollapsed: 0
-  m_MasterSlot: {fileID: 8926484042661615038}
+  m_MasterSlot: {fileID: 8926484042661615070}
   m_MasterData:
-    m_Owner: {fileID: 8926484042661615037}
+    m_Owner: {fileID: 8926484042661615069}
     m_Value:
       m_Type:
         m_SerializableType: UnityEditor.VFX.TArcCone, Unity.VisualEffectGraph.Editor,
@@ -6424,7 +6424,7 @@ MonoBehaviour:
         Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Direction: 0
   m_LinkedSlots: []
---- !u!114 &8926484042661615039
+--- !u!114 &8926484042661615071
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6437,16 +6437,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UIIgnoredErrors: []
-  m_Parent: {fileID: 8926484042661615038}
+  m_Parent: {fileID: 8926484042661615070}
   m_Children:
-  - {fileID: 8926484042661615040}
-  - {fileID: 8926484042661615053}
-  - {fileID: 8926484042661615054}
-  - {fileID: 8926484042661615055}
+  - {fileID: 8926484042661615072}
+  - {fileID: 8926484042661615085}
+  - {fileID: 8926484042661615086}
+  - {fileID: 8926484042661615087}
   m_UIPosition: {x: 0, y: 0}
   m_UICollapsed: 1
   m_UISuperCollapsed: 0
-  m_MasterSlot: {fileID: 8926484042661615038}
+  m_MasterSlot: {fileID: 8926484042661615070}
   m_MasterData:
     m_Owner: {fileID: 0}
     m_Value:
@@ -6461,7 +6461,7 @@ MonoBehaviour:
         Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Direction: 0
   m_LinkedSlots: []
---- !u!114 &8926484042661615040
+--- !u!114 &8926484042661615072
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6474,15 +6474,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UIIgnoredErrors: []
-  m_Parent: {fileID: 8926484042661615039}
+  m_Parent: {fileID: 8926484042661615071}
   m_Children:
-  - {fileID: 8926484042661615041}
-  - {fileID: 8926484042661615045}
-  - {fileID: 8926484042661615049}
+  - {fileID: 8926484042661615073}
+  - {fileID: 8926484042661615077}
+  - {fileID: 8926484042661615081}
   m_UIPosition: {x: 0, y: 0}
   m_UICollapsed: 1
   m_UISuperCollapsed: 0
-  m_MasterSlot: {fileID: 8926484042661615038}
+  m_MasterSlot: {fileID: 8926484042661615070}
   m_MasterData:
     m_Owner: {fileID: 0}
     m_Value:
@@ -6497,7 +6497,7 @@ MonoBehaviour:
         Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Direction: 0
   m_LinkedSlots: []
---- !u!114 &8926484042661615041
+--- !u!114 &8926484042661615073
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6510,15 +6510,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UIIgnoredErrors: []
-  m_Parent: {fileID: 8926484042661615040}
+  m_Parent: {fileID: 8926484042661615072}
   m_Children:
-  - {fileID: 8926484042661615042}
-  - {fileID: 8926484042661615043}
-  - {fileID: 8926484042661615044}
+  - {fileID: 8926484042661615074}
+  - {fileID: 8926484042661615075}
+  - {fileID: 8926484042661615076}
   m_UIPosition: {x: 0, y: 0}
   m_UICollapsed: 1
   m_UISuperCollapsed: 0
-  m_MasterSlot: {fileID: 8926484042661615038}
+  m_MasterSlot: {fileID: 8926484042661615070}
   m_MasterData:
     m_Owner: {fileID: 0}
     m_Value:
@@ -6534,7 +6534,7 @@ MonoBehaviour:
   m_Direction: 0
   m_LinkedSlots:
   - {fileID: 8926484042661614784}
---- !u!114 &8926484042661615042
+--- !u!114 &8926484042661615074
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6547,12 +6547,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UIIgnoredErrors: []
-  m_Parent: {fileID: 8926484042661615041}
+  m_Parent: {fileID: 8926484042661615073}
   m_Children: []
   m_UIPosition: {x: 0, y: 0}
   m_UICollapsed: 1
   m_UISuperCollapsed: 0
-  m_MasterSlot: {fileID: 8926484042661615038}
+  m_MasterSlot: {fileID: 8926484042661615070}
   m_MasterData:
     m_Owner: {fileID: 0}
     m_Value:
@@ -6567,7 +6567,7 @@ MonoBehaviour:
         PublicKeyToken=b77a5c561934e089
   m_Direction: 0
   m_LinkedSlots: []
---- !u!114 &8926484042661615043
+--- !u!114 &8926484042661615075
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6580,12 +6580,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UIIgnoredErrors: []
-  m_Parent: {fileID: 8926484042661615041}
+  m_Parent: {fileID: 8926484042661615073}
   m_Children: []
   m_UIPosition: {x: 0, y: 0}
   m_UICollapsed: 1
   m_UISuperCollapsed: 0
-  m_MasterSlot: {fileID: 8926484042661615038}
+  m_MasterSlot: {fileID: 8926484042661615070}
   m_MasterData:
     m_Owner: {fileID: 0}
     m_Value:
@@ -6600,7 +6600,7 @@ MonoBehaviour:
         PublicKeyToken=b77a5c561934e089
   m_Direction: 0
   m_LinkedSlots: []
---- !u!114 &8926484042661615044
+--- !u!114 &8926484042661615076
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6613,12 +6613,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UIIgnoredErrors: []
-  m_Parent: {fileID: 8926484042661615041}
+  m_Parent: {fileID: 8926484042661615073}
   m_Children: []
   m_UIPosition: {x: 0, y: 0}
   m_UICollapsed: 1
   m_UISuperCollapsed: 0
-  m_MasterSlot: {fileID: 8926484042661615038}
+  m_MasterSlot: {fileID: 8926484042661615070}
   m_MasterData:
     m_Owner: {fileID: 0}
     m_Value:
@@ -6633,7 +6633,7 @@ MonoBehaviour:
         PublicKeyToken=b77a5c561934e089
   m_Direction: 0
   m_LinkedSlots: []
---- !u!114 &8926484042661615045
+--- !u!114 &8926484042661615077
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6646,15 +6646,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UIIgnoredErrors: []
-  m_Parent: {fileID: 8926484042661615040}
+  m_Parent: {fileID: 8926484042661615072}
   m_Children:
-  - {fileID: 8926484042661615046}
-  - {fileID: 8926484042661615047}
-  - {fileID: 8926484042661615048}
+  - {fileID: 8926484042661615078}
+  - {fileID: 8926484042661615079}
+  - {fileID: 8926484042661615080}
   m_UIPosition: {x: 0, y: 0}
   m_UICollapsed: 1
   m_UISuperCollapsed: 0
-  m_MasterSlot: {fileID: 8926484042661615038}
+  m_MasterSlot: {fileID: 8926484042661615070}
   m_MasterData:
     m_Owner: {fileID: 0}
     m_Value:
@@ -6669,7 +6669,7 @@ MonoBehaviour:
         Culture=neutral, PublicKeyToken=null
   m_Direction: 0
   m_LinkedSlots: []
---- !u!114 &8926484042661615046
+--- !u!114 &8926484042661615078
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6682,12 +6682,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UIIgnoredErrors: []
-  m_Parent: {fileID: 8926484042661615045}
+  m_Parent: {fileID: 8926484042661615077}
   m_Children: []
   m_UIPosition: {x: 0, y: 0}
   m_UICollapsed: 1
   m_UISuperCollapsed: 0
-  m_MasterSlot: {fileID: 8926484042661615038}
+  m_MasterSlot: {fileID: 8926484042661615070}
   m_MasterData:
     m_Owner: {fileID: 0}
     m_Value:
@@ -6702,7 +6702,7 @@ MonoBehaviour:
         PublicKeyToken=b77a5c561934e089
   m_Direction: 0
   m_LinkedSlots: []
---- !u!114 &8926484042661615047
+--- !u!114 &8926484042661615079
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6715,12 +6715,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UIIgnoredErrors: []
-  m_Parent: {fileID: 8926484042661615045}
+  m_Parent: {fileID: 8926484042661615077}
   m_Children: []
   m_UIPosition: {x: 0, y: 0}
   m_UICollapsed: 1
   m_UISuperCollapsed: 0
-  m_MasterSlot: {fileID: 8926484042661615038}
+  m_MasterSlot: {fileID: 8926484042661615070}
   m_MasterData:
     m_Owner: {fileID: 0}
     m_Value:
@@ -6735,7 +6735,7 @@ MonoBehaviour:
         PublicKeyToken=b77a5c561934e089
   m_Direction: 0
   m_LinkedSlots: []
---- !u!114 &8926484042661615048
+--- !u!114 &8926484042661615080
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6748,12 +6748,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UIIgnoredErrors: []
-  m_Parent: {fileID: 8926484042661615045}
+  m_Parent: {fileID: 8926484042661615077}
   m_Children: []
   m_UIPosition: {x: 0, y: 0}
   m_UICollapsed: 1
   m_UISuperCollapsed: 0
-  m_MasterSlot: {fileID: 8926484042661615038}
+  m_MasterSlot: {fileID: 8926484042661615070}
   m_MasterData:
     m_Owner: {fileID: 0}
     m_Value:
@@ -6768,7 +6768,7 @@ MonoBehaviour:
         PublicKeyToken=b77a5c561934e089
   m_Direction: 0
   m_LinkedSlots: []
---- !u!114 &8926484042661615049
+--- !u!114 &8926484042661615081
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6781,15 +6781,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UIIgnoredErrors: []
-  m_Parent: {fileID: 8926484042661615040}
+  m_Parent: {fileID: 8926484042661615072}
   m_Children:
-  - {fileID: 8926484042661615050}
-  - {fileID: 8926484042661615051}
-  - {fileID: 8926484042661615052}
+  - {fileID: 8926484042661615082}
+  - {fileID: 8926484042661615083}
+  - {fileID: 8926484042661615084}
   m_UIPosition: {x: 0, y: 0}
   m_UICollapsed: 1
   m_UISuperCollapsed: 0
-  m_MasterSlot: {fileID: 8926484042661615038}
+  m_MasterSlot: {fileID: 8926484042661615070}
   m_MasterData:
     m_Owner: {fileID: 0}
     m_Value:
@@ -6804,7 +6804,7 @@ MonoBehaviour:
         Culture=neutral, PublicKeyToken=null
   m_Direction: 0
   m_LinkedSlots: []
---- !u!114 &8926484042661615050
+--- !u!114 &8926484042661615082
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6817,12 +6817,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UIIgnoredErrors: []
-  m_Parent: {fileID: 8926484042661615049}
+  m_Parent: {fileID: 8926484042661615081}
   m_Children: []
   m_UIPosition: {x: 0, y: 0}
   m_UICollapsed: 1
   m_UISuperCollapsed: 0
-  m_MasterSlot: {fileID: 8926484042661615038}
+  m_MasterSlot: {fileID: 8926484042661615070}
   m_MasterData:
     m_Owner: {fileID: 0}
     m_Value:
@@ -6837,7 +6837,7 @@ MonoBehaviour:
         PublicKeyToken=b77a5c561934e089
   m_Direction: 0
   m_LinkedSlots: []
---- !u!114 &8926484042661615051
+--- !u!114 &8926484042661615083
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6850,12 +6850,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UIIgnoredErrors: []
-  m_Parent: {fileID: 8926484042661615049}
+  m_Parent: {fileID: 8926484042661615081}
   m_Children: []
   m_UIPosition: {x: 0, y: 0}
   m_UICollapsed: 1
   m_UISuperCollapsed: 0
-  m_MasterSlot: {fileID: 8926484042661615038}
+  m_MasterSlot: {fileID: 8926484042661615070}
   m_MasterData:
     m_Owner: {fileID: 0}
     m_Value:
@@ -6870,7 +6870,7 @@ MonoBehaviour:
         PublicKeyToken=b77a5c561934e089
   m_Direction: 0
   m_LinkedSlots: []
---- !u!114 &8926484042661615052
+--- !u!114 &8926484042661615084
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6883,12 +6883,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UIIgnoredErrors: []
-  m_Parent: {fileID: 8926484042661615049}
+  m_Parent: {fileID: 8926484042661615081}
   m_Children: []
   m_UIPosition: {x: 0, y: 0}
   m_UICollapsed: 1
   m_UISuperCollapsed: 0
-  m_MasterSlot: {fileID: 8926484042661615038}
+  m_MasterSlot: {fileID: 8926484042661615070}
   m_MasterData:
     m_Owner: {fileID: 0}
     m_Value:
@@ -6903,7 +6903,7 @@ MonoBehaviour:
         PublicKeyToken=b77a5c561934e089
   m_Direction: 0
   m_LinkedSlots: []
---- !u!114 &8926484042661615053
+--- !u!114 &8926484042661615085
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6916,12 +6916,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UIIgnoredErrors: []
-  m_Parent: {fileID: 8926484042661615039}
+  m_Parent: {fileID: 8926484042661615071}
   m_Children: []
   m_UIPosition: {x: 0, y: 0}
   m_UICollapsed: 1
   m_UISuperCollapsed: 0
-  m_MasterSlot: {fileID: 8926484042661615038}
+  m_MasterSlot: {fileID: 8926484042661615070}
   m_MasterData:
     m_Owner: {fileID: 0}
     m_Value:
@@ -6937,7 +6937,7 @@ MonoBehaviour:
   m_Direction: 0
   m_LinkedSlots:
   - {fileID: 8926484042661614765}
---- !u!114 &8926484042661615054
+--- !u!114 &8926484042661615086
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6950,12 +6950,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UIIgnoredErrors: []
-  m_Parent: {fileID: 8926484042661615039}
+  m_Parent: {fileID: 8926484042661615071}
   m_Children: []
   m_UIPosition: {x: 0, y: 0}
   m_UICollapsed: 1
   m_UISuperCollapsed: 0
-  m_MasterSlot: {fileID: 8926484042661615038}
+  m_MasterSlot: {fileID: 8926484042661615070}
   m_MasterData:
     m_Owner: {fileID: 0}
     m_Value:
@@ -6971,7 +6971,7 @@ MonoBehaviour:
   m_Direction: 0
   m_LinkedSlots:
   - {fileID: 8926484042661614765}
---- !u!114 &8926484042661615055
+--- !u!114 &8926484042661615087
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6984,12 +6984,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UIIgnoredErrors: []
-  m_Parent: {fileID: 8926484042661615039}
+  m_Parent: {fileID: 8926484042661615071}
   m_Children: []
   m_UIPosition: {x: 0, y: 0}
   m_UICollapsed: 1
   m_UISuperCollapsed: 0
-  m_MasterSlot: {fileID: 8926484042661615038}
+  m_MasterSlot: {fileID: 8926484042661615070}
   m_MasterData:
     m_Owner: {fileID: 0}
     m_Value:
@@ -7004,7 +7004,7 @@ MonoBehaviour:
         PublicKeyToken=b77a5c561934e089
   m_Direction: 0
   m_LinkedSlots: []
---- !u!114 &8926484042661615056
+--- !u!114 &8926484042661615088
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -7017,12 +7017,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UIIgnoredErrors: []
-  m_Parent: {fileID: 8926484042661615038}
+  m_Parent: {fileID: 8926484042661615070}
   m_Children: []
   m_UIPosition: {x: 0, y: 0}
   m_UICollapsed: 1
   m_UISuperCollapsed: 0
-  m_MasterSlot: {fileID: 8926484042661615038}
+  m_MasterSlot: {fileID: 8926484042661615070}
   m_MasterData:
     m_Owner: {fileID: 0}
     m_Value:

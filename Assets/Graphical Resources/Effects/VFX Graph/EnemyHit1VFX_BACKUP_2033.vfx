@@ -154,7 +154,11 @@ MonoBehaviour:
   - {fileID: 8926484042661614627}
   - {fileID: 8926484042661614674}
   - {fileID: 8926484042661614685}
+<<<<<<< HEAD
+  - {fileID: 8926484042661614763}
+=======
   - {fileID: 8926484042661614785}
+>>>>>>> VFX-SFX---HunYoung
   m_UIPosition: {x: 942, y: 238}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
@@ -2889,7 +2893,11 @@ MonoBehaviour:
         Culture=neutral, PublicKeyToken=null
   m_Direction: 0
   m_LinkedSlots: []
+<<<<<<< HEAD
+--- !u!114 &8926484042661614763
+=======
 --- !u!114 &8926484042661614785
+>>>>>>> VFX-SFX---HunYoung
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2908,14 +2916,22 @@ MonoBehaviour:
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots:
+<<<<<<< HEAD
+  - {fileID: 8926484042661614764}
+=======
   - {fileID: 8926484042661614786}
+>>>>>>> VFX-SFX---HunYoung
   m_OutputSlots: []
   m_Disabled: 0
   compositionPosition: 0
   compositionDirection: 0
   positionMode: 0
   spawnMode: 0
+<<<<<<< HEAD
+--- !u!114 &8926484042661614764
+=======
 --- !u!114 &8926484042661614786
+>>>>>>> VFX-SFX---HunYoung
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2930,6 +2946,16 @@ MonoBehaviour:
   m_UIIgnoredErrors: []
   m_Parent: {fileID: 0}
   m_Children:
+<<<<<<< HEAD
+  - {fileID: 8926484042661614765}
+  - {fileID: 8926484042661614780}
+  m_UIPosition: {x: 0, y: 0}
+  m_UICollapsed: 1
+  m_UISuperCollapsed: 0
+  m_MasterSlot: {fileID: 8926484042661614764}
+  m_MasterData:
+    m_Owner: {fileID: 8926484042661614763}
+=======
   - {fileID: 8926484042661614787}
   - {fileID: 8926484042661614802}
   m_UIPosition: {x: 0, y: 0}
@@ -2938,6 +2964,7 @@ MonoBehaviour:
   m_MasterSlot: {fileID: 8926484042661614786}
   m_MasterData:
     m_Owner: {fileID: 8926484042661614785}
+>>>>>>> VFX-SFX---HunYoung
     m_Value:
       m_Type:
         m_SerializableType: UnityEditor.VFX.TArcCircle, Unity.VisualEffectGraph.Editor,
@@ -2951,7 +2978,11 @@ MonoBehaviour:
         Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Direction: 0
   m_LinkedSlots: []
+<<<<<<< HEAD
+--- !u!114 &8926484042661614765
+=======
 --- !u!114 &8926484042661614787
+>>>>>>> VFX-SFX---HunYoung
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2964,6 +2995,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UIIgnoredErrors: []
+<<<<<<< HEAD
+  m_Parent: {fileID: 8926484042661614764}
+  m_Children:
+  - {fileID: 8926484042661614766}
+  - {fileID: 8926484042661614779}
+  m_UIPosition: {x: 0, y: 0}
+  m_UICollapsed: 1
+  m_UISuperCollapsed: 0
+  m_MasterSlot: {fileID: 8926484042661614764}
+=======
   m_Parent: {fileID: 8926484042661614786}
   m_Children:
   - {fileID: 8926484042661614788}
@@ -2972,6 +3013,7 @@ MonoBehaviour:
   m_UICollapsed: 1
   m_UISuperCollapsed: 0
   m_MasterSlot: {fileID: 8926484042661614786}
+>>>>>>> VFX-SFX---HunYoung
   m_MasterData:
     m_Owner: {fileID: 0}
     m_Value:
@@ -2986,7 +3028,11 @@ MonoBehaviour:
         Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Direction: 0
   m_LinkedSlots: []
+<<<<<<< HEAD
+--- !u!114 &8926484042661614766
+=======
 --- !u!114 &8926484042661614788
+>>>>>>> VFX-SFX---HunYoung
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2999,6 +3045,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UIIgnoredErrors: []
+<<<<<<< HEAD
+  m_Parent: {fileID: 8926484042661614765}
+  m_Children:
+  - {fileID: 8926484042661614767}
+  - {fileID: 8926484042661614771}
+  - {fileID: 8926484042661614775}
+  m_UIPosition: {x: 0, y: 0}
+  m_UICollapsed: 1
+  m_UISuperCollapsed: 0
+  m_MasterSlot: {fileID: 8926484042661614764}
+=======
   m_Parent: {fileID: 8926484042661614787}
   m_Children:
   - {fileID: 8926484042661614789}
@@ -3008,6 +3065,7 @@ MonoBehaviour:
   m_UICollapsed: 1
   m_UISuperCollapsed: 0
   m_MasterSlot: {fileID: 8926484042661614786}
+>>>>>>> VFX-SFX---HunYoung
   m_MasterData:
     m_Owner: {fileID: 0}
     m_Value:
@@ -3022,7 +3080,11 @@ MonoBehaviour:
         Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Direction: 0
   m_LinkedSlots: []
+<<<<<<< HEAD
+--- !u!114 &8926484042661614767
+=======
 --- !u!114 &8926484042661614789
+>>>>>>> VFX-SFX---HunYoung
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3035,6 +3097,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UIIgnoredErrors: []
+<<<<<<< HEAD
+  m_Parent: {fileID: 8926484042661614766}
+  m_Children:
+  - {fileID: 8926484042661614768}
+  - {fileID: 8926484042661614769}
+  - {fileID: 8926484042661614770}
+  m_UIPosition: {x: 0, y: 0}
+  m_UICollapsed: 1
+  m_UISuperCollapsed: 0
+  m_MasterSlot: {fileID: 8926484042661614764}
+=======
   m_Parent: {fileID: 8926484042661614788}
   m_Children:
   - {fileID: 8926484042661614790}
@@ -3044,6 +3117,7 @@ MonoBehaviour:
   m_UICollapsed: 1
   m_UISuperCollapsed: 0
   m_MasterSlot: {fileID: 8926484042661614786}
+>>>>>>> VFX-SFX---HunYoung
   m_MasterData:
     m_Owner: {fileID: 0}
     m_Value:
@@ -3058,7 +3132,11 @@ MonoBehaviour:
         Culture=neutral, PublicKeyToken=null
   m_Direction: 0
   m_LinkedSlots: []
+<<<<<<< HEAD
+--- !u!114 &8926484042661614768
+=======
 --- !u!114 &8926484042661614790
+>>>>>>> VFX-SFX---HunYoung
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3071,12 +3149,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UIIgnoredErrors: []
+<<<<<<< HEAD
+  m_Parent: {fileID: 8926484042661614767}
+=======
   m_Parent: {fileID: 8926484042661614789}
+>>>>>>> VFX-SFX---HunYoung
   m_Children: []
   m_UIPosition: {x: 0, y: 0}
   m_UICollapsed: 1
   m_UISuperCollapsed: 0
+<<<<<<< HEAD
+  m_MasterSlot: {fileID: 8926484042661614764}
+=======
   m_MasterSlot: {fileID: 8926484042661614786}
+>>>>>>> VFX-SFX---HunYoung
   m_MasterData:
     m_Owner: {fileID: 0}
     m_Value:
@@ -3091,7 +3177,11 @@ MonoBehaviour:
         PublicKeyToken=b77a5c561934e089
   m_Direction: 0
   m_LinkedSlots: []
+<<<<<<< HEAD
+--- !u!114 &8926484042661614769
+=======
 --- !u!114 &8926484042661614791
+>>>>>>> VFX-SFX---HunYoung
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3104,12 +3194,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UIIgnoredErrors: []
+<<<<<<< HEAD
+  m_Parent: {fileID: 8926484042661614767}
+=======
   m_Parent: {fileID: 8926484042661614789}
+>>>>>>> VFX-SFX---HunYoung
   m_Children: []
   m_UIPosition: {x: 0, y: 0}
   m_UICollapsed: 1
   m_UISuperCollapsed: 0
+<<<<<<< HEAD
+  m_MasterSlot: {fileID: 8926484042661614764}
+=======
   m_MasterSlot: {fileID: 8926484042661614786}
+>>>>>>> VFX-SFX---HunYoung
   m_MasterData:
     m_Owner: {fileID: 0}
     m_Value:
@@ -3124,7 +3222,11 @@ MonoBehaviour:
         PublicKeyToken=b77a5c561934e089
   m_Direction: 0
   m_LinkedSlots: []
+<<<<<<< HEAD
+--- !u!114 &8926484042661614770
+=======
 --- !u!114 &8926484042661614792
+>>>>>>> VFX-SFX---HunYoung
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3137,12 +3239,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UIIgnoredErrors: []
+<<<<<<< HEAD
+  m_Parent: {fileID: 8926484042661614767}
+=======
   m_Parent: {fileID: 8926484042661614789}
+>>>>>>> VFX-SFX---HunYoung
   m_Children: []
   m_UIPosition: {x: 0, y: 0}
   m_UICollapsed: 1
   m_UISuperCollapsed: 0
+<<<<<<< HEAD
+  m_MasterSlot: {fileID: 8926484042661614764}
+=======
   m_MasterSlot: {fileID: 8926484042661614786}
+>>>>>>> VFX-SFX---HunYoung
   m_MasterData:
     m_Owner: {fileID: 0}
     m_Value:
@@ -3157,7 +3267,11 @@ MonoBehaviour:
         PublicKeyToken=b77a5c561934e089
   m_Direction: 0
   m_LinkedSlots: []
+<<<<<<< HEAD
+--- !u!114 &8926484042661614771
+=======
 --- !u!114 &8926484042661614793
+>>>>>>> VFX-SFX---HunYoung
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3170,6 +3284,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UIIgnoredErrors: []
+<<<<<<< HEAD
+  m_Parent: {fileID: 8926484042661614766}
+  m_Children:
+  - {fileID: 8926484042661614772}
+  - {fileID: 8926484042661614773}
+  - {fileID: 8926484042661614774}
+  m_UIPosition: {x: 0, y: 0}
+  m_UICollapsed: 1
+  m_UISuperCollapsed: 0
+  m_MasterSlot: {fileID: 8926484042661614764}
+=======
   m_Parent: {fileID: 8926484042661614788}
   m_Children:
   - {fileID: 8926484042661614794}
@@ -3179,6 +3304,7 @@ MonoBehaviour:
   m_UICollapsed: 1
   m_UISuperCollapsed: 0
   m_MasterSlot: {fileID: 8926484042661614786}
+>>>>>>> VFX-SFX---HunYoung
   m_MasterData:
     m_Owner: {fileID: 0}
     m_Value:
@@ -3193,7 +3319,11 @@ MonoBehaviour:
         Culture=neutral, PublicKeyToken=null
   m_Direction: 0
   m_LinkedSlots: []
+<<<<<<< HEAD
+--- !u!114 &8926484042661614772
+=======
 --- !u!114 &8926484042661614794
+>>>>>>> VFX-SFX---HunYoung
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3206,12 +3336,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UIIgnoredErrors: []
+<<<<<<< HEAD
+  m_Parent: {fileID: 8926484042661614771}
+=======
   m_Parent: {fileID: 8926484042661614793}
+>>>>>>> VFX-SFX---HunYoung
   m_Children: []
   m_UIPosition: {x: 0, y: 0}
   m_UICollapsed: 1
   m_UISuperCollapsed: 0
+<<<<<<< HEAD
+  m_MasterSlot: {fileID: 8926484042661614764}
+=======
   m_MasterSlot: {fileID: 8926484042661614786}
+>>>>>>> VFX-SFX---HunYoung
   m_MasterData:
     m_Owner: {fileID: 0}
     m_Value:
@@ -3226,7 +3364,11 @@ MonoBehaviour:
         PublicKeyToken=b77a5c561934e089
   m_Direction: 0
   m_LinkedSlots: []
+<<<<<<< HEAD
+--- !u!114 &8926484042661614773
+=======
 --- !u!114 &8926484042661614795
+>>>>>>> VFX-SFX---HunYoung
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3239,12 +3381,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UIIgnoredErrors: []
+<<<<<<< HEAD
+  m_Parent: {fileID: 8926484042661614771}
+=======
   m_Parent: {fileID: 8926484042661614793}
+>>>>>>> VFX-SFX---HunYoung
   m_Children: []
   m_UIPosition: {x: 0, y: 0}
   m_UICollapsed: 1
   m_UISuperCollapsed: 0
+<<<<<<< HEAD
+  m_MasterSlot: {fileID: 8926484042661614764}
+=======
   m_MasterSlot: {fileID: 8926484042661614786}
+>>>>>>> VFX-SFX---HunYoung
   m_MasterData:
     m_Owner: {fileID: 0}
     m_Value:
@@ -3259,7 +3409,11 @@ MonoBehaviour:
         PublicKeyToken=b77a5c561934e089
   m_Direction: 0
   m_LinkedSlots: []
+<<<<<<< HEAD
+--- !u!114 &8926484042661614774
+=======
 --- !u!114 &8926484042661614796
+>>>>>>> VFX-SFX---HunYoung
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3272,12 +3426,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UIIgnoredErrors: []
+<<<<<<< HEAD
+  m_Parent: {fileID: 8926484042661614771}
+=======
   m_Parent: {fileID: 8926484042661614793}
+>>>>>>> VFX-SFX---HunYoung
   m_Children: []
   m_UIPosition: {x: 0, y: 0}
   m_UICollapsed: 1
   m_UISuperCollapsed: 0
+<<<<<<< HEAD
+  m_MasterSlot: {fileID: 8926484042661614764}
+=======
   m_MasterSlot: {fileID: 8926484042661614786}
+>>>>>>> VFX-SFX---HunYoung
   m_MasterData:
     m_Owner: {fileID: 0}
     m_Value:
@@ -3292,7 +3454,11 @@ MonoBehaviour:
         PublicKeyToken=b77a5c561934e089
   m_Direction: 0
   m_LinkedSlots: []
+<<<<<<< HEAD
+--- !u!114 &8926484042661614775
+=======
 --- !u!114 &8926484042661614797
+>>>>>>> VFX-SFX---HunYoung
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3305,6 +3471,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UIIgnoredErrors: []
+<<<<<<< HEAD
+  m_Parent: {fileID: 8926484042661614766}
+  m_Children:
+  - {fileID: 8926484042661614776}
+  - {fileID: 8926484042661614777}
+  - {fileID: 8926484042661614778}
+  m_UIPosition: {x: 0, y: 0}
+  m_UICollapsed: 1
+  m_UISuperCollapsed: 0
+  m_MasterSlot: {fileID: 8926484042661614764}
+=======
   m_Parent: {fileID: 8926484042661614788}
   m_Children:
   - {fileID: 8926484042661614798}
@@ -3314,6 +3491,7 @@ MonoBehaviour:
   m_UICollapsed: 1
   m_UISuperCollapsed: 0
   m_MasterSlot: {fileID: 8926484042661614786}
+>>>>>>> VFX-SFX---HunYoung
   m_MasterData:
     m_Owner: {fileID: 0}
     m_Value:
@@ -3328,7 +3506,11 @@ MonoBehaviour:
         Culture=neutral, PublicKeyToken=null
   m_Direction: 0
   m_LinkedSlots: []
+<<<<<<< HEAD
+--- !u!114 &8926484042661614776
+=======
 --- !u!114 &8926484042661614798
+>>>>>>> VFX-SFX---HunYoung
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3341,12 +3523,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UIIgnoredErrors: []
+<<<<<<< HEAD
+  m_Parent: {fileID: 8926484042661614775}
+=======
   m_Parent: {fileID: 8926484042661614797}
+>>>>>>> VFX-SFX---HunYoung
   m_Children: []
   m_UIPosition: {x: 0, y: 0}
   m_UICollapsed: 1
   m_UISuperCollapsed: 0
+<<<<<<< HEAD
+  m_MasterSlot: {fileID: 8926484042661614764}
+=======
   m_MasterSlot: {fileID: 8926484042661614786}
+>>>>>>> VFX-SFX---HunYoung
   m_MasterData:
     m_Owner: {fileID: 0}
     m_Value:
@@ -3361,7 +3551,11 @@ MonoBehaviour:
         PublicKeyToken=b77a5c561934e089
   m_Direction: 0
   m_LinkedSlots: []
+<<<<<<< HEAD
+--- !u!114 &8926484042661614777
+=======
 --- !u!114 &8926484042661614799
+>>>>>>> VFX-SFX---HunYoung
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3374,12 +3568,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UIIgnoredErrors: []
+<<<<<<< HEAD
+  m_Parent: {fileID: 8926484042661614775}
+=======
   m_Parent: {fileID: 8926484042661614797}
+>>>>>>> VFX-SFX---HunYoung
   m_Children: []
   m_UIPosition: {x: 0, y: 0}
   m_UICollapsed: 1
   m_UISuperCollapsed: 0
+<<<<<<< HEAD
+  m_MasterSlot: {fileID: 8926484042661614764}
+=======
   m_MasterSlot: {fileID: 8926484042661614786}
+>>>>>>> VFX-SFX---HunYoung
   m_MasterData:
     m_Owner: {fileID: 0}
     m_Value:
@@ -3394,7 +3596,11 @@ MonoBehaviour:
         PublicKeyToken=b77a5c561934e089
   m_Direction: 0
   m_LinkedSlots: []
+<<<<<<< HEAD
+--- !u!114 &8926484042661614778
+=======
 --- !u!114 &8926484042661614800
+>>>>>>> VFX-SFX---HunYoung
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3407,12 +3613,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UIIgnoredErrors: []
+<<<<<<< HEAD
+  m_Parent: {fileID: 8926484042661614775}
+=======
   m_Parent: {fileID: 8926484042661614797}
+>>>>>>> VFX-SFX---HunYoung
   m_Children: []
   m_UIPosition: {x: 0, y: 0}
   m_UICollapsed: 1
   m_UISuperCollapsed: 0
+<<<<<<< HEAD
+  m_MasterSlot: {fileID: 8926484042661614764}
+=======
   m_MasterSlot: {fileID: 8926484042661614786}
+>>>>>>> VFX-SFX---HunYoung
   m_MasterData:
     m_Owner: {fileID: 0}
     m_Value:
@@ -3427,7 +3641,11 @@ MonoBehaviour:
         PublicKeyToken=b77a5c561934e089
   m_Direction: 0
   m_LinkedSlots: []
+<<<<<<< HEAD
+--- !u!114 &8926484042661614779
+=======
 --- !u!114 &8926484042661614801
+>>>>>>> VFX-SFX---HunYoung
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3440,12 +3658,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UIIgnoredErrors: []
+<<<<<<< HEAD
+  m_Parent: {fileID: 8926484042661614765}
+=======
   m_Parent: {fileID: 8926484042661614787}
+>>>>>>> VFX-SFX---HunYoung
   m_Children: []
   m_UIPosition: {x: 0, y: 0}
   m_UICollapsed: 1
   m_UISuperCollapsed: 0
+<<<<<<< HEAD
+  m_MasterSlot: {fileID: 8926484042661614764}
+=======
   m_MasterSlot: {fileID: 8926484042661614786}
+>>>>>>> VFX-SFX---HunYoung
   m_MasterData:
     m_Owner: {fileID: 0}
     m_Value:
@@ -3460,7 +3686,11 @@ MonoBehaviour:
         PublicKeyToken=b77a5c561934e089
   m_Direction: 0
   m_LinkedSlots: []
+<<<<<<< HEAD
+--- !u!114 &8926484042661614780
+=======
 --- !u!114 &8926484042661614802
+>>>>>>> VFX-SFX---HunYoung
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3473,12 +3703,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UIIgnoredErrors: []
+<<<<<<< HEAD
+  m_Parent: {fileID: 8926484042661614764}
+=======
   m_Parent: {fileID: 8926484042661614786}
+>>>>>>> VFX-SFX---HunYoung
   m_Children: []
   m_UIPosition: {x: 0, y: 0}
   m_UICollapsed: 1
   m_UISuperCollapsed: 0
+<<<<<<< HEAD
+  m_MasterSlot: {fileID: 8926484042661614764}
+=======
   m_MasterSlot: {fileID: 8926484042661614786}
+>>>>>>> VFX-SFX---HunYoung
   m_MasterData:
     m_Owner: {fileID: 0}
     m_Value:

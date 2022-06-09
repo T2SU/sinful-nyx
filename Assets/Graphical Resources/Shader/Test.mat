@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Test
-  m_Shader: {fileID: -6465566751694194690, guid: 8a38fa0b55414274e8ec2746f8a78b14, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: af41e95a457069f49ab83d3bdea2eb75, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -19,15 +19,11 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _DetailTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: f2e78d4d319f9dd41ba33edec8b9b949, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _SampleTexture2D_cece9554b4a24e9cbb21dcd63e5524ff_Texture_1:
+    - _SampleTexture2D_ee66786fb9b24cbb89f9bf67e9b76182_Texture_1:
         m_Texture: {fileID: 2800000, guid: 4b40fc0f65c85f14fbc9c7c5f40ca686, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -43,15 +39,7 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - _ColorMask: 15
-    - _Stencil: 0
-    - _StencilComp: 8
-    - _StencilOp: 0
-    - _StencilReadMask: 255
-    - _StencilWriteMask: 255
-    - _Strength: 0.2
-    - _UseUIAlphaClip: 0
+    m_Floats: []
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - Color_3f52b20c3abc4e0ba52294f37590e9d6: {r: 5.431592, g: 0.3238906, b: 0.1742205, a: 0}
   m_BuildTextureStacks: []

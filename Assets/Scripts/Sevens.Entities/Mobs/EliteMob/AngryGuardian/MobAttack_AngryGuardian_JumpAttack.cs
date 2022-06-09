@@ -45,16 +45,17 @@ namespace Sevens.Entities.Mobs
                 new AnimationPlayOption("Jump", timeScale: _attackTimeScale),
                 immediatelyTransition: true);
             coroutines.Register("JumpAttackMove", mob.transform.DOMove(transform.position + new Vector3(_jumpDistance * mob.GetFacingDirection(), _jumpHeight, 0), _jumpDuration));
-            var targetPostion = GameObject.Find("Player").transform.position;
+           
             yield return new WaitForSeconds(animTime - WarningDuration);
             yield return WarningAction(attackManager);
+            var targetPostion = GameObject.Find("Player").transform.position;
             yield return new WaitForSeconds(_airborneTime);
             var obj = Instantiate(_jumpAttack, mob.transform.position, mob.transform.rotation);
             mob.PlayAnimation(
                 new AnimationPlayOption("Jump", timeScale: _attackTimeScale),
                 immediatelyTransition: true);
             obj.transform.parent = mob.transform;
-            coroutines.Register("JumpAttackMove", mob.transform.DOMove(targetPostion + new Vector3(0,3,0), _jumpDuration));
+            coroutines.Register("JumpAttackMove", mob.transform.DOMove(targetPostion + new Vector3(0,3,0), _attackDuration));
             SetAllBlowSourceAs(obj, mob);
             _objs.Add(obj);
             yield return new WaitForSeconds(_attackDuration);
