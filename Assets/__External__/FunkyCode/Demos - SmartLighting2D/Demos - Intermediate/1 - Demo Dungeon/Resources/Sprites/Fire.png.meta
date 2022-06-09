@@ -51,6 +51,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -328,6 +329,16 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      Fire_1: 21300002
+      Fire_6: 21300012
+      Fire_2: 21300004
+      Fire_3: 21300006
+      Fire_5: 21300010
+      Fire_4: 21300008
+      Fire_0: 21300000
+      Fire_8: 21300016
+      Fire_7: 21300014
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
