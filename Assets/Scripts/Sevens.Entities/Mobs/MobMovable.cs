@@ -47,11 +47,10 @@ namespace Sevens.Entities.Mobs
 
             // 타입에 따른 몬스터 이동. Velocity를 조절할 수 있게 해줌.
             var playerPos = _playerTransform.position;
+            var mobtransform = _newPivot == null ? _mob.transform : _newPivot;
             var mobPos = _mob.transform.position;
             var sign = Mathf.Sign(playerPos.x - mobPos.x);
             var mobIsOnLeft = _mob.IsOnLeftBy(_playerTransform);
-            var playerPos = _playerTransform.position;
-            var sign = Mathf.Sign(playerPos.x - mobPos.x);
 
             if (!_isSetNewPivot)
             {
