@@ -67,7 +67,9 @@ namespace Sevens.Entities.Mobs
         public VirtualCameraController Camera { get; private set; }
 
         public AudioSource AudioSource { get; private set; }
-
+        
+        
+        public float HitTime { get; private set; }
         public void SetInvincible(float duration)
         {
             if (_invincible && _invincibleEnd == default)
@@ -128,7 +130,8 @@ namespace Sevens.Entities.Mobs
                 if (!IsCurrentAnimation(animatorAnim))
                 {
                     _animator.Play(animatorAnim);
-                    return animatorAnim.Length;
+                    var infos = _animator.GetCurrentAnimatorClipInfo(0);
+                    return infos[0].clip.length;
                 }
             }
             return 0f;
@@ -190,7 +193,7 @@ namespace Sevens.Entities.Mobs
             else
             {
                 ChangeState(MobState.Hit);
-                PlayAnimation(new AnimationPlayOption("Hit"));
+                HitTime = PlayAnimation(new AnimationPlayOption("Hit"));
             }
 
         }
