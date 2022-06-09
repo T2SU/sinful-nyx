@@ -34,16 +34,14 @@ namespace Sevens.Entities.Mobs
             var pos = mob.transform.position;
 
             mob.PlayAnimation(new AnimationPlayOption("Attack", timeScale: AttackTimeScale), immediatelyTransition: true);
-            var obj = Instantiate(Attack, AttackPosition.transform);
-            _objs.Add(obj);
-            SetAllBlowSourceAs(obj, mob);
-            mob.PlayAudio(nameof(Attack));
-
-            obj.GetComponent<Blow>().OnceOption.Enabled = false;
 
             yield return new WaitForSeconds(_upDuration);
 
-            obj.GetComponent<Blow>().OnceOption.Enabled = true;
+            mob.PlayAudio(nameof(Attack));
+            var obj = Instantiate(Attack, AttackPosition.transform);
+            _objs.Add(obj);
+            SetAllBlowSourceAs(obj, mob);
+
 
             yield return new WaitForSeconds(AttackTimeScale - _upDuration);
 
