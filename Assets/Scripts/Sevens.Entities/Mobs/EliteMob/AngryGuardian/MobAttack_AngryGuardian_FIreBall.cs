@@ -31,6 +31,7 @@ namespace Sevens.Entities.Mobs
 
         private IEnumerator AttackTimeline(MobAttackable attackManager)
         {
+            GameObject obj;
             var mob = attackManager.Mob;
             var coroutines = attackManager.AttackCoroutines;
             var animTime = mob.PlayAnimation(
@@ -40,12 +41,14 @@ namespace Sevens.Entities.Mobs
             yield return WarningAction(attackManager);
             if (mob.IsFacingLeft())
             {
-                Instantiate(_fireBall, mob.transform.position, Quaternion.Euler(0, 0, (_fireDir - 180)*-1));
+                obj = Instantiate(_fireBall, mob.transform.position, Quaternion.Euler(0, 0, (_fireDir - 180) * -1));
             }
             else
             {
-                Instantiate(_fireBall, mob.transform.position, Quaternion.Euler(0, 0, _fireDir));
+                obj = Instantiate(_fireBall, mob.transform.position, Quaternion.Euler(0, 0, _fireDir));
             }
+            SetAllBlowSourceAs(obj, mob);
+            _objs.Add(obj);
             attackManager.EndAttack(false);
         }
     }
