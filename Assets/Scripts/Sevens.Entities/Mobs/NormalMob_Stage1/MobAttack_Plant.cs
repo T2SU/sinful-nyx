@@ -44,6 +44,7 @@ namespace Sevens.Entities.Mobs
             var midlePoint = new Vector3((player.transform.position.x + obj.transform.position.x) / 2, _height + obj.transform.position.y, 0);
             points.SetValue(midlePoint, 1);
             points.SetValue(player.transform.position, 2);
+
             obj.transform.DOPath(points, AttackTimeScale, PathType.CatmullRom, PathMode.Ignore)
                 .SetLookAt(0f)
                 .SetEase(ease)

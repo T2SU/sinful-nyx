@@ -43,7 +43,7 @@ namespace Sevens.Entities.Mobs
             dest *= mob.IsFacingLeft() ? 1 : -1;
 
             var seq = DOTween.Sequence()
-                .Append(mob.transform.DOMoveX(pos.x + dest, AttackTimeScale))
+                .Append(mob.transform.DOMoveX(player.transform.position.x, AttackTimeScale))
                 .AppendInterval(0.05f)
                 .AppendCallback(() => mob.PlayAnimation(new AnimationPlayOption("AfterAttack", timeScale: AttackTimeScale), immediatelyTransition: true))
                 .Append(mob.transform.DOMoveX(pos.x, AttackTimeScale * 2));
