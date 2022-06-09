@@ -67,7 +67,9 @@ namespace Sevens.Entities.Mobs
         public VirtualCameraController Camera { get; private set; }
 
         public AudioSource AudioSource { get; private set; }
-
+        
+        
+        public float HitTime { get; private set; }
         public void SetInvincible(float duration)
         {
             if (_invincible && _invincibleEnd == default)
@@ -81,6 +83,11 @@ namespace Sevens.Entities.Mobs
         {
             Debug.Log($"[Mob] [{name}] Changed State {State} -> {state}");
             State = state;
+
+            // 이동 또는 대기 상태가 아닐 경우, 몬스터의 속력을 0으로 만듦.
+            if (state != MobState.Move && state != MobState.Idle)
+                SetVelocity(Vector2.zero, linearly: false);
+
             Cooltime.Set("ChangedState");
             if (playLoopAnimationByState)
                 PlayAnimation(new AnimationPlayOption(state.ToString(), true));
@@ -146,8 +153,11 @@ namespace Sevens.Entities.Mobs
             }
         }
 
+        public Vector2 GetVelocity() => _velocity;
+
         public void SetVelocity(Vector2 velocity, bool linearly = true)
         {
+            if (_coroutines == null) _coroutines = new CoroutineMan(this);
             if (linearly)
                 _coroutines.Register("ChangeVelocity",
                     DOTween.To(() => _velocity, v => _velocity = velocity, velocity, 1f));
@@ -185,6 +195,12 @@ namespace Sevens.Entities.Mobs
                 _killedBy = source;
                 OnDeath();
             }
+            else
+            {
+                ChangeState(MobState.Hit);
+                HitTime = PlayAnimation(new AnimationPlayOption("Hit"));
+            }
+
         }
 
         public Vector3? GetRandomInPositionV3(float xOffset = float.NaN)
@@ -256,7 +272,10 @@ namespace Sevens.Entities.Mobs
             }
             ActionEffectOption effect = _effects.FindByName(key);
             if (effect == null)
+            {
+                Debug.LogWarning($"Not found an effect '{key}' at '{name}'.");
                 return;
+            }
             if (effect.Particle != null)
             {
                 var obj = Instantiate(effect.Particle);
@@ -273,10 +292,8 @@ namespace Sevens.Entities.Mobs
         protected override void Awake()
         {
             _skeletonAnimation = GetComponent<SkeletonAnimation>();
-
-            if(_skeletonAnimation != null)
-            _animationState = _skeletonAnimation.AnimationState;
-
+            if (_skeletonAnimation != null)
+                _animationState = _skeletonAnimation.AnimationState;
             _rigidbody = GetComponent<Rigidbody2D>();
             _collider = GetComponent<Collider2D>();
             _animator = GetComponent<Animator>();
@@ -305,6 +322,7 @@ namespace Sevens.Entities.Mobs
 
         protected override void OnDisable()
         {
+            if (_coroutines == null) _coroutines = new CoroutineMan(this);
             _coroutines.KillAll();
         }
 

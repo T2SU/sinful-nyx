@@ -60,7 +60,7 @@ namespace Sevens.Entities.Mobs
                 Debug.Log("MaxDistanceChargeAttack");
                 coroutines.Register("ChargeAttackMove", mob.transform.DOMove(transform.position + new Vector3(_chargeDistance * mob.GetFacingDirection(), 0, 0), _chargeDuration));
             }
-            //mob.PlayAudio("ChargeAttack");
+            mob.PlayAudio("ChargeAttack");
             SetAllBlowSourceAs(obj, mob);
             _objs.Add(obj);
             yield return new WaitForSeconds(_chargeDuration);

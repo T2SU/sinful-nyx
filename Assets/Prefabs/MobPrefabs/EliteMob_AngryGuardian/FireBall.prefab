@@ -11,8 +11,10 @@ GameObject:
   - component: {fileID: 2954274677580352337}
   - component: {fileID: 2954274677580352336}
   - component: {fileID: 2954274677580352339}
-  - component: {fileID: 2954274677580352338}
-  m_Layer: 0
+  - component: {fileID: 7851366245117619494}
+  - component: {fileID: 8280091736518617387}
+  - component: {fileID: 3735426571532121846}
+  m_Layer: 12
   m_Name: FireBall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -110,8 +112,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &2954274677580352338
-BoxCollider2D:
+--- !u!58 &7851366245117619494
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -124,18 +126,52 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  m_Radius: 0.49999994
+--- !u!114 &8280091736518617387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2954274677580352333}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 752bc91f0191d3c49b28d2b1f3f2708e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 15
+  _lifeTime: 2
+  _childFireBallSpread: 15
+  _childFireBall: {fileID: 6368071327180124453, guid: f7da282125db3f64a9ff3b1139024bb5, type: 3}
+  _childFireBallNum: 2
+  _rigidbody: {fileID: 2954274677580352339}
+--- !u!114 &3735426571532121846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2954274677580352333}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddd96ab688510434b969977c4d6fcce2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Source: {fileID: 0}
+  <AOEOption>k__BackingField:
+    Enabled: 0
+    Damage: 0
+    StartAffectingDelay: 0
+    DelayTime: 2
+    MaxAffectingDuration: 0
+  <OnceOption>k__BackingField:
+    Enabled: 1
+    Damage: 30
+  <DamageLayer>k__BackingField:
+    serializedVersion: 2
+    m_Bits: 8192
+  _destoryTime: 5
 --- !u!1 &2954274678091444595
 GameObject:
   m_ObjectHideFlags: 0
@@ -147,7 +183,7 @@ GameObject:
   - component: {fileID: 2954274678091444592}
   - component: {fileID: 2954274678091444598}
   - component: {fileID: 2954274678091444593}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: FlameVFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -260,7 +296,7 @@ GameObject:
   - component: {fileID: 2954274678475220915}
   - component: {fileID: 2954274678475220913}
   - component: {fileID: 2954274678475220912}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: FireBallVFX 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -369,7 +405,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2954274678615068842}
   - component: {fileID: 2954274678615068843}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: FireBallTrail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
