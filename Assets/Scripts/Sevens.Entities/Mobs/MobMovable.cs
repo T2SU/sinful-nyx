@@ -16,8 +16,7 @@ namespace Sevens.Entities.Mobs
 
         [SerializeField]
         private MobMoveType _moveType;
-        [SerializeField]
-        private GameObject _newPivot;
+        public Transform _newPivot;
         [SerializeField]
         private bool _isSetNewPivot;
         private Transform _playerTransform;
