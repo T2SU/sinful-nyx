@@ -323,8 +323,8 @@ MonoBehaviour:
   - {fileID: 8159676861325557508}
   - {fileID: 1139744374203811927}
   m_Bounds:
-    m_Center: {x: -0.42953998, y: 1.8388658, z: 0}
-    m_Extent: {x: 0.423015, y: 0.33684993, z: 0}
+    m_Center: {x: -0.42954046, y: 1.8388658, z: 0}
+    m_Extent: {x: 0.423015, y: 0.33684987, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!1 &5237913686375686769
@@ -611,7 +611,7 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 1023697259096212479}
   m_Bounds:
-    m_Center: {x: -0.62587833, y: 1.5735829, z: 0}
+    m_Center: {x: -0.62587786, y: 1.5735829, z: 0}
     m_Extent: {x: 0.11925998, y: 0.13319999, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
@@ -690,7 +690,7 @@ Transform:
   - {fileID: 2220736194567764868}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!95 &7224351006676676535
 Animator:
   serializedVersion: 3
@@ -827,7 +827,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _moveType: 1
-  _newPivot: {fileID: 5399416997451080911}
+  _newPivot: {fileID: 2220736194567764868}
   _isSetNewPivot: 1
 --- !u!114 &7775090774487511095
 MonoBehaviour:
@@ -943,7 +943,7 @@ MonoBehaviour:
   - {fileID: 8788871094905599780}
   - {fileID: 470036203929267366}
   m_Bounds:
-    m_Center: {x: -0.5787428, y: 1.8430616, z: 0}
-    m_Extent: {x: 0.412175, y: 0.34037006, z: 0}
+    m_Center: {x: -0.5787416, y: 1.8430613, z: 0}
+    m_Extent: {x: 0.41217524, y: 0.34037006, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1

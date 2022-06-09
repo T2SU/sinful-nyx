@@ -312,8 +312,8 @@ MonoBehaviour:
   - {fileID: 2026504623612671219}
   - {fileID: 8443857475531056070}
   m_Bounds:
-    m_Center: {x: 9.544666, y: -4.2607565, z: 0}
-    m_Extent: {x: 0.43674517, y: 0.6204002, z: 0}
+    m_Center: {x: 9.544666, y: -4.260757, z: 0}
+    m_Extent: {x: 0.43674517, y: 0.62039995, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!1 &2364726831607835209
@@ -662,7 +662,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _moveType: 1
-  _newPivot: {fileID: 8182000683695005188}
+  _newPivot: {fileID: 945817044946358309}
   _isSetNewPivot: 1
 --- !u!114 &5999782359268397697
 MonoBehaviour:
@@ -1020,8 +1020,8 @@ MonoBehaviour:
   - {fileID: 833030356562654871}
   - {fileID: 1536285880802327407}
   m_Bounds:
-    m_Center: {x: 9.794306, y: -3.561502, z: 0}
-    m_Extent: {x: 0.29320002, y: 0.42577016, z: 0}
+    m_Center: {x: 9.794306, y: -3.5615022, z: 0}
+    m_Extent: {x: 0.29320002, y: 0.42577004, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!1 &5235044923634858451
@@ -1536,7 +1536,7 @@ MonoBehaviour:
   - {fileID: 3994840360111136962}
   - {fileID: 5335155199923871931}
   m_Bounds:
-    m_Center: {x: 9.198686, y: -3.093338, z: 0}
+    m_Center: {x: 9.198685, y: -3.093338, z: 0}
     m_Extent: {x: 0.34029484, y: 0.58265007, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
@@ -1701,7 +1701,7 @@ MonoBehaviour:
   - {fileID: 2100095157543854077}
   - {fileID: 4055260190528477060}
   m_Bounds:
-    m_Center: {x: 9.137975, y: -2.4650667, z: 0}
+    m_Center: {x: 9.137974, y: -2.4650667, z: 0}
     m_Extent: {x: 0.47884655, y: 0.661618, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
