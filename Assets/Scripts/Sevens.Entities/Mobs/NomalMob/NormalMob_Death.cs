@@ -8,10 +8,6 @@ namespace Sevens.Entities.Mobs
     public class NormalMob_Death : EntityDestroyCallbackBase
     {
         [SerializeField]
-        private Sprite[] sprites;
-        [SerializeField]
-        private Transform _pivotTransform;
-        [SerializeField]
         private VisualEffect _effect;
         [SerializeField, Header("Fade Time Multiplier, 0 ~ 1")]
         private float fadeTimeMultiplier;
@@ -62,6 +58,7 @@ namespace Sevens.Entities.Mobs
             }
 
             _effect.Stop();
+            Destroy(gameObject);
         }
     }
 
