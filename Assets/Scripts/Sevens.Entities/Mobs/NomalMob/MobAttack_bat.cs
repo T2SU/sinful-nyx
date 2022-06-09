@@ -35,9 +35,9 @@ namespace Sevens.Entities.Mobs
             var obj = Instantiate(Attack, mob.transform);
             _objs.Add(obj);
             SetAllBlowSourceAs(obj, mob);
-            mob.PlayAudio(nameof(Attack));
 
             var seq = DOTween.Sequence()
+                .AppendCallback(() => mob.PlayAudio(nameof(Attack)))
                 .Append(mob.transform.DOMoveX(player.transform.position.x, AttackTimeScale))
                 .AppendInterval(0.05f)
                 .AppendCallback(() => mob.PlayAnimation(new AnimationPlayOption("AfterAttack", timeScale: AttackTimeScale), immediatelyTransition: true))
