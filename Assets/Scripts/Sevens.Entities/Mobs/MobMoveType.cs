@@ -3,6 +3,7 @@
     public enum MobMoveType
     {
         Stationary,
-        ChasingPlayer
+        ChasingPlayer,
+        OnlyLookAt
     }
 }

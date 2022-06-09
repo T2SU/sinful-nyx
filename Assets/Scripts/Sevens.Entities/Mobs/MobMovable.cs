@@ -50,12 +50,15 @@ namespace Sevens.Entities.Mobs
                 _mob.transform.SetFacingLeft(!mobIsOnLeft);
             if (Mathf.Abs(mobPos.x - playerPos.x) >= 2f)
             {
-                if (!_mob.IsVelocityChangingLinearly() && _mob.State == MobState.Idle)
+                if (_moveType == MobMoveType.ChasingPlayer)
                 {
-                    if (_mob.IsDelayedByChangedState(1.0f))
-                        return;
-                    _mob.ChangeState(MobState.Move, playLoopAnimationByState: true);
-                    _mob.SetVelocity(new Vector2(sign * _mob.MoveSpeed, 0), linearly: true);
+                    if (!_mob.IsVelocityChangingLinearly() && _mob.State == MobState.Idle)
+                    {
+                        if (_mob.IsDelayedByChangedState(1.0f))
+                            return;
+                        _mob.ChangeState(MobState.Move, playLoopAnimationByState: true);
+                        _mob.SetVelocity(new Vector2(sign * _mob.MoveSpeed, 0), linearly: true);
+                    }
                 }
             }
             else
