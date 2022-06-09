@@ -41,7 +41,7 @@ namespace Sevens.Entities.Mobs
            
             if (_mob.State == MobState.Hit)
             {
-                if (_mob.IsDelayedByChangedState(0.3f))
+                if (_mob.IsDelayedByChangedState(_mob.HitTime))
                     return;
                 _mob.ChangeState(MobState.Idle, playLoopAnimationByState: true);
             }
