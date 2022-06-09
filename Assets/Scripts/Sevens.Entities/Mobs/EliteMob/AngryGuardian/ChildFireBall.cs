@@ -15,7 +15,7 @@ public class ChildFireBall : MonoBehaviour
     void Start()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
-        _rigidbody.velocity = transform.right * _speed;
+        _rigidbody.velocity = transform.up * -_speed;
         Destroy(gameObject, _lifeTime);
     }
 }

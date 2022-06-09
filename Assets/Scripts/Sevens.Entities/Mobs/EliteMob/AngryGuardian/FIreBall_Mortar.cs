@@ -34,9 +34,9 @@ public class FIreBall_Mortar : MonoBehaviour
         _lifeTimer += Time.deltaTime;
         if (_lifeTimer > _lifeTime)
         {
-            for(int i = 1; i <= _childFireBallNum; i++)
+            for(int i = 0; i <= _childFireBallNum; i++)
             {
-                Instantiate(_childFireBall, transform.position, Quaternion.Euler(0, 0, transform.rotation.z + _childFireBallSpread * i));
+                Instantiate(_childFireBall, transform.position, Quaternion.Euler(0, 0, transform.rotation.z + _childFireBallSpread * i - _childFireBallSpread));
             }
             Destroy(gameObject);
         }
