@@ -78,9 +78,9 @@ namespace Sevens.Entities.Mobs
             // 타입에 따른 몬스터 이동. Velocity를 조절할 수 있게 해줌.
             if (Mathf.Abs(mobPos.x - playerPos.x) >= 2f)
             {
-                if (!_mob.IsVelocityChangingLinearly())
+                if (_moveType == MobMoveType.ChasingPlayer)
                 {
-                    if (_mob.State == MobState.Idle)
+                    if (!_mob.IsVelocityChangingLinearly() && _mob.State == MobState.Idle)
                     {
                         if (_mob.IsDelayedByChangedState(1.0f))
                             return;
