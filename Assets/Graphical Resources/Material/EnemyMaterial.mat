@@ -47,7 +47,7 @@ Material:
     - Boolean_56d4cb6307cf4711bf8c1d949b7c969a: 1
     - Vector1_513c2d28ab18454c98fa31d84ddfded8: -0.2
     - _Fade: 1
-    - _GlowEnabled: 1
+    - _GlowEnabled: 0
     - _GlowSpeed: -0.25
     m_Colors:
     - Color_6a0ad2c21b3f46db953eaa5d44580601: {r: 1, g: 1, b: 1, a: 0}
