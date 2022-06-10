@@ -34,12 +34,36 @@ namespace Sevens.Entities.Mobs
             if (_moveType == MobMoveType.Stationary)
                 return;
 
-            // 이동 또는 대기 상태가 아닐 경우, 몬스터의 속력을 0으로 만듦.
-            if (_mob.State != MobState.Move && _mob.State != MobState.Idle)
+            if (_mob.State == MobState.Hit)
             {
-                _mob.SetVelocity(Vector2.zero, linearly: false);
-                return;
+                if (_mob.IsDelayedByChangedState(_mob.HitTime))
+                    return;
+                _mob.ChangeState(MobState.Idle, playLoopAnimationByState: true);
             }
+
+            // 타입에 따른 몬스터 이동. Velocity를 조절할 수 있게 해줌.
+            var playerPos = _playerTransform.position;
+            var mobtransform = _newPivot == null ? _mob.transform : _newPivot;
+            var mobPos = mobtransform.position;
+            var sign = Mathf.Sign(playerPos.x - mobPos.x);
+            var mobIsOnLeft = _mob.IsOnLeftBy(_playerTransform);
+
+            if (!_isSetNewPivot)
+            {
+                if (mobIsOnLeft == _mob.transform.IsFacingLeft())
+                    _mob.transform.SetFacingLeft(!mobIsOnLeft);
+            }
+            else
+            {
+                mobIsOnLeft = mobPos.x < playerPos.x;
+
+                if (mobIsOnLeft == mobtransform.IsFacingLeft())
+                    _mob.transform.SetFacingLeft(mobIsOnLeft, _newPivot.transform);
+                else
+                    _mob.transform.SetFacingLeft(mobIsOnLeft, _newPivot.transform);
+
+            }
+
 
             // 타입에 따른 몬스터 이동. Velocity를 조절할 수 있게 해줌.
             var playerPos = _playerTransform.position;

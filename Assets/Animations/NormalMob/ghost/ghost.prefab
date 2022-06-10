@@ -111,7 +111,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7980956989651418065
 Transform:
   m_ObjectHideFlags: 0
@@ -119,13 +119,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 823619394131064777}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.73, y: -0.06, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0.92816776, w: 0.37216222}
+  m_LocalPosition: {x: -0.27255267, y: 0.081011415, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 4617659782474643477}
-  m_RootOrder: 13
+  m_Father: {fileID: 3538438056066597684}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!2083052967 &2623901552634273908
 VisualEffect:
@@ -172,7 +172,7 @@ VFXRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 823619394131064777}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -431,8 +431,8 @@ MonoBehaviour:
   - {fileID: 2026504623612671219}
   - {fileID: 8443857475531056070}
   m_Bounds:
-    m_Center: {x: 9.544666, y: -4.2607565, z: 0}
-    m_Extent: {x: 0.43674517, y: 0.6204002, z: 0}
+    m_Center: {x: 9.544666, y: -4.260757, z: 0}
+    m_Extent: {x: 0.43674517, y: 0.62039995, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
   m_AutoRebind: 0
@@ -645,7 +645,6 @@ Transform:
   - {fileID: 8443857475531056070}
   - {fileID: 833030356562654871}
   - {fileID: 4055260190528477060}
-  - {fileID: 7980956989651418065}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -917,8 +916,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dd0d5e8efacc9443ad319570e82007e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sprites: []
-  effect: {fileID: 0}
+  _effect: {fileID: 2623901552634273908}
+  fadeTimeMultiplier: 0.2
+  fadeTimer: 1
 --- !u!1 &4093540506530870957
 GameObject:
   m_ObjectHideFlags: 0
@@ -1370,6 +1370,7 @@ Transform:
   m_Children:
   - {fileID: 6285529760484159939}
   - {fileID: 4141963068332866432}
+  - {fileID: 7980956989651418065}
   m_Father: {fileID: 4617659782474643477}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1799,7 +1800,7 @@ MonoBehaviour:
   - {fileID: 3994840360111136962}
   - {fileID: 5335155199923871931}
   m_Bounds:
-    m_Center: {x: 9.198686, y: -3.093338, z: 0}
+    m_Center: {x: 9.198685, y: -3.093338, z: 0}
     m_Extent: {x: 0.34029484, y: 0.58265007, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
@@ -1969,7 +1970,7 @@ MonoBehaviour:
   - {fileID: 2100095157543854077}
   - {fileID: 4055260190528477060}
   m_Bounds:
-    m_Center: {x: 9.137975, y: -2.4650667, z: 0}
+    m_Center: {x: 9.137974, y: -2.4650667, z: 0}
     m_Extent: {x: 0.47884655, y: 0.661618, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
