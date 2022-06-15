@@ -330,13 +330,13 @@ namespace Sevens.Entities.Players
                 _playerRigidbody.velocity = velocity;
                 var knockback = _hitKnockback;
                 knockback.x *= _hitDirection.Value;
-                Debug.Log($"Current velocity = {_playerRigidbody.velocity} | Knockback = {knockback}");
+                //Debug.Log($"Current velocity = {_playerRigidbody.velocity} | Knockback = {knockback}");
                 _playerRigidbody.AddForce(knockback, ForceMode2D.Impulse);
                 _hitDirection = null;
             }
             else
             {
-                Debug.Log($"Current velocity ? {_playerRigidbody.velocity}");
+                //Debug.Log($"Current velocity ? {_playerRigidbody.velocity}");
             }
         }
 
