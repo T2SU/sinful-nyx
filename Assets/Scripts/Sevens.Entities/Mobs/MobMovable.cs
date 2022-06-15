@@ -16,6 +16,11 @@ namespace Sevens.Entities.Mobs
         [SerializeField]
         private MobMoveType _moveType;
 
+        public Transform _newPivot;
+
+        [SerializeField]
+        private bool _isSetNewPivot;
+
         private Transform _playerTransform;
 
         private void Awake()
@@ -64,12 +69,7 @@ namespace Sevens.Entities.Mobs
 
             }
 
-
             // 타입에 따른 몬스터 이동. Velocity를 조절할 수 있게 해줌.
-            var playerPos = _playerTransform.position;
-            var mobPos = _mob.transform.position;
-            var sign = Mathf.Sign(playerPos.x - mobPos.x);
-            var mobIsOnLeft = _mob.IsOnLeftBy(_playerTransform);
             if (mobIsOnLeft == _mob.transform.IsFacingLeft())
                 _mob.transform.SetFacingLeft(!mobIsOnLeft);
             if (Mathf.Abs(mobPos.x - playerPos.x) >= 2f)
