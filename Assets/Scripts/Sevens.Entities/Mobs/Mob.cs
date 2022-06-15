@@ -106,6 +106,11 @@ namespace Sevens.Entities.Mobs
                 return 0f;
             var animName = opt.AnimationName;
             AnimationSet anim = _animations.FindByName(animName);
+            if (anim == null)
+            {
+                Debug.LogWarning($"{name}에서 '{opt.AnimationName}' 애니메이션을 재생하려 하였으나, 해당 애니메이션이 정의되지 않았습니다.");
+                return 0f;
+            }
             if (anim.SpineAnimation != null)
             {
                 var spineAnim = anim.SpineAnimation;
