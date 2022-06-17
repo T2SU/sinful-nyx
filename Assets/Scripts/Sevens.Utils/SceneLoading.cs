@@ -63,7 +63,7 @@ namespace Sevens.Utils
             loadingComponent.Progress = 0.0f;
             while (!operations.TrueForAll(o => o.isDone) || end > Time.time)
             {
-                float now = operations.Select(o => o.progress).Sum() + Mathf.Min(1.0f, Time.time - begin);
+                float now = operations.Select(o => o.progress).Sum() + Mathf.Min(fakeDuration, Time.time - begin);
                 float total = operations.Count + fakeDuration;
 
                 float progress = now / total;
