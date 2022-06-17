@@ -267,7 +267,7 @@ namespace Sevens.Entities.Players
         protected override void Start()
         {
             var mainCam = Camera.main;
-            var curtainPrefab = Resources.Load<GameObject>("Sprite/CurtainBase");
+            var curtainPrefab = Resources.Load<GameObject>(Prefabs.CurtainSprite);
             _curtainSprite = Instantiate(curtainPrefab, mainCam.transform).GetComponent<SpriteRenderer>();
 
             // 투명 검정색

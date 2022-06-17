@@ -1,4 +1,5 @@
 ﻿using Sevens.UIs;
+using Sevens.Utils;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -23,7 +24,7 @@ namespace Sevens.Effects
 
         protected virtual void Awake()
         {
-            var skipButton = Instantiate(Resources.Load<GameObject>("UI/SkipButton"));
+            var skipButton = Instantiate(Resources.Load<GameObject>(Prefabs.SkipButton));
             _gauge = skipButton.transform.GetComponentInChildren<RadialGrowingGauge>();
             _alreadySkipped = false;
         }
@@ -54,7 +55,7 @@ namespace Sevens.Effects
         {
             // Load Scene
             if (!string.IsNullOrEmpty(NextScene))
-                SceneManager.LoadScene(NextScene);
+                SceneManagement.Instance.LoadScene(NextScene);
         }
 
         private void Update()
