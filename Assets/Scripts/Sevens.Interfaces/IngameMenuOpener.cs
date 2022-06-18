@@ -21,7 +21,7 @@ namespace Sevens.Interfaces
         {
             if (DialogueManager.Instance.HasDialogue())
                 return;
-            if (SceneManagement.Instance.IngameMenuAvailable)
+            if (!SceneManagement.Instance.IngameMenuAvailable)
                 return;
             if (Input.GetButtonDown(ButtonName))
             {
