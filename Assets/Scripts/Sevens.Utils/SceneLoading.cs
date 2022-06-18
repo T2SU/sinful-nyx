@@ -56,7 +56,7 @@ namespace Sevens.Utils
                 SceneManager.LoadSceneAsync(NextScene, LoadSceneMode.Single)
             };
             foreach (var operation in operations)
-                operation.allowSceneActivation = true;
+                operation.allowSceneActivation = false;
 
             // 1초짜리 가짜
             float fakeDuration = 0.3f;
