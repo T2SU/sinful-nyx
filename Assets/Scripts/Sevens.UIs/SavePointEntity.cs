@@ -80,7 +80,7 @@ public class SavePointEntity : MonoBehaviour
     {
         yield return DialogueManager.Instance.StartDialogue(_scripts.PlayScript());
         player.Achievements.SetData(PlayerDataKeyType.FirstContactCompleted, "1");
-        yield return DelayedParticle();
+        DelayedParticle();
         ChangeButtonTooltip();
         _systemDialogue.Display(null, -1);
     }
@@ -98,5 +98,6 @@ public class SavePointEntity : MonoBehaviour
     {
         var et = transform.GetComponentInChildren<EventTrigger>();
         et.ButtonDescription = "저장";
+        et.UpdateButtonNow();
     }
 }
