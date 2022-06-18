@@ -1,4 +1,5 @@
 ﻿using DG.Tweening;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -54,6 +55,8 @@ namespace Sevens.Utils
             {
                 SceneManager.LoadSceneAsync(NextScene, LoadSceneMode.Single)
             };
+            foreach (var operation in operations)
+                operation.allowSceneActivation = true;
 
             // 1초짜리 가짜
             float fakeDuration = 0.3f;
@@ -61,7 +64,7 @@ namespace Sevens.Utils
             float end = begin + fakeDuration;
 
             loadingComponent.Progress = 0.0f;
-            while (!operations.TrueForAll(o => o.isDone) || end > Time.time)
+            while (!operations.TrueForAll(o => o.progress >= 0.9f) || end > Time.time)
             {
                 float now = operations.Select(o => o.progress).Sum() + Mathf.Min(fakeDuration, Time.time - begin);
                 float total = operations.Count + fakeDuration;
@@ -72,11 +75,12 @@ namespace Sevens.Utils
             }
             loadingComponent.Progress = 1.0f;
 
+            foreach (var operation in operations)
+                operation.allowSceneActivation = true;
+
             loadingComponent.SetDone();
             yield return new WaitForSeconds(0.25f);
-
             yield return canvasGroup.DOFade(0.0f, 0.25f).WaitForCompletion();
-
             GameObject.Destroy(LoadingScreen.gameObject);
 
             IsDone = true;

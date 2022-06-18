@@ -71,8 +71,9 @@ namespace Sevens.Utils
             {
                 Debug.LogError($"씬이 이미 로딩중 상태에 있습니다. 로딩 요청된 씬 이름: {sceneName}");
                 return;
-            }    
-            StashPlayerData(sceneName);
+            }
+            if (!SceneIsLoadedBySaved)
+                StashPlayerData(sceneName);
             _sceneLoading = new SceneLoading(sceneName, _coroutineMan);
         }
 
@@ -97,28 +98,7 @@ namespace Sevens.Utils
         private void Awake()
         {
             DontDestroyOnLoad(gameObject);
-            SceneManager.sceneLoaded += SceneLoaded;
             _coroutineMan = new CoroutineMan(this);
-        }
-
-        private void SceneLoaded(Scene scene, LoadSceneMode mode)
-        {
-            var data = Singleton<PlayerData>.Data;
-            if (data != null)
-                LoadPlayer(data);
-        }
-
-        private void LoadPlayer(PlayerData playerData)
-        {
-            var playerObj = GameObject.FindGameObjectWithTag("Player");
-            // 씬에 플레이어가 있으면
-            if (playerObj != null)
-            {
-                // 싱글톤에서 가져온 플레이어 데이터를 적용
-                var player = playerObj.GetComponent<Player>();
-
-                player.Load(playerData);
-            }
         }
     }
 }

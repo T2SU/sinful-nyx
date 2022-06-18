@@ -59,17 +59,12 @@ namespace Sevens.Utils
         public DebugType DisableFlags;
 #endif
 
-        private void Awake()
+        private void Start()
         {
-            SceneManager.sceneLoaded += Init;
+            Init();
         }
 
-        private void OnDestroy()
-        {
-            SceneManager.sceneLoaded -= Init;
-        }
-
-        private void Init(Scene scene, LoadSceneMode mode)
+        private void Init()
         {
             var target = Target;
             if (target == null)
