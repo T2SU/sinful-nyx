@@ -38,6 +38,11 @@ namespace Sevens.Events
 
         private bool _triggerEntered;
 
+        public void UpdateButtonNow()
+        {
+            _interactionGuide?.SetText(ButtonKey, ButtonDescription);
+        }
+
         private void Awake()
         {
             _playerLayer = LayerMask.NameToLayer("Player");

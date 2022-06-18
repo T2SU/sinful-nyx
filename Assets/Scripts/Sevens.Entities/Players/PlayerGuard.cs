@@ -1,6 +1,7 @@
 using UnityEngine;
 using System;
 using System.Collections.Generic;
+using Sevens.Utils;
 
 namespace Sevens.Entities.Players
 {
@@ -60,8 +61,8 @@ namespace Sevens.Entities.Players
             _guardCooltimer += Time.deltaTime;
 
             if (_playerComponent.State != PlayerState.Idle && _playerComponent.State != PlayerState.Run && _playerComponent.State != PlayerState.Guard ) return;
-            if (_playerComponent.IsDirectionMode()) return;
-
+            if (!SceneManagement.Instance.IngameMenuAvailable) return;
+            
             if (_isParry)
             {
                 _parryableTimer += Time.deltaTime;

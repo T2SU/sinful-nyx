@@ -1,5 +1,4 @@
-﻿using Sevens.Entities.Players;
-using Sevens.Utils;
+﻿using Sevens.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,9 +15,12 @@ namespace Sevens.Entities.Mobs
 
         [SerializeField]
         private MobMoveType _moveType;
+
         public Transform _newPivot;
+
         [SerializeField]
         private bool _isSetNewPivot;
+
         private Transform _playerTransform;
 
         private void Awake()
@@ -30,7 +32,6 @@ namespace Sevens.Entities.Mobs
         {
             _playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
         }
-
 
         private void Update()
         {
@@ -48,7 +49,7 @@ namespace Sevens.Entities.Mobs
             // 타입에 따른 몬스터 이동. Velocity를 조절할 수 있게 해줌.
             var playerPos = _playerTransform.position;
             var mobtransform = _newPivot == null ? _mob.transform : _newPivot;
-            var mobPos = _mob.transform.position;
+            var mobPos = mobtransform.position;
             var sign = Mathf.Sign(playerPos.x - mobPos.x);
             var mobIsOnLeft = _mob.IsOnLeftBy(_playerTransform);
 
@@ -68,8 +69,9 @@ namespace Sevens.Entities.Mobs
 
             }
 
-
             // 타입에 따른 몬스터 이동. Velocity를 조절할 수 있게 해줌.
+            if (mobIsOnLeft == _mob.transform.IsFacingLeft())
+                _mob.transform.SetFacingLeft(!mobIsOnLeft);
             if (Mathf.Abs(mobPos.x - playerPos.x) >= 2f)
             {
                 if (_moveType == MobMoveType.ChasingPlayer)
@@ -85,27 +87,10 @@ namespace Sevens.Entities.Mobs
             }
             else
             {
-                if (!_mob.IsVelocityChangingLinearly())
+                if (!_mob.IsVelocityChangingLinearly() && _mob.State == MobState.Move)
                 {
-                    if (_mob.State == MobState.Move)
-                    {
-                        _mob.ChangeState(MobState.Idle, playLoopAnimationByState: true);
-                        _mob.SetVelocity(Vector2.zero, linearly: true);
-                    }
-                }
-            }
-
-            // 보는 방향과 반대로 이동하려고 할 때, 이동 방향만 전환
-            if (!_mob.IsVelocityChangingLinearly())
-            {
-                if (_mob.State == MobState.Move)
-                {
-                    var vel = _mob.GetVelocity();
-                    if (Mathf.Sign(vel.x) != sign)
-                    {
-                        vel.x = -vel.x;
-                        _mob.SetVelocity(vel, linearly: false);
-                    }
+                    _mob.ChangeState(MobState.Idle, playLoopAnimationByState: true);
+                    _mob.SetVelocity(Vector2.zero, linearly: true);
                 }
             }
         }

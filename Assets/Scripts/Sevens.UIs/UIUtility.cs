@@ -1,3 +1,4 @@
+using Sevens.Utils;
 using System;
 using System.Collections;
 using UnityEngine;
@@ -26,7 +27,7 @@ public class UIUtility : MonoBehaviour
 
     private void Awake()
     {
-        data = Resources.Load<UIData>("UIData");
+        data = Resources.Load<UIData>(Prefabs.UIData);
     }
 
     public void OnPopUpInitiated(string popUpText, string selectiveOptionOne, string selectiveOptionTwo, Action ButtonAction1, Action ButtonAction2)

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 using Sevens.Entities.Players;
+using Sevens.Utils;
 
 namespace Sevens.Speeches
 {
@@ -25,7 +26,7 @@ namespace Sevens.Speeches
 
             if (GetData(DialogueInfoType.Avatar) != "null")
             {
-                SpeakerAvatarSprite = Resources.Load<Sprite>("Avatar/" + GetData(DialogueInfoType.Avatar));
+                SpeakerAvatarSprite = Resources.Load<Sprite>(Prefabs.AvatarSpritePrefix + GetData(DialogueInfoType.Avatar));
             }
             else
             {

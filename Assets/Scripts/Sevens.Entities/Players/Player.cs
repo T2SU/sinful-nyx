@@ -262,12 +262,16 @@ namespace Sevens.Entities.Players
             _beingDashTimer = new TimeElapsingRecord();
             _staminaRecoveryTimer = new TimeElapsingRecord();
             Invincible = false;
+
+            var stashedPlayerData = Singleton<PlayerData>.Data;
+            if (stashedPlayerData != null)
+                Load(stashedPlayerData);
         }
 
         protected override void Start()
         {
             var mainCam = Camera.main;
-            var curtainPrefab = Resources.Load<GameObject>("Sprite/CurtainBase");
+            var curtainPrefab = Resources.Load<GameObject>(Prefabs.CurtainSprite);
             _curtainSprite = Instantiate(curtainPrefab, mainCam.transform).GetComponent<SpriteRenderer>();
 
             // 투명 검정색
@@ -330,13 +334,13 @@ namespace Sevens.Entities.Players
                 _playerRigidbody.velocity = velocity;
                 var knockback = _hitKnockback;
                 knockback.x *= _hitDirection.Value;
-                Debug.Log($"Current velocity = {_playerRigidbody.velocity} | Knockback = {knockback}");
+                //Debug.Log($"Current velocity = {_playerRigidbody.velocity} | Knockback = {knockback}");
                 _playerRigidbody.AddForce(knockback, ForceMode2D.Impulse);
                 _hitDirection = null;
             }
             else
             {
-                Debug.Log($"Current velocity ? {_playerRigidbody.velocity}");
+                //Debug.Log($"Current velocity ? {_playerRigidbody.velocity}");
             }
         }
 
@@ -519,28 +523,6 @@ namespace Sevens.Entities.Players
         public bool CheckDirection(Entity source)
         {
             return IsOnLeftBy(source.transform) != IsFacingLeft();
-        }
-
-        public void Load(PlayerData data)
-        {
-            MaxHp = data.MaxHP;
-            MaxSin = data.MaxSin;
-            MaxStamina = data.MaxStamina;
-            SetInitialHp(data.HP);
-            SetInitialSin(data.Sin);
-            SetInitialStamina(data.Stamina);
-            Soul = data.Soul;
-            Achievements.Datas = data.Achievements.Datas.ToArray();
-
-            if (!string.IsNullOrEmpty(data.SpawnPointName))
-            {
-                var pointObj = GameObject.Find(data.SpawnPointName);
-                if (pointObj == null)
-                    return;
-
-                var pos = pointObj.transform.position;
-                transform.position = pos;
-            }
         }
 
         public override void OnDamagedBy(Entity source, float damage)
@@ -794,6 +776,28 @@ namespace Sevens.Entities.Players
             if (clip == null) return;
             _audioSource.pitch = pitch;
             _audioSource.PlayOneShot(clip);
+        }
+
+        private void Load(PlayerData data)
+        {
+            MaxHp = data.MaxHP;
+            MaxSin = data.MaxSin;
+            MaxStamina = data.MaxStamina;
+            SetInitialHp(data.HP);
+            SetInitialSin(data.Sin);
+            SetInitialStamina(data.Stamina);
+            Soul = data.Soul;
+            Achievements.Datas = data.Achievements.Datas.ToArray();
+
+            if (!string.IsNullOrEmpty(data.SpawnPointName))
+            {
+                var pointObj = GameObject.Find(data.SpawnPointName);
+                if (pointObj == null)
+                    return;
+
+                var pos = pointObj.transform.position;
+                transform.position = pos;
+            }
         }
     }
 }
