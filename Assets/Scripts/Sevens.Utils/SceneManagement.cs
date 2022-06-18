@@ -74,6 +74,7 @@ namespace Sevens.Utils
             }
             if (!SceneIsLoadedBySaved)
                 StashPlayerData(sceneName);
+            SceneIsLoadedBySaved = false;
             _sceneLoading = new SceneLoading(sceneName, _coroutineMan);
         }
 
@@ -92,7 +93,6 @@ namespace Sevens.Utils
             }
             else
                 Singleton<PlayerData>.Data = null;
-            SceneIsLoadedBySaved = false;
         }
 
         private void Awake()
