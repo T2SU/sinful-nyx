@@ -1,5 +1,6 @@
 ﻿using DG.Tweening;
 using Sevens.Entities.Players;
+using Sevens.Utils;
 using System.Collections;
 using UnityEngine;
 
@@ -21,25 +22,8 @@ namespace Sevens.Entities.Mobs
         public string SmashEffectName;
         public Transform GroundPosition;
 
-        public override void Execute(Player player, MobAttackable attackManager)
+        public override IEnumerator Attack(Player player, Mob mob, CoroutineMan coroutines)
         {
-            var key = nameof(MobAttack_LasPhase2_RegularAttack);
-            attackManager.AttackCoroutines.Register(key, AttackTimeline(attackManager));
-        }
-
-        public override void Cancel(MobAttackable attackManager)
-        {
-            var mob = attackManager.Mob;
-            mob.ClearSpineAnimations(0, 0, 1);
-            attackManager.EndAttack(true);
-            ClearObjects();
-        }
-
-        private IEnumerator AttackTimeline(MobAttackable attackManager)
-        {
-            var mob = attackManager.Mob;
-            var coroutines = attackManager.AttackCoroutines;
-
             mob.PlayAnimation(
                 new AnimationPlayOption("IdleNoHand", track: 1, loop: true, timeScale: AttackTimeScale),
                 immediatelyTransition: true
@@ -47,10 +31,6 @@ namespace Sevens.Entities.Mobs
 
             var leftHand = Instantiate(HandLeft, transform);
             var rightHand = Instantiate(HandRight, transform);
-            _objs.Add(leftHand);
-            _objs.Add(rightHand);
-            SetAllBlowSourceAs(leftHand, mob);
-            SetAllBlowSourceAs(rightHand, mob);
             var leftReturnPos = leftHand.transform.position;
             var rightReturnPos = rightHand.transform.position;
             var leftReturnRot = leftHand.transform.rotation;
@@ -62,7 +42,6 @@ namespace Sevens.Entities.Mobs
             leftHand.GetComponent<Blow>().OnceOption.Enabled = false;
             rightHand.GetComponent<Blow>().OnceOption.Enabled = false;
             yield return new WaitForSeconds(0.7f);
-
 
             CustomYieldInstruction DoAttack(GameObject hand, Transform initPos, Transform otherInitPos)
             {
@@ -88,20 +67,20 @@ namespace Sevens.Entities.Mobs
             var patternType = Random.Range(0, 2);
             if (patternType == 0)
             {
-                yield return WarningAction(attackManager);
+                yield return WarningAction(mob);
                 yield return DoAttack(leftHand, HandLeftInitialPosition, HandRightInitialPosition);
-                yield return WarningAction(attackManager);
+                yield return WarningAction(mob);
                 yield return DoAttack(rightHand, HandRightInitialPosition, HandLeftInitialPosition);
-                yield return WarningAction(attackManager);
+                yield return WarningAction(mob);
                 yield return DoAttack(leftHand, HandLeftInitialPosition, HandRightInitialPosition);
             }
             else
             {
-                yield return WarningAction(attackManager);
+                yield return WarningAction(mob);
                 yield return DoAttack(rightHand, HandRightInitialPosition, HandLeftInitialPosition);
-                yield return WarningAction(attackManager);
+                yield return WarningAction(mob);
                 yield return DoAttack(leftHand, HandLeftInitialPosition, HandRightInitialPosition);
-                yield return WarningAction(attackManager);
+                yield return WarningAction(mob);
                 yield return DoAttack(rightHand, HandRightInitialPosition, HandLeftInitialPosition);
             }
 
@@ -110,10 +89,11 @@ namespace Sevens.Entities.Mobs
             coroutines.Register("LeftFistFinalRotate", leftHand.transform.DOLocalRotateQuaternion(leftReturnRot, 0.5f));
             coroutines.Register("RightFistFinalRotate", rightHand.transform.DOLocalRotateQuaternion(rightReturnRot, 0.5f));
             yield return new WaitForSeconds(0.7f);
+        }
 
-            mob.ClearSpineAnimations(0, 0, 1);
-            attackManager.EndAttack(false);
-            ClearObjects();
+        public override void OnFinish(MobAttackable attackManager)
+        {
+            attackManager.Mob.ClearSpineAnimations(0, 0, 1);
         }
     }
 }

@@ -24,53 +24,34 @@ namespace Sevens.Entities.Mobs
         public float LaserRotationDuration;
         public AnimationCurve LaserEase;
 
-        public override void Execute(Player player, MobAttackable attackManager)
+        public override void OnFinish(MobAttackable attackManager)
         {
-            var key = nameof(MobAttack_LasPhase1_LaserAttack);
-            attackManager.AttackCoroutines.Register(key, AttackTimeline(attackManager));
+            attackManager.Mob.ClearSpineAnimations(0.3f, 0.3f, 1);
         }
 
-        public override void Cancel(MobAttackable attackManager)
+        public override IEnumerator Attack(Player player, Mob mob, CoroutineMan coroutines)
         {
-            var mob = attackManager.Mob;
-            mob.ClearSpineAnimations(0.3f, 0.3f, 1);
-            attackManager.EndAttack(true);
-            ClearObjects();
-        }
-
-        private IEnumerator AttackTimeline(MobAttackable attackManager)
-        {
-            var mob = attackManager.Mob;
-            var coroutines = attackManager.AttackCoroutines;
             var animTime = mob.PlayAnimation(
                 new AnimationPlayOption("Ult", track: 1, timeScale: AttackTimeScale),
                 immediatelyTransition: true
             );
             yield return new WaitForSeconds(animTime - WarningDuration);
-            yield return WarningAction(attackManager);
+            yield return WarningAction(mob);
             mob.PlayAudio("LaserAttack");
             var obj = Instantiate(Laser, LaserGuide.transform);
-            _objs.Add(obj);
-            SetAllBlowSourceAs(obj, mob);
             var laser = obj.GetComponent<Laser>();
             var firePoint = laser.FirePoint.transform;
             var angle = Randomizer.PickOneRand(Angles);
             firePoint.localRotation = Quaternion.AngleAxis(angle.StartAngle, Vector3.right);
 
             var endAngle = Quaternion.AngleAxis(angle.EndAngle, Vector3.right);
-            coroutines.Register("LaserRotation", 
-                DOTween.Sequence()
+            yield return DOTween.Sequence()
                 .SetDelay(0.35f)
                 .Append(firePoint.transform
                     .DOLocalRotateQuaternion(endAngle, LaserRotationDuration)
                     .SetEase(LaserEase))
-                .AppendInterval(0.35f)
-                .AppendCallback(() => {
-                    mob.ClearSpineAnimations(0.3f, 0.3f, 1);
-                    attackManager.EndAttack(false);
-                    laser.DisableLaser();
-                })
-            );
+                .AppendInterval(0.35f).WaitForCompletion();
+            laser.DisableLaser();
         }
     }
 }

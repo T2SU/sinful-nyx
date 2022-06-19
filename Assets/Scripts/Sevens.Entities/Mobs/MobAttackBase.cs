@@ -23,19 +23,19 @@ namespace Sevens.Entities.Mobs
 
         public Collider2D TriggerRange { get; private set; }
 
-        protected readonly List<Object> _objs = new List<Object>();
+        private readonly List<Object> _objs = new List<Object>();
 
-        public abstract IEnumerator Attack(Player player, Mob mob, CoroutineMan coroutineMan);
+        public abstract IEnumerator Attack(Player player, Mob mob, CoroutineMan coroutines);
 
-        public virtual void Execute(Player player, MobAttackable attackManager)
+        public virtual void OnExecute(Player player, MobAttackable attackManager)
         {
         }
 
-        public virtual void Cancel(MobAttackable attackManager)
+        public virtual void OnCancel(MobAttackable attackManager)
         {
         }
         
-        public virtual void Finish()
+        public virtual void OnFinish(MobAttackable attackManager)
         {
         }
 

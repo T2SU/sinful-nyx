@@ -92,6 +92,7 @@ namespace Sevens.Entities.Mobs
 
         private IEnumerator ExecuteCoroutine()
         {
+            _currentAttack.OnExecute(Player, this);
             yield return _currentAttack.Attack(Player, Mob, AttackCoroutines);
             _currentAttack.ClearObjects();
             EndAttack(false);
@@ -111,6 +112,9 @@ namespace Sevens.Entities.Mobs
             _currentAttack = null;
             if (_currentAttack.InvincibleWhileAttack)
                 Mob.Invincible = false;
+            if (canceled)
+                _currentAttack.OnCancel(this);
+            _currentAttack.OnFinish(this);
         }
     }
 }

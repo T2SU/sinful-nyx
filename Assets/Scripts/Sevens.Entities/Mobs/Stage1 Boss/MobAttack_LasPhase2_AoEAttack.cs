@@ -1,9 +1,7 @@
 ﻿using DG.Tweening;
-using Sevens.Effects;
 using Sevens.Entities.Players;
 using Sevens.Utils;
 using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -17,24 +15,14 @@ namespace Sevens.Entities.Mobs
         public string TrembleEffectName;
         public int AttackNumber;
 
-        public override void Execute(Player player, MobAttackable attackManager)
+        public override IEnumerator Attack(Player player, Mob mob, CoroutineMan coroutines)
         {
-            var mob = attackManager.Mob;
-            var coroutines = attackManager.AttackCoroutines;
-
             mob.SetInvincible(1.5f);
             mob.ClearSpineAnimations(0.3f, 0.3f, 0);
 
-            WarningAction(attackManager);
+            WarningAction(mob);
 
             var seq = DOTween.Sequence();
-
-            void CreateCircle(GameObject pattern)
-            {
-                var obj = Instantiate(pattern);
-                SetAllBlowSourceAs(obj, mob);
-                _objs.Add(obj);
-            }
 
             void AppendSequence(GameObject circle, int index)
             {
@@ -47,7 +35,7 @@ namespace Sevens.Entities.Mobs
                         new AnimationPlayOption("Skill1", track: index, timeScale: AttackTimeScale),
                         immediatelyTransition: true);
                     mob.PlayAudio($"Skill1_Bump{index}");
-                    CreateCircle(circle);
+                    Instantiate(circle);
                 })
                 .AppendInterval(tremble)
                 .AppendCallback(() => mob.PlayEffect(TrembleEffectName, transform.position))
@@ -62,20 +50,12 @@ namespace Sevens.Entities.Mobs
                     AppendSequence(Randomizer.PickOneRand(Circles), i + 1);
             }
 
-            seq.AppendCallback(() => {
-                mob.ClearSpineAnimations(0.3f, 0.3f, Enumerable.Range(1, AttackNumber + 1).ToArray());
-                attackManager.EndAttack(false);
-            });
-            
-            coroutines.Register("AoEAttackAnimation", seq);
+            yield return seq.WaitForCompletion();
         }
 
-        public override void Cancel(MobAttackable attackManager)
+        public override void OnFinish(MobAttackable attackManager)
         {
-            var mob = attackManager.Mob;
-            mob.ClearSpineAnimations(0.3f, 0.3f, Enumerable.Range(1, AttackNumber + 1).ToArray());
-            attackManager.EndAttack(true);
-            ClearObjects();
+            attackManager.Mob.ClearSpineAnimations(0.3f, 0.3f, Enumerable.Range(1, AttackNumber + 1).ToArray());
         }
     }
 }

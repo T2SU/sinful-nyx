@@ -32,60 +32,8 @@ namespace Sevens.Entities.Mobs
 
         private bool[] _isBeamActive;
 
-        public override void Execute(Player player, MobAttackable attackManager)
+        private void ControlLaser(CoroutineMan coroutines, MagicLaser laser, LaserAngle[] angles, int index)
         {
-            var key = nameof(MobAttack_LasPhase2_LaserAttack);
-            attackManager.AttackCoroutines.Register(key, AttackTimeline(attackManager));
-        }
-
-        public override void Cancel(MobAttackable attackManager)
-        {
-            var mob = attackManager.Mob;
-            mob.ClearSpineAnimations(0.3f, 0.3f, 1);
-            attackManager.EndAttack(true);
-            ClearObjects();
-            mob.Invincible = false;
-        }
-
-        private IEnumerator AttackTimeline(MobAttackable attackManager)
-        {
-            var mob = attackManager.Mob;
-            var animTime = mob.PlayAnimation(
-                new AnimationPlayOption("Ult", track: 1, timeScale: AttackTimeScale),
-                immediatelyTransition: true
-            );
-            yield return new WaitForSeconds(animTime - WarningDuration);
-            mob.Invincible = true;
-            yield return WarningAction(attackManager);
-            yield return new WaitForSeconds(1.0f);
-            var left = Instantiate(LeftLaser, LaserGuide.transform);
-            var right = Instantiate(RightLaser, LaserGuide.transform);
-            _objs.Add(left);
-            _objs.Add(right);
-            SetAllBlowSourceAs(left, mob);
-            SetAllBlowSourceAs(right, mob);
-            var leftLaser = left.GetComponent<MagicLaser>();
-            var rightLaser = right.GetComponent<MagicLaser>();
-            _isBeamActive = new[] { true, true };
-            ControlLaser(attackManager, leftLaser, LeftAngles, 0);
-            ControlLaser(attackManager, rightLaser, RightAngles, 1);
-            mob.PlayAudio("LaserAttack");
-
-            yield return new WaitForSeconds(0.3f);
-            mob.PlayEffect(LaserTrembleEffectName, transform.position);
-
-            yield return new WaitWhile(() => _isBeamActive.All(b => b));
-            mob.PlayEffect(null, transform.position);
-            mob.ClearSpineAnimations(0.3f, 0.3f, 1);
-            attackManager.EndAttack(false);
-            mob.Invincible = false;
-        }
-
-        private void ControlLaser(MobAttackable attackManager, MagicLaser laser, LaserAngle[] angles, int index)
-        {
-            var mob = attackManager.Mob;
-            var coroutines = attackManager.AttackCoroutines;
-
             var firePoint = laser.FirePoint.transform;
 
             var angle = Randomizer.PickOneRand(angles);
@@ -109,6 +57,38 @@ namespace Sevens.Entities.Mobs
                 })
                 .SetTarget(laser)
             );
+        }
+
+        public override IEnumerator Attack(Player player, Mob mob, CoroutineMan coroutines)
+        {
+            var animTime = mob.PlayAnimation(
+                new AnimationPlayOption("Ult", track: 1, timeScale: AttackTimeScale),
+                immediatelyTransition: true
+            );
+            yield return new WaitForSeconds(animTime - WarningDuration);
+            mob.Invincible = true;
+            yield return WarningAction(mob);
+            yield return new WaitForSeconds(1.0f);
+            var left = Instantiate(LeftLaser, LaserGuide.transform);
+            var right = Instantiate(RightLaser, LaserGuide.transform);
+            var leftLaser = left.GetComponent<MagicLaser>();
+            var rightLaser = right.GetComponent<MagicLaser>();
+            _isBeamActive = new[] { true, true };
+            ControlLaser(coroutines, leftLaser, LeftAngles, 0);
+            ControlLaser(coroutines, rightLaser, RightAngles, 1);
+            mob.PlayAudio("LaserAttack");
+
+            yield return new WaitForSeconds(0.3f);
+            mob.PlayEffect(LaserTrembleEffectName, transform.position);
+
+            yield return new WaitWhile(() => _isBeamActive.All(b => b));
+            mob.PlayEffect(null, transform.position);
+        }
+
+        public override void OnFinish(MobAttackable attackManager)
+        {
+            attackManager.Mob.ClearSpineAnimations(0.3f, 0.3f, 1);
+            attackManager.Mob.Invincible = false;
         }
     }
 }

@@ -47,4 +47,3 @@ namespace Sevens.Entities.Mobs
         }
     }
 }
-

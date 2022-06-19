@@ -2,6 +2,7 @@
 using Sevens.Effects;
 using Sevens.Entities.Players;
 using Sevens.Utils;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -36,14 +37,18 @@ namespace Sevens.Entities.Mobs
             return true;
         }
 
-        public override void Cancel(MobAttackable attackManager)
+        protected override void Awake()
         {
+            base.Awake();
+            _filter = new ContactFilter2D()
+            {
+                useLayerMask = true,
+                layerMask = PhysicsUtils.GroundLayerMask
+            };
         }
 
-        public override void Execute(Player player, MobAttackable attackManager)
+        public override IEnumerator Attack(Player player, Mob mob, CoroutineMan coroutines)
         {
-            var mob = attackManager.Mob;
-            var coroutines = attackManager.AttackCoroutines;
             mob.SetInvincible(InvincibleTime);
             var pos = mob.transform.position;
             var dest = new Vector3(PlaceRange.bounds.center.x, pos.y, pos.z);
@@ -58,19 +63,8 @@ namespace Sevens.Entities.Mobs
                     mob.transform.SetFacingLeft(!mob.transform.IsFacingLeft());
                 })
                 .Append(DOTween.To(() => mob.GetSkelAlpha(), a => mob.SetSkelAlpha(a), 1f, 0.15f))
-                .AppendInterval(0.25f)
-                .AppendCallback(() => attackManager.EndAttack(false));
-            coroutines.Register("Evasion_Warp", seq);
-        }
-
-        protected override void Awake()
-        {
-            base.Awake();
-            _filter = new ContactFilter2D()
-            {
-                useLayerMask = true,
-                layerMask = PhysicsUtils.GroundLayerMask
-            };
+                .AppendInterval(0.25f);
+            yield return seq.WaitForCompletion();
         }
     }
 }
