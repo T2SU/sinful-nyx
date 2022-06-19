@@ -14,7 +14,6 @@ namespace Sevens.Entities.Mobs
         public GameObject AttackObj;
         public Transform AttackPosition;
         public float AttackTimeScale;
-        public Transform NewPivot;
 
         public override IEnumerator Attack(Player player, Mob mob, CoroutineMan coroutines)
         {
@@ -24,7 +23,7 @@ namespace Sevens.Entities.Mobs
             Instantiate(AttackObj, AttackPosition);
             mob.PlayAudio("Attack");
 
-            var dest = Mathf.Abs(NewPivot.transform.position.x - player.transform.position.x);
+            var dest = Mathf.Abs(transform.position.x - player.transform.position.x);
             dest *= mob.IsFacingLeft() ? 1 : -1;
 
             var seq = DOTween.Sequence()
