@@ -15,6 +15,8 @@ namespace Sevens.Entities.Mobs
         public float WarningDuration;
         public Transform WarningEffectPosition;
         public bool InvincibleWhileAttack;
+
+        [HideInInspector]
         public Mob Mob;
 
         public MobAttackCondition[] Conditions;

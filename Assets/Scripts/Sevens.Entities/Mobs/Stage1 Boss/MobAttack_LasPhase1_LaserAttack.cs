@@ -45,13 +45,12 @@ namespace Sevens.Entities.Mobs
             firePoint.localRotation = Quaternion.AngleAxis(angle.StartAngle, Vector3.right);
 
             var endAngle = Quaternion.AngleAxis(angle.EndAngle, Vector3.right);
-            yield return DOTween.Sequence()
-                .SetDelay(0.35f)
-                .Append(firePoint.transform
+
+            yield return new WaitForSeconds(0.35f);
+            yield return firePoint.transform
                     .DOLocalRotateQuaternion(endAngle, LaserRotationDuration)
-                    .SetEase(LaserEase))
-                .AppendInterval(0.35f).WaitForCompletion();
-            laser.DisableLaser();
+                    .SetEase(LaserEase).WaitForCompletion();
+            yield return new WaitForSeconds(0.35f);
         }
     }
 }

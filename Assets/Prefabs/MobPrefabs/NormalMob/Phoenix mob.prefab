@@ -116,7 +116,7 @@ GameObject:
   - component: {fileID: 1550036674664100556}
   - component: {fileID: 2839499820469100164}
   - component: {fileID: 2169271038990931670}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Awakener
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -151,7 +151,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.47963, y: 0}
+  m_Offset: {x: 0, y: 0.08828163}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -162,7 +162,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 20.12996, y: 10}
+  m_Size: {x: 20.16, y: 8.234375}
   m_EdgeRadius: 0
 --- !u!50 &2839499820469100164
 Rigidbody2D:
@@ -1205,7 +1205,8 @@ MonoBehaviour:
       SpineAnimation: {fileID: 0}
   _effects: []
   _invincible: 0
-  <State>k__BackingField: 1
+  _immunePushed: 0
+  <State>k__BackingField: 0
   <Name>k__BackingField: 
   <MoveSpeed>k__BackingField: 5
 --- !u!4 &5345552418476046738 stripped

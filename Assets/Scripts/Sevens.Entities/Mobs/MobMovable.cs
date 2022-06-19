@@ -50,24 +50,24 @@ namespace Sevens.Entities.Mobs
             var sign = Mathf.Sign(playerPos.x - mobPos.x);
             var mobIsOnLeft = _mob.IsOnLeftBy(_playerTransform);
 
-            if (_newPivot == null)
+            if (_mob.State == MobState.Idle || _mob.State == MobState.Move)
             {
-                if (mobIsOnLeft == _mob.transform.IsFacingLeft())
-                    _mob.transform.SetFacingLeft(!mobIsOnLeft);
-            }
-            else
-            {
-                mobIsOnLeft = mobPos.x < playerPos.x;
-
-                if (mobIsOnLeft == mobtransform.IsFacingLeft())
-                    _mob.transform.SetFacingLeft(mobIsOnLeft, _newPivot.transform);
+                if (_newPivot == null)
+                {
+                    if (mobIsOnLeft == _mob.transform.IsFacingLeft())
+                        _mob.transform.SetFacingLeft(!mobIsOnLeft);
+                }
                 else
-                    _mob.transform.SetFacingLeft(mobIsOnLeft, _newPivot.transform);
+                {
+                    mobIsOnLeft = mobPos.x < playerPos.x;
+
+                    if (mobIsOnLeft == mobtransform.IsFacingLeft())
+                        _mob.transform.SetFacingLeft(mobIsOnLeft, _newPivot.transform);
+                    else
+                        _mob.transform.SetFacingLeft(mobIsOnLeft, _newPivot.transform);
+                }
             }
 
-            // 타입에 따른 몬스터 이동. Velocity를 조절할 수 있게 해줌.
-            if (mobIsOnLeft == _mob.transform.IsFacingLeft())
-                _mob.transform.SetFacingLeft(!mobIsOnLeft);
             if (Mathf.Abs(mobPos.x - playerPos.x) >= 2f)
             {
                 if (_moveType == MobMoveType.ChasingPlayer)
