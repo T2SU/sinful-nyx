@@ -94,7 +94,7 @@
     },
     "com.unity.burst": {
       "version": "1.6.5",
-      "depth": 1,
+      "depth": 2,
       "source": "registry",
       "dependencies": {
         "com.unity.mathematics": "1.2.1"

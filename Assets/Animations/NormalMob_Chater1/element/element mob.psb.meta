@@ -2180,7 +2180,11 @@ ScriptedImporter:
     spriteName: 
     isGroup: 1
     parentIndex: -1
+<<<<<<< HEAD:Assets/Animations/NormalMob_Chater1/element/element mob.psb.meta
     spriteID: f1ef1b8c0fca59f45ba2ee18c0fdc077
+=======
+    spriteID: bae9878810eb03b4a86ac11a75158581
+>>>>>>> hanbi:Assets/Animations/element/element mob.psb.meta
     layerID: 7
     mosaicPosition: {x: 0, y: 0}
     flatten: 0

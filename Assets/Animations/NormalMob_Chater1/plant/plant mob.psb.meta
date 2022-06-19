@@ -2446,7 +2446,11 @@ ScriptedImporter:
     spriteName: 
     isGroup: 1
     parentIndex: -1
+<<<<<<< HEAD:Assets/Animations/NormalMob_Chater1/plant/plant mob.psb.meta
     spriteID: b0215623daf877540a55e2ff17a21aa1
+=======
+    spriteID: f7cd59edfabdce148947a7a77c5e5232
+>>>>>>> hanbi:Assets/Animations/plant/plant mob.psb.meta
     layerID: 7
     mosaicPosition: {x: 0, y: 0}
     flatten: 0
@@ -2496,7 +2500,11 @@ ScriptedImporter:
     spriteName: 
     isGroup: 0
     parentIndex: -1
+<<<<<<< HEAD:Assets/Animations/NormalMob_Chater1/plant/plant mob.psb.meta
     spriteID: 0a830463ee1088640aa052f607bb9580
+=======
+    spriteID: 00000000000000000000000000000000
+>>>>>>> hanbi:Assets/Animations/plant/plant mob.psb.meta
     layerID: 1
     mosaicPosition: {x: 0, y: 0}
     flatten: 0
