@@ -3,38 +3,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using Sevens.Utils;
+using UnityEngine.Serialization;
 
 namespace Sevens.Entities.Mobs
 {
     public class MobAttack_bat : MobAttackBase
     {
-        public GameObject Attack;
         public float AttackTimeScale;
 
-        public override void Execute(Player player, MobAttackable attackManager)
-        {
-            var key = nameof(MobAttack_bat);
-            attackManager.AttackCoroutines.Register(key, AttackTimeline(attackManager));
-        }
+        [FormerlySerializedAs("Attack")]
+        public GameObject AttackObj;
 
-        public override void Cancel(MobAttackable attackManager)
+        public override IEnumerator Attack(Player player, Mob mob, CoroutineMan coroutines)
         {
-            var mob = attackManager.Mob;
-            attackManager.EndAttack(true);
-            ClearObjects();
-        }
-
-        private IEnumerator AttackTimeline(MobAttackable attackManager)
-        {
-            var mob = attackManager.Mob;
-            var coroutines = attackManager.AttackCoroutines;
-            var player = attackManager.Player;
             var pos = mob.transform.position;
 
             mob.PlayAnimation(new AnimationPlayOption("Attack", timeScale: AttackTimeScale), immediatelyTransition: true);
-            var obj = Instantiate(Attack, mob.transform);
-            _objs.Add(obj);
-            SetAllBlowSourceAs(obj, mob);
+            Instantiate(AttackObj, mob.transform);
 
             var seq = DOTween.Sequence()
                 .AppendCallback(() => mob.PlayAudio(nameof(Attack)))
@@ -45,9 +31,6 @@ namespace Sevens.Entities.Mobs
             coroutines.Register("BatAttack", seq);
 
             yield return new WaitForSeconds(AttackTimeScale * 2);
-
-            ClearObjects();
-            attackManager.EndAttack(false);
         }
     }
 }

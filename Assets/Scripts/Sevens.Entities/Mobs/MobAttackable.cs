@@ -1,5 +1,7 @@
-﻿using Sevens.Entities.Players;
+﻿using DG.Tweening;
+using Sevens.Entities.Players;
 using Sevens.Utils;
+using System.Collections;
 using System.Linq;
 using UnityEngine;
 
@@ -27,17 +29,8 @@ namespace Sevens.Entities.Mobs
 
         public void CancelAttack()
         {
-            if (_currentAttack != null)
-                _currentAttack.Cancel(this);
-        }
-
-        public void EndAttack(bool canceled)
-        {
-            if (canceled)
-                AttackCoroutines.KillAll();
-            Mob.Cooltime.Set(_currentAttack.Name);
-            Mob.ChangeState(MobState.Idle, true);
-            _currentAttack = null;
+            EndAttack(true);
+            _currentAttack.ClearObjects();
         }
 
         private void Awake()
@@ -89,12 +82,35 @@ namespace Sevens.Entities.Mobs
                 return;
             Mob.ChangeState(MobState.Attack);
             Mob.Cooltime.Set(NextAttackKey);
-            _currentAttack.Execute(Player, this);
+            _currentAttack.Mob = Mob;
+
+            if (_currentAttack.InvincibleWhileAttack)
+                Mob.Invincible = true;
+
+            AttackCoroutines.Register(_currentAttack.Name, ExecuteCoroutine());
+        }
+
+        private IEnumerator ExecuteCoroutine()
+        {
+            yield return _currentAttack.Attack(Player, Mob, AttackCoroutines);
+            _currentAttack.ClearObjects();
+            EndAttack(false);
         }
 
         private void OnDisable()
         {
             AttackCoroutines.KillAll();
+        }
+
+        private void EndAttack(bool canceled)
+        {
+            if (canceled)
+                AttackCoroutines.KillAll();
+            Mob.Cooltime.Set(_currentAttack.Name);
+            Mob.ChangeState(MobState.Idle, true);
+            _currentAttack = null;
+            if (_currentAttack.InvincibleWhileAttack)
+                Mob.Invincible = false;
         }
     }
 }

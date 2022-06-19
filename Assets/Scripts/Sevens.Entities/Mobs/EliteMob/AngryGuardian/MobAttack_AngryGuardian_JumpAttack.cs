@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
-
+using Sevens.Utils;
 
 namespace Sevens.Entities.Mobs
 {
@@ -25,29 +25,16 @@ namespace Sevens.Entities.Mobs
 
         [SerializeField]
         private GameObject _jumpAttack;
-        public override void Execute(Player player, MobAttackable attackManager)
-        {
-            var key = nameof(MobAttack_AngryGuardian_JumpAttack);
-            attackManager.AttackCoroutines.Register(key, AttackTimeline(attackManager));
-        }
 
-        public override void Cancel(MobAttackable attackManager)
+        public override IEnumerator Attack(Player player, Mob mob, CoroutineMan coroutines)
         {
-            attackManager.EndAttack(true);
-            ClearObjects();
-        }
-
-        private IEnumerator AttackTimeline(MobAttackable attackManager)
-        {
-            var mob = attackManager.Mob;
-            var coroutines = attackManager.AttackCoroutines;
             var animTime = mob.PlayAnimation(
                 new AnimationPlayOption("Jump", timeScale: _attackTimeScale),
                 immediatelyTransition: true);
             coroutines.Register("JumpAttackMove", mob.transform.DOMove(transform.position + new Vector3(_jumpDistance * mob.GetFacingDirection(), _jumpHeight, 0), _jumpDuration));
-           
+
             yield return new WaitForSeconds(animTime - WarningDuration);
-            yield return WarningAction(attackManager);
+            yield return WarningAction(mob);
             var targetPostion = GameObject.Find("Player").transform.position;
             yield return new WaitForSeconds(_airborneTime);
             var obj = Instantiate(_jumpAttack, mob.transform.position, mob.transform.rotation);
@@ -55,11 +42,8 @@ namespace Sevens.Entities.Mobs
                 new AnimationPlayOption("Jump", timeScale: _attackTimeScale),
                 immediatelyTransition: true);
             obj.transform.parent = mob.transform;
-            coroutines.Register("JumpAttackMove", mob.transform.DOMove(targetPostion + new Vector3(0,3,0), _attackDuration));
-            SetAllBlowSourceAs(obj, mob);
-            _objs.Add(obj);
+            coroutines.Register("JumpAttackMove", mob.transform.DOMove(targetPostion + new Vector3(0, 3, 0), _attackDuration));
             yield return new WaitForSeconds(_attackDuration);
-            attackManager.EndAttack(false);
         }
     }
 }
