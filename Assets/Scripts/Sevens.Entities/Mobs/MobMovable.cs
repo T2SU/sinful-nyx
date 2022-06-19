@@ -18,9 +18,6 @@ namespace Sevens.Entities.Mobs
 
         public Transform _newPivot;
 
-        [SerializeField]
-        private bool _isSetNewPivot;
-
         private Transform _playerTransform;
 
         private void Awake()
@@ -53,7 +50,7 @@ namespace Sevens.Entities.Mobs
             var sign = Mathf.Sign(playerPos.x - mobPos.x);
             var mobIsOnLeft = _mob.IsOnLeftBy(_playerTransform);
 
-            if (!_isSetNewPivot)
+            if (_newPivot == null)
             {
                 if (mobIsOnLeft == _mob.transform.IsFacingLeft())
                     _mob.transform.SetFacingLeft(!mobIsOnLeft);
@@ -66,7 +63,6 @@ namespace Sevens.Entities.Mobs
                     _mob.transform.SetFacingLeft(mobIsOnLeft, _newPivot.transform);
                 else
                     _mob.transform.SetFacingLeft(mobIsOnLeft, _newPivot.transform);
-
             }
 
             // 타입에 따른 몬스터 이동. Velocity를 조절할 수 있게 해줌.
