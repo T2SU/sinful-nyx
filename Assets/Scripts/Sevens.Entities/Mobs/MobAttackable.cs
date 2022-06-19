@@ -29,8 +29,11 @@ namespace Sevens.Entities.Mobs
 
         public void CancelAttack()
         {
-            EndAttack(true);
+            if (_currentAttack == null)
+                return;
             _currentAttack.ClearObjects();
+            EndAttack(true);
+            _currentAttack = null;
         }
 
         private void Awake()
@@ -96,6 +99,7 @@ namespace Sevens.Entities.Mobs
             yield return _currentAttack.Attack(Player, Mob, AttackCoroutines);
             _currentAttack.ClearObjects();
             EndAttack(false);
+            _currentAttack = null;
         }
 
         private void OnDisable()
@@ -109,7 +113,6 @@ namespace Sevens.Entities.Mobs
                 AttackCoroutines.KillAll();
             Mob.Cooltime.Set(_currentAttack.Name);
             Mob.ChangeState(MobState.Idle, true);
-            _currentAttack = null;
             if (_currentAttack.InvincibleWhileAttack)
                 Mob.Invincible = false;
             if (canceled)
