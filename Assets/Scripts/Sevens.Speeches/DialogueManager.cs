@@ -108,7 +108,7 @@ namespace Sevens.Speeches
         {
             DontDestroyOnLoad(this);
             _coroutines = new CoroutineMan(this);
-            _dialoguePrefab = Resources.Load<GameObject>("UI/Dialogue");
+            _dialoguePrefab = Resources.Load<GameObject>(Prefabs.Dialogue);
         }
 
     }

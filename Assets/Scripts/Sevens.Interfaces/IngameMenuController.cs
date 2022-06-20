@@ -44,7 +44,7 @@ namespace Sevens.Interfaces
 
         private void ReturnToTitle()
         {
-            SceneManager.LoadScene("Main Menu_New");
+            SceneManagement.Instance.LoadScene("Main Menu_New");
         }
 
         private void ExitGame()

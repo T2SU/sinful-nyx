@@ -48,7 +48,7 @@ namespace Sevens.Entities.Players
                     "마지막 체크포인트로",
                     "타이틀 화면으로",
                     () => { SceneManagement.Instance.LoadGame(); },
-                    () => { SceneManager.LoadScene("Main Menu_New");
+                    () => { SceneManagement.Instance.LoadScene("Main Menu_New");
                     });
                 }), unscaled: true
             );

@@ -14,12 +14,14 @@ namespace Sevens.Interfaces
 
         private void Awake()
         {
-            _ingameMenuPrefab = Resources.Load<GameObject>("UI/IngameMenu");
+            _ingameMenuPrefab = Resources.Load<GameObject>(Prefabs.IngameMenu);
         }
 
         private void Update()
         {
             if (DialogueManager.Instance.HasDialogue())
+                return;
+            if (!SceneManagement.Instance.IngameMenuAvailable)
                 return;
             if (Input.GetButtonDown(ButtonName))
             {

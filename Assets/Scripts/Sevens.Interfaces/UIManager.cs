@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Sevens.Utils;
+using UnityEngine;
 using UnityEngine.Events;
 
 namespace Sevens.Interfaces
@@ -44,7 +45,7 @@ namespace Sevens.Interfaces
 
         private void Awake()
         {
-            _popUpPrefab = Resources.Load<GameObject>("UI/Popup");
+            _popUpPrefab = Resources.Load<GameObject>(Prefabs.Popup);
         }
     }
 }
