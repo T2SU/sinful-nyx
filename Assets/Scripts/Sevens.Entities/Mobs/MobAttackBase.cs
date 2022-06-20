@@ -1,4 +1,5 @@
 ﻿using Sevens.Entities.Players;
+using Sevens.Utils;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,10 @@ namespace Sevens.Entities.Mobs
         public MobAttackType AttackType;
         public float WarningDuration;
         public Transform WarningEffectPosition;
+        public bool InvincibleWhileAttack;
+
+        [HideInInspector]
+        public Mob Mob;
 
         public MobAttackCondition[] Conditions;
 
@@ -20,10 +25,21 @@ namespace Sevens.Entities.Mobs
 
         public Collider2D TriggerRange { get; private set; }
 
-        protected readonly List<GameObject> _objs = new List<GameObject>();
+        private readonly List<Object> _objs = new List<Object>();
 
-        public abstract void Execute(Player player, MobAttackable attackManager);
-        public abstract void Cancel(MobAttackable attackManager);
+        public abstract IEnumerator Attack(Player player, Mob mob, CoroutineMan coroutines);
+
+        public virtual void OnExecute(Player player, MobAttackable attackManager)
+        {
+        }
+
+        public virtual void OnCancel(MobAttackable attackManager)
+        {
+        }
+        
+        public virtual void OnFinish(MobAttackable attackManager)
+        {
+        }
 
         public virtual bool IsAvailable(Player player, Mob mob)
         {
@@ -36,7 +52,7 @@ namespace Sevens.Entities.Mobs
             return true;
         }
 
-        protected virtual void ClearObjects()
+        public virtual void ClearObjects()
         {
             foreach (var obj in _objs)
             {
@@ -56,9 +72,8 @@ namespace Sevens.Entities.Mobs
             TriggerRange = GetComponent<Collider2D>();
         }
 
-        protected YieldInstruction WarningAction(MobAttackable attackManager)
+        protected YieldInstruction WarningAction(Mob mob)
         {
-            var mob = attackManager.Mob;
             if (WarningDuration <= 0f)
                 return null;
             var effectPos = WarningEffectPosition.position;
@@ -68,9 +83,82 @@ namespace Sevens.Entities.Mobs
             return new WaitForSeconds(WarningDuration);
         }
 
-        protected void SetAllBlowSourceAs(GameObject attackObject, Entity source)
+        private T SetAllBlowSourceAs<T>(T obj, Entity source)
+            where T : Object
         {
-            Blow.SetAllBlowSourceAs(attackObject, source);
+            if (obj is GameObject go)
+                Blow.SetAllBlowSourceAs(go, source);
+            return obj;
+        }
+
+        public new Object Instantiate(Object original, Vector3 position, Quaternion rotation)
+        {
+            var ret = Object.Instantiate(original, position, rotation);
+            _objs.Add(ret);
+            return SetAllBlowSourceAs(ret, Mob);
+        }
+
+        public new Object Instantiate(Object original, Vector3 position, Quaternion rotation, Transform parent)
+        {
+            var ret = Object.Instantiate(original, position, rotation, parent);
+            _objs.Add(ret);
+            return SetAllBlowSourceAs(ret, Mob);
+        }
+
+        public new Object Instantiate(Object original)
+        {
+            var ret = Object.Instantiate(original);
+            _objs.Add(ret);
+            return SetAllBlowSourceAs(ret, Mob);
+        }
+
+        public new Object Instantiate(Object original, Transform parent)
+        {
+            var ret = Object.Instantiate(original, parent);
+            _objs.Add(ret);
+            return SetAllBlowSourceAs(ret, Mob);
+        }
+
+        public new Object Instantiate(Object original, Transform parent, bool instantiateInWorldSpace)
+        {
+            var ret = Object.Instantiate(original, parent, instantiateInWorldSpace);
+            _objs.Add(ret);
+            return SetAllBlowSourceAs(ret, Mob);
+        }
+
+        public new T Instantiate<T>(T original) where T : Object
+        {
+            var ret = Object.Instantiate(original);
+            _objs.Add(ret);
+            return SetAllBlowSourceAs(ret, Mob);
+        }
+
+        public new T Instantiate<T>(T original, Vector3 position, Quaternion rotation) where T : Object
+        {
+            var ret = Object.Instantiate(original, position, rotation);
+            _objs.Add(ret);
+            return SetAllBlowSourceAs(ret, Mob);
+        }
+
+        public new T Instantiate<T>(T original, Vector3 position, Quaternion rotation, Transform parent) where T : Object
+        {
+            var ret = Object.Instantiate(original, position, rotation, parent);
+            _objs.Add(ret);
+            return SetAllBlowSourceAs(ret, Mob);
+        }
+
+        public new T Instantiate<T>(T original, Transform parent) where T : Object
+        {
+            var ret = Object.Instantiate(original, parent);
+            _objs.Add(ret);
+            return SetAllBlowSourceAs(ret, Mob);
+        }
+
+        public new T Instantiate<T>(T original, Transform parent, bool worldPositionStays) where T : Object
+        {
+            var ret = Object.Instantiate(original, parent, worldPositionStays);
+            _objs.Add(ret);
+            return SetAllBlowSourceAs(ret, Mob);
         }
     }
 }

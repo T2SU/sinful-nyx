@@ -97,6 +97,9 @@ namespace Sevens.Entities.Players
 
         private int _jumpCount;
         private bool _lastFrameIsGround;
+        #if UNITY_EDITOR
+        [ShowCase]
+        #endif
         private bool _isGround;
         private bool _jumpTrigger = false;
 
@@ -697,9 +700,12 @@ namespace Sevens.Entities.Players
 
         private void UpdateDash()
         {
+            // 유니티 에디터의 플레이모드에서는 대쉬 항상 해금 상태로..
+#if !UNITY_EDITOR
             // 대쉬 해금 아니면 사용 불가
             if (Achievements.GetData(PlayerDataKeyType.UnlockedDash) != "1")
                 return;
+#endif
 
             // 대쉬 중
             if (State == PlayerState.Dash)

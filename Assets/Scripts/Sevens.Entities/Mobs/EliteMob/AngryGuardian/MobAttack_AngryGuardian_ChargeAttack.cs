@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
-
+using Sevens.Utils;
 
 namespace Sevens.Entities.Mobs
 {
@@ -24,28 +24,14 @@ namespace Sevens.Entities.Mobs
         [SerializeField]
         private LayerMask _groundLayer;
 
-        public override void Execute(Player player, MobAttackable attackManager)
+        public override IEnumerator Attack(Player player, Mob mob, CoroutineMan coroutines)
         {
-            var key = nameof(MobAttack_AngryGuardian_ChargeAttack);
-            attackManager.AttackCoroutines.Register(key, AttackTimeline(attackManager));
-        }
-
-        public override void Cancel(MobAttackable attackManager)
-        {
-            attackManager.EndAttack(true);
-            ClearObjects();
-        }
-
-        private IEnumerator AttackTimeline(MobAttackable attackManager)
-        {
-            var mob = attackManager.Mob;
-            var coroutines = attackManager.AttackCoroutines;
             var animTime = mob.PlayAnimation(
-                new AnimationPlayOption("StampReady", timeScale: _attackTimeScale), 
+                new AnimationPlayOption("StampReady", timeScale: _attackTimeScale),
                 immediatelyTransition: true);
 
             yield return new WaitForSeconds(animTime - WarningDuration);
-            yield return WarningAction(attackManager);
+            yield return WarningAction(mob);
             var obj = Instantiate(_chargeAttack, mob.transform.position, mob.transform.rotation);
             obj.transform.parent = mob.transform;
             var hit = Physics2D.Raycast(mob.transform.position, Vector2.right * mob.GetFacingDirection(), _chargeDistance, _groundLayer);
@@ -61,10 +47,7 @@ namespace Sevens.Entities.Mobs
                 coroutines.Register("ChargeAttackMove", mob.transform.DOMove(transform.position + new Vector3(_chargeDistance * mob.GetFacingDirection(), 0, 0), _chargeDuration));
             }
             mob.PlayAudio("ChargeAttack");
-            SetAllBlowSourceAs(obj, mob);
-            _objs.Add(obj);
             yield return new WaitForSeconds(_chargeDuration);
-            attackManager.EndAttack(false);
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using DG.Tweening;
 using Sevens.Entities.Players;
+using Sevens.Utils;
 using System.Collections;
 using UnityEngine;
 
@@ -22,25 +23,8 @@ namespace Sevens.Entities.Mobs
         public string SmashWarningEffectName;
         public string SmashEffectName;
 
-        public override void Execute(Player player, MobAttackable attackManager)
+        public override IEnumerator Attack(Player player, Mob mob, CoroutineMan coroutines)
         {
-            var key = nameof(MobAttack_LasPhase2_SmashDownAttack);
-            attackManager.AttackCoroutines.Register(key, AttackTimeline(attackManager));
-        }
-
-        public override void Cancel(MobAttackable attackManager)
-        {
-            var mob = attackManager.Mob;
-            mob.ClearSpineAnimations(0.3f, 0.3f, 1);
-            attackManager.EndAttack(true);
-            ClearObjects();
-        }
-
-        private IEnumerator AttackTimeline(MobAttackable attackManager)
-        {
-            var mob = attackManager.Mob;
-            var coroutines = attackManager.AttackCoroutines;
-
             mob.PlayAnimation(
                 new AnimationPlayOption("IdleNoHand", track: 1, loop: true, timeScale: AttackTimeScale),
                 immediatelyTransition: true
@@ -48,10 +32,6 @@ namespace Sevens.Entities.Mobs
 
             var leftFist = Instantiate(FistLeft, transform);
             var rightFist = Instantiate(FistRight, transform);
-            _objs.Add(leftFist);
-            _objs.Add(rightFist);
-            SetAllBlowSourceAs(leftFist, mob);
-            SetAllBlowSourceAs(rightFist, mob);
             var leftReturnPos = leftFist.transform.position;
             var rightReturnPos = rightFist.transform.position;
             leftFist.GetComponent<Blow>().OnceOption.Enabled = false;
@@ -60,10 +40,9 @@ namespace Sevens.Entities.Mobs
             coroutines.Register("RightFistInitialMove", rightFist.transform.DOMove(FistRightInitialPosition.transform.position, 0.5f));
             yield return new WaitForSeconds(0.7f);
 
-            var player = attackManager.Player;
             for (int i = 0; i < AttackCount; ++i)
             {
-                yield return WarningAction(attackManager);
+                yield return WarningAction(mob);
                 var fist = player.IsOnLeftBy(transform) ? leftFist : rightFist;
                 var fistBlow = fist.GetComponent<Blow>();
                 var y = fist.transform.position.y;
@@ -89,10 +68,11 @@ namespace Sevens.Entities.Mobs
             coroutines.Register("LeftFistFinalMove", leftFist.transform.DOMove(leftReturnPos, 0.5f));
             coroutines.Register("RightFistFinalMove", rightFist.transform.DOMove(rightReturnPos, 0.5f));
             yield return new WaitForSeconds(0.7f);
+        }
 
-            mob.ClearSpineAnimations(0.3f, 0.3f, 1);
-            attackManager.EndAttack(false);
-            ClearObjects();
+        public override void OnFinish(MobAttackable attackManager)
+        {
+            attackManager.Mob.ClearSpineAnimations(0.3f, 0.3f, 1);
         }
     }
 }

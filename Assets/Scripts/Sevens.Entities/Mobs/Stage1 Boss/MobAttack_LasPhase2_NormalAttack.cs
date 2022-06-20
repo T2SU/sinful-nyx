@@ -14,37 +14,20 @@ namespace Sevens.Entities.Mobs
         public float AttackInterval;
         public float AttackTimeScale;
 
-        public override void Execute(Player player, MobAttackable attackManager)
+        public override IEnumerator Attack(Player player, Mob mob, CoroutineMan coroutines)
         {
-            var key = nameof(MobAttack_LasPhase2_NormalAttack);
-            attackManager.AttackCoroutines.Register(key, AttackTimeline(attackManager));
-        }
-
-        public override void Cancel(MobAttackable attackManager)
-        {
-            var mob = attackManager.Mob;
-            mob.ClearSpineAnimations(0f, 0f, 1);
-            attackManager.EndAttack(true);
-            ClearObjects();
-        }
-
-        private IEnumerator AttackTimeline(MobAttackable attackManager)
-        {
-            var mob = attackManager.Mob;
             bool pattern = UnityEngine.Random.Range(0, 2) == 0;
 
             float Apply(string name, Transform parent, GameObject attack)
             {
-                var obj = Instantiate(attack, parent);
-                SetAllBlowSourceAs(obj, mob);
-                _objs.Add(obj);
+                Instantiate(attack, parent);
                 return mob.PlayAnimation(
-                    new AnimationPlayOption(name, track: 1, timeScale: AttackTimeScale), 
+                    new AnimationPlayOption(name, track: 1, timeScale: AttackTimeScale),
                     immediatelyTransition: true
                 );
             }
 
-            yield return WarningAction(attackManager);
+            yield return WarningAction(mob);
             if (pattern)
             {
                 yield return new WaitForSeconds(AttackInterval + Apply(nameof(Attack1), Attack1Hand, Attack1) / AttackTimeScale);
@@ -57,8 +40,11 @@ namespace Sevens.Entities.Mobs
                 yield return new WaitForSeconds(AttackInterval + Apply(nameof(Attack1), Attack1Hand, Attack1) / AttackTimeScale);
                 yield return new WaitForSeconds(AttackInterval + Apply(nameof(Attack2), Attack2Hand, Attack2) / AttackTimeScale);
             }
-            mob.ClearSpineAnimations(0f, 0f, 1);
-            attackManager.EndAttack(false);
+        }
+
+        public override void OnFinish(MobAttackable attackManager)
+        {
+            attackManager.Mob.ClearSpineAnimations(0f, 0f, 1);
         }
     }
 }

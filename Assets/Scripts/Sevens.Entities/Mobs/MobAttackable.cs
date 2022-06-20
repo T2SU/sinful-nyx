@@ -1,5 +1,7 @@
-﻿using Sevens.Entities.Players;
+﻿using DG.Tweening;
+using Sevens.Entities.Players;
 using Sevens.Utils;
+using System.Collections;
 using System.Linq;
 using UnityEngine;
 
@@ -27,16 +29,10 @@ namespace Sevens.Entities.Mobs
 
         public void CancelAttack()
         {
-            if (_currentAttack != null)
-                _currentAttack.Cancel(this);
-        }
-
-        public void EndAttack(bool canceled)
-        {
-            if (canceled)
-                AttackCoroutines.KillAll();
-            Mob.Cooltime.Set(_currentAttack.Name);
-            Mob.ChangeState(MobState.Idle, true);
+            if (_currentAttack == null)
+                return;
+            _currentAttack.ClearObjects();
+            EndAttack(true);
             _currentAttack = null;
         }
 
@@ -89,12 +85,39 @@ namespace Sevens.Entities.Mobs
                 return;
             Mob.ChangeState(MobState.Attack);
             Mob.Cooltime.Set(NextAttackKey);
-            _currentAttack.Execute(Player, this);
+            _currentAttack.Mob = Mob;
+
+            if (_currentAttack.InvincibleWhileAttack)
+                Mob.Invincible = true;
+
+            AttackCoroutines.Register(_currentAttack.Name, ExecuteCoroutine());
+        }
+
+        private IEnumerator ExecuteCoroutine()
+        {
+            _currentAttack.OnExecute(Player, this);
+            yield return _currentAttack.Attack(Player, Mob, AttackCoroutines);
+            _currentAttack.ClearObjects();
+            EndAttack(false);
+            _currentAttack = null;
         }
 
         private void OnDisable()
         {
             AttackCoroutines.KillAll();
+        }
+
+        private void EndAttack(bool canceled)
+        {
+            if (canceled)
+                AttackCoroutines.KillAll();
+            Mob.Cooltime.Set(_currentAttack.Name);
+            Mob.ChangeState(MobState.Idle, true);
+            if (_currentAttack.InvincibleWhileAttack)
+                Mob.Invincible = false;
+            if (canceled)
+                _currentAttack.OnCancel(this);
+            _currentAttack.OnFinish(this);
         }
     }
 }

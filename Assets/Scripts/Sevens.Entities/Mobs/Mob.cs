@@ -39,6 +39,9 @@ namespace Sevens.Entities.Mobs
         [SerializeField]
         private bool _invincible;
 
+        [SerializeField]
+        private bool _immunePushed;
+
         private SkeletonAnimation _skeletonAnimation;
         private Spine.AnimationState _animationState;
         private Rigidbody2D _rigidbody;
@@ -68,8 +71,8 @@ namespace Sevens.Entities.Mobs
 
         public AudioSource AudioSource { get; private set; }
         
-        
         public float HitTime { get; private set; }
+
         public void SetInvincible(float duration)
         {
             if (_invincible && _invincibleEnd == default)
@@ -202,8 +205,11 @@ namespace Sevens.Entities.Mobs
             }
             else
             {
-                ChangeState(MobState.Hit);
-                HitTime = PlayAnimation(new AnimationPlayOption("Hit"));
+                if (!_immunePushed)
+                {
+                    ChangeState(MobState.Hit);
+                    HitTime = PlayAnimation(new AnimationPlayOption("Hit"));
+                }
             }
 
         }
