@@ -128,6 +128,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3010400537335858215, guid: fc58943569a35c24baa3ed8bf1ad1ce5, type: 3}
   m_PrefabInstance: {fileID: 387745215}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &175934448 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 863970046, guid: 1a733581e8cb8434eaaa7ade0e7d709d, type: 3}
+  m_PrefabInstance: {fileID: 478394050}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d0aedfbaa1ba864498ddc8c6d8b302c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &387745215
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -243,6 +254,30 @@ PrefabInstance:
     - target: {fileID: 5167023962795802764, guid: 1a733581e8cb8434eaaa7ade0e7d709d, type: 3}
       propertyPath: m_Name
       value: AngryGuardian
+      objectReference: {fileID: 0}
+    - target: {fileID: 8999212306362297753, guid: 1a733581e8cb8434eaaa7ade0e7d709d, type: 3}
+      propertyPath: _attacks.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8999212306362297753, guid: 1a733581e8cb8434eaaa7ade0e7d709d, type: 3}
+      propertyPath: _attacks.Array.data[0]
+      value: 
+      objectReference: {fileID: 175934448}
+    - target: {fileID: 8999212306362297753, guid: 1a733581e8cb8434eaaa7ade0e7d709d, type: 3}
+      propertyPath: _attacks.Array.data[1]
+      value: 
+      objectReference: {fileID: 1571981786}
+    - target: {fileID: 8999212306362297753, guid: 1a733581e8cb8434eaaa7ade0e7d709d, type: 3}
+      propertyPath: _attacks.Array.data[2]
+      value: 
+      objectReference: {fileID: 1571981786}
+    - target: {fileID: 8999212306362297758, guid: 1a733581e8cb8434eaaa7ade0e7d709d, type: 3}
+      propertyPath: _effects.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8999212306362297758, guid: 1a733581e8cb8434eaaa7ade0e7d709d, type: 3}
+      propertyPath: _effects.Array.data[0].Name
+      value: Warning_Normal
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a733581e8cb8434eaaa7ade0e7d709d, type: 3}
@@ -512,6 +547,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1571981786 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 348377573, guid: 1a733581e8cb8434eaaa7ade0e7d709d, type: 3}
+  m_PrefabInstance: {fileID: 478394050}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fe780856721e4e4e9a04c6f0a719ffb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1837348379
 PrefabInstance:
   m_ObjectHideFlags: 0
