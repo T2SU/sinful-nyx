@@ -21,7 +21,7 @@ namespace Sevens.Entities.Mobs
         public override IEnumerator Attack(Player player, Mob mob, CoroutineMan coroutines)
         {
             var animTime = mob.PlayAnimation(
-                new AnimationPlayOption("StampReady", timeScale: _attackTimeScale),
+                new AnimationPlayOption("FireBall", timeScale: _attackTimeScale),
                 immediatelyTransition: true);
             yield return new WaitForSeconds(animTime - WarningDuration);
             yield return WarningAction(mob);

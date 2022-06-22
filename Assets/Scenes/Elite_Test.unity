@@ -294,7 +294,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AudioClip: {fileID: 8300000, guid: cf1842b6a5170d54f828b79797899bf0, type: 3}
-  StateName: ready motion1
+  StateName: ready motion3
 --- !u!1 &1658494005
 GameObject:
   m_ObjectHideFlags: 0

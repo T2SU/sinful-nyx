@@ -1928,6 +1928,10 @@ MonoBehaviour:
     Object:
       AnimatorAnimation: landing
       SpineAnimation: {fileID: 0}
+  - Name: FireBall
+    Object:
+      AnimatorAnimation: ready motion3
+      SpineAnimation: {fileID: 0}
   _effects:
   - Name: Warning_Normal
     Object:
