@@ -31,6 +31,7 @@ namespace Sevens.Entities.Mobs
             var animTime = mob.PlayAnimation(
                 new AnimationPlayOption("Jump", timeScale: _attackTimeScale),
                 immediatelyTransition: true);
+            mob.PlayAudio("Jump");
             coroutines.Register("JumpAttackMove", mob.transform.DOMove(transform.position + new Vector3(_jumpDistance * mob.GetFacingDirection(), _jumpHeight, 0), _jumpDuration));
 
             yield return new WaitForSeconds(animTime - WarningDuration);
@@ -43,6 +44,7 @@ namespace Sevens.Entities.Mobs
                 immediatelyTransition: true);
             obj.transform.parent = mob.transform;
             coroutines.Register("JumpAttackMove", mob.transform.DOMove(targetPostion + new Vector3(0, 3, 0), _attackDuration));
+            mob.PlayAudio("Landing");
             yield return new WaitForSeconds(_attackDuration);
         }
     }

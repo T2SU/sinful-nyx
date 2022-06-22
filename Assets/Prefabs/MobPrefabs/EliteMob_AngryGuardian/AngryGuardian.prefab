@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fe780856721e4e4e9a04c6f0a719ffb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Cooltime: 0.5
+  Cooltime: 3
   Priority: 0
   AttackType: 0
   WarningDuration: 0.3
@@ -254,6 +254,7 @@ GameObject:
   - component: {fileID: 1471066978}
   - component: {fileID: 1471066980}
   - component: {fileID: 1471066979}
+  - component: {fileID: 8504763562837503426}
   m_Layer: 11
   m_Name: FlameStrike
   m_TagString: Untagged
@@ -272,7 +273,10 @@ Transform:
   m_LocalPosition: {x: 7, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 8624018234464746158}
+  - {fileID: 5350326794092705907}
+  - {fileID: 8357718238625304472}
   m_Father: {fileID: 1898867620057794920}
   m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -323,6 +327,33 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &8504763562837503426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1471066977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86822d723d6f1c841b2e1c64fda0ed04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Cooltime: 10
+  Priority: 0
+  AttackType: 0
+  WarningDuration: 0
+  WarningEffectPosition: {fileID: 910940792}
+  InvincibleWhileAttack: 0
+  Mob: {fileID: 0}
+  Conditions: []
+  _flameStrike: {fileID: 2645558017169212850, guid: b378c98fd06b5c5418e322389cbf1430, type: 3}
+  _attackTimeScale: 0
+  _chargeTime: 2
+  _flameStrikeDelay: 0.3
+  _AttackPos1: {fileID: 8624018234464746158}
+  _AttackPos2: {fileID: 5350326794092705907}
+  _AttackPos3: {fileID: 8357718238625304472}
 --- !u!1 &1555741138
 GameObject:
   m_ObjectHideFlags: 0
@@ -1284,6 +1315,37 @@ Transform:
   m_Father: {fileID: 1898867620057794920}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3066278985091086445
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8357718238625304472}
+  m_Layer: 11
+  m_Name: FlameAttackPos3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8357718238625304472
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3066278985091086445}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 14, y: -2.7400002, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1471066978}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3274586503763714015
 GameObject:
   m_ObjectHideFlags: 0
@@ -1800,6 +1862,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _attacks:
   - {fileID: 1717062178}
+  - {fileID: 8504763562837503426}
+  - {fileID: 863970046}
+  - {fileID: 1555741142}
+  - {fileID: 348377573}
   _evasions: []
 --- !u!114 &8999212306362297758
 MonoBehaviour:
@@ -1827,6 +1893,12 @@ MonoBehaviour:
     Object: {fileID: 8300000, guid: c06ad4b3c33025643b8b2dd7dc0aa368, type: 3}
   - Name: StampAttack
     Object: {fileID: 8300000, guid: 278b79cc06aa051458dadaab8c3ff953, type: 3}
+  - Name: FlameStrike
+    Object: {fileID: 8300000, guid: 59120b1affe1d2f47b83887138cc1d32, type: 3}
+  - Name: Jump
+    Object: {fileID: 8300000, guid: 278b79cc06aa051458dadaab8c3ff953, type: 3}
+  - Name: Landing
+    Object: {fileID: 8300000, guid: 8ce4032f43068ec4b909740069f28444, type: 3}
   _animations:
   - Name: Move
     Object:
@@ -2041,6 +2113,37 @@ Transform:
   m_Children:
   - {fileID: 2772986022514676319}
   m_Father: {fileID: 4034551321640119962}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5528697153045830799
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8624018234464746158}
+  m_Layer: 11
+  m_Name: FlameAttackPos1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8624018234464746158
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5528697153045830799}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -2.74, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1471066978}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5672690276851432502
@@ -2417,6 +2520,37 @@ Transform:
   - {fileID: 95318754244508050}
   m_Father: {fileID: 1898867620057794920}
   m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7673932085324367798
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5350326794092705907}
+  m_Layer: 11
+  m_Name: FlameAttackPos2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5350326794092705907
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7673932085324367798}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 7, y: -2.7400002, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1471066978}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7761744158580477536
 GameObject:
