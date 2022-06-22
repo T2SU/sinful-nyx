@@ -39,7 +39,7 @@ namespace Sevens.Entities.Mobs
             yield return new WaitForSeconds(_airborneTime);
             var obj = Instantiate(_jumpAttack, mob.transform.position, mob.transform.rotation);
             mob.PlayAnimation(
-                new AnimationPlayOption("Jump", timeScale: _attackTimeScale),
+                new AnimationPlayOption("Landing", timeScale: _attackTimeScale),
                 immediatelyTransition: true);
             obj.transform.parent = mob.transform;
             coroutines.Register("JumpAttackMove", mob.transform.DOMove(targetPostion + new Vector3(0, 3, 0), _attackDuration));
