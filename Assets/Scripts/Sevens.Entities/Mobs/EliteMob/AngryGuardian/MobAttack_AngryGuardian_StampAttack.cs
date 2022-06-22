@@ -3,6 +3,7 @@ using Sevens.Utils;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 
 namespace Sevens.Entities.Mobs
 {
@@ -10,6 +11,8 @@ namespace Sevens.Entities.Mobs
     {
         [SerializeField]
         private GameObject _stampAttack;
+        [SerializeField]
+        private VisualEffect _stampAttackEffect;
         [SerializeField]
         private Transform _attackPos;
         [SerializeField]
@@ -23,6 +26,7 @@ namespace Sevens.Entities.Mobs
             yield return new WaitForSeconds(animTime - WarningDuration);
             yield return WarningAction(mob);
             Instantiate(_stampAttack, _attackPos.position, mob.transform.rotation);
+            _stampAttackEffect.Play();
             mob.PlayAudio("StampAttack");
         }
     }
