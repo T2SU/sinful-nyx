@@ -22,7 +22,8 @@ namespace Sevens.Entities.Mobs
                 immediatelyTransition: true);
             yield return new WaitForSeconds(animTime - WarningDuration);
             yield return WarningAction(mob);
-            Instantiate(_stampAttack, _attackPos.position, Quaternion.identity);
+            Instantiate(_stampAttack, _attackPos.position, mob.transform.rotation);
+            mob.PlayAudio("StampAttack");
         }
     }
 
