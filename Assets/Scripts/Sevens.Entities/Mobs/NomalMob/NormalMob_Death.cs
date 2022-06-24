@@ -31,6 +31,8 @@ namespace Sevens.Entities.Mobs
             _effect.SetVector3("MobSize", transform.localScale);
 
             _effect.Play();
+
+            mob.PlayAudio("Die");
         }
 
         private IEnumerator Fade()

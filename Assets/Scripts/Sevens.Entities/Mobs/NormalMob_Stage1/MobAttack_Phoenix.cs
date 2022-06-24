@@ -12,7 +12,6 @@ namespace Sevens.Entities.Mobs
     {
         [FormerlySerializedAs("Attack")]
         public GameObject AttackObj;
-        public Transform AttackPosition;
         public float AttackTimeScale;
 
         public override IEnumerator Attack(Player player, Mob mob, CoroutineMan coroutines)
@@ -20,14 +19,11 @@ namespace Sevens.Entities.Mobs
             var pos = mob.transform.position;
 
             mob.PlayAnimation(new AnimationPlayOption("Attack", timeScale: AttackTimeScale), immediatelyTransition: true);
-            Instantiate(AttackObj, AttackPosition);
+            Instantiate(AttackObj, mob.transform);
             mob.PlayAudio("Attack");
 
-            var dest = Mathf.Abs(transform.position.x - player.transform.position.x);
-            dest *= mob.IsFacingLeft() ? 1 : -1;
-
             var seq = DOTween.Sequence()
-                .Append(mob.transform.DOMoveX(pos.x + dest, AttackTimeScale))
+                .Append(mob.transform.DOMoveX(player.transform.position.x, AttackTimeScale))
                 .AppendInterval(0.05f)
                 .AppendCallback(() => mob.PlayAnimation(new AnimationPlayOption("AfterAttack", timeScale: AttackTimeScale), immediatelyTransition: true))
                 .Append(mob.transform.DOMoveX(pos.x, AttackTimeScale));

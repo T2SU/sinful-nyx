@@ -441,8 +441,8 @@ MonoBehaviour:
   - {fileID: 8159676861325557508}
   - {fileID: 1139744374203811927}
   m_Bounds:
-    m_Center: {x: -0.42953998, y: 1.8388658, z: 0}
-    m_Extent: {x: 0.423015, y: 0.33684993, z: 0}
+    m_Center: {x: -0.42954096, y: 1.8388658, z: 0}
+    m_Extent: {x: 0.4230151, y: 0.33685, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
   m_AutoRebind: 0
@@ -736,7 +736,7 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 1023697259096212479}
   m_Bounds:
-    m_Center: {x: -0.6258774, y: 1.5735829, z: 0}
+    m_Center: {x: -0.625878, y: 1.5735829, z: 0}
     m_Extent: {x: 0.11925998, y: 0.13319999, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
@@ -899,7 +899,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   _moveAbility: -1
-  _audioClips: []
+  _audioClips:
+  - Name: Attack
+    Object: {fileID: 8300000, guid: bf0979b72e4242243b82d4b0e6c77666, type: 3}
+  - Name: Die
+    Object: {fileID: 8300000, guid: c83d1ac51236a3a4cacec1b8351d417f, type: 3}
   _animations:
   - Name: Idle
     Object:
@@ -1187,8 +1191,8 @@ MonoBehaviour:
   - {fileID: 8788871094905599780}
   - {fileID: 470036203929267366}
   m_Bounds:
-    m_Center: {x: -0.57874185, y: 1.8430616, z: 0}
-    m_Extent: {x: 0.412175, y: 0.34037006, z: 0}
+    m_Center: {x: -0.57874185, y: 1.8430614, z: 0}
+    m_Extent: {x: 0.412175, y: 0.34036994, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
   m_AutoRebind: 0

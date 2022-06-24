@@ -102,7 +102,6 @@ MonoBehaviour:
   Mob: {fileID: 0}
   Conditions: []
   AttackObj: {fileID: 8303728960488018013, guid: 023e20b912e1e3847945da6f83ad240e, type: 3}
-  AttackPosition: {fileID: 0}
   AttackTimeScale: 1
 --- !u!1 &4584458538594370173
 GameObject:
@@ -673,11 +672,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -1635690910235206647, guid: 2e1832b3a47bc8d469cb046a7af24d2b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -110.56
+      value: 0.38719785
       objectReference: {fileID: 0}
     - target: {fileID: -1635690910235206647, guid: 2e1832b3a47bc8d469cb046a7af24d2b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.02
+      value: -1.3333224
       objectReference: {fileID: 0}
     - target: {fileID: -1635690910235206647, guid: 2e1832b3a47bc8d469cb046a7af24d2b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -745,15 +744,19 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 7b01b0f63f7323d408708574edeb300d, type: 2}
     - target: {fileID: -272665054031767880, guid: 2e1832b3a47bc8d469cb046a7af24d2b, type: 3}
       propertyPath: m_Bounds.m_Center.x
-      value: 0.2572013
+      value: 0.25720268
       objectReference: {fileID: 0}
     - target: {fileID: -272665054031767880, guid: 2e1832b3a47bc8d469cb046a7af24d2b, type: 3}
       propertyPath: m_Bounds.m_Center.y
-      value: -2.6619737
+      value: -2.661974
       objectReference: {fileID: 0}
     - target: {fileID: -272665054031767880, guid: 2e1832b3a47bc8d469cb046a7af24d2b, type: 3}
       propertyPath: m_Bounds.m_Extent.x
-      value: 0.83000004
+      value: 0.8299999
+      objectReference: {fileID: 0}
+    - target: {fileID: -272665054031767880, guid: 2e1832b3a47bc8d469cb046a7af24d2b, type: 3}
+      propertyPath: m_Bounds.m_Extent.y
+      value: 1.0150551
       objectReference: {fileID: 0}
     - target: {fileID: 175673040381504681, guid: 2e1832b3a47bc8d469cb046a7af24d2b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -845,7 +848,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3470107632961483086, guid: 2e1832b3a47bc8d469cb046a7af24d2b, type: 3}
       propertyPath: m_Name
-      value: Phoenix mob
+      value: Phoenix mob (2)
       objectReference: {fileID: 0}
     - target: {fileID: 3470107632961483086, guid: 2e1832b3a47bc8d469cb046a7af24d2b, type: 3}
       propertyPath: m_Layer
@@ -853,7 +856,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4850303541857668048, guid: 2e1832b3a47bc8d469cb046a7af24d2b, type: 3}
       propertyPath: m_Bounds.m_Center.x
-      value: 0.43560457
+      value: 0.43560576
       objectReference: {fileID: 0}
     - target: {fileID: 4850303541857668048, guid: 2e1832b3a47bc8d469cb046a7af24d2b, type: 3}
       propertyPath: m_Bounds.m_Center.y
@@ -861,7 +864,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4850303541857668048, guid: 2e1832b3a47bc8d469cb046a7af24d2b, type: 3}
       propertyPath: m_Bounds.m_Extent.x
-      value: 1.4590673
+      value: 1.4590626
       objectReference: {fileID: 0}
     - target: {fileID: 4935197695540630374, guid: 2e1832b3a47bc8d469cb046a7af24d2b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -913,19 +916,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8692236543584150021, guid: 2e1832b3a47bc8d469cb046a7af24d2b, type: 3}
       propertyPath: m_Bounds.m_Center.x
-      value: -0.3579098
+      value: -0.357911
       objectReference: {fileID: 0}
     - target: {fileID: 8692236543584150021, guid: 2e1832b3a47bc8d469cb046a7af24d2b, type: 3}
       propertyPath: m_Bounds.m_Center.y
-      value: -2.9165375
+      value: -2.9165373
       objectReference: {fileID: 0}
     - target: {fileID: 8692236543584150021, guid: 2e1832b3a47bc8d469cb046a7af24d2b, type: 3}
       propertyPath: m_Bounds.m_Extent.x
-      value: 1.2465057
+      value: 1.2465067
       objectReference: {fileID: 0}
     - target: {fileID: 8692236543584150021, guid: 2e1832b3a47bc8d469cb046a7af24d2b, type: 3}
       propertyPath: m_Bounds.m_Extent.y
-      value: 1.0274985
+      value: 1.0274987
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: -447708181870297837, guid: 2e1832b3a47bc8d469cb046a7af24d2b, type: 3}
@@ -1194,10 +1197,6 @@ MonoBehaviour:
   - Name: Attack
     Object:
       AnimatorAnimation: attack
-      SpineAnimation: {fileID: 0}
-  - Name: Die
-    Object:
-      AnimatorAnimation: idle
       SpineAnimation: {fileID: 0}
   - Name: AfterAttack
     Object:
