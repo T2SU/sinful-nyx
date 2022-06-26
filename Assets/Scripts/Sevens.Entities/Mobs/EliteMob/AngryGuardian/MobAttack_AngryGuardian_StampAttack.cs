@@ -17,6 +17,8 @@ namespace Sevens.Entities.Mobs
         private Transform _attackPos;
         [SerializeField]
         private float _attackTimeScale;
+        [SerializeField]
+        private float _attackDuration;
 
         public override IEnumerator Attack(Player player, Mob mob, CoroutineMan coroutines)
         {
@@ -28,6 +30,7 @@ namespace Sevens.Entities.Mobs
             Instantiate(_stampAttack, _attackPos.position, mob.transform.rotation);
             _stampAttackEffect.Play();
             mob.PlayAudio("StampAttack");
+            yield return new WaitForSeconds(_attackDuration);
         }
     }
 
