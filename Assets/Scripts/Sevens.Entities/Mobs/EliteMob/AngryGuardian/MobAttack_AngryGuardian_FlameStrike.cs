@@ -40,18 +40,16 @@ namespace Sevens.Entities.Mobs
             yield return new WaitForSeconds(_chargeTime);
             _chargingEffect.Stop();
             Instantiate(_flameStrike, _AttackPos1);
-            GameObject obj1 = Instantiate(_flameStrikeEffect, _AttackPos1);
-            Destroy(obj1, 2f);
+            Instantiate(_flameStrikeEffect, _AttackPos1);
+
             mob.PlayAudio("FlameStrike");
             yield return new WaitForSeconds(_flameStrikeDelay);
             Instantiate(_flameStrike, _AttackPos2);
-            GameObject obj2 = Instantiate(_flameStrikeEffect, _AttackPos2);
-            Destroy(obj2, 2f);
+            Instantiate(_flameStrikeEffect, _AttackPos2);
             mob.PlayAudio("FlameStrike");
             yield return new WaitForSeconds(_flameStrikeDelay);
             Instantiate(_flameStrike, _AttackPos3);
-            GameObject obj3 = Instantiate(_flameStrikeEffect, _AttackPos3);
-            Destroy(obj3, 2f);
+            Instantiate(_flameStrikeEffect, _AttackPos3);
             mob.PlayAudio("FlameStrike");
             yield return new WaitForSeconds(_attackDuration);
         }

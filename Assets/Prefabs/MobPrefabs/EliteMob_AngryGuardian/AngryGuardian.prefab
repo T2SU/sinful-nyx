@@ -466,7 +466,7 @@ MonoBehaviour:
   _AttackPos2: {fileID: 5350326794092705907}
   _AttackPos3: {fileID: 8357718238625304472}
   _chargingEffect: {fileID: 1143827188}
-  _flameStrikeEffect: {fileID: 129134, guid: 816543e112c0483489d779686aee4e55, type: 3}
+  _flameStrikeEffect: {fileID: 129134, guid: d8274c4d76fc0a941942bd6168620f90, type: 3}
   _attackDuration: 1
 --- !u!1 &1555741138
 GameObject:

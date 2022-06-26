@@ -4,6 +4,7 @@ using UnityEngine;
 using Sevens.Utils;
 using UnityEngine.Serialization;
 using DG.Tweening;
+using UnityEngine.VFX;
 
 namespace Sevens.Entities.Mobs
 {
@@ -15,11 +16,15 @@ namespace Sevens.Entities.Mobs
         public float AttackTimeScale;
         public float MagicSpeed;
 
+        [SerializeField]
+        private VisualEffect _attackVFX;
+
         public override IEnumerator Attack(Player player, Mob mob, CoroutineMan coroutines)
         {
             var pos = mob.transform.position;
             var animtime = mob.PlayAnimation(new AnimationPlayOption("Attack"), immediatelyTransition: true);
             mob.PlayAudio("Attack");
+            _attackVFX.Play();
 
             var obj = Instantiate(AttackObj, AttackPosition.transform);
             var rigid = obj.GetComponent<Rigidbody2D>();
@@ -32,6 +37,7 @@ namespace Sevens.Entities.Mobs
             );
 
             yield return new WaitForSeconds(animtime);
+            _attackVFX.Stop();
 
             mob.PlayAnimation(new AnimationPlayOption("Idle"));
             yield return new WaitForSeconds(AttackTimeScale - animtime);
