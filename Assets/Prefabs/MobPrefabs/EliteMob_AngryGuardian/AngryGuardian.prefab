@@ -212,6 +212,7 @@ MonoBehaviour:
   _attackTimeScale: 0
   _fireBall: {fileID: 2954274677580352333, guid: 675218b45ae704a45bfa7b31037db023, type: 3}
   _fireDir: 60
+  _attackDuration: 1
 --- !u!1 &910940791
 GameObject:
   m_ObjectHideFlags: 0
@@ -466,6 +467,7 @@ MonoBehaviour:
   _AttackPos3: {fileID: 8357718238625304472}
   _chargingEffect: {fileID: 1143827188}
   _flameStrikeEffect: {fileID: 129134, guid: 816543e112c0483489d779686aee4e55, type: 3}
+  _attackDuration: 1
 --- !u!1 &1555741138
 GameObject:
   m_ObjectHideFlags: 0
@@ -680,6 +682,7 @@ MonoBehaviour:
   _stampAttackEffect: {fileID: 1995718676}
   _attackPos: {fileID: 2127844094}
   _attackTimeScale: 0
+  _attackDuration: 0.5
 --- !u!1 &1995718673
 GameObject:
   m_ObjectHideFlags: 0

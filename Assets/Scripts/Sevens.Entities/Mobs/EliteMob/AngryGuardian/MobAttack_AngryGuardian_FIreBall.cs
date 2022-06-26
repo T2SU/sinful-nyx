@@ -18,6 +18,9 @@ namespace Sevens.Entities.Mobs
         [SerializeField]
         private float _fireDir;
 
+        [SerializeField]
+        private float _attackDuration;
+
         public override IEnumerator Attack(Player player, Mob mob, CoroutineMan coroutines)
         {
             var animTime = mob.PlayAnimation(
@@ -33,6 +36,7 @@ namespace Sevens.Entities.Mobs
             {
                 Instantiate(_fireBall, mob.transform.position, Quaternion.Euler(0, 0, _fireDir));
             }
+            yield return new WaitForSeconds(_attackDuration);
         }
     }
 }

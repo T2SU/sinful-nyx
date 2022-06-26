@@ -27,6 +27,8 @@ namespace Sevens.Entities.Mobs
         private VisualEffect _chargingEffect;
         [SerializeField]
         private GameObject _flameStrikeEffect;
+        [SerializeField]
+        private float _attackDuration;
 
         public override IEnumerator Attack(Player player, Mob mob, CoroutineMan coroutines)
         {
@@ -51,6 +53,7 @@ namespace Sevens.Entities.Mobs
             GameObject obj3 = Instantiate(_flameStrikeEffect, _AttackPos3);
             Destroy(obj3, 2f);
             mob.PlayAudio("FlameStrike");
+            yield return new WaitForSeconds(_attackDuration);
         }
     }
 }
