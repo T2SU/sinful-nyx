@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using Sevens.Utils;
+using UnityEngine.VFX;
 
 namespace Sevens.Entities.Mobs
 {
@@ -24,11 +25,15 @@ namespace Sevens.Entities.Mobs
         [SerializeField]
         private LayerMask _groundLayer;
 
+        [SerializeField]
+        private VisualEffect _chargeAttackVFX;
+
         public override IEnumerator Attack(Player player, Mob mob, CoroutineMan coroutines)
         {
             var animTime = mob.PlayAnimation(
                 new AnimationPlayOption("StampReady", timeScale: _attackTimeScale),
                 immediatelyTransition: true);
+            _chargeAttackVFX.Play();
 
             yield return new WaitForSeconds(animTime - WarningDuration);
             yield return WarningAction(mob);

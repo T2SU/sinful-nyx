@@ -30,11 +30,11 @@ namespace Sevens.Entities.Mobs
             yield return WarningAction(mob);
             if (mob.IsFacingLeft())
             {
-                Instantiate(_fireBall, mob.transform.position, Quaternion.Euler(0, 0, (_fireDir - 180) * -1));
+                var obj = Instantiate(_fireBall, mob.transform.position, Quaternion.Euler(0, 0, (_fireDir - 180) * -1f));
             }
             else
             {
-                Instantiate(_fireBall, mob.transform.position, Quaternion.Euler(0, 0, _fireDir));
+                var obj = Instantiate(_fireBall, mob.transform.position, Quaternion.Euler(0, 0, _fireDir));
             }
             yield return new WaitForSeconds(_attackDuration);
         }

@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Sevens.Entities;
 
-public class FIreBall_Mortar : MonoBehaviour
+public class FireBall_Mortar : MonoBehaviour
 {
     [SerializeField]
     private float _speed;
@@ -16,27 +17,30 @@ public class FIreBall_Mortar : MonoBehaviour
     [SerializeField]
     private int _childFireBallNum;
 
-
+    [SerializeField]
     private float _lifeTimer;
 
     [SerializeField]
     private Rigidbody2D _rigidbody;
-    // Start is called before the first frame update
+
+    private Entity source;
+
     void Start()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
         _rigidbody.velocity = transform.right * _speed;
+        source = GameObject.Find("AngryGuardian").GetComponent<Entity>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         _lifeTimer += Time.deltaTime;
         if (_lifeTimer > _lifeTime)
         {
-            for(int i = 0; i <= _childFireBallNum; i++)
+            for(int i = 0; i < _childFireBallNum; i++)
             {
-                Instantiate(_childFireBall, transform.position, Quaternion.Euler(0, 0, transform.rotation.z + _childFireBallSpread * i - _childFireBallSpread));
+                var obj = Instantiate(_childFireBall, transform.position, Quaternion.Euler(0, 0, transform.rotation.z + _childFireBallSpread * i - _childFireBallSpread));
+                Blow.SetAllBlowSourceAs(obj, source);
             }
             Destroy(gameObject);
         }
