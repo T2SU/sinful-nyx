@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &8176266060591149684
+--- !u!1 &6377670316589615201
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,23 +8,23 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6163914425595203873}
-  - component: {fileID: 7912456612866958081}
-  - component: {fileID: 1141613926185680915}
+  - component: {fileID: 2483791102636897222}
+  - component: {fileID: 7526243325373298818}
+  - component: {fileID: 6704377024486793093}
   m_Layer: 0
-  m_Name: GlowingOrbVFX
+  m_Name: GlowingOrbVFX 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6163914425595203873
+--- !u!4 &2483791102636897222
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8176266060591149684}
+  m_GameObject: {fileID: 6377670316589615201}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -33,15 +33,15 @@ Transform:
   m_Father: {fileID: 1552968485601872188}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!2083052967 &7912456612866958081
+--- !u!2083052967 &7526243325373298818
 VisualEffect:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8176266060591149684}
+  m_GameObject: {fileID: 6377670316589615201}
   m_Enabled: 1
-  m_Asset: {fileID: 8926484042661614526, guid: 186c995feef5fa843a2e54d4d3c8ec92, type: 3}
+  m_Asset: {fileID: 8926484042661614526, guid: 871f45146f0d37a40af5b1de103dc36a, type: 3}
   m_InitialEventName: OnPlay
   m_InitialEventNameOverriden: 0
   m_StartSeed: 0
@@ -50,7 +50,7 @@ VisualEffect:
   m_PropertySheet:
     m_Float:
       m_Array:
-      - m_Value: 5
+      - m_Value: 2
         m_Name: MainOrbSize
         m_Overridden: 1
       - m_Value: 2
@@ -60,7 +60,7 @@ VisualEffect:
       m_Array: []
     m_Vector3f:
       m_Array:
-      - m_Value: {x: 0.5, y: 0.5, z: 0}
+      - m_Value: {x: 0.75, y: 0.75, z: 0}
         m_Name: AuxOrbPosition
         m_Overridden: 1
     m_Vector4f:
@@ -77,9 +77,9 @@ VisualEffect:
       m_Array:
       - m_Value:
           serializedVersion: 2
-          key0: {r: 0.05635921, g: 0.02169366, b: 0.18396226, a: 0}
-          key1: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-          key2: {r: 0, g: 0, b: 0, a: 0.8}
+          key0: {r: 1.1104378, g: 3.3250403, b: 1.3167611, a: 0}
+          key1: {r: 0.6333568, g: 2.9971356, b: 0.6751375, a: 1}
+          key2: {r: 0, g: 0, b: 0, a: 1}
           key3: {r: 0, g: 0, b: 0, a: 0}
           key4: {r: 0, g: 0, b: 0, a: 0}
           key5: {r: 0, g: 0, b: 0, a: 0}
@@ -94,7 +94,7 @@ VisualEffect:
           ctime6: 0
           ctime7: 0
           atime0: 0
-          atime1: 6554
+          atime1: 13107
           atime2: 52428
           atime3: 65535
           atime4: 0
@@ -108,7 +108,7 @@ VisualEffect:
         m_Overridden: 1
       - m_Value:
           serializedVersion: 2
-          key0: {r: 0.056128494, g: 0.022173883, b: 0.18447503, a: 0}
+          key0: {r: 0.12941177, g: 0.5, b: 0.011764706, a: 0}
           key1: {r: 0.5, g: 0.5, b: 0.5, a: 1}
           key2: {r: 0, g: 0, b: 0, a: 0.8}
           key3: {r: 0, g: 0, b: 0, a: 0}
@@ -138,17 +138,20 @@ VisualEffect:
         m_Name: AuxOrbColor
         m_Overridden: 1
     m_NamedObject:
-      m_Array: []
+      m_Array:
+      - m_Value: {fileID: 2800000, guid: 891150665548b3a4cb8324df48d17c0a, type: 3}
+        m_Name: OrbTexture
+        m_Overridden: 1
     m_Bool:
       m_Array: []
---- !u!73398921 &1141613926185680915
+--- !u!73398921 &6704377024486793093
 VFXRenderer:
   serializedVersion: 1
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8176266060591149684}
+  m_GameObject: {fileID: 6377670316589615201}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -178,8 +181,8 @@ VFXRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 281334535
-  m_SortingLayer: 2
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!1 &8303728960488018013
 GameObject:
@@ -212,7 +215,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6163914425595203873}
+  - {fileID: 2483791102636897222}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
