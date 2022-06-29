@@ -42,6 +42,9 @@ namespace Sevens.Entities.Mobs
         [SerializeField]
         private bool _immunePushed;
 
+        [SerializeField]
+        private bool _collisionalHit;
+
         private SkeletonAnimation _skeletonAnimation;
         private Spine.AnimationState _animationState;
         private Rigidbody2D _rigidbody;
@@ -197,7 +200,7 @@ namespace Sevens.Entities.Mobs
             if (pos != null)
                 PlayEffect("HitBlood", pos.Value);
             if (_moveAbility != MobMoveAbility.None)
-                BounceBack(0.3f, IsOnLeftBy(source.transform));
+                BounceBack(0.5f, IsOnLeftBy(source.transform));
             if (Hp == 0)
             {
                 _killedBy = source;
