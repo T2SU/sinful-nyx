@@ -208,7 +208,7 @@ namespace Sevens.Entities.Mobs
                 if (!_immunePushed)
                 {
                     ChangeState(MobState.Hit);
-                    HitTime = PlayAnimation(new AnimationPlayOption("Hit"));
+                    HitTime = PlayAnimation(new AnimationPlayOption("Hit"), immediatelyTransition: true);
                 }
             }
 
