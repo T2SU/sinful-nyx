@@ -127,7 +127,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1432203433085830212}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -251,6 +251,7 @@ MonoBehaviour:
   _effects: []
   _invincible: 0
   _immunePushed: 0
+  _collisionalHit: 0
   <State>k__BackingField: 0
   <Name>k__BackingField: magic ghost
   <MoveSpeed>k__BackingField: 4
@@ -282,7 +283,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _moveType: 1
-  _newPivot: {fileID: 0}
+  playerGap: 3
 --- !u!114 &8236047435289681374
 MonoBehaviour:
   m_ObjectHideFlags: 0
