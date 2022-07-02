@@ -140,8 +140,8 @@ MonoBehaviour:
   - {fileID: 6731340247042205143}
   - {fileID: 4536388789486427340}
   m_Bounds:
-    m_Center: {x: 0.00000011920929, y: -0.0037750006, z: 0}
-    m_Extent: {x: 1.3700001, y: 1.9212251, z: 0}
+    m_Center: {x: 0.000000834465, y: -0.0037750006, z: 0}
+    m_Extent: {x: 1.37, y: 1.9212251, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
   m_AutoRebind: 0
@@ -310,8 +310,8 @@ MonoBehaviour:
   - {fileID: 3067940126915134923}
   - {fileID: 7850709599006782635}
   m_Bounds:
-    m_Center: {x: 1.7354026, y: 0.24176593, z: 0}
-    m_Extent: {x: 0.34930962, y: 0.21230964, z: 0}
+    m_Center: {x: 1.7354035, y: 0.24176593, z: 0}
+    m_Extent: {x: 0.34930998, y: 0.21230964, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
   m_AutoRebind: 0
@@ -413,11 +413,13 @@ MonoBehaviour:
   AttackType: 0
   WarningDuration: 0
   WarningEffectPosition: {fileID: 0}
+  InvincibleWhileAttack: 0
+  Mob: {fileID: 0}
   Conditions: []
-  Attack: {fileID: 8303728960488018013, guid: 9de03498adee6e64f8bdec035691b76b, type: 3}
+  AttackObj: {fileID: 8303728960488018013, guid: 9de03498adee6e64f8bdec035691b76b, type: 3}
   AttackPoint: {fileID: 461895873585124268}
-  AttackTimeScale: 3
-  _height: 9
+  AttackTimeScale: 2.5
+  _height: 3
 --- !u!1 &2411511359850531313
 GameObject:
   m_ObjectHideFlags: 0
@@ -726,7 +728,7 @@ MonoBehaviour:
   - {fileID: 8683082853883487394}
   - {fileID: 4792606904422129721}
   m_Bounds:
-    m_Center: {x: 1.2616003, y: 0.19690251, z: 0}
+    m_Center: {x: 1.2616005, y: 0.19690251, z: 0}
     m_Extent: {x: 0.5706445, y: 0.62606, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
@@ -864,8 +866,8 @@ MonoBehaviour:
   - {fileID: 6049059045085818857}
   - {fileID: 89952984679376700}
   m_Bounds:
-    m_Center: {x: 1.4412197, y: -0.5524273, z: 0}
-    m_Extent: {x: 0.52308, y: 0.64, z: 0}
+    m_Center: {x: 1.4412202, y: -0.5524273, z: 0}
+    m_Extent: {x: 0.5230802, y: 0.64, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
   m_AutoRebind: 0
@@ -1388,6 +1390,8 @@ MonoBehaviour:
       SpineAnimation: {fileID: 0}
   _effects: []
   _invincible: 0
+  _immunePushed: 0
+  _collisionalHit: 0
   <State>k__BackingField: 1
   <Name>k__BackingField: 
   <MoveSpeed>k__BackingField: 0
@@ -1420,7 +1424,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _moveType: 2
   _newPivot: {fileID: 0}
-  _isSetNewPivot: 0
 --- !u!114 &281930707065733659
 MonoBehaviour:
   m_ObjectHideFlags: 0

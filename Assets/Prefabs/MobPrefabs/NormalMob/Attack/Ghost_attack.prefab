@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 722204226131067753}
   - component: {fileID: 2698699240320515543}
   m_Layer: 12
-  m_Name: ghost_attack
+  m_Name: Ghost_attack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -93,14 +93,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f98d3afaa295cd4cbeb8e1cf1367618, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Cooltime: 2
+  Cooltime: 1
   Priority: 0
   AttackType: 0
   WarningDuration: 0
   WarningEffectPosition: {fileID: 0}
+  InvincibleWhileAttack: 0
+  Mob: {fileID: 0}
   Conditions: []
-  Attack: {fileID: 8303728960488018013, guid: 492322758e9b25046849f10a23ae0cc5, type: 3}
   AttackTimeScale: 0.32
+  AttackObj: {fileID: 8303728960488018013, guid: 492322758e9b25046849f10a23ae0cc5, type: 3}
 --- !u!1 &607759727346573859
 GameObject:
   m_ObjectHideFlags: 0
@@ -441,8 +443,8 @@ MonoBehaviour:
   - {fileID: 8159676861325557508}
   - {fileID: 1139744374203811927}
   m_Bounds:
-    m_Center: {x: -0.42954096, y: 1.8388658, z: 0}
-    m_Extent: {x: 0.4230151, y: 0.33685, z: 0}
+    m_Center: {x: -0.4295419, y: 1.8388655, z: 0}
+    m_Extent: {x: 0.423015, y: 0.33684993, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
   m_AutoRebind: 0
@@ -478,37 +480,6 @@ Transform:
   m_Father: {fileID: 3925869236636923031}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &5399416997451080911
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2220736194567764868}
-  m_Layer: 11
-  m_Name: newPivot
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2220736194567764868
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5399416997451080911}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.66, y: 2.53, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 3925869236636923031}
-  m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5616798538448886236
 GameObject:
   m_ObjectHideFlags: 0
@@ -521,7 +492,7 @@ GameObject:
   - component: {fileID: 1715153659671758594}
   - component: {fileID: 7178394838999200015}
   - component: {fileID: 6301994782817042865}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Awakner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -736,7 +707,7 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 1023697259096212479}
   m_Bounds:
-    m_Center: {x: -0.625878, y: 1.5735829, z: 0}
+    m_Center: {x: -0.62587833, y: 1.5735826, z: 0}
     m_Extent: {x: 0.11925998, y: 0.13319999, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
@@ -817,7 +788,6 @@ Transform:
   - {fileID: 1023697259096212479}
   - {fileID: 8056946011872846230}
   - {fileID: 6142559545013969534}
-  - {fileID: 2220736194567764868}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -931,7 +901,9 @@ MonoBehaviour:
       SpineAnimation: {fileID: 0}
   _effects: []
   _invincible: 0
-  <State>k__BackingField: 1
+  _immunePushed: 0
+  _collisionalHit: 0
+  <State>k__BackingField: 0
   <Name>k__BackingField: bat
   <MoveSpeed>k__BackingField: 5
 --- !u!114 &6882680540446037114
@@ -962,8 +934,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _moveType: 1
-  _newPivot: {fileID: 2220736194567764868}
-  _isSetNewPivot: 1
+  playerGap: 3
 --- !u!114 &7775090774487511095
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1191,8 +1162,8 @@ MonoBehaviour:
   - {fileID: 8788871094905599780}
   - {fileID: 470036203929267366}
   m_Bounds:
-    m_Center: {x: -0.57874185, y: 1.8430614, z: 0}
-    m_Extent: {x: 0.412175, y: 0.34036994, z: 0}
+    m_Center: {x: -0.57874185, y: 1.8430611, z: 0}
+    m_Extent: {x: 0.412175, y: 0.34037006, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
   m_AutoRebind: 0

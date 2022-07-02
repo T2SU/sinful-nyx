@@ -29,7 +29,7 @@ namespace Sevens.Entities.Mobs
             points.SetValue(midlePoint, 1);
             points.SetValue(player.transform.position, 2);
 
-            obj.transform.DOPath(points, AttackTimeScale, PathType.CatmullRom, PathMode.Ignore)
+            obj.transform.DOPath(points, AttackTimeScale, PathType.CatmullRom, PathMode.TopDown2D)
                 .SetLookAt(0f)
                 .SetEase(ease)
                 .SetLoops(-1, LoopType.Yoyo);
