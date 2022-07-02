@@ -187,7 +187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01f409dac8070314b81b04d484d924fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Cooltime: 4
+  Cooltime: 2
   Priority: 0
   AttackType: 0
   WarningDuration: 0
@@ -197,7 +197,7 @@ MonoBehaviour:
   Conditions: []
   AttackObj: {fileID: 8303728960488018013, guid: a48730fa72ba140498ce70f58efaf377, type: 3}
   AttackPosition: {fileID: 5554562740142722404}
-  AttackTimeScale: 1
+  AttackTimeScale: 0.7
   _upDuration: 0.2
   _attackVFX: {fileID: 5185878969165099885}
 --- !u!1 &1059538981
@@ -1357,7 +1357,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _moveType: 1
-  _newPivot: {fileID: 0}
+  playerGap: 3
 --- !u!114 &7326269264733129320
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1421,6 +1421,7 @@ MonoBehaviour:
   _effects: []
   _invincible: 0
   _immunePushed: 0
+  _collisionalHit: 0
   <State>k__BackingField: 0
   <Name>k__BackingField: ghost
   <MoveSpeed>k__BackingField: 4
