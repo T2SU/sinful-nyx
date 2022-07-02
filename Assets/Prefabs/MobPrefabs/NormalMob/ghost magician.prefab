@@ -283,7 +283,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _moveType: 1
-  playerGap: 3
+  _distanceToPlayer: 3
 --- !u!114 &8236047435289681374
 MonoBehaviour:
   m_ObjectHideFlags: 0
