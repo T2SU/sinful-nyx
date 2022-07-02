@@ -55,7 +55,12 @@ namespace Sevens.Entities.Mobs
                 if (_newPivot == null)
                 {
                     if (mobIsOnLeft == _mob.transform.IsFacingLeft())
+                    {
                         _mob.transform.SetFacingLeft(!mobIsOnLeft);
+                        _mob.ChangeState(MobState.Idle, playLoopAnimationByState: true);
+                        _mob.SetVelocity(Vector2.zero, linearly: true);
+
+                    }
                 }
                 else
                 {
@@ -68,14 +73,14 @@ namespace Sevens.Entities.Mobs
                 }
             }
 
-            if (Mathf.Abs(mobPos.x - playerPos.x) >= 2f)
+            if (Mathf.Abs(mobPos.x - playerPos.x) >= 3f)
             {
                 if (_moveType == MobMoveType.ChasingPlayer)
                 {
                     if (!_mob.IsVelocityChangingLinearly() && _mob.State == MobState.Idle)
                     {
-                        if (_mob.IsDelayedByChangedState(1.0f))
-                            return;
+                        //if (_mob.IsDelayedByChangedState(1.0f))
+                        //    return;
                         _mob.ChangeState(MobState.Move, playLoopAnimationByState: true);
                         _mob.SetVelocity(new Vector2(sign * _mob.MoveSpeed, 0), linearly: true);
                     }
