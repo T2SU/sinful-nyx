@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Sevens.Entities.Mobs
 {
-    public class MobAttack_AngryGuardian_FIreBall : MobAttackBase
+    public class MobAttack_AngryGuardian_FireBall : MobAttackBase
     {
         [SerializeField]
         private float _attackTimeScale;
@@ -37,6 +37,8 @@ namespace Sevens.Entities.Mobs
                 var obj = Instantiate(_fireBall, mob.transform.position, Quaternion.Euler(0, 0, _fireDir));
             }
             yield return new WaitForSeconds(_attackDuration);
+
+            MobAttack_AngryGuardian_JumpAttack.stackCount++;
         }
     }
 }

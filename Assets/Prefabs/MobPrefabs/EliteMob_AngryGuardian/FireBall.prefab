@@ -141,7 +141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 15
-  _lifeTime: 1
+  _lifeTime: 0.9
   _childFireBallSpread: 20
   _childFireBall: {fileID: 6368071327180124453, guid: f7da282125db3f64a9ff3b1139024bb5, type: 3}
   _childFireBallNum: 3
