@@ -5,12 +5,18 @@ using UnityEngine;
 public class OneWayPlatform : MonoBehaviour
 {
     private bool _isClicked;
+    //[SerializeField]
+    //private float _platformDisableTimer = 0f;
+    //[SerializeField]
+    //private float _disableTime = 0.5f;
 
     private Collider2D _collider;
+    private PlatformEffector2D _platformEffector;
 
     void Start()
     {
         _collider = GetComponent<Collider2D>();
+        _platformEffector = GetComponent<PlatformEffector2D>();
     }
 
     void Update()
@@ -20,25 +26,30 @@ public class OneWayPlatform : MonoBehaviour
 
     void FixedUpdate()
     {
-        Vector2 vector1 = new Vector2(transform.position.x + _collider.bounds.size.x / 2, transform.position.y + _collider.bounds.size.y / 2 + 1.75f);
-        Vector2 vector2 = new Vector2(transform.position.x - _collider.bounds.size.x / 2, transform.position.y + _collider.bounds.size.y / 2 + 2f);
-
-        if(Physics2D.OverlapArea(vector1, vector2) && !_isClicked)
+        if(_isClicked)
         {
-            transform.gameObject.layer = 9;
+            _platformEffector.surfaceArc = 0f;
         }
-        else
-        {
-            transform.gameObject.layer = 0;
-        }
+    }
 
-        //if(_isClicked)
-        //{
-        //    _platformEffecter.surfaceArc = 0f;
-        //}
-        //else
-        //{
-        //    _platformEffecter.surfaceArc = 1f;
-        //}
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        foreach(ContactPoint2D contactPoint in collision.contacts)
+        {
+            if(contactPoint.normal.y > -1)
+            {
+                gameObject.layer = 0;
+            }
+            else
+            {
+                gameObject.layer = 9;
+            }
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        gameObject.layer = 9;
+        _platformEffector.surfaceArc = 1f;
     }
 }
