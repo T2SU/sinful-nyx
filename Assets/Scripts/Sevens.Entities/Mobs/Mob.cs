@@ -194,6 +194,25 @@ namespace Sevens.Entities.Mobs
                     return;
             }
             Hp -= damage;
+
+            var playerAttack = FindObjectOfType<Blow>();
+            Debug.Log(playerAttack.gameObject.name);
+            switch (playerAttack.gameObject.name)
+            {
+                case "Combo1(Clone)":
+                    PlayEffect("Hit1", transform.position);
+                    break;
+                case "Combo2(Clone)":
+                    PlayEffect("Hit2", transform.position);
+                    break;
+                case "Combo3(Clone)":
+                    PlayEffect("Hit3", transform.position);
+                    break;
+                default:
+                    PlayEffect("Hit1", transform.position);
+                    break;
+            }
+
             if (Hp < 0)
                 Hp = 0;
             var pos = GetRandomInPosition();

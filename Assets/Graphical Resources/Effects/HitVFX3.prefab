@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 199889687628232386}
   - component: {fileID: 114864613140610572}
   m_Layer: 17
-  m_Name: hit-line-1
+  m_Name: HitVFX3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -856,7 +856,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 1
+        scalar: 3
         minScalar: 1
         maxCurve:
           serializedVersion: 2
