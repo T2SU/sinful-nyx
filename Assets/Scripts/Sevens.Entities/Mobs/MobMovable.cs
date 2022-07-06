@@ -19,7 +19,7 @@ namespace Sevens.Entities.Mobs
         private Transform _playerTransform;
 
         [SerializeField]
-        private float playerGap = 3f;
+        private float _distanceToPlayer = 3f;
 
 
         private void Awake()
@@ -62,7 +62,7 @@ namespace Sevens.Entities.Mobs
                 }
             }
 
-            if (Mathf.Abs(mobPos.x - playerPos.x) >= 3f)
+            if (Mathf.Abs(mobPos.x - playerPos.x) >= _distanceToPlayer)
             {
                 if (_moveType == MobMoveType.ChasingPlayer)
                 {
