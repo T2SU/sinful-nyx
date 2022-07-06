@@ -12,6 +12,7 @@ TagManager:
   - SpawnPoint
   - nopool
   - UI
+  - ScrollableBackground
   layers:
   - Default
   - TransparentFX

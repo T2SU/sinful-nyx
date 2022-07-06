@@ -11,6 +11,7 @@ using DG.Tweening;
 using UnityEngine.Events;
 using Sevens.Entities.Mobs;
 using System.Linq;
+using EasyParallax;
 using Sevens.Cameras;
 using UnityEngine.VFX;
 
@@ -44,6 +45,9 @@ namespace Sevens.Entities.Players
         
         [SerializeField] private float _staminaRecoveryInterval;
         [SerializeField] private float _staminaRecovery;
+
+        private Vector3 _prevPosition;
+        private readonly List<SpriteScroller> _spriteScrollers = new List<SpriteScroller>();
 
         public float Soul { get => _soul; set => _soul = value; }
 
@@ -304,6 +308,15 @@ namespace Sevens.Entities.Players
             }
 
             _staminaRecoveryTimer.UpdateAsNow();
+
+            _prevPosition = transform.position;
+            _spriteScrollers.Clear();
+            foreach (var obj in GameObject.FindGameObjectsWithTag("ScrollableBackground"))
+            {
+                var s = obj.GetComponent<SpriteScroller>();
+                if (s != null)
+                    _spriteScrollers.Add(s);
+            }
         }
 
         protected override void FixedUpdate()
@@ -529,6 +542,19 @@ namespace Sevens.Entities.Players
             {
                 RecoveryStamina();
             }
+
+            UpdateBackgroundScrolling();
+        }
+
+        private void UpdateBackgroundScrolling()
+        {
+            var nowPos = transform.position;
+            var diff = nowPos - _prevPosition;
+
+            foreach (var s in _spriteScrollers)
+                s.Move(diff);
+
+            _prevPosition = nowPos;
         }
 
         private void OnDrawGizmos()
