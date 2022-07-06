@@ -25,54 +25,64 @@ public class SavePointEntity : MonoBehaviour
     [SerializeField] Sprite _angelAvatar;
     [SerializeField] SystemDialogue _systemDialogue;
 
+    // 처음 대화 하는 천사석상일때만 체크
+    public bool WithFirstContact;
+
     [SerializeField]
     private ScriptObject _scripts;
 
     private void Start()
     {
         var playerObj = GameObject.Find("Player");
+        var systemDialogueObj = GameObject.Find("SystemDialogue");
 
-        if (playerObj == null)
-        {
+        if (playerObj == null || systemDialogueObj == null)
             return;
-        }
 
         player = playerObj.GetComponent<Player>();
+        _systemDialogue = systemDialogueObj.GetComponent<SystemDialogue>();
 
-        if (player.Achievements.GetData(PlayerDataKeyType.FirstContactCompleted) == "1")
+        if (!WithFirstContact || player.Achievements.GetData(PlayerDataKeyType.FirstContactCompleted) == "1")
         {
             ChangeButtonTooltip();
         }
     }
 
     public void Interact() {
-        if (player.Achievements.GetData(PlayerDataKeyType.FirstContactCompleted) != "1")
+        if (WithFirstContact)
         {
-            StartCoroutine(FirstContactDialogue());
+            if (player.Achievements.GetData(PlayerDataKeyType.FirstContactCompleted) != "1")
+            {
+                StartCoroutine(FirstContactDialogue());
+                return;
+            }
         }
-        else 
-        {
-            UIManager.Instance.Popup("저장 하시겠습니까?", "예", "아니오", () => {
-                SaveManager.SaveGame();
-                //DialogueManager.Instance.DisplayHudMessage("데이터가 저장되었습니다.");
-                _systemDialogue.Display("데이터가 저장되었습니다.", 2);
-            });
-        }
+        UIManager.Instance.Popup("저장 하시겠습니까?", "예", "아니오", () => {
+            SaveManager.SaveGame();
+            //DialogueManager.Instance.DisplayHudMessage("데이터가 저장되었습니다.");
+            _systemDialogue.Display("데이터가 저장되었습니다.", 2);
+        });
     }
 
     public void DisplaySystemDialogue()
     {
-        if (player.Achievements.GetData(PlayerDataKeyType.FirstContactCompleted) != "1")
+        if (WithFirstContact)
         {
-            _systemDialogue.Display("상호작용 하려면 <color=yellow>V</color> 키를 누르십시오.", -1);
+            if (player.Achievements.GetData(PlayerDataKeyType.FirstContactCompleted) != "1")
+            {
+                _systemDialogue.Display("상호작용 하려면 <color=yellow>V</color> 키를 누르십시오.", -1);
+            }
         }
     }
 
     public void HideSystemDialogue()
     {
-        if (player.Achievements.GetData(PlayerDataKeyType.FirstContactCompleted) != "1")
+        if (WithFirstContact)
         {
-            _systemDialogue.Display(null, 0);
+            if (player.Achievements.GetData(PlayerDataKeyType.FirstContactCompleted) != "1")
+            {
+                _systemDialogue.Display(null, 0);
+            }
         }
     }
 

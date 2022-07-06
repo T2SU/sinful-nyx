@@ -1997,6 +1997,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 941323805}
     - target: {fileID: 5122023062628291705, guid: 60a49c80cfa1a0448aa7582035bbf567, type: 3}
+      propertyPath: WithFirstContact
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5122023062628291705, guid: 60a49c80cfa1a0448aa7582035bbf567, type: 3}
       propertyPath: _scripts.Array.size
       value: 1
       objectReference: {fileID: 0}
