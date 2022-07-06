@@ -14,11 +14,6 @@ namespace Sevens.Entities.Mobs
         [SerializeField]
         private float fadeTimer = 1f;
 
-        private void Start()
-        {
-            _effect.Stop();
-        }
-
         public override void Execute(Entity entity, Entity killedBy)
         {
             StartCoroutine(Fade());
@@ -31,6 +26,7 @@ namespace Sevens.Entities.Mobs
             _effect.SetVector3("MobSize", transform.localScale);
 
             _effect.Play();
+            _effect.transform.parent = null;
 
             mob.PlayAudio("Die");
         }

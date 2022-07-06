@@ -27,6 +27,7 @@ namespace Sevens.Entities.Mobs
             _attackVFX.Play();
 
             var obj = Instantiate(AttackObj, AttackPosition.transform);
+            obj.transform.parent = null;
             var rigid = obj.GetComponent<Rigidbody2D>();
             var velocity = Vector2.left * MagicSpeed * (mob.transform.IsFacingLeft() ? 1 : -1);
 
