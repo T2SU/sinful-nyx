@@ -12,6 +12,8 @@ using UnityEngine.Events;
 using Sevens.Entities.Mobs;
 using System.Linq;
 using EasyParallax;
+using Sevens.Cameras;
+using UnityEngine.VFX;
 
 namespace Sevens.Entities.Players
 {
@@ -179,6 +181,14 @@ namespace Sevens.Entities.Players
         private int _dashedInAirCount;
 
 
+        [Header("Camera")]
+        [SerializeField] private VirtualCameraController _virtualCameraController;
+
+
+        [Header("Visual Effects")]
+        [SerializeField] private VisualEffect _dustWhileMovingVFX;
+
+
         [Header("Misc")]
         [SerializeField] private bool _debugMode;
 
@@ -268,6 +278,7 @@ namespace Sevens.Entities.Players
             _comboFinishDelayTimer = new TimeElapsingRecord();
             _beingDashTimer = new TimeElapsingRecord();
             _staminaRecoveryTimer = new TimeElapsingRecord();
+            _virtualCameraController = FindObjectOfType<VirtualCameraController>();
             Invincible = false;
 
             var stashedPlayerData = Singleton<PlayerData>.Data;
@@ -476,16 +487,19 @@ namespace Sevens.Entities.Players
                     if (State != PlayerState.Run)
                     {
                         State = PlayerState.Run;
+                        _dustWhileMovingVFX.Play();
                     }
                 }
                 else
                 {
+                    _dustWhileMovingVFX.Stop();
                     if (State != PlayerState.Idle)
                         State = PlayerState.Idle;
                 }
             }
             if (State == PlayerState.Air)
             {
+                _dustWhileMovingVFX.Stop();
                 if (!_isGround && _playerRigidbody.velocity.y < -0.2f)
                 {
                     if (!_jumpTrigger)
@@ -578,6 +592,15 @@ namespace Sevens.Entities.Players
                     _invincibleTimer.UpdateAsNow();
                     PlayAudio(State);
                 }
+
+                bool shakeResult = result.Guarded.HasFlag(PlayerGuardResultType.Guard) || result.Guarded.HasFlag(PlayerGuardResultType.Parry);
+
+                _virtualCameraController.Shake(new Effects.CameraShakeOption()
+                {
+                    Amplitude = shakeResult ? 2f : 6f,
+                    Frequency = 2.0f,
+                    Time = 0.5f
+                }) ;
 
                 if (Hp <= 0)
                     OnDeath();

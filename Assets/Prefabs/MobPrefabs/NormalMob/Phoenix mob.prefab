@@ -58,7 +58,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 6.418481, y: 5.576224}
+  m_Size: {x: 10, y: 10}
   m_EdgeRadius: 0
 --- !u!50 &7840188844040306311
 Rigidbody2D:
@@ -93,7 +93,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce25f15bc3146ff42bafb68670425074, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Cooltime: 4
+  Cooltime: 1
   Priority: 0
   AttackType: 0
   WarningDuration: 0
@@ -102,7 +102,7 @@ MonoBehaviour:
   Mob: {fileID: 0}
   Conditions: []
   AttackObj: {fileID: 8303728960488018013, guid: 023e20b912e1e3847945da6f83ad240e, type: 3}
-  AttackTimeScale: 1
+  AttackTimeScale: 0.4
 --- !u!1 &4584458538594370173
 GameObject:
   m_ObjectHideFlags: 0
@@ -150,7 +150,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.08828163}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -161,7 +161,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 20.16, y: 8.234375}
+  m_Size: {x: 20, y: 10}
   m_EdgeRadius: 0
 --- !u!50 &2839499820469100164
 Rigidbody2D:
@@ -672,11 +672,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -1635690910235206647, guid: 2e1832b3a47bc8d469cb046a7af24d2b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.38719785
+      value: -6.85
       objectReference: {fileID: 0}
     - target: {fileID: -1635690910235206647, guid: 2e1832b3a47bc8d469cb046a7af24d2b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.3333224
+      value: 0.28
       objectReference: {fileID: 0}
     - target: {fileID: -1635690910235206647, guid: 2e1832b3a47bc8d469cb046a7af24d2b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -744,19 +744,19 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 7b01b0f63f7323d408708574edeb300d, type: 2}
     - target: {fileID: -272665054031767880, guid: 2e1832b3a47bc8d469cb046a7af24d2b, type: 3}
       propertyPath: m_Bounds.m_Center.x
-      value: 0.25720268
+      value: 0.25720292
       objectReference: {fileID: 0}
     - target: {fileID: -272665054031767880, guid: 2e1832b3a47bc8d469cb046a7af24d2b, type: 3}
       propertyPath: m_Bounds.m_Center.y
-      value: -2.661974
+      value: -2.6619737
       objectReference: {fileID: 0}
     - target: {fileID: -272665054031767880, guid: 2e1832b3a47bc8d469cb046a7af24d2b, type: 3}
       propertyPath: m_Bounds.m_Extent.x
-      value: 0.8299999
+      value: 0.8299998
       objectReference: {fileID: 0}
     - target: {fileID: -272665054031767880, guid: 2e1832b3a47bc8d469cb046a7af24d2b, type: 3}
       propertyPath: m_Bounds.m_Extent.y
-      value: 1.0150551
+      value: 1.015055
       objectReference: {fileID: 0}
     - target: {fileID: 175673040381504681, guid: 2e1832b3a47bc8d469cb046a7af24d2b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -848,7 +848,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3470107632961483086, guid: 2e1832b3a47bc8d469cb046a7af24d2b, type: 3}
       propertyPath: m_Name
-      value: Phoenix mob (2)
+      value: Phoenix mob
       objectReference: {fileID: 0}
     - target: {fileID: 3470107632961483086, guid: 2e1832b3a47bc8d469cb046a7af24d2b, type: 3}
       propertyPath: m_Layer
@@ -856,7 +856,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4850303541857668048, guid: 2e1832b3a47bc8d469cb046a7af24d2b, type: 3}
       propertyPath: m_Bounds.m_Center.x
-      value: 0.43560576
+      value: 0.43560553
       objectReference: {fileID: 0}
     - target: {fileID: 4850303541857668048, guid: 2e1832b3a47bc8d469cb046a7af24d2b, type: 3}
       propertyPath: m_Bounds.m_Center.y
@@ -920,15 +920,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8692236543584150021, guid: 2e1832b3a47bc8d469cb046a7af24d2b, type: 3}
       propertyPath: m_Bounds.m_Center.y
-      value: -2.9165373
+      value: -2.9165375
       objectReference: {fileID: 0}
     - target: {fileID: 8692236543584150021, guid: 2e1832b3a47bc8d469cb046a7af24d2b, type: 3}
       propertyPath: m_Bounds.m_Extent.x
-      value: 1.2465067
+      value: 1.2465065
       objectReference: {fileID: 0}
     - target: {fileID: 8692236543584150021, guid: 2e1832b3a47bc8d469cb046a7af24d2b, type: 3}
       propertyPath: m_Bounds.m_Extent.y
-      value: 1.0274987
+      value: 1.0274985
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: -447708181870297837, guid: 2e1832b3a47bc8d469cb046a7af24d2b, type: 3}
@@ -982,7 +982,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.703371, y: 2.1542125}
+  m_Size: {x: 3, y: 3}
   m_EdgeRadius: 0
 --- !u!82 &2550141655140545708
 AudioSource:
@@ -1141,7 +1141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _moveType: 1
-  _newPivot: {fileID: 0}
+  _distanceToPlayer: 3
 --- !u!114 &2550141655140545712
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1205,6 +1205,7 @@ MonoBehaviour:
   _effects: []
   _invincible: 0
   _immunePushed: 0
+  _collisionalHit: 0
   <State>k__BackingField: 0
   <Name>k__BackingField: 
   <MoveSpeed>k__BackingField: 5

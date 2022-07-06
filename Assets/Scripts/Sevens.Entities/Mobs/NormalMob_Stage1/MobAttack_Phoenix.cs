@@ -23,10 +23,10 @@ namespace Sevens.Entities.Mobs
             mob.PlayAudio("Attack");
 
             var seq = DOTween.Sequence()
-                .Append(mob.transform.DOMoveX(player.transform.position.x, AttackTimeScale))
+                .Append(mob.transform.DOMove(player.transform.position + Vector3.up * 2, AttackTimeScale))
                 .AppendInterval(0.05f)
                 .AppendCallback(() => mob.PlayAnimation(new AnimationPlayOption("AfterAttack", timeScale: AttackTimeScale), immediatelyTransition: true))
-                .Append(mob.transform.DOMoveX(pos.x, AttackTimeScale));
+                .Append(mob.transform.DOMove(pos, AttackTimeScale));
             coroutines.Register("PhoenixAttack", seq);
 
             yield return new WaitForSeconds(AttackTimeScale * 2);
