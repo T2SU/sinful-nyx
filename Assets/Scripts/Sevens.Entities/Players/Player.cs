@@ -11,6 +11,9 @@ using DG.Tweening;
 using UnityEngine.Events;
 using Sevens.Entities.Mobs;
 using System.Linq;
+using EasyParallax;
+using Sevens.Cameras;
+using UnityEngine.VFX;
 
 namespace Sevens.Entities.Players
 {
@@ -42,6 +45,9 @@ namespace Sevens.Entities.Players
         
         [SerializeField] private float _staminaRecoveryInterval;
         [SerializeField] private float _staminaRecovery;
+
+        private Vector3 _prevPosition;
+        private readonly List<SpriteScroller> _spriteScrollers = new List<SpriteScroller>();
 
         public float Soul { get => _soul; set => _soul = value; }
 
@@ -175,6 +181,14 @@ namespace Sevens.Entities.Players
         private int _dashedInAirCount;
 
 
+        [Header("Camera")]
+        [SerializeField] private VirtualCameraController _virtualCameraController;
+
+
+        [Header("Visual Effects")]
+        [SerializeField] private VisualEffect _dustWhileMovingVFX;
+
+
         [Header("Misc")]
         [SerializeField] private bool _debugMode;
 
@@ -264,6 +278,7 @@ namespace Sevens.Entities.Players
             _comboFinishDelayTimer = new TimeElapsingRecord();
             _beingDashTimer = new TimeElapsingRecord();
             _staminaRecoveryTimer = new TimeElapsingRecord();
+            _virtualCameraController = FindObjectOfType<VirtualCameraController>();
             Invincible = false;
 
             var stashedPlayerData = Singleton<PlayerData>.Data;
@@ -293,6 +308,15 @@ namespace Sevens.Entities.Players
             }
 
             _staminaRecoveryTimer.UpdateAsNow();
+
+            _prevPosition = transform.position;
+            _spriteScrollers.Clear();
+            foreach (var obj in GameObject.FindGameObjectsWithTag("ScrollableBackground"))
+            {
+                var s = obj.GetComponent<SpriteScroller>();
+                if (s != null)
+                    _spriteScrollers.Add(s);
+            }
         }
 
         protected override void FixedUpdate()
@@ -463,16 +487,19 @@ namespace Sevens.Entities.Players
                     if (State != PlayerState.Run)
                     {
                         State = PlayerState.Run;
+                        _dustWhileMovingVFX.Play();
                     }
                 }
                 else
                 {
+                    _dustWhileMovingVFX.Stop();
                     if (State != PlayerState.Idle)
                         State = PlayerState.Idle;
                 }
             }
             if (State == PlayerState.Air)
             {
+                _dustWhileMovingVFX.Stop();
                 if (!_isGround && _playerRigidbody.velocity.y < -0.2f)
                 {
                     if (!_jumpTrigger)
@@ -515,6 +542,19 @@ namespace Sevens.Entities.Players
             {
                 RecoveryStamina();
             }
+
+            UpdateBackgroundScrolling();
+        }
+
+        private void UpdateBackgroundScrolling()
+        {
+            var nowPos = transform.position;
+            var diff = nowPos - _prevPosition;
+
+            foreach (var s in _spriteScrollers)
+                s.Move(diff);
+
+            _prevPosition = nowPos;
         }
 
         private void OnDrawGizmos()
@@ -552,6 +592,15 @@ namespace Sevens.Entities.Players
                     _invincibleTimer.UpdateAsNow();
                     PlayAudio(State);
                 }
+
+                bool shakeResult = result.Guarded.HasFlag(PlayerGuardResultType.Guard) || result.Guarded.HasFlag(PlayerGuardResultType.Parry);
+
+                _virtualCameraController.Shake(new Effects.CameraShakeOption()
+                {
+                    Amplitude = shakeResult ? 2f : 6f,
+                    Frequency = 2.0f,
+                    Time = 0.5f
+                }) ;
 
                 if (Hp <= 0)
                     OnDeath();

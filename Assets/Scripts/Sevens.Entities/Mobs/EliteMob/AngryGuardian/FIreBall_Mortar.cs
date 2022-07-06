@@ -39,7 +39,15 @@ public class FireBall_Mortar : MonoBehaviour
         {
             for(int i = 0; i < _childFireBallNum; i++)
             {
-                var obj = Instantiate(_childFireBall, transform.position, Quaternion.Euler(0, 0, transform.rotation.z + _childFireBallSpread * i - _childFireBallSpread));
+                GameObject obj;
+                if (transform.localEulerAngles.z >= 90)
+                {
+                    obj = Instantiate(_childFireBall, transform.position, Quaternion.Euler(0, 0, -180 + transform.localEulerAngles.z + (_childFireBallSpread * i - _childFireBallSpread)));
+                }
+                else
+                {
+                    obj = Instantiate(_childFireBall, transform.position, Quaternion.Euler(0, 0, transform.localEulerAngles.z + (_childFireBallSpread * i - _childFireBallSpread)));
+                }
                 Blow.SetAllBlowSourceAs(obj, source);
             }
             Destroy(gameObject);
