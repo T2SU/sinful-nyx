@@ -6,6 +6,7 @@ using Sevens.Utils;
 using Spine;
 using Spine.Unity;
 using UnityEngine;
+using UnityEngine.VFX;
 
 namespace Sevens.Entities.Mobs
 {
@@ -194,19 +195,19 @@ namespace Sevens.Entities.Mobs
                     return;
             }
             Hp -= damage;
-
+            PlayEffect("HitSmoke", transform.Find("VisualEffects").position);
             var playerAttack = FindObjectOfType<Blow>();
             Debug.Log(playerAttack.gameObject.name);
             switch (playerAttack.gameObject.name)
             {
                 case "Combo1(Clone)":
-                    PlayEffect("Hit1", transform.position);
+                    PlayEffect("Hit1", transform.Find("VisualEffects").position);
                     break;
                 case "Combo2(Clone)":
-                    PlayEffect("Hit2", transform.position);
+                    PlayEffect("Hit2", transform.Find("VisualEffects").position);
                     break;
                 case "Combo3(Clone)":
-                    PlayEffect("Hit3", transform.position);
+                    PlayEffect("Hit3", transform.Find("VisualEffects").position);
                     break;
                 default:
                     PlayEffect("Hit1", transform.position);
@@ -311,10 +312,18 @@ namespace Sevens.Entities.Mobs
             }
             if (effect.Particle != null)
             {
-                var obj = Instantiate(effect.Particle);
-                obj.transform.position = pos;
-                if (parent != null)
-                    obj.transform.parent = parent;
+                if (effect.Particle.GetComponent<VisualEffect>())
+                {
+                    var visualEffect = effect.Particle.GetComponent<VisualEffect>();
+                    visualEffect.Play();
+                }
+                else
+                {
+                    var obj = Instantiate(effect.Particle);
+                    obj.transform.position = pos;
+                    if (parent != null)
+                        obj.transform.parent = parent;
+                }
             }
             if (effect.Shake.HasValue())
                 Camera.Shake(effect.Shake);
