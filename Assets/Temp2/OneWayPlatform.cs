@@ -36,7 +36,7 @@ public class OneWayPlatform : MonoBehaviour
     {
         foreach(ContactPoint2D contactPoint in collision.contacts)
         {
-            if(contactPoint.normal.y > -1)
+            if(contactPoint.normal.y > -0.9)
             {
                 gameObject.layer = 0;
             }
