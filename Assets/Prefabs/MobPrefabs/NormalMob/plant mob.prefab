@@ -383,7 +383,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 3.2554383}
+  m_Offset: {x: 0, y: 1.38}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -394,7 +394,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 11.360324, y: 5.4906588}
+  m_Size: {x: 15, y: 8.82}
   m_EdgeRadius: 0
 --- !u!114 &4500184932870798400
 MonoBehaviour:
@@ -1105,7 +1105,7 @@ GameObject:
   - component: {fileID: 944065525703174089}
   - component: {fileID: 242439629969189696}
   - component: {fileID: 6521746759052389731}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Awakener
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1237,6 +1237,7 @@ GameObject:
   - component: {fileID: 281930707065733659}
   - component: {fileID: 2869286609358337577}
   - component: {fileID: 8472112099193797908}
+  - component: {fileID: 4475298194945953895}
   m_Layer: 11
   m_Name: plant mob
   m_TagString: Untagged
@@ -1300,10 +1301,10 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.6589434, y: 2.172402}
+  m_Offset: {x: 0.66740656, y: 2.5060863}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -1314,7 +1315,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.2778869, y: 4.0662146}
+  m_Size: {x: 2.2609606, y: 3.6578217}
   m_EdgeRadius: 0
 --- !u!50 &5606847115766796478
 Rigidbody2D:
@@ -1324,19 +1325,19 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8504050557601201415}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 100
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &8581106005615308246
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1392,8 +1393,8 @@ MonoBehaviour:
   _invincible: 0
   _immunePushed: 0
   _collisionalHit: 0
-  <State>k__BackingField: 1
-  <Name>k__BackingField: 
+  <State>k__BackingField: 0
+  <Name>k__BackingField: "\uC624\uC5FC\uB41C \uC2DD\uBB3C"
   <MoveSpeed>k__BackingField: 0
 --- !u!114 &2115453507378894051
 MonoBehaviour:
@@ -1548,3 +1549,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!70 &4475298194945953895
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8504050557601201415}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.6651306, y: 2.3853931}
+  m_Size: {x: 2.289856, y: 3.9783134}
+  m_Direction: 0

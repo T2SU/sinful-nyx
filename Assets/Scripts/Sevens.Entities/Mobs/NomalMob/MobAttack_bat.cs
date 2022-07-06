@@ -24,7 +24,7 @@ namespace Sevens.Entities.Mobs
 
             var seq = DOTween.Sequence()
                 .AppendCallback(() => mob.PlayAudio("Attack"))
-                .Append(mob.transform.DOMove(player.transform.position, AttackTimeScale))
+                .Append(mob.transform.DOMove(player.transform.position + Vector3.down * 2, AttackTimeScale))
                 .AppendInterval(0.05f)
                 .AppendCallback(() => mob.PlayAnimation(new AnimationPlayOption("AfterAttack", timeScale: AttackTimeScale), immediatelyTransition: true))
                 .Append(mob.transform.DOMove(pos, AttackTimeScale * 2));
