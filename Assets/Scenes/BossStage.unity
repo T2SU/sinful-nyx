@@ -1424,6 +1424,7 @@ Transform:
   - {fileID: 1905033992}
   - {fileID: 634935886}
   - {fileID: 584265742}
+  - {fileID: 1791112877}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1575,8 +1576,33 @@ MonoBehaviour:
         Time: 0
       Sound: {fileID: 8300000, guid: f59b805dee3bd6d4ba7eeb6bd9f15b57, type: 3}
       Particle: {fileID: 3108210325625539167, guid: 022e90a659a1138479b008780f6243cf, type: 3}
+  - Name: Hit1
+    Object:
+      Shake:
+        Amplitude: 0
+        Frequency: 0
+        Time: 0
+      Sound: {fileID: 0}
+      Particle: {fileID: 1008842686038376, guid: 13a7294494a901e4f9abdacc3cbee106, type: 3}
+  - Name: Hit2
+    Object:
+      Shake:
+        Amplitude: 0
+        Frequency: 0
+        Time: 0
+      Sound: {fileID: 0}
+      Particle: {fileID: 1008842686038376, guid: 1644643216401ab43b05b09846444635, type: 3}
+  - Name: Hit3
+    Object:
+      Shake:
+        Amplitude: 0
+        Frequency: 0
+        Time: 0
+      Sound: {fileID: 0}
+      Particle: {fileID: 1008842686038376, guid: d8264fec0675de745bc3b12b40fad30a, type: 3}
   _invincible: 0
   _immunePushed: 1
+  _collisionalHit: 0
   <State>k__BackingField: 0
   <Name>k__BackingField: "\uBD84\uB178\uC758 \uB77C\uC2A4"
   <MoveSpeed>k__BackingField: 2
@@ -1651,7 +1677,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _moveType: 1
-  _newPivot: {fileID: 0}
+  _distanceToPlayer: 3
 --- !u!114 &590830174
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3117,7 +3143,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7835892577612198735, guid: 160f0309db9d25d4680a3cf8705caf67, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.01616478
+      value: -0.016168118
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 160f0309db9d25d4680a3cf8705caf67, type: 3}
@@ -3549,6 +3575,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1791112876
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1791112877}
+  m_Layer: 10
+  m_Name: VisualEffects
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1791112877
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1791112876}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 3.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 590830168}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1861320600
 GameObject:

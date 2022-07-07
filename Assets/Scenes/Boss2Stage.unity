@@ -519,8 +519,33 @@ MonoBehaviour:
         Time: 10
       Sound: {fileID: 8300000, guid: ce800889c73c34a46843c91efdb46882, type: 3}
       Particle: {fileID: 100000, guid: 9dc0928e47876594187c206d31e1e69e, type: 3}
+  - Name: Hit1
+    Object:
+      Shake:
+        Amplitude: 3
+        Frequency: 6
+        Time: 10
+      Sound: {fileID: 8300000, guid: ce800889c73c34a46843c91efdb46882, type: 3}
+      Particle: {fileID: 1008842686038376, guid: 13a7294494a901e4f9abdacc3cbee106, type: 3}
+  - Name: Hit2
+    Object:
+      Shake:
+        Amplitude: 3
+        Frequency: 6
+        Time: 10
+      Sound: {fileID: 8300000, guid: ce800889c73c34a46843c91efdb46882, type: 3}
+      Particle: {fileID: 1008842686038376, guid: 1644643216401ab43b05b09846444635, type: 3}
+  - Name: Hit3
+    Object:
+      Shake:
+        Amplitude: 3
+        Frequency: 6
+        Time: 10
+      Sound: {fileID: 8300000, guid: ce800889c73c34a46843c91efdb46882, type: 3}
+      Particle: {fileID: 1008842686038376, guid: d8264fec0675de745bc3b12b40fad30a, type: 3}
   _invincible: 0
   _immunePushed: 1
+  _collisionalHit: 0
   <State>k__BackingField: 0
   <Name>k__BackingField: "\uBD84\uB178\uC758 \uB77C\uC2A4 \uAC01\uC131"
   <MoveSpeed>k__BackingField: 0
@@ -3293,7 +3318,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7835892577612198735, guid: 160f0309db9d25d4680a3cf8705caf67, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -22.19357
+      value: -22.181604
       objectReference: {fileID: 0}
     - target: {fileID: 7835892577612198735, guid: 160f0309db9d25d4680a3cf8705caf67, type: 3}
       propertyPath: m_LocalPosition.y

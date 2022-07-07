@@ -1,0 +1,5 @@
+Butterflies works with 2 shader, fragment shader(without any shadows, highly optimized) and surface shader with shadows.
+All prefabs works with LWRP and SRP.
+Some prefabs spawns at World space, some at Local Space, it easy to change.
+Thanks for a purchasing and have fun!
+

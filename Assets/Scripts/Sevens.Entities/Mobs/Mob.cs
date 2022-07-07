@@ -5,6 +5,7 @@ using Sevens.Skills;
 using Sevens.Utils;
 using Spine;
 using Spine.Unity;
+using System;
 using UnityEngine;
 using UnityEngine.VFX;
 
@@ -195,19 +196,33 @@ namespace Sevens.Entities.Mobs
                     return;
             }
             Hp -= damage;
-            PlayEffect("HitSmoke", transform.Find("VisualEffects").position);
+            if (_effects.FindByName("HitSmoke") != null) 
+            {
+                PlayEffect("HitSmoke", transform.Find("VisualEffects").position);
+            }
             var playerAttack = FindObjectOfType<Blow>();
-            Debug.Log(playerAttack.gameObject.name);
+            Vector3 visualEffectPos;
+            GameObject visualEffectsObj;
+            try
+            {
+                visualEffectsObj = transform.Find("VisualEffects").gameObject;
+                visualEffectPos = visualEffectsObj.transform.position;
+            }
+            catch (NullReferenceException ex)
+            {
+                visualEffectPos = playerAttack.transform.position;
+            }
+
             switch (playerAttack.gameObject.name)
             {
                 case "Combo1(Clone)":
-                    PlayEffect("Hit1", transform.Find("VisualEffects").position);
+                    PlayEffect("Hit1", visualEffectPos);
                     break;
                 case "Combo2(Clone)":
-                    PlayEffect("Hit2", transform.Find("VisualEffects").position);
+                    PlayEffect("Hit2", visualEffectPos);
                     break;
                 case "Combo3(Clone)":
-                    PlayEffect("Hit3", transform.Find("VisualEffects").position);
+                    PlayEffect("Hit3", visualEffectPos);
                     break;
                 default:
                     PlayEffect("Hit1", transform.position);

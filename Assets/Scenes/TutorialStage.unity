@@ -4188,6 +4188,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 939944929}
     - target: {fileID: 1422242601767118531, guid: e3e06fb6663a3d1489883bc203859e3a, type: 3}
+      propertyPath: sceneName
+      value: FirstStage
+      objectReference: {fileID: 0}
+    - target: {fileID: 1422242601767118531, guid: e3e06fb6663a3d1489883bc203859e3a, type: 3}
       propertyPath: _lockedDialogue.scriptFile
       value: 
       objectReference: {fileID: 4900000, guid: 568d5238ab935bf4bbd1dadf896d25b5, type: 3}
