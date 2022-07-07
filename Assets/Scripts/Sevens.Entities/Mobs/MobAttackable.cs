@@ -73,8 +73,10 @@ namespace Sevens.Entities.Mobs
 
         private void AttemptAttack(MobAttackBase[] attacks)
         {
+            if (attacks.Any(a => a == null))
+                Debug.LogWarning($"{name} 객체에 MobAttack이 할당되지 않은 요소가 있습니다. 모든 요소는 반드시 None이 아니어야 합니다.");
             var filtered = attacks
-                   .Where(atk => atk.IsAvailable(Player, Mob))
+                   .Where(atk => atk && atk.IsAvailable(Player, Mob))
                    .GroupBy(atk => atk.Priority)
                    .OrderByDescending(group => group.Key)
                    .FirstOrDefault();
